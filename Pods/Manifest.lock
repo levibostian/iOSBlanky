@@ -1,0 +1,57 @@
+PODS:
+  - Alamofire (3.3.1)
+  - AlamofireNetworkActivityIndicator (1.0.1):
+    - Alamofire (~> 3.3)
+  - AlamofireObjectMapper (3.0.0):
+    - Alamofire (~> 3.2)
+    - ObjectMapper (~> 1.0)
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Kamagari (1.0.1)
+  - Kingfisher (2.3.1)
+  - ObjectMapper (1.2.0)
+  - Realm (0.100.0):
+    - Realm/Headers (= 0.100.0)
+  - Realm/Headers (0.100.0)
+  - RealmSwift (0.100.0):
+    - Realm (= 0.100.0)
+  - Spring (1.0.3)
+  - SwiftOverlays (2.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.3)
+  - AlamofireNetworkActivityIndicator (~> 1.0)
+  - AlamofireObjectMapper (~> 3.0)
+  - ChameleonFramework/Swift (~> 2.1.0)
+  - Kamagari (~> 1.0.1)
+  - Kingfisher (~> 2.3)
+  - ObjectMapper (~> 1.2)
+  - RealmSwift (~> 0.100.0)
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+  - SwiftOverlays (~> 2.0.0)
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift2
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  AlamofireNetworkActivityIndicator: 49a6e39afb947136f7b1872bae2d684957c26697
+  AlamofireObjectMapper: 2d16585d06177be0116d76de73497e77437798af
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Kamagari: d2ce4288e7142b468e4ceb60fe0ff1a9a2e69a00
+  Kingfisher: 6d3fbada4829cbc7b89e883e8218c28afeb64e42
+  ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  Realm: b13b548e712d28a66678970c45cd245ebb94ba3b
+  RealmSwift: 1bb0ba2ceaa06b65d740b4f91bfa06e3fd1b805c
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftOverlays: 317afbb3eeb7f9d8545b1e6592500c89aadb6d8f
+
+COCOAPODS: 0.39.0

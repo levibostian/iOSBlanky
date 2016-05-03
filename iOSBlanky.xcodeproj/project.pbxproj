@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C96E968EDE6B9B42891057F /* Pods_iOSBlankyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341C9699FA5138953845AEFE /* Pods_iOSBlankyTests.framework */; };
+		3CC72A6514344FDCD2D5D427 /* Pods_iOSBlanky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C30211D6864E7EBE8F9D613 /* Pods_iOSBlanky.framework */; };
+		62323E87C68C001806ACCB1F /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27613AFB16D645108BB8483B /* Pods_iOSBlankyUITests.framework */; };
+		F75230391CD90B5D00DCAAC4 /* Kamagari.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230371CD90B5D00DCAAC4 /* Kamagari.framework */; };
+		F752303A1CD90B5D00DCAAC4 /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */; };
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
 		F75DCD851CD8F10D00B8941F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD841CD8F10D00B8941F /* ViewController.swift */; };
 		F75DCD881CD8F10D00B8941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD861CD8F10D00B8941F /* Main.storyboard */; };
@@ -14,6 +19,15 @@
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
 		F75DCD981CD8F10D00B8941F /* iOSBlankyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD971CD8F10D00B8941F /* iOSBlankyTests.swift */; };
 		F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */; };
+		F7A4045A1CD9031A00A4D228 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404511CD9031900A4D228 /* Alamofire.framework */; };
+		F7A4045B1CD9031A00A4D228 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */; };
+		F7A4045C1CD9031A00A4D228 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */; };
+		F7A4045D1CD9031A00A4D228 /* ChameleonFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404541CD9031900A4D228 /* ChameleonFramework.framework */; };
+		F7A4045E1CD9031A00A4D228 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404551CD9031900A4D228 /* Kingfisher.framework */; };
+		F7A4045F1CD9031A00A4D228 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404561CD9031900A4D228 /* ObjectMapper.framework */; };
+		F7A404601CD9031A00A4D228 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404571CD9031900A4D228 /* Realm.framework */; };
+		F7A404611CD9031A00A4D228 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404581CD9031900A4D228 /* RealmSwift.framework */; };
+		F7A404621CD9031A00A4D228 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404591CD9031900A4D228 /* Spring.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +48,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27613AFB16D645108BB8483B /* Pods_iOSBlankyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlankyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		341C9699FA5138953845AEFE /* Pods_iOSBlankyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlankyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35A3CA263D2EE4B05EDA63BB /* Pods-iOSBlankyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests.release.xcconfig"; sourceTree = "<group>"; };
+		3862EB2BA4F57DB6EC384712 /* Pods-iOSBlanky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlanky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky.debug.xcconfig"; sourceTree = "<group>"; };
+		3889DF5746E0F4E8E7C1FF21 /* Pods-iOSBlanky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlanky.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky.release.xcconfig"; sourceTree = "<group>"; };
+		72BB83818362D326DA9A5B16 /* Pods-iOSBlankyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C30211D6864E7EBE8F9D613 /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A578124288595C667092C1C0 /* Pods-iOSBlankyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DE15C93D91599CDA6F28B149 /* Pods-iOSBlankyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F75230371CD90B5D00DCAAC4 /* Kamagari.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamagari.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kamagari.framework"; sourceTree = "<group>"; };
+		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
 		F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSBlanky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCD821CD8F10D00B8941F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F75DCD841CD8F10D00B8941F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +72,15 @@
 		F75DCD9E1CD8F10D00B8941F /* iOSBlankyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSBlankyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBlankyUITests.swift; sourceTree = "<group>"; };
 		F75DCDA41CD8F10D00B8941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7A404511CD9031900A4D228 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
+		F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
+		F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
+		F7A404541CD9031900A4D228 /* ChameleonFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChameleonFramework.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/ChameleonFramework.framework"; sourceTree = "<group>"; };
+		F7A404551CD9031900A4D228 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kingfisher.framework"; sourceTree = "<group>"; };
+		F7A404561CD9031900A4D228 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/ObjectMapper.framework"; sourceTree = "<group>"; };
+		F7A404571CD9031900A4D228 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
+		F7A404581CD9031900A4D228 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
+		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +88,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F75230391CD90B5D00DCAAC4 /* Kamagari.framework in Frameworks */,
+				F752303A1CD90B5D00DCAAC4 /* SwiftOverlays.framework in Frameworks */,
+				F7A4045A1CD9031A00A4D228 /* Alamofire.framework in Frameworks */,
+				F7A4045B1CD9031A00A4D228 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
+				F7A4045C1CD9031A00A4D228 /* AlamofireObjectMapper.framework in Frameworks */,
+				F7A4045D1CD9031A00A4D228 /* ChameleonFramework.framework in Frameworks */,
+				F7A4045E1CD9031A00A4D228 /* Kingfisher.framework in Frameworks */,
+				F7A4045F1CD9031A00A4D228 /* ObjectMapper.framework in Frameworks */,
+				F7A404601CD9031A00A4D228 /* Realm.framework in Frameworks */,
+				F7A404611CD9031A00A4D228 /* RealmSwift.framework in Frameworks */,
+				F7A404621CD9031A00A4D228 /* Spring.framework in Frameworks */,
+				3CC72A6514344FDCD2D5D427 /* Pods_iOSBlanky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C96E968EDE6B9B42891057F /* Pods_iOSBlankyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +115,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62323E87C68C001806ACCB1F /* Pods_iOSBlankyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		51935A01B1C12AE36E8E3C45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3862EB2BA4F57DB6EC384712 /* Pods-iOSBlanky.debug.xcconfig */,
+				3889DF5746E0F4E8E7C1FF21 /* Pods-iOSBlanky.release.xcconfig */,
+				72BB83818362D326DA9A5B16 /* Pods-iOSBlankyTests.debug.xcconfig */,
+				35A3CA263D2EE4B05EDA63BB /* Pods-iOSBlankyTests.release.xcconfig */,
+				A578124288595C667092C1C0 /* Pods-iOSBlankyUITests.debug.xcconfig */,
+				DE15C93D91599CDA6F28B149 /* Pods-iOSBlankyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C1715DC8E1D8C79F1A025E3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F75230371CD90B5D00DCAAC4 /* Kamagari.framework */,
+				F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */,
+				F7A404511CD9031900A4D228 /* Alamofire.framework */,
+				F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */,
+				F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */,
+				F7A404541CD9031900A4D228 /* ChameleonFramework.framework */,
+				F7A404551CD9031900A4D228 /* Kingfisher.framework */,
+				F7A404561CD9031900A4D228 /* ObjectMapper.framework */,
+				F7A404571CD9031900A4D228 /* Realm.framework */,
+				F7A404581CD9031900A4D228 /* RealmSwift.framework */,
+				F7A404591CD9031900A4D228 /* Spring.framework */,
+				8C30211D6864E7EBE8F9D613 /* Pods_iOSBlanky.framework */,
+				341C9699FA5138953845AEFE /* Pods_iOSBlankyTests.framework */,
+				27613AFB16D645108BB8483B /* Pods_iOSBlankyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F75DCD761CD8F10C00B8941F = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +163,8 @@
 				F75DCD961CD8F10D00B8941F /* iOSBlankyTests */,
 				F75DCDA11CD8F10D00B8941F /* iOSBlankyUITests */,
 				F75DCD801CD8F10D00B8941F /* Products */,
+				51935A01B1C12AE36E8E3C45 /* Pods */,
+				C1715DC8E1D8C79F1A025E3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,10 +216,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F75DCDA71CD8F10D00B8941F /* Build configuration list for PBXNativeTarget "iOSBlanky" */;
 			buildPhases = (
+				4B31E922F83C429111D30BCA /* Check Pods Manifest.lock */,
 				F75DCD7B1CD8F10D00B8941F /* Sources */,
 				F75DCD7C1CD8F10D00B8941F /* Frameworks */,
 				F75DCD7D1CD8F10D00B8941F /* Resources */,
 				F7B674F81CD8F2BC007C42FC /* SwiftLint */,
+				18694C6A0E6C1BFDEFB7B06E /* Embed Pods Frameworks */,
+				2929703971573FAB6176246E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,9 +237,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F75DCDAA1CD8F10D00B8941F /* Build configuration list for PBXNativeTarget "iOSBlankyTests" */;
 			buildPhases = (
+				DF2F358595D8913EF75B2E05 /* Check Pods Manifest.lock */,
 				F75DCD8F1CD8F10D00B8941F /* Sources */,
 				F75DCD901CD8F10D00B8941F /* Frameworks */,
 				F75DCD911CD8F10D00B8941F /* Resources */,
+				9A1B3BCEE6F068EF37E6210F /* Embed Pods Frameworks */,
+				71A29E84A28B332FAC459B46 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,9 +258,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F75DCDAD1CD8F10D00B8941F /* Build configuration list for PBXNativeTarget "iOSBlankyUITests" */;
 			buildPhases = (
+				06027527371CF6379A4F4844 /* Check Pods Manifest.lock */,
 				F75DCD9A1CD8F10D00B8941F /* Sources */,
 				F75DCD9B1CD8F10D00B8941F /* Frameworks */,
 				F75DCD9C1CD8F10D00B8941F /* Resources */,
+				A58DF84CD1316BB6CEC2E883 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +345,126 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		06027527371CF6379A4F4844 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		18694C6A0E6C1BFDEFB7B06E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2929703971573FAB6176246E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B31E922F83C429111D30BCA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		71A29E84A28B332FAC459B46 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A1B3BCEE6F068EF37E6210F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A58DF84CD1316BB6CEC2E883 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF2F358595D8913EF75B2E05 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		F7B674F81CD8F2BC007C42FC /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,8 +627,13 @@
 		};
 		F75DCDA81CD8F10D00B8941F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3862EB2BA4F57DB6EC384712 /* Pods-iOSBlanky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
@@ -426,8 +643,13 @@
 		};
 		F75DCDA91CD8F10D00B8941F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3889DF5746E0F4E8E7C1FF21 /* Pods-iOSBlanky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
@@ -437,6 +659,7 @@
 		};
 		F75DCDAB1CD8F10D00B8941F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72BB83818362D326DA9A5B16 /* Pods-iOSBlankyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = iOSBlankyTests/Info.plist;
@@ -449,6 +672,7 @@
 		};
 		F75DCDAC1CD8F10D00B8941F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35A3CA263D2EE4B05EDA63BB /* Pods-iOSBlankyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = iOSBlankyTests/Info.plist;
@@ -461,6 +685,7 @@
 		};
 		F75DCDAE1CD8F10D00B8941F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A578124288595C667092C1C0 /* Pods-iOSBlankyUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = iOSBlankyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -472,6 +697,7 @@
 		};
 		F75DCDAF1CD8F10D00B8941F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE15C93D91599CDA6F28B149 /* Pods-iOSBlankyUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = iOSBlankyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

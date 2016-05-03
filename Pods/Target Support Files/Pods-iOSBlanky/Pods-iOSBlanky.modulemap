@@ -1,0 +1,6 @@
+framework module Pods_iOSBlanky {
+  umbrella header "Pods-iOSBlanky-umbrella.h"
+
+  export *
+  module * { export * }
+}
