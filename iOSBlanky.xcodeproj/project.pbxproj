@@ -13,7 +13,6 @@
 		F75230391CD90B5D00DCAAC4 /* Kamagari.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230371CD90B5D00DCAAC4 /* Kamagari.framework */; };
 		F752303A1CD90B5D00DCAAC4 /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */; };
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
-		F75DCD851CD8F10D00B8941F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD841CD8F10D00B8941F /* ViewController.swift */; };
 		F75DCD881CD8F10D00B8941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD861CD8F10D00B8941F /* Main.storyboard */; };
 		F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
@@ -28,6 +27,9 @@
 		F7A404601CD9031A00A4D228 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404571CD9031900A4D228 /* Realm.framework */; };
 		F7A404611CD9031A00A4D228 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404581CD9031900A4D228 /* RealmSwift.framework */; };
 		F7A404621CD9031A00A4D228 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404591CD9031900A4D228 /* Spring.framework */; };
+		F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */; };
+		F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619F1CD95D2400721FE4 /* MainViewController.swift */; };
+		F7EF61A31CD9627A00721FE4 /* UIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF61A21CD9627A00721FE4 /* UIRoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +63,6 @@
 		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
 		F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSBlanky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCD821CD8F10D00B8941F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F75DCD841CD8F10D00B8941F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F75DCD871CD8F10D00B8941F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F75DCD891CD8F10D00B8941F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F75DCD8C1CD8F10D00B8941F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +82,9 @@
 		F7A404571CD9031900A4D228 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
 		F7A404581CD9031900A4D228 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
 		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
+		F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUIViewController.swift; path = ViewController/BaseUIViewController.swift; sourceTree = "<group>"; };
+		F7EF619F1CD95D2400721FE4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
+		F7EF61A21CD9627A00721FE4 /* UIRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIRoundedButton.swift; path = UIView/UIRoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,8 +185,9 @@
 		F75DCD811CD8F10D00B8941F /* iOSBlanky */ = {
 			isa = PBXGroup;
 			children = (
+				F7EF61A11CD9625900721FE4 /* UIView */,
+				F7EF619C1CD95CD600721FE4 /* ViewController */,
 				F75DCD821CD8F10D00B8941F /* AppDelegate.swift */,
-				F75DCD841CD8F10D00B8941F /* ViewController.swift */,
 				F75DCD861CD8F10D00B8941F /* Main.storyboard */,
 				F75DCD891CD8F10D00B8941F /* Assets.xcassets */,
 				F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */,
@@ -207,6 +212,23 @@
 				F75DCDA41CD8F10D00B8941F /* Info.plist */,
 			);
 			path = iOSBlankyUITests;
+			sourceTree = "<group>";
+		};
+		F7EF619C1CD95CD600721FE4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F7EF619F1CD95D2400721FE4 /* MainViewController.swift */,
+				F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		F7EF61A11CD9625900721FE4 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				F7EF61A21CD9627A00721FE4 /* UIRoundedButton.swift */,
+			);
+			name = UIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,8 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F75DCD851CD8F10D00B8941F /* ViewController.swift in Sources */,
+				F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
+				F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */,
+				F7EF61A31CD9627A00721FE4 /* UIRoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

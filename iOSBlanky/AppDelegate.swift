@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Alamofire
 import AlamofireNetworkActivityIndicator
+import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        self.styleApp()
+        
         NetworkActivityIndicatorManager.sharedManager.isEnabled = true
         
         return true
+    }
+    
+    func styleApp() {
+        Chameleon.setGlobalThemeUsingPrimaryColor(UIColor.flatGreenColor(), withContentStyle: UIContentStyle.Contrast)
+        UIButton.appearanceWhenContainedInInstancesOfClasses([UIViewController.self]).backgroundColor = UIColor.clearColor()
     }
 
     func applicationWillResignActive(application: UIApplication) {
