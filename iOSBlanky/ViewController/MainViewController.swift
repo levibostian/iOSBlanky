@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import SwiftOverlays
+import Kamagari
 
 class MainViewController: BaseUIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var goButton: UIButton!
     
+    private var gitHubController: GitHubController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        gitHubController = GitHubController.getInstance()
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,7 +29,27 @@ class MainViewController: BaseUIViewController {
     }
     
     @IBAction func howManyReposButtonPressed(sender: UIButton) {
-        
+        if let gitHubUsername = usernameTextField.text {
+            SwiftOverlays.showBlockingWaitOverlayWithText("Getting repos...")
+            
+            gitHubController.getUserRepos(gitHubUsername, onError: { (message) in
+                SwiftOverlays.removeAllBlockingOverlays()
+                
+                AlertBuilder(title: "Error", message: message, preferredStyle: .Alert)
+                    .addAction(title: "Ok", style: .Cancel) { _ in }
+                    .build()
+                    .kam_show(animated: true)
+            }) { (data) in
+                SwiftOverlays.removeAllBlockingOverlays()
+                
+                if let repos = data {
+                    AlertBuilder(title: "Success!", message: String(format: "The number of repos for %@ is: %i", gitHubUsername, repos.count), preferredStyle: .Alert)
+                        .addAction(title: "Cool", style: .Cancel) { _ in }
+                        .build()
+                        .kam_show(animated: true)
+                }
+            }
+        }
     }
     
 }

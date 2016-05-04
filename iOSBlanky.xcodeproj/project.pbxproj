@@ -10,6 +10,10 @@
 		1C96E968EDE6B9B42891057F /* Pods_iOSBlankyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341C9699FA5138953845AEFE /* Pods_iOSBlankyTests.framework */; };
 		3CC72A6514344FDCD2D5D427 /* Pods_iOSBlanky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C30211D6864E7EBE8F9D613 /* Pods_iOSBlanky.framework */; };
 		62323E87C68C001806ACCB1F /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27613AFB16D645108BB8483B /* Pods_iOSBlankyUITests.framework */; };
+		F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */; };
+		F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338AB41CD978D1009BBC0A /* RepoModel.swift */; };
+		F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */; };
+		F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338ABC1CDA849B009BBC0A /* BaseController.swift */; };
 		F75230391CD90B5D00DCAAC4 /* Kamagari.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230371CD90B5D00DCAAC4 /* Kamagari.framework */; };
 		F752303A1CD90B5D00DCAAC4 /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */; };
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
@@ -29,7 +33,6 @@
 		F7A404621CD9031A00A4D228 /* Spring.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404591CD9031900A4D228 /* Spring.framework */; };
 		F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */; };
 		F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619F1CD95D2400721FE4 /* MainViewController.swift */; };
-		F7EF61A31CD9627A00721FE4 /* UIRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF61A21CD9627A00721FE4 /* UIRoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,10 @@
 		8C30211D6864E7EBE8F9D613 /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A578124288595C667092C1C0 /* Pods-iOSBlankyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE15C93D91599CDA6F28B149 /* Pods-iOSBlankyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubAPI.swift; path = API/GitHubAPI.swift; sourceTree = "<group>"; };
+		F7338AB41CD978D1009BBC0A /* RepoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoModel.swift; path = Model/RepoModel.swift; sourceTree = "<group>"; };
+		F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubController.swift; path = Controller/GitHubController.swift; sourceTree = "<group>"; };
+		F7338ABC1CDA849B009BBC0A /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseController.swift; path = Controller/BaseController.swift; sourceTree = "<group>"; };
 		F75230371CD90B5D00DCAAC4 /* Kamagari.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamagari.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kamagari.framework"; sourceTree = "<group>"; };
 		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
 		F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSBlanky.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +91,6 @@
 		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
 		F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUIViewController.swift; path = ViewController/BaseUIViewController.swift; sourceTree = "<group>"; };
 		F7EF619F1CD95D2400721FE4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
-		F7EF61A21CD9627A00721FE4 /* UIRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIRoundedButton.swift; path = UIView/UIRoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +166,38 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F7338AAE1CD9755D009BBC0A /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		F7338AB11CD97861009BBC0A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F7338AB41CD978D1009BBC0A /* RepoModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F7338AB61CD979BE009BBC0A /* VO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = VO;
+			sourceTree = "<group>";
+		};
+		F7338AB91CDA7B9B009BBC0A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */,
+				F7338ABC1CDA849B009BBC0A /* BaseController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		F75DCD761CD8F10C00B8941F = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +223,10 @@
 		F75DCD811CD8F10D00B8941F /* iOSBlanky */ = {
 			isa = PBXGroup;
 			children = (
+				F7338AB91CDA7B9B009BBC0A /* Controller */,
+				F7338AB61CD979BE009BBC0A /* VO */,
+				F7338AB11CD97861009BBC0A /* Model */,
+				F7338AAE1CD9755D009BBC0A /* API */,
 				F7EF61A11CD9625900721FE4 /* UIView */,
 				F7EF619C1CD95CD600721FE4 /* ViewController */,
 				F75DCD821CD8F10D00B8941F /* AppDelegate.swift */,
@@ -226,7 +268,6 @@
 		F7EF61A11CD9625900721FE4 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				F7EF61A21CD9627A00721FE4 /* UIRoundedButton.swift */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -511,7 +552,10 @@
 				F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
 				F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */,
-				F7EF61A31CD9627A00721FE4 /* UIRoundedButton.swift in Sources */,
+				F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */,
+				F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */,
+				F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */,
+				F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

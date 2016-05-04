@@ -23,6 +23,7 @@ variable_name:
     error: 4 # only error
   excluded: # excluded via string array
     - id
+    - map 
     - URL
     - GlobalAPIKey
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)

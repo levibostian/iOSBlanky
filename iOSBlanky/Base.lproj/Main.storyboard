@@ -28,6 +28,9 @@
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9O-hf-4Ew">
                                         <rect key="frame" x="166" y="48" width="188" height="30"/>
                                         <state key="normal" title="How many repos do I have?"/>
+                                        <connections>
+                                            <action selector="howManyReposButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zj5-5c-pm1"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -36,14 +39,6 @@
                                     <constraint firstAttribute="trailing" secondItem="qNv-AK-tXK" secondAttribute="trailing" id="nup-17-8FV"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Hh-wR-UJ8">
-                                <rect key="frame" x="251" y="365" width="98" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="98" id="dRu-Gd-6ve"/>
-                                    <constraint firstAttribute="height" constant="64" id="jX2-s0-AkB"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -51,8 +46,6 @@
                             <constraint firstItem="C32-iI-R6p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="51B-pZ-vaD"/>
                             <constraint firstAttribute="trailing" secondItem="C32-iI-R6p" secondAttribute="trailing" constant="40" id="9dY-vo-c7R"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="C32-iI-R6p" secondAttribute="bottom" id="A67-Ni-0EQ"/>
-                            <constraint firstItem="7Hh-wR-UJ8" firstAttribute="top" secondItem="C32-iI-R6p" secondAttribute="bottom" constant="26" id="H4B-y5-Y7p"/>
-                            <constraint firstItem="7Hh-wR-UJ8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a02-I6-okm"/>
                             <constraint firstItem="C32-iI-R6p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fBW-04-fBH"/>
                             <constraint firstItem="C32-iI-R6p" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="j3R-fa-grG"/>
                             <constraint firstItem="C32-iI-R6p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="kSI-09-CYM"/>
@@ -68,6 +61,10 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="iOSBlanky" id="gUN-1R-ZaN"/>
+                    <connections>
+                        <outlet property="goButton" destination="t9O-hf-4Ew" id="ca0-WT-Kvw"/>
+                        <outlet property="usernameTextField" destination="qNv-AK-tXK" id="Q7l-4V-JUA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
