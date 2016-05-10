@@ -21,6 +21,12 @@ class MainViewController: BaseUIViewController {
         super.viewDidLoad()
         
         gitHubController = GitHubController.getInstance()
+        
+        setupViews()
+    }
+    
+    private func setupViews() {
+        addTextField(usernameTextField)
     }
     
     override func didReceiveMemoryWarning() {
