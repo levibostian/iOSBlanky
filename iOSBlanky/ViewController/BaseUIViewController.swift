@@ -10,6 +10,8 @@ import UIKit
 
 class BaseUIViewController: UIViewController, UITextFieldDelegate {
     
+    let keyboardMoveUpHeight: CGFloat = 50
+    
     private var textFields: [UITextField] = []
     
     override func viewDidLoad() {
@@ -38,10 +40,29 @@ class BaseUIViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        animateViewMoving(true, moveValue: keyboardMoveUpHeight)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        animateViewMoving(false, moveValue: keyboardMoveUpHeight)
+    }
+    
     func dismissKeyboard() {
         textFields.forEach { (textField) in
             textField.resignFirstResponder()
         }
+    }
+    
+    func animateViewMoving(shouldMoveUp: Bool, moveValue: CGFloat) {
+        let movementDuration: NSTimeInterval = 0.3
+        let movement: CGFloat = (shouldMoveUp ? -moveValue : moveValue)
+        
+        UIView.beginAnimations("animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame.offsetInPlace(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
     /*
