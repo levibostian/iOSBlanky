@@ -22,6 +22,11 @@
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
 		F75DCD981CD8F10D00B8941F /* iOSBlankyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD971CD8F10D00B8941F /* iOSBlankyTests.swift */; };
 		F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */; };
+		F774AA141CE26CAC00FFBA76 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774AA131CE26CAC00FFBA76 /* DateUtil.swift */; };
+		F774AA161CE26D0000FFBA76 /* InfoPListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774AA151CE26D0000FFBA76 /* InfoPListUtil.swift */; };
+		F774AA181CE26D2300FFBA76 /* NSUserDefaultsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774AA171CE26D2300FFBA76 /* NSUserDefaultsUtil.swift */; };
+		F774AA1A1CE2713600FFBA76 /* NotificationCenterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774AA191CE2713600FFBA76 /* NotificationCenterUtil.swift */; };
+		F774AA1C1CE2717500FFBA76 /* NumberUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F774AA1B1CE2717500FFBA76 /* NumberUtil.swift */; };
 		F7A4045A1CD9031A00A4D228 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404511CD9031900A4D228 /* Alamofire.framework */; };
 		F7A4045B1CD9031A00A4D228 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */; };
 		F7A4045C1CD9031A00A4D228 /* AlamofireObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */; };
@@ -80,6 +85,11 @@
 		F75DCD9E1CD8F10D00B8941F /* iOSBlankyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSBlankyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBlankyUITests.swift; sourceTree = "<group>"; };
 		F75DCDA41CD8F10D00B8941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F774AA131CE26CAC00FFBA76 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtil.swift; path = Util/DateUtil.swift; sourceTree = "<group>"; };
+		F774AA151CE26D0000FFBA76 /* InfoPListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoPListUtil.swift; path = Util/InfoPListUtil.swift; sourceTree = "<group>"; };
+		F774AA171CE26D2300FFBA76 /* NSUserDefaultsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSUserDefaultsUtil.swift; path = Util/NSUserDefaultsUtil.swift; sourceTree = "<group>"; };
+		F774AA191CE2713600FFBA76 /* NotificationCenterUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCenterUtil.swift; path = Util/NotificationCenterUtil.swift; sourceTree = "<group>"; };
+		F774AA1B1CE2717500FFBA76 /* NumberUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumberUtil.swift; path = Util/NumberUtil.swift; sourceTree = "<group>"; };
 		F7A404511CD9031900A4D228 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
 		F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
@@ -223,6 +233,7 @@
 		F75DCD811CD8F10D00B8941F /* iOSBlanky */ = {
 			isa = PBXGroup;
 			children = (
+				F774AA121CE26C9C00FFBA76 /* Util */,
 				F7338AB91CDA7B9B009BBC0A /* Controller */,
 				F7338AB61CD979BE009BBC0A /* VO */,
 				F7338AB11CD97861009BBC0A /* Model */,
@@ -254,6 +265,18 @@
 				F75DCDA41CD8F10D00B8941F /* Info.plist */,
 			);
 			path = iOSBlankyUITests;
+			sourceTree = "<group>";
+		};
+		F774AA121CE26C9C00FFBA76 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F774AA131CE26CAC00FFBA76 /* DateUtil.swift */,
+				F774AA151CE26D0000FFBA76 /* InfoPListUtil.swift */,
+				F774AA171CE26D2300FFBA76 /* NSUserDefaultsUtil.swift */,
+				F774AA191CE2713600FFBA76 /* NotificationCenterUtil.swift */,
+				F774AA1B1CE2717500FFBA76 /* NumberUtil.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		F7EF619C1CD95CD600721FE4 /* ViewController */ = {
@@ -550,12 +573,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */,
+				F774AA161CE26D0000FFBA76 /* InfoPListUtil.swift in Sources */,
+				F774AA1C1CE2717500FFBA76 /* NumberUtil.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
 				F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */,
 				F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */,
 				F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */,
+				F774AA141CE26CAC00FFBA76 /* DateUtil.swift in Sources */,
 				F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */,
+				F774AA1A1CE2713600FFBA76 /* NotificationCenterUtil.swift in Sources */,
 				F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */,
+				F774AA181CE26D2300FFBA76 /* NSUserDefaultsUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
