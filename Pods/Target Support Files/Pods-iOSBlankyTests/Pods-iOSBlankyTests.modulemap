@@ -1,0 +1,6 @@
+framework module Pods_iOSBlankyTests {
+  umbrella header "Pods-iOSBlankyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
