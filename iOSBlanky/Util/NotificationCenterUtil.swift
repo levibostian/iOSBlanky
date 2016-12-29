@@ -10,16 +10,39 @@ import Foundation
 
 class NotificationCenterUtil {
     
-    class func removeObserver(observer: AnyObject) {
-        NSNotificationCenter.defaultCenter().removeObserver(observer)
+    fileprivate static let userLoggedInNotification = "userLoggedInNotification"
+    fileprivate static let userUnauthorizedNotification = "userUnauthorizedNotification"
+    
+    class func postUserLoggedInNotification() {
+        postNotification(userLoggedInNotification)
     }
     
-    private class func postNotification(name: String) {
-        NSNotificationCenter.defaultCenter().postNotificationName(name, object: nil)
+    class func observeUserLoggedInNotification(_ observer: AnyObject, selector: Selector) {
+        observeNotification(observer, selector: selector, name: userLoggedInNotification)
     }
     
-    private class func observeNotification(observer: AnyObject, selector: Selector, name: String) {
-        NSNotificationCenter.defaultCenter().addObserver(observer, selector: selector, name: name, object: nil)
+    class func postUserUnauthorized(_ shouldShowLoggedOutMessage: Bool, errorMessage: String? = nil) {
+        postNotification(userUnauthorizedNotification, userInfo: ["shouldShowLoggedOutMessage": shouldShowLoggedOutMessage, "errorMessage": errorMessage])
+    }
+    
+    class func observeUserUnauthorized(_ observer: AnyObject, selector: Selector) {
+        observeNotification(observer, selector: selector, name: userUnauthorizedNotification)
+    }
+    
+    class func removeObserver(_ observer: AnyObject) {
+        NotificationCenter.default.removeObserver(observer)
+    }
+    
+    fileprivate class func postNotification(_ name: String, userInfo: Dictionary<String, Any>? = nil) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: nil, userInfo: userInfo)
+    }
+    
+    fileprivate class func postNotification(_ name: String) {
+        postNotification(name)
+    }
+    
+    fileprivate class func observeNotification(_ observer: AnyObject, selector: Selector, name: String) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: nil)
     }
     
 }

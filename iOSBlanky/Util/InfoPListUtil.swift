@@ -10,10 +10,10 @@ import Foundation
 
 class InfoPlistUtil {
     
-    class func getValueFromKey(key: String) -> AnyObject? {
-        let mainBundle = NSBundle.mainBundle()
+    class func getValueFromKey(_ key: String) -> AnyObject? {
+        let mainBundle = Bundle.main
         
-        return mainBundle.objectForInfoDictionaryKey(key)
+        return mainBundle.object(forInfoDictionaryKey: key) as AnyObject?
     }
     
 }

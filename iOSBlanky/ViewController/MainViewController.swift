@@ -38,19 +38,19 @@ class MainViewController: BaseUIViewController {
         if let gitHubUsername = usernameTextField.text {
             SwiftOverlays.showBlockingWaitOverlayWithText("Getting repos...")
             
-            gitHubController.getUserRepos(gitHubUsername, onError: { (message) in
+            gitHubController.getUserRepos(gitHubUsername: gitHubUsername, onError: { (message) in
                 SwiftOverlays.removeAllBlockingOverlays()
                 
-                AlertBuilder(title: "Error", message: message, preferredStyle: .Alert)
-                    .addAction(title: "Ok", style: .Cancel) { _ in }
+                AlertBuilder(title: "Error", message: message, preferredStyle: .alert)
+                    .addAction(title: "Ok", style: .cancel) { _ in }
                     .build()
                     .kam_show(animated: true)
             }) { (data) in
                 SwiftOverlays.removeAllBlockingOverlays()
                 
                 if let repos = data {
-                    AlertBuilder(title: "Success!", message: String(format: "The number of repos for %@ is: %i", gitHubUsername, repos.count), preferredStyle: .Alert)
-                        .addAction(title: "Cool", style: .Cancel) { _ in }
+                    AlertBuilder(title: "Success!", message: String(format: "The number of repos for %@ is: %i", gitHubUsername, repos.count), preferredStyle: .alert)
+                        .addAction(title: "Cool", style: .cancel) { _ in }
                         .build()
                         .kam_show(animated: true)
                 }

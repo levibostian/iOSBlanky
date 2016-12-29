@@ -1,19 +1,19 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
 target 'iOSBlanky' do
-    pod 'ChameleonFramework/Swift', '~> 2.1.0'
-    pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
-    pod 'Kingfisher', '~> 2.3'
-    pod 'RealmSwift', '~> 0.100.0'
-    pod 'ObjectMapper', '~> 1.2'
-    pod 'AlamofireObjectMapper', '~> 3.0'
-    pod 'Alamofire', '~> 3.3'
-    pod 'AlamofireNetworkActivityIndicator', '~> 1.0'
-    pod 'SwiftOverlays', '~> 2.0.0'
-    pod 'Kamagari', '~> 1.0.1'
+    pod 'Kingfisher', '~> 3.2.3'
+    pod 'RealmSwift', '~> 2.1.2'
+    pod 'ObjectMapper', '~> 2.2.2'
+    pod 'Alamofire', '~> 4.2.0'
+    pod 'AlamofireNetworkActivityIndicator', '~> 2.1.0'
+    pod 'SwiftOverlays', '~> 3.0.0'
+    pod 'Kamagari', '~> 1.1.0'
+    pod 'KeychainAccess', '~> 3.0.1'
+    pod 'DZNEmptyDataSet', '~> 1.8.1'
+    pod 'IQKeyboardManagerSwift', '~> 4.0.7'
 end
 
 target 'iOSBlankyTests' do

@@ -20,8 +20,8 @@ class GitHubController: BaseController {
         return instance!
     }
     
-    func getUserRepos(gitHubUsername: String, onError: (message: String) -> Void, onComplete: (data: [RepoModel]?) -> Void) {
-        GitHubAPI.getUserRepos(gitHubUsername, onError: onError, onComplete: onComplete)
+    func getUserRepos(gitHubUsername: String, onError: @escaping (_ message: String) -> Void, onComplete: @escaping (_ data: [RepoModel]?) -> Void) {
+        GitHubAPI.getUserRepos(gitHubUsername: gitHubUsername, onError: onError, onComplete: onComplete)
     }
     
 }

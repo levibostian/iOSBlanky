@@ -14,7 +14,7 @@ class RepoModel: Object, Mappable {
     dynamic var fullName: String = ""
     dynamic var repoDescription: String = ""
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     
