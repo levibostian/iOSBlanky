@@ -11,6 +11,7 @@ import Kamagari
 import EventKit
 import SwiftOverlays
 import Photos
+import iOSBoilerplate
 
 fileprivate func < <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
     switch (lhs, rhs) {

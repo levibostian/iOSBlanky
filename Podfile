@@ -4,6 +4,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'iOSBlanky' do
+    pod "iOSViews", '~> 0.1.0'
+    pod 'iOSBoilerplate', '~> 0.1.1'
     pod 'Kingfisher', '~> 3.2.3'
     pod 'RealmSwift', '~> 2.1.2'
     pod 'ObjectMapper', '~> 2.2.2'

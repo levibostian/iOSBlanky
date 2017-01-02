@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import iOSBoilerplate
 
 class BaseApi {
     
@@ -74,7 +75,7 @@ class BaseApi {
                                 onError?(errorMessage)
                             }
                         }
-                    } else {
+                    } else {                        
                         LogUtil.logError(APIError.apiNoResponseError.error)
                     }
                 })

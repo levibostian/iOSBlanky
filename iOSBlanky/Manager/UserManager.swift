@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import iOSBoilerplate
 
 enum UserManagerError: Error, CustomStringConvertible {
     case userValuesNotSet

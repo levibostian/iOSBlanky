@@ -3,6 +3,8 @@ PODS:
   - AlamofireNetworkActivityIndicator (2.1.0):
     - Alamofire (~> 4.1)
   - DZNEmptyDataSet (1.8.1)
+  - iOSBoilerplate (0.1.1)
+  - iOSViews (0.1.0)
   - IQKeyboardManagerSwift (4.0.7)
   - Kamagari (1.1.0)
   - KeychainAccess (3.0.1)
@@ -19,6 +21,8 @@ DEPENDENCIES:
   - Alamofire (~> 4.2.0)
   - AlamofireNetworkActivityIndicator (~> 2.1.0)
   - DZNEmptyDataSet (~> 1.8.1)
+  - iOSBoilerplate (~> 0.1.1)
+  - iOSViews (~> 0.1.0)
   - IQKeyboardManagerSwift (~> 4.0.7)
   - Kamagari (~> 1.1.0)
   - KeychainAccess (~> 3.0.1)
@@ -31,6 +35,8 @@ SPEC CHECKSUMS:
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   AlamofireNetworkActivityIndicator: 4716f6554bdfb9c7cf13b1e0e3af21163129690a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  iOSBoilerplate: a7d095e8e06499cf15e04be45f0cf138cdb7aea5
+  iOSViews: 10e984e3d543a5a1a824b0bb2a4b87ebd40d5c30
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
   Kamagari: e4d489eb27735d2ecc246750443dd29dc6bf21f5
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
@@ -40,6 +46,6 @@ SPEC CHECKSUMS:
   RealmSwift: 17d6ee30b6f9df86364408c2197492e33bfea567
   SwiftOverlays: 4cdd9e4f5c7817fb6348882059eb697e11685fad
 
-PODFILE CHECKSUM: 6711f72591029844845ddbc4bd8b938db289abfb
+PODFILE CHECKSUM: 2b82a58689997429d6227df5338a4a9de69c6b91
 
 COCOAPODS: 1.1.1

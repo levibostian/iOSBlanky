@@ -95,6 +95,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftOverlays/SwiftOverlays.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iOSBoilerplate/iOSBoilerplate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iOSViews/iOSViews.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
@@ -108,6 +110,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftOverlays/SwiftOverlays.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iOSBoilerplate/iOSBoilerplate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iOSViews/iOSViews.framework"
 fi
 if [[ "$CONFIGURATION" == "Beta" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
@@ -121,4 +125,6 @@ if [[ "$CONFIGURATION" == "Beta" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Realm/Realm.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RealmSwift/RealmSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftOverlays/SwiftOverlays.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iOSBoilerplate/iOSBoilerplate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iOSViews/iOSViews.framework"
 fi
