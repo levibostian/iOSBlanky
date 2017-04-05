@@ -27,7 +27,6 @@
 #include <iostream>
 
 #include <realm/util/features.h>
-#include <realm/util/tuple.hpp>
 #include <realm/util/thread.hpp>
 #include <realm/util/file.hpp>
 
@@ -320,7 +319,7 @@ inline void Logger::log_impl(State& state)
 template <class Param, class... Params>
 inline void Logger::log_impl(State& state, Param&& param, Params&&... params)
 {
-    subst(state, std::forward<Param>(param)); // Throws
+    subst(state, std::forward<Param>(param));         // Throws
     log_impl(state, std::forward<Params>(params)...); // Throws
 }
 

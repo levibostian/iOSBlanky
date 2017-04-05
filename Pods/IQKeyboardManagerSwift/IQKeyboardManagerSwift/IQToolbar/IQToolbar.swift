@@ -30,9 +30,9 @@ private var kIQToolbarTitleInvocationSelector   = "kIQToolbarTitleInvocationSele
 /** @abstract   IQToolbar for IQKeyboardManager.    */
 open class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
 
-    override open class func initialize() {
-        
-        superclass()?.initialize()
+    private static var _classInitialize: Void = classInitialize()
+    
+    private class func classInitialize() {
                 
         self.appearance().barTintColor = nil
         
@@ -132,6 +132,7 @@ open class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
     }
     
     override init(frame: CGRect) {
+        _ = IQToolbar._classInitialize
         super.init(frame: frame)
         
         sizeToFit()
@@ -141,6 +142,7 @@ open class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
     }
     
     required public init?(coder aDecoder: NSCoder) {
+        _ = IQToolbar._classInitialize
         super.init(coder: aDecoder)
 
         sizeToFit()
@@ -193,8 +195,8 @@ open class IQToolbar: UIToolbar , UIInputViewAudioFeedback {
         
         struct InternalClass {
             
-            static var IQUIToolbarTextButtonClass: AnyClass?   =   NSClassFromString("UIToolbarTextButton")
-            static var IQUIToolbarButtonClass: AnyClass?      =   NSClassFromString("UIToolbarButton")
+            static var IQUIToolbarTextButtonClass: UIControl.Type?  =   NSClassFromString("UIToolbarTextButton") as? UIControl.Type
+            static var IQUIToolbarButtonClass: UIControl.Type?      =   NSClassFromString("UIToolbarButton") as? UIControl.Type
         }
 
 

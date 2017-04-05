@@ -21,7 +21,7 @@ public class NotificationCenterUtil {
         observeNotification(observer, selector: selector, name: userLoggedInNotification)
     }
     
-    public class func postUserUnauthorized(_ shouldShowLoggedOutMessage: Bool, errorMessage: String? = nil) {
+    public class func postUserUnauthorized(_ shouldShowLoggedOutMessage: Bool, errorMessage: String) {
         postNotification(userUnauthorizedNotification, userInfo: ["shouldShowLoggedOutMessage": shouldShowLoggedOutMessage, "errorMessage": errorMessage])
     }
     
@@ -33,7 +33,7 @@ public class NotificationCenterUtil {
         NotificationCenter.default.removeObserver(observer)
     }
     
-    fileprivate class func postNotification(_ name: String, userInfo: Dictionary<String, Any?>? = nil) {
+    fileprivate class func postNotification(_ name: String, userInfo: Dictionary<String, Any>? = nil) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: nil, userInfo: userInfo)
     }
     

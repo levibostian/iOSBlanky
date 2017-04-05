@@ -5,17 +5,16 @@ use_frameworks!
 
 target 'iOSBlanky' do
     pod "iOSViews", '~> 0.1.0'
-    pod 'iOSBoilerplate', '~> 0.1.1'
     pod 'Kingfisher', '~> 3.2.3'
-    pod 'RealmSwift', '~> 2.1.2'
+    pod 'RealmSwift', '~> 2.5.0'
     pod 'ObjectMapper', '~> 2.2.2'
-    pod 'Alamofire', '~> 4.2.0'
     pod 'AlamofireNetworkActivityIndicator', '~> 2.1.0'
     pod 'SwiftOverlays', '~> 3.0.0'
     pod 'Kamagari', '~> 1.1.0'
     pod 'KeychainAccess', '~> 3.0.1'
     pod 'DZNEmptyDataSet', '~> 1.8.1'
     pod 'IQKeyboardManagerSwift', '~> 4.0.7'
+    pod 'Mac', :path => '~/code/Mac'
 end
 
 target 'iOSBlankyTests' do

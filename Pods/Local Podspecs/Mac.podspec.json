@@ -1,0 +1,42 @@
+{
+  "name": "Mac",
+  "version": "0.1.0",
+  "summary": "iOS framework to build offline-first mobile apps.",
+  "description": "iOS framework to build offline-first mobile apps. Create the models then have Mac handle syncing these models with your API.",
+  "homepage": "https://github.com/curiosityio/Mac",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Levi Bostian": "levi@curiosityio.com"
+  },
+  "source": {
+    "git": "https://github.com/curiosityio/Mac.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Mac/Classes/**/*",
+  "dependencies": {
+    "RxSwift": [
+      "~> 3.3.1"
+    ],
+    "RxRealm": [
+      "~> 0.5.2"
+    ],
+    "RealmSwift": [
+      "~> 2.5.0"
+    ],
+    "ObjectMapper": [
+      "~> 2.2.5"
+    ],
+    "Alamofire": [
+      "~> 4.4.0"
+    ],
+    "iOSBoilerplate": [
+      "~> 0.2.1"
+    ]
+  }
+}
