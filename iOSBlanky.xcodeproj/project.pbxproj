@@ -35,18 +35,14 @@
 		F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */; };
 		F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */; };
 		F7D3B8DE1E14A0A300F2C3CB /* RealmListExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8DD1E14A0A300F2C3CB /* RealmListExtensions.swift */; };
-		F7D3B8F11E14A17D00F2C3CB /* BaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8F01E14A17D00F2C3CB /* BaseError.swift */; };
-		F7D3B8F41E14A37A00F2C3CB /* ErrorVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8F31E14A37A00F2C3CB /* ErrorVo.swift */; };
-		F7D3B8F61E14A3A200F2C3CB /* ErrorResponseVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8F51E14A3A200F2C3CB /* ErrorResponseVo.swift */; };
-		F7D3B8F81E14A45500F2C3CB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8F71E14A45500F2C3CB /* APIError.swift */; };
 		F7D3B8FB1E14A6B800F2C3CB /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8FA1E14A6B800F2C3CB /* ListTransform.swift */; };
-		F7D3B8FE1E14A6E000F2C3CB /* BaseDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8FD1E14A6E000F2C3CB /* BaseDAO.swift */; };
-		F7D3B9011E14A71E00F2C3CB /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B9001E14A71E00F2C3CB /* RealmManager.swift */; };
 		F7D3B90D1E14A80B00F2C3CB /* UserCredsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B90C1E14A80B00F2C3CB /* UserCredsManager.swift */; };
 		F7D3B90F1E14A86500F2C3CB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B90E1E14A86500F2C3CB /* UserManager.swift */; };
 		F7D3B9371E1566B700F2C3CB /* iOSBoilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */; };
-		F7D3B93A1E156CEA00F2C3CB /* LogUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B9391E156CEA00F2C3CB /* LogUtil.swift */; };
 		F7D3B9491E15D1FC00F2C3CB /* iOSViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */; };
+		F7EEDADF1E95325C0084D97E /* LogUtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */; };
+		F7EEDAE11E9533440084D97E /* NotificationCenterUtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */; };
+		F7EEDAE41E953DC20084D97E /* ErrorVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE31E953DC20084D97E /* ErrorVo.swift */; };
 		F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */; };
 		F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619F1CD95D2400721FE4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -114,19 +110,15 @@
 		F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"; sourceTree = "<group>"; };
 		F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/KeychainAccess/KeychainAccess.framework"; sourceTree = "<group>"; };
 		F7D3B8DD1E14A0A300F2C3CB /* RealmListExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmListExtensions.swift; path = Extension/RealmListExtensions.swift; sourceTree = "<group>"; };
-		F7D3B8F01E14A17D00F2C3CB /* BaseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseError.swift; path = Error/BaseError.swift; sourceTree = "<group>"; };
-		F7D3B8F31E14A37A00F2C3CB /* ErrorVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorVo.swift; path = VO/error/ErrorVo.swift; sourceTree = "<group>"; };
-		F7D3B8F51E14A3A200F2C3CB /* ErrorResponseVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorResponseVo.swift; path = VO/error/ErrorResponseVo.swift; sourceTree = "<group>"; };
-		F7D3B8F71E14A45500F2C3CB /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = Error/APIError.swift; sourceTree = "<group>"; };
 		F7D3B8FA1E14A6B800F2C3CB /* ListTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTransform.swift; path = Transform/ListTransform.swift; sourceTree = "<group>"; };
-		F7D3B8FD1E14A6E000F2C3CB /* BaseDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseDAO.swift; path = DAO/BaseDAO.swift; sourceTree = "<group>"; };
-		F7D3B9001E14A71E00F2C3CB /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmManager.swift; path = Manager/RealmManager.swift; sourceTree = "<group>"; };
 		F7D3B90C1E14A80B00F2C3CB /* UserCredsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCredsManager.swift; path = Manager/UserCredsManager.swift; sourceTree = "<group>"; };
 		F7D3B90E1E14A86500F2C3CB /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Manager/UserManager.swift; sourceTree = "<group>"; };
 		F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSBoilerplate.framework; path = "Pods/../build/Debug-iphoneos/iOSBoilerplate/iOSBoilerplate.framework"; sourceTree = "<group>"; };
-		F7D3B9391E156CEA00F2C3CB /* LogUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogUtil.swift; path = Util/LogUtil.swift; sourceTree = "<group>"; };
 		F7D3B9461E15CEE100F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "Pods/../build/Debug-iphoneos/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
 		F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
+		F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogUtilExtensions.swift; path = Extension/LogUtilExtensions.swift; sourceTree = "<group>"; };
+		F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCenterUtilExtensions.swift; path = Extension/NotificationCenterUtilExtensions.swift; sourceTree = "<group>"; };
+		F7EEDAE31E953DC20084D97E /* ErrorVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorVo.swift; path = VO/error/ErrorVo.swift; sourceTree = "<group>"; };
 		F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUIViewController.swift; path = ViewController/BaseUIViewController.swift; sourceTree = "<group>"; };
 		F7EF619F1CD95D2400721FE4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
 		F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,7 +228,7 @@
 		F7338AB61CD979BE009BBC0A /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				F7D3B8F21E14A36200F2C3CB /* error */,
+				F7EEDAE21E953DB50084D97E /* error */,
 			);
 			name = VO;
 			sourceTree = "<group>";
@@ -275,11 +267,8 @@
 		F75DCD811CD8F10D00B8941F /* iOSBlanky */ = {
 			isa = PBXGroup;
 			children = (
-				F7D3B9381E156C8100F2C3CB /* Util */,
 				F7D3B8FF1E14A70F00F2C3CB /* Manager */,
-				F7D3B8FC1E14A6D400F2C3CB /* DAO */,
 				F7D3B8F91E14A6A800F2C3CB /* Transform */,
-				F7D3B8EF1E14A16E00F2C3CB /* Error */,
 				F7D3B8DA1E14A06700F2C3CB /* Extension */,
 				F7338AB91CDA7B9B009BBC0A /* Controller */,
 				F7338AB61CD979BE009BBC0A /* VO */,
@@ -318,26 +307,10 @@
 			isa = PBXGroup;
 			children = (
 				F7D3B8DD1E14A0A300F2C3CB /* RealmListExtensions.swift */,
+				F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */,
+				F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */,
 			);
 			name = Extension;
-			sourceTree = "<group>";
-		};
-		F7D3B8EF1E14A16E00F2C3CB /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				F7D3B8F01E14A17D00F2C3CB /* BaseError.swift */,
-				F7D3B8F71E14A45500F2C3CB /* APIError.swift */,
-			);
-			name = Error;
-			sourceTree = "<group>";
-		};
-		F7D3B8F21E14A36200F2C3CB /* error */ = {
-			isa = PBXGroup;
-			children = (
-				F7D3B8F31E14A37A00F2C3CB /* ErrorVo.swift */,
-				F7D3B8F51E14A3A200F2C3CB /* ErrorResponseVo.swift */,
-			);
-			name = error;
 			sourceTree = "<group>";
 		};
 		F7D3B8F91E14A6A800F2C3CB /* Transform */ = {
@@ -348,30 +321,21 @@
 			name = Transform;
 			sourceTree = "<group>";
 		};
-		F7D3B8FC1E14A6D400F2C3CB /* DAO */ = {
-			isa = PBXGroup;
-			children = (
-				F7D3B8FD1E14A6E000F2C3CB /* BaseDAO.swift */,
-			);
-			name = DAO;
-			sourceTree = "<group>";
-		};
 		F7D3B8FF1E14A70F00F2C3CB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				F7D3B9001E14A71E00F2C3CB /* RealmManager.swift */,
 				F7D3B90C1E14A80B00F2C3CB /* UserCredsManager.swift */,
 				F7D3B90E1E14A86500F2C3CB /* UserManager.swift */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
 		};
-		F7D3B9381E156C8100F2C3CB /* Util */ = {
+		F7EEDAE21E953DB50084D97E /* error */ = {
 			isa = PBXGroup;
 			children = (
-				F7D3B9391E156CEA00F2C3CB /* LogUtil.swift */,
+				F7EEDAE31E953DC20084D97E /* ErrorVo.swift */,
 			);
-			name = Util;
+			name = error;
 			sourceTree = "<group>";
 		};
 		F7EF619C1CD95CD600721FE4 /* ViewController */ = {
@@ -686,24 +650,20 @@
 				F7D3B8DE1E14A0A300F2C3CB /* RealmListExtensions.swift in Sources */,
 				F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */,
 				F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */,
-				F7D3B9011E14A71E00F2C3CB /* RealmManager.swift in Sources */,
-				F7D3B8FE1E14A6E000F2C3CB /* BaseDAO.swift in Sources */,
 				F7D3B90D1E14A80B00F2C3CB /* UserCredsManager.swift in Sources */,
 				F7D3B8D31E149D2A00F2C3CB /* BasePopoverViewController.swift in Sources */,
+				F7EEDADF1E95325C0084D97E /* LogUtilExtensions.swift in Sources */,
+				F7EEDAE41E953DC20084D97E /* ErrorVo.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
-				F7D3B8F41E14A37A00F2C3CB /* ErrorVo.swift in Sources */,
+				F7EEDAE11E9533440084D97E /* NotificationCenterUtilExtensions.swift in Sources */,
 				F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */,
-				F7D3B8F61E14A3A200F2C3CB /* ErrorResponseVo.swift in Sources */,
 				F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */,
 				F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */,
 				F7D3B8FB1E14A6B800F2C3CB /* ListTransform.swift in Sources */,
-				F7D3B8F11E14A17D00F2C3CB /* BaseError.swift in Sources */,
-				F7D3B93A1E156CEA00F2C3CB /* LogUtil.swift in Sources */,
 				F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */,
 				F7D3B90F1E14A86500F2C3CB /* UserManager.swift in Sources */,
 				F7D3B8CF1E149B0500F2C3CB /* BaseApi.swift in Sources */,
 				F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */,
-				F7D3B8F81E14A45500F2C3CB /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

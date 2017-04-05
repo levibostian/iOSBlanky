@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import ObjectMapper
+import Mac
 
 class GitHubAPI: BaseApi {
     
@@ -61,7 +62,7 @@ class GitHubAPI: BaseApi {
     }
     
     class func getUserRepos(gitHubUsername: String, onError: @escaping (_ message: String) -> Void, onComplete: @escaping (_ data: [RepoModel]?) -> Void) {
-        BaseApi.apiCallArray(call: Router.getUserRepos(username: gitHubUsername), onComplete: onComplete, onError: onError, errorMessage: "Error retrieving GitHub user repos. Try again later.", errorVo: ErrorVo())
+        BaseApi.apiCallArray(call: Router.getUserRepos(username: gitHubUsername), onComplete: onComplete, onError: onError, errorMessage: "Error retrieving GitHub user repos. Try again later.", errorVo: DefaultErrorVo())
     }
     
 }

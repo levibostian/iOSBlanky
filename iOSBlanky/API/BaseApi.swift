@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import ObjectMapper
 import iOSBoilerplate
+import Mac
 
 class BaseApi {
     
@@ -63,24 +64,20 @@ class BaseApi {
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON(completionHandler: { (response: DataResponse<Any>) in
-                    if let responseCode = response.response?.statusCode {
-                        if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
-                            switch responseCode {
-                            case _ where responseCode >= 200:
-                                saveCredsFromResponseHeader(response.response?.allHeaderFields)
+                    let responseCode = response.response!.statusCode
+                    if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
+                        switch responseCode {
+                        case _ where responseCode >= 200:
+                            saveCredsFromResponseHeader(response.response?.allHeaderFields)
                                 
-                                onComplete?()
-                                return
-                            default:
-                                onError?(errorMessage)
-                            }
+                            onComplete?()
+                            return
+                        default:
+                            onError?(errorMessage)
                         }
-                    } else {                        
-                        LogUtil.logError(APIError.apiNoResponseError.error)
                     }
                 })
             case .failure:
-                LogUtil.logError(APIError.encodingParametersForUpload.error)
                 onError?("Error preparing your upload. Please try again.")
             }
         }
@@ -104,26 +101,22 @@ class BaseApi {
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON(completionHandler: { (response: DataResponse<Any>) in
-                    if let responseCode = response.response?.statusCode {
-                        if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
-                            switch responseCode {
-                            case _ where responseCode >= 200:
-                                let responseData = Mapper<DATA>().map(JSONObject: response.result.value) // swiftlint:disable:this force_cast
+                    let responseCode = response.response!.statusCode
+                    if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
+                        switch responseCode {
+                        case _ where responseCode >= 200:
+                            let responseData = Mapper<DATA>().map(JSONObject: response.result.value) // swiftlint:disable:this force_cast
                                 
-                                saveCredsFromResponseHeader(response.response?.allHeaderFields)
+                            saveCredsFromResponseHeader(response.response?.allHeaderFields)
                                 
-                                onComplete?(responseData!)
-                                return
-                            default:
-                                onError?(errorMessage)
-                            }
+                            onComplete?(responseData!)
+                            return
+                        default:
+                            onError?(errorMessage)
                         }
-                    } else {
-                        LogUtil.logError(APIError.apiNoResponseError.error)
                     }
                 })
             case .failure:
-                LogUtil.logError(APIError.encodingParametersForUpload.error)
                 onError?("Error preparing your upload. Please try again.")
             }
         }
@@ -134,20 +127,17 @@ class BaseApi {
         
         Alamofire.request(call)
             .responseJSON { (response: DataResponse<Any>) in
-                if let responseCode = response.response?.statusCode {
-                    if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
-                        switch responseCode {
-                        case _ where responseCode >= 200:
-                            saveCredsFromResponseHeader(response.response?.allHeaderFields)
+                let responseCode = response.response!.statusCode
+                if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
+                    switch responseCode {
+                    case _ where responseCode >= 200:
+                        saveCredsFromResponseHeader(response.response?.allHeaderFields)
                             
-                            onComplete?()
-                            return
-                        default:
-                            onError?(errorMessage)
-                        }
+                        onComplete?()
+                        return
+                    default:
+                        onError?(errorMessage)
                     }
-                } else {
-                    LogUtil.logError(APIError.apiNoResponseError.error)
                 }
         }
     }
@@ -157,22 +147,19 @@ class BaseApi {
         
         Alamofire.request(call)
             .responseJSON { (response: DataResponse<Any>) in
-                if let responseCode = response.response?.statusCode {
-                    if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
-                        switch responseCode {
-                        case _ where responseCode >= 200:
-                            let responseData = Mapper<DATA>().map(JSONObject: response.result.value) // swiftlint:disable:this force_cast
+                let responseCode = response.response!.statusCode
+                if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
+                    switch responseCode {
+                    case _ where responseCode >= 200:
+                        let responseData = Mapper<DATA>().map(JSONObject: response.result.value) // swiftlint:disable:this force_cast
                             
-                            saveCredsFromResponseHeader(response.response?.allHeaderFields)
+                        saveCredsFromResponseHeader(response.response?.allHeaderFields)
                             
-                            onComplete(responseData!)
-                            return
-                        default:
-                            onError(errorMessage)
-                        }
+                        onComplete(responseData!)
+                        return
+                    default:
+                        onError(errorMessage)
                     }
-                } else {
-                    LogUtil.logError(APIError.apiNoResponseError.error)
                 }
         }
     }
@@ -194,21 +181,18 @@ class BaseApi {
             .responseJSON { (response) in
                 switch response.result {
                 case .success:
-                    if let responseCode = response.response?.statusCode {
-                        if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
-                            switch responseCode {
-                            case _ where responseCode >= 200:
-                                let responseData = Mapper<DATA>().mapArray(JSONArray: response.result.value as! [[String : Any]]) // swiftlint:disable:this force_cast
-                                saveCredsFromResponseHeader(response.response?.allHeaderFields)
+                    let responseCode = response.response!.statusCode
+                    if !determineErrorResponse(response: response, responseStatusCode: responseCode, errorVo: errorVo, onError: onError) {
+                        switch responseCode {
+                        case _ where responseCode >= 200:
+                            let responseData = Mapper<DATA>().mapArray(JSONArray: response.result.value as! [[String : Any]]) // swiftlint:disable:this force_cast
+                            saveCredsFromResponseHeader(response.response?.allHeaderFields)
                                 
-                                onComplete(responseData!)
-                                return
-                            default:
-                                onError(errorMessage)
-                            }
+                            onComplete(responseData!)
+                            return
+                        default:
+                            onError(errorMessage)
                         }
-                    } else {
-                        LogUtil.logError(APIError.apiNoResponseError.error)
                     }
                 case .failure:
                     onError(errorMessage)

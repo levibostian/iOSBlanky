@@ -8,9 +8,9 @@
 
 import Foundation
 
-class LogUtil {
+public class LogUtil {
     
-    class func log(_ message: String?) {
+    public class func log(_ message: String?) {
         var logMessage = "Log message is nil......."
         
         if let message = message {
@@ -20,7 +20,7 @@ class LogUtil {
         NSLog(logMessage)
     }
     
-    class func logArgs(_ message: String?, args: CVarArg...) {
+    public class func logArgs(_ message: String?, args: CVarArg...) {
         var logMessage = "Log message is nil......."
         
         if let message = message {

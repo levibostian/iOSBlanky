@@ -33,17 +33,6 @@ fileprivate func <= <T: Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
 }
 
-
-enum BaseUIViewControllerError: Error {
-    case clearUserDataError
-    
-    var error: NSError {
-        switch self {
-        case .clearUserDataError: return BaseError.generateNSError(code: -1)
-        }
-    }
-}
-
 class BaseUIViewController: UIViewController, UITextFieldDelegate {
     
     fileprivate var textFields: [UITextField] = []
@@ -72,7 +61,7 @@ class BaseUIViewController: UIViewController, UITextFieldDelegate {
         let buildVersionFromPreviousInstall = NSUserDefaultsUtil.getString("preferencesBuildVersion")
         
         if buildVersionFromPreviousInstall != nil && buildVersionFromPreviousInstall! != BuildUtil.getVersionName() {
-            NotificationCenterUtil.postUserUnauthorized(true)
+            NotificationCenterUtil.postUserUnauthorized()
         } else {
             NSUserDefaultsUtil.saveString("preferencesBuildVersion", value: BuildUtil.getVersionName())
         }
