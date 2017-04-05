@@ -165,7 +165,7 @@ class BaseApi {
     }
     
     fileprivate class func saveCredsFromResponseHeader(_ headers: [AnyHashable: Any]?) {
-        if let headers = headers {
+        if let _ = headers {
 //            let credsManager = UserCredsManager.Editor()
 //            do {
 //                try credsManager.setAuthToken(headers["access-token"] as? String)

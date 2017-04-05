@@ -43,6 +43,9 @@
 		F7EEDADF1E95325C0084D97E /* LogUtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */; };
 		F7EEDAE11E9533440084D97E /* NotificationCenterUtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */; };
 		F7EEDAE41E953DC20084D97E /* ErrorVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE31E953DC20084D97E /* ErrorVo.swift */; };
+		F7EEDB221E953FEE0084D97E /* Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB1F1E953FEE0084D97E /* Mac.framework */; };
+		F7EEDB231E953FEE0084D97E /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB201E953FEE0084D97E /* RxRealm.framework */; };
+		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
 		F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */; };
 		F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619F1CD95D2400721FE4 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -119,6 +122,9 @@
 		F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogUtilExtensions.swift; path = Extension/LogUtilExtensions.swift; sourceTree = "<group>"; };
 		F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCenterUtilExtensions.swift; path = Extension/NotificationCenterUtilExtensions.swift; sourceTree = "<group>"; };
 		F7EEDAE31E953DC20084D97E /* ErrorVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorVo.swift; path = VO/error/ErrorVo.swift; sourceTree = "<group>"; };
+		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
+		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
+		F7EEDB211E953FEE0084D97E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUIViewController.swift; path = ViewController/BaseUIViewController.swift; sourceTree = "<group>"; };
 		F7EF619F1CD95D2400721FE4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
 		F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +135,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EEDB221E953FEE0084D97E /* Mac.framework in Frameworks */,
+				F7EEDB231E953FEE0084D97E /* RxRealm.framework in Frameworks */,
+				F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */,
 				F7D3B9491E15D1FC00F2C3CB /* iOSViews.framework in Frameworks */,
 				F7D3B9371E1566B700F2C3CB /* iOSBoilerplate.framework in Frameworks */,
 				F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */,
@@ -184,6 +193,9 @@
 		C1715DC8E1D8C79F1A025E3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7EEDB1F1E953FEE0084D97E /* Mac.framework */,
+				F7EEDB201E953FEE0084D97E /* RxRealm.framework */,
+				F7EEDB211E953FEE0084D97E /* RxSwift.framework */,
 				F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */,
 				F7D3B9461E15CEE100F2C3CB /* iOSViews.framework */,
 				F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */,
@@ -813,6 +825,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID_SUFFIX = .dev;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -821,7 +834,7 @@
 				);
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
+				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.debug.iOSBlanky;
 				PRODUCT_NAME = Debug;
 				SWIFT_VERSION = 3.0;
 			};
@@ -834,6 +847,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID_SUFFIX = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -953,6 +967,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID_SUFFIX = .beta;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -961,7 +976,7 @@
 				);
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
+				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.beta.iOSBlanky;
 				PRODUCT_NAME = Beta;
 				SWIFT_VERSION = 3.0;
 			};
