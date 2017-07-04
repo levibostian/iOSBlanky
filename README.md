@@ -1,5 +1,13 @@
 # iOSBlanky
-Blank project for iOS to get up and running FAST. 
+
+## Blank project for iOS to get up and running FAST. 
+
+* Removes the need for repetitive boiler plate code. 
+* Focus on implementing your project idea.
+
+See how I created this CocoaPod, how to integrate it into your own projects, and how you can create your own on my Youtube channel:
+https://youtu.be/gNMNeqXKnzw?list=PLyCWhRjveep2ytVeDwYb_xtQiEaM-KcUK
+
 
 # Create iOS project from iOSBlanky:
 
