@@ -37,10 +37,6 @@ public class NotificationCenterUtil {
         NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: nil, userInfo: userInfo)
     }
     
-    public class func postNotification(_ name: String) {
-        postNotification(name)
-    }
-    
     public class func observeNotification(_ observer: AnyObject, selector: Selector, name: String) {
         NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: nil)
     }
