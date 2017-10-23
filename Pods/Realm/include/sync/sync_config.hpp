@@ -106,6 +106,33 @@ struct SyncConfig {
     std::function<SyncSessionErrorHandler> error_handler;
     std::shared_ptr<ChangesetTransformer> transformer;
     util::Optional<std::array<char, 64>> realm_encryption_key;
+    bool client_validate_ssl = true;
+    util::Optional<std::string> ssl_trust_certificate_path;
+    std::function<sync::Session::SSLVerifyCallback> ssl_verify_callback;
+#if __GNUC__ < 5
+    // GCC 4.9 does not support C++14 braced-init
+    SyncConfig(std::shared_ptr<SyncUser> user, std::string realm_url, SyncSessionStopPolicy stop_policy,
+               std::function<SyncBindSessionHandler> bind_session_handler,
+               std::function<SyncSessionErrorHandler> error_handler = nullptr,
+               std::shared_ptr<ChangesetTransformer> transformer = nullptr,
+               util::Optional<std::array<char, 64>> realm_encryption_key = util::none,
+               bool client_validate_ssl = true, util::Optional<std::string> ssl_trust_certificate_path = util::none, std::function<realm::sync::Session::SSLVerifyCallback> ssl_verify_callback = nullptr)
+        : user(std::move(user))
+        , realm_url(std::move(realm_url))
+        , stop_policy(stop_policy)
+        , bind_session_handler(std::move(bind_session_handler))
+        , error_handler(std::move(error_handler))
+        , transformer(std::move(transformer))
+        , realm_encryption_key(std::move(realm_encryption_key))
+        , client_validate_ssl(client_validate_ssl)
+        , ssl_trust_certificate_path(std::move(ssl_trust_certificate_path))
+        , ssl_verify_callback(std::move(ssl_verify_callback))
+    {
+    }
+
+     SyncConfig() {}
+
+#endif
 };
 
 } // namespace realm

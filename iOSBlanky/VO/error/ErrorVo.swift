@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import Mac
 import ObjectMapper
 
-public class DefaultErrorVo: ErrorResponseVo {
+public class DefaultErrorVo {
     
     var errors: [String] = []
     

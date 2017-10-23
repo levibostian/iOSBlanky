@@ -7,58 +7,23 @@
 //
 
 import Foundation
-import iOSBoilerplate
 
-enum UserManagerError: Error, CustomStringConvertible {
-    case userValuesNotSet
-    
-    var description: String {
-        switch self {
-        case .userValuesNotSet:
-            return "You forgot to set some values in UserManager.Editor."
-        }
-    }
-}
-
-class UserManager { // swiftlint:disable:this type_body_length
+class UserManager { 
     
     fileprivate static let userIdKey: String = "userIdKey"
     
-    class func clearUserData() throws {
-        NSUserDefaultsUtil.deleteAllUserDefaultsData()
+    static var userId: Int? {
+        get {
+            let userIdUserDefaults = UserDefaults.standard.integer(forKey: userIdKey)
+            return userIdUserDefaults == 0 ? nil : userIdUserDefaults
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: userIdKey)
+        }
     }
     
     class func isUserLoggedIn() -> Bool {
-        return getUserId() != 0
+        return userId != 0
     }
     
-    class func getUserId() -> Int? {
-        return NSUserDefaultsUtil.getInt(userIdKey)
-    }
-    
-    class func saveUserId(_ id: Int) {
-        NSUserDefaultsUtil.saveInt(userIdKey, value: id)
-    }
-    
-    class Editor {
-        
-        fileprivate var id: Int!
-        
-        init() {
-        }
-        
-        func setId(_ id: Int) -> Self {
-            self.id = id
-            
-            return self
-        }
-        
-        func commit() throws {
-            guard let id = id else {
-                throw UserManagerError.userValuesNotSet
-            }
-            
-            UserManager.saveUserId(id)
-        }
-    }
 }

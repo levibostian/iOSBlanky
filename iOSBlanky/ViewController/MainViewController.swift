@@ -7,55 +7,37 @@
 //
 
 import UIKit
-import SwiftOverlays
-import Kamagari
-import iOSViews
 
-class MainViewController: BaseUIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var goButton: UIButton!
     
-    private var gitHubController: GitHubController!
+    private let gitHubController: GitHubController = GitHubController.getInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        gitHubController = GitHubController.getInstance()
-        
-        setupViews()
-    }
+    }    
     
-    private func setupViews() {
-        addTextField(usernameTextField)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func howManyReposButtonPressed(sender: UIButton) {
+    @IBAction func howManyReposButtonPressed(_ sender: UIButton) {
         if let gitHubUsername = usernameTextField.text {
-            SwiftOverlays.showBlockingWaitOverlayWithText("Getting repos...")
+            showLoadingOverlay(text: "Getting repos...")
             
             gitHubController.getUserRepos(gitHubUsername: gitHubUsername, onError: { (message) in
-                SwiftOverlays.removeAllBlockingOverlays()
+                self.hideLoadingOverlay()
                 
-                AlertBuilder(title: "Error", message: message, preferredStyle: .alert)
-                    .addAction(title: "Ok", style: .cancel) { _ in }
-                    .build()
-                    .kam_show(animated: true)
-            }) { (data) in
-                SwiftOverlays.removeAllBlockingOverlays()
+                let errorAlertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                errorAlertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (_) in }))
+                self.present(errorAlertController, animated: true, completion: nil)
+            }, onComplete: { (data) in
+                self.hideLoadingOverlay()
                 
                 if let repos = data {
-                    AlertBuilder(title: "Success!", message: String(format: "The number of repos for %@ is: %i", gitHubUsername, repos.count), preferredStyle: .alert)
-                        .addAction(title: "Cool", style: .cancel) { _ in }
-                        .build()
-                        .kam_show(animated: true)
+                    let alertController = UIAlertController(title: "Success!", message: String(format: "The number of repos for %@ is: %i", gitHubUsername, repos.count), preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: { (_) in }))
+                    self.present(alertController, animated: true, completion: nil)
                 }
-            }
+            })
         }
     }
     

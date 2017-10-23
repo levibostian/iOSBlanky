@@ -10,44 +10,41 @@
 		24DE5BDB67601E9816EA8BA3 /* Pods_iOSBlankyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D92758990D338848451C6 /* Pods_iOSBlankyTests.framework */; };
 		41CFE39E9D54876C79774913 /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E732374E5503E88E49521 /* Pods_iOSBlankyUITests.framework */; };
 		672692D4097317A7D5DA0CD7 /* Pods_iOSBlanky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */; };
+		F7001A441F478AF8002D4A6E /* Moya_ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */; };
+		F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED8771F47854800AD018C /* Moya.framework */; };
+		F70ED87D1F47854800AD018C /* Pods_iOSBlankyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED8781F47854800AD018C /* Pods_iOSBlankyTests.framework */; };
+		F70ED87E1F47854800AD018C /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED8791F47854800AD018C /* Pods_iOSBlankyUITests.framework */; };
+		F70ED87F1F47854800AD018C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED87A1F47854800AD018C /* Result.framework */; };
+		F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED87B1F47854800AD018C /* RxCocoa.framework */; };
 		F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */; };
 		F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338AB41CD978D1009BBC0A /* RepoModel.swift */; };
 		F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */; };
 		F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338ABC1CDA849B009BBC0A /* BaseController.swift */; };
-		F75230391CD90B5D00DCAAC4 /* Kamagari.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230371CD90B5D00DCAAC4 /* Kamagari.framework */; };
-		F752303A1CD90B5D00DCAAC4 /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */; };
+		F751BAE01F9E5EA10048BB3D /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F751BADF1F9E5EA10048BB3D /* UIViewControllerExtensions.swift */; };
+		F751BAE21F9E63010048BB3D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F751BAE11F9E63010048BB3D /* UIColorExtensions.swift */; };
+		F751BAE61F9E6CCF0048BB3D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */; };
+		F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */; };
+		F751BAE81F9E6CCF0048BB3D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAED1F9E6CCF0048BB3D /* ObjectMapper.framework */; };
+		F751BAE91F9E6CCF0048BB3D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEE1F9E6CCF0048BB3D /* Realm.framework */; };
+		F751BAEA1F9E6CCF0048BB3D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */; };
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
 		F75DCD881CD8F10D00B8941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD861CD8F10D00B8941F /* Main.storyboard */; };
 		F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
 		F75DCD981CD8F10D00B8941F /* iOSBlankyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD971CD8F10D00B8941F /* iOSBlankyTests.swift */; };
 		F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */; };
-		F7A4045A1CD9031A00A4D228 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404511CD9031900A4D228 /* Alamofire.framework */; };
-		F7A4045B1CD9031A00A4D228 /* AlamofireNetworkActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */; };
-		F7A4045E1CD9031A00A4D228 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404551CD9031900A4D228 /* Kingfisher.framework */; };
-		F7A4045F1CD9031A00A4D228 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404561CD9031900A4D228 /* ObjectMapper.framework */; };
-		F7A404601CD9031A00A4D228 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404571CD9031900A4D228 /* Realm.framework */; };
-		F7A404611CD9031A00A4D228 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A404581CD9031900A4D228 /* RealmSwift.framework */; };
-		F7D3B8CF1E149B0500F2C3CB /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8CE1E149B0500F2C3CB /* BaseApi.swift */; };
 		F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* AppConstants.swift */; };
 		F7D3B8D31E149D2A00F2C3CB /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D21E149D2A00F2C3CB /* BasePopoverViewController.swift */; };
 		F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D41E14A00600F2C3CB /* DZNEmptyDataSet.framework */; };
 		F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */; };
 		F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */; };
-		F7D3B8DE1E14A0A300F2C3CB /* RealmListExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8DD1E14A0A300F2C3CB /* RealmListExtensions.swift */; };
 		F7D3B8FB1E14A6B800F2C3CB /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8FA1E14A6B800F2C3CB /* ListTransform.swift */; };
 		F7D3B90D1E14A80B00F2C3CB /* UserCredsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B90C1E14A80B00F2C3CB /* UserCredsManager.swift */; };
 		F7D3B90F1E14A86500F2C3CB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B90E1E14A86500F2C3CB /* UserManager.swift */; };
-		F7D3B9371E1566B700F2C3CB /* iOSBoilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */; };
-		F7D3B9491E15D1FC00F2C3CB /* iOSViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */; };
-		F7EEDADF1E95325C0084D97E /* LogUtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */; };
-		F7EEDAE11E9533440084D97E /* NotificationCenterUtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */; };
 		F7EEDAE41E953DC20084D97E /* ErrorVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE31E953DC20084D97E /* ErrorVo.swift */; };
-		F7EEDB221E953FEE0084D97E /* Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB1F1E953FEE0084D97E /* Mac.framework */; };
-		F7EEDB231E953FEE0084D97E /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB201E953FEE0084D97E /* RxRealm.framework */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
-		F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */; };
 		F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619F1CD95D2400721FE4 /* MainViewController.swift */; };
+		F7F0A4491F9E7AD40083244D /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,10 +76,23 @@
 		DD30F876B3E69F622EC0DC8D /* Pods-iOSBlankyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		DF8D47C1E9C6CD4664FE3954 /* Pods-iOSBlankyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlanky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky.debug.xcconfig"; sourceTree = "<group>"; };
+		F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya_ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya-ObjectMapper/Moya_ObjectMapper.framework"; sourceTree = "<group>"; };
+		F70ED8771F47854800AD018C /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya/Moya.framework"; sourceTree = "<group>"; };
+		F70ED8781F47854800AD018C /* Pods_iOSBlankyTests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_iOSBlankyTests.framework; path = "Pods/../build/Debug-iphoneos/Pods_iOSBlankyTests.framework"; sourceTree = "<group>"; };
+		F70ED8791F47854800AD018C /* Pods_iOSBlankyUITests.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_iOSBlankyUITests.framework; path = "Pods/../build/Debug-iphoneos/Pods_iOSBlankyUITests.framework"; sourceTree = "<group>"; };
+		F70ED87A1F47854800AD018C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
+		F70ED87B1F47854800AD018C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
 		F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubAPI.swift; path = API/GitHubAPI.swift; sourceTree = "<group>"; };
 		F7338AB41CD978D1009BBC0A /* RepoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoModel.swift; path = Model/RepoModel.swift; sourceTree = "<group>"; };
 		F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubController.swift; path = Controller/GitHubController.swift; sourceTree = "<group>"; };
 		F7338ABC1CDA849B009BBC0A /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseController.swift; path = Controller/BaseController.swift; sourceTree = "<group>"; };
+		F751BADF1F9E5EA10048BB3D /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = Extension/UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		F751BAE11F9E63010048BB3D /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Extension/UIColorExtensions.swift; sourceTree = "<group>"; };
+		F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F751BAED1F9E6CCF0048BB3D /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F751BAEE1F9E6CCF0048BB3D /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75230371CD90B5D00DCAAC4 /* Kamagari.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamagari.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kamagari.framework"; sourceTree = "<group>"; };
 		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
 		F75DCD7F1CD8F10D00B8941F /* Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,27 +116,23 @@
 		F7A404571CD9031900A4D228 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
 		F7A404581CD9031900A4D228 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
 		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
-		F7D3B8CE1E149B0500F2C3CB /* BaseApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseApi.swift; path = API/BaseApi.swift; sourceTree = "<group>"; };
 		F7D3B8D01E149B5F00F2C3CB /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		F7D3B8D21E149D2A00F2C3CB /* BasePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasePopoverViewController.swift; path = ViewController/BasePopoverViewController.swift; sourceTree = "<group>"; };
 		F7D3B8D41E14A00600F2C3CB /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/DZNEmptyDataSet/DZNEmptyDataSet.framework"; sourceTree = "<group>"; };
 		F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"; sourceTree = "<group>"; };
 		F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/KeychainAccess/KeychainAccess.framework"; sourceTree = "<group>"; };
-		F7D3B8DD1E14A0A300F2C3CB /* RealmListExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmListExtensions.swift; path = Extension/RealmListExtensions.swift; sourceTree = "<group>"; };
 		F7D3B8FA1E14A6B800F2C3CB /* ListTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListTransform.swift; path = Transform/ListTransform.swift; sourceTree = "<group>"; };
 		F7D3B90C1E14A80B00F2C3CB /* UserCredsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserCredsManager.swift; path = Manager/UserCredsManager.swift; sourceTree = "<group>"; };
 		F7D3B90E1E14A86500F2C3CB /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Manager/UserManager.swift; sourceTree = "<group>"; };
 		F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSBoilerplate.framework; path = "Pods/../build/Debug-iphoneos/iOSBoilerplate/iOSBoilerplate.framework"; sourceTree = "<group>"; };
 		F7D3B9461E15CEE100F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "Pods/../build/Debug-iphoneos/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
 		F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
-		F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogUtilExtensions.swift; path = Extension/LogUtilExtensions.swift; sourceTree = "<group>"; };
-		F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCenterUtilExtensions.swift; path = Extension/NotificationCenterUtilExtensions.swift; sourceTree = "<group>"; };
 		F7EEDAE31E953DC20084D97E /* ErrorVo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ErrorVo.swift; path = VO/error/ErrorVo.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
 		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
 		F7EEDB211E953FEE0084D97E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
-		F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseUIViewController.swift; path = ViewController/BaseUIViewController.swift; sourceTree = "<group>"; };
 		F7EF619F1CD95D2400721FE4 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewController/MainViewController.swift; sourceTree = "<group>"; };
+		F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -135,22 +141,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7EEDB221E953FEE0084D97E /* Mac.framework in Frameworks */,
-				F7EEDB231E953FEE0084D97E /* RxRealm.framework in Frameworks */,
+				F7F0A4491F9E7AD40083244D /* SwiftOverlays.framework in Frameworks */,
+				F751BAE61F9E6CCF0048BB3D /* Alamofire.framework in Frameworks */,
+				F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */,
+				F751BAE81F9E6CCF0048BB3D /* ObjectMapper.framework in Frameworks */,
+				F751BAE91F9E6CCF0048BB3D /* Realm.framework in Frameworks */,
+				F751BAEA1F9E6CCF0048BB3D /* RealmSwift.framework in Frameworks */,
+				F7001A441F478AF8002D4A6E /* Moya_ObjectMapper.framework in Frameworks */,
+				F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */,
+				F70ED87D1F47854800AD018C /* Pods_iOSBlankyTests.framework in Frameworks */,
+				F70ED87E1F47854800AD018C /* Pods_iOSBlankyUITests.framework in Frameworks */,
+				F70ED87F1F47854800AD018C /* Result.framework in Frameworks */,
+				F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */,
 				F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */,
-				F7D3B9491E15D1FC00F2C3CB /* iOSViews.framework in Frameworks */,
-				F7D3B9371E1566B700F2C3CB /* iOSBoilerplate.framework in Frameworks */,
 				F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */,
 				F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */,
 				F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */,
-				F75230391CD90B5D00DCAAC4 /* Kamagari.framework in Frameworks */,
-				F752303A1CD90B5D00DCAAC4 /* SwiftOverlays.framework in Frameworks */,
-				F7A4045A1CD9031A00A4D228 /* Alamofire.framework in Frameworks */,
-				F7A4045B1CD9031A00A4D228 /* AlamofireNetworkActivityIndicator.framework in Frameworks */,
-				F7A4045E1CD9031A00A4D228 /* Kingfisher.framework in Frameworks */,
-				F7A4045F1CD9031A00A4D228 /* ObjectMapper.framework in Frameworks */,
-				F7A404601CD9031A00A4D228 /* Realm.framework in Frameworks */,
-				F7A404611CD9031A00A4D228 /* RealmSwift.framework in Frameworks */,
 				672692D4097317A7D5DA0CD7 /* Pods_iOSBlanky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +199,18 @@
 		C1715DC8E1D8C79F1A025E3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */,
+				F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */,
+				F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */,
+				F751BAED1F9E6CCF0048BB3D /* ObjectMapper.framework */,
+				F751BAEE1F9E6CCF0048BB3D /* Realm.framework */,
+				F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */,
+				F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */,
+				F70ED8771F47854800AD018C /* Moya.framework */,
+				F70ED8781F47854800AD018C /* Pods_iOSBlankyTests.framework */,
+				F70ED8791F47854800AD018C /* Pods_iOSBlankyUITests.framework */,
+				F70ED87A1F47854800AD018C /* Result.framework */,
+				F70ED87B1F47854800AD018C /* RxCocoa.framework */,
 				F7EEDB1F1E953FEE0084D97E /* Mac.framework */,
 				F7EEDB201E953FEE0084D97E /* RxRealm.framework */,
 				F7EEDB211E953FEE0084D97E /* RxSwift.framework */,
@@ -224,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */,
-				F7D3B8CE1E149B0500F2C3CB /* BaseApi.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -318,9 +335,8 @@
 		F7D3B8DA1E14A06700F2C3CB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F7D3B8DD1E14A0A300F2C3CB /* RealmListExtensions.swift */,
-				F7EEDADE1E95325C0084D97E /* LogUtilExtensions.swift */,
-				F7EEDAE01E9533440084D97E /* NotificationCenterUtilExtensions.swift */,
+				F751BADF1F9E5EA10048BB3D /* UIViewControllerExtensions.swift */,
+				F751BAE11F9E63010048BB3D /* UIColorExtensions.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -354,7 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				F7EF619F1CD95D2400721FE4 /* MainViewController.swift */,
-				F7EF619D1CD95D0C00721FE4 /* BaseUIViewController.swift */,
 				F7D3B8D21E149D2A00F2C3CB /* BasePopoverViewController.swift */,
 			);
 			name = ViewController;
@@ -433,7 +448,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Curiosity IO";
 				TargetAttributes = {
 					F75DCD7E1CD8F10D00B8941F = {
@@ -539,13 +554,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSBlanky-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86AFA7EE3E2770C827576DC4 /* [CP] Check Pods Manifest.lock */ = {
@@ -554,13 +572,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSBlankyUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8C62308AC9A0227BCAF12DCB /* [CP] Embed Pods Frameworks */ = {
@@ -599,13 +620,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iOSBlankyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B286389F35A5B7FF41C2515E /* [CP] Embed Pods Frameworks */ = {
@@ -614,9 +638,38 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftOverlays/SwiftOverlays.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOverlays.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -650,7 +703,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -659,22 +712,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7D3B8DE1E14A0A300F2C3CB /* RealmListExtensions.swift in Sources */,
+				F751BAE01F9E5EA10048BB3D /* UIViewControllerExtensions.swift in Sources */,
+				F751BAE21F9E63010048BB3D /* UIColorExtensions.swift in Sources */,
 				F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */,
-				F7EF619E1CD95D0C00721FE4 /* BaseUIViewController.swift in Sources */,
 				F7D3B90D1E14A80B00F2C3CB /* UserCredsManager.swift in Sources */,
 				F7D3B8D31E149D2A00F2C3CB /* BasePopoverViewController.swift in Sources */,
-				F7EEDADF1E95325C0084D97E /* LogUtilExtensions.swift in Sources */,
 				F7EEDAE41E953DC20084D97E /* ErrorVo.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
-				F7EEDAE11E9533440084D97E /* NotificationCenterUtilExtensions.swift in Sources */,
 				F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */,
 				F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */,
 				F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */,
 				F7D3B8FB1E14A6B800F2C3CB /* ListTransform.swift in Sources */,
 				F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */,
 				F7D3B90F1E14A86500F2C3CB /* UserManager.swift in Sources */,
-				F7D3B8CF1E149B0500F2C3CB /* BaseApi.swift in Sources */,
 				F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -734,19 +784,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -781,19 +839,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -822,16 +888,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID_SUFFIX = .dev;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/iOSBoilerplate",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/iOSViews",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.debug.iOSBlanky;
@@ -844,16 +905,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D3467C2DB09A6AC15A5089C /* Pods-iOSBlanky.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID_SUFFIX = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/iOSBoilerplate",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/iOSViews",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
@@ -924,19 +980,27 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -964,16 +1028,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F33F851F71D21025F5CEFB0 /* Pods-iOSBlanky.beta.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_ID_SUFFIX = .beta;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/iOSBoilerplate",
-					"$(PROJECT_DIR)/build/Debug-iphoneos/iOSViews",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.beta.iOSBlanky;

@@ -1,10 +1,11 @@
-[![Build Status](https://travis-ci.org/peterprokop/SwiftOverlays.svg?branch=master)](https://travis-ci.org/peterprokop/SwiftOverlays)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-
-# SwiftOverlays
+![Imgur](http://i.imgur.com/AFMWOiJ.gif)
 
 SwiftOverlays is a Swift GUI library for displaying various popups and notifications.
 
+SwiftOverlays animated logo is kindly made by [Crafted Pixels](http://bit.ly/craftedpx)
+
+[![Build Status](https://travis-ci.org/peterprokop/SwiftOverlays.svg?branch=master)](https://travis-ci.org/peterprokop/SwiftOverlays)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ## Features
 
@@ -33,7 +34,7 @@ Just clone and add ```SwiftOverlays.swift``` to your project.
 ### Carthage
 * `> Cartfile`
 * `nano Cartfile`
-* put `github "peterprokop/SwiftOverlays" ~> 2.0.0` into Cartfile
+* put `github "peterprokop/SwiftOverlays" ~> 4.0.0` into Cartfile
 * Save it: `ctrl-x`, `y`, `enter`
 * Run `carthage update`
 * Copy `SwiftOverlays.framework` from `Carthage/Build/iOS` to your project
@@ -47,7 +48,7 @@ Just clone and add ```SwiftOverlays.swift``` to your project.
 - `nano Podfile`, add:
 
 ```
-pod 'SwiftOverlays', '~> 2.0.0'
+pod 'SwiftOverlays', '~> 4.0.0'
 use_frameworks! 
 ``` 
 - Save it: `ctrl-x`, `y`, `enter`
@@ -57,10 +58,10 @@ use_frameworks!
 
 ## Requirements
 
-- iOS 7.0+ (8.0+ if you use Cocoapods)
-- Xcode 8.0+
-- Swift 3.0 (if you need older swift version, see following branches: [swift-1.1](https://github.com/peterprokop/SwiftOverlays/tree/swift-1.1), [swift-1.2](https://github.com/peterprokop/SwiftOverlays/tree/swift-1.2),
-[swift-2.1](https://github.com/peterprokop/SwiftOverlays/tree/swift-2.1) and others)
+- iOS 8.0+
+- Xcode 9.0+
+- Swift 4.0 (if you need older swift version, see
+[swift-3.0](https://github.com/peterprokop/SwiftOverlays/tree/swift-3.0) and others)
 
 ## Usage
 
@@ -119,4 +120,5 @@ You are welcome to fork and submit pull requests
 
 ## Other Projects
 
-[StarryStars](https://github.com/peterprokop/StarryStars) - iOS GUI library for displaying and editing ratings.
+- [StarryStars](https://github.com/peterprokop/StarryStars) - iOS GUI library for displaying and editing ratings.
+- [AlertyAlert](https://github.com/peterprokop/AlertyAlert) - AlertyAlert is a nice and fluffy iOS alert library for all your alerty needs.

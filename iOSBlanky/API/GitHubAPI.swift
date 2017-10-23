@@ -7,62 +7,59 @@
 //
 
 import Foundation
-import Alamofire
 import ObjectMapper
-import Mac
+import Moya
 
-class GitHubAPI: BaseApi {
+enum GitHubService {
+    case getUserRepos(username: String)
     
-    enum Router: URLRequestConvertible {
-        case getUserRepos(username: String)
+    static let serviceProvider = { () -> RxMoyaProvider<GitHubService> in
+        let httpHeaders: [String: String] = [:]
         
-        var method: HTTPMethod {
-            switch self {
-            case .getUserRepos:
-                return .get
-            }
+        let endpointClosure = { (target: GitHubService) -> Endpoint<GitHubService> in
+            return MoyaProvider<GitHubService>.defaultEndpointMapping(for: target).adding(newHTTPHeaderFields: httpHeaders)
         }
-        
-        var path: String {
-            switch self {
-            case .getUserRepos(let username):
-                return "/users/\(username)/repos"
-            }
-        }
-        
-        func asURLRequest() throws -> URLRequest {
-            let url = try BaseApi.baseURL.asURL()
-            
-            var urlRequest = URLRequest(url: url.appendingPathComponent(path))
-            urlRequest.httpMethod = method.rawValue
-            
-//            do {
-//                if try UserCredsManager.areUserCredsAvailable() {
-//                    urlRequest.setValue(try UserCredsManager.getAuthToken(), forHTTPHeaderField: "Access-Token")
-//                }
-//            } catch {
-//                LogUtil.logError(APIError.gettingUserCredentials.error)
-//            }
-            
-//            let encodeParameters = { (parameters: Parameters) -> Void in
-//                urlRequest = try URLEncoding.methodDependent.encode(urlRequest, with: parameters)
-//            }
-            
-            switch self {
-//            case .loginToApp(let parameters):
-//                try encodeParameters(parameters)
-//            case .editProfile(_, let parameters):
-//                try encodeParameters(parameters)
-            default:
-                break
-            }
-            
-            return urlRequest
+        return RxMoyaProvider(endpointClosure: endpointClosure)
+    }
+}
+
+extension GitHubService: TargetType {    
+    var baseURL: URL { return URL(string: AppConstants.apiEndpoint)! }
+    
+    var path: String {
+        switch self {
+        case .getUserRepos(let username):
+            return "/users/\(username)/repos"
         }
     }
-    
-    class func getUserRepos(gitHubUsername: String, onError: @escaping (_ message: String) -> Void, onComplete: @escaping (_ data: [RepoModel]?) -> Void) {
-        BaseApi.apiCallArray(call: Router.getUserRepos(username: gitHubUsername), onComplete: onComplete, onError: onError, errorMessage: "Error retrieving GitHub user repos. Try again later.", errorVo: DefaultErrorVo())
+    var method: Moya.Method {
+        switch self {
+        case .getUserRepos:
+            return .get
+        }
     }
-    
+    var parameters: [String: Any]? {
+        switch self {
+        case .getUserRepos:
+            return nil
+        }
+    }
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .getUserRepos:
+            return URLEncoding.default
+        }
+    }
+    var sampleData: Data {
+        switch self {
+        case .getUserRepos:
+            return "{\"id\": 1, \"first_name\": \"Levi\", \"last_name\": \"Bostian\"}".data(using: .utf8)!
+        }
+    }
+    var task: Task {
+        switch self {
+        case .getUserRepos:
+            return .request
+        }
+    }
 }

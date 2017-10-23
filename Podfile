@@ -3,20 +3,20 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
 target 'iOSBlanky' do
+    pod 'SwiftLint'
+    pod 'SwiftOverlays', '~> 4.0.0'
+    pod 'Moya/RxSwift', '~> 8.0.5'
+    pod 'Moya-ObjectMapper/RxSwift', '~> 2.3.2'
     pod 'RxCocoa', '~> 3.4.0'
-    pod "iOSViews", '~> 0.1.0'
-    pod 'Kingfisher', '~> 3.2.3'
-    # pod 'RealmSwift', '~> 2.5.0'
-    pod 'ObjectMapper', '~> 2.2.2'
-    pod 'AlamofireNetworkActivityIndicator', '~> 2.1.0'
-    pod 'SwiftOverlays', '~> 3.0.0'
-    pod 'Kamagari', '~> 1.1.0'
+    pod 'Kingfisher', '~> 3.5.2'
     pod 'KeychainAccess', '~> 3.0.1'
     pod 'DZNEmptyDataSet', '~> 1.8.1'
-    pod 'IQKeyboardManagerSwift', '~> 4.0.7'
-    # pod 'Mac', :path => '~/code/Mac'
-    pod 'Mac', :git => 'https://github.com/levibostian/Mac.git', :commit => '0ac854e7bc'
+    pod 'IQKeyboardManagerSwift', '~> 4.0.8'
+    pod 'RealmSwift', '~> 2.10.2'
 end
 
 target 'iOSBlankyTests' do

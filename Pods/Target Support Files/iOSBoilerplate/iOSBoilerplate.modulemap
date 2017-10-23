@@ -1,6 +1,0 @@
-framework module iOSBoilerplate {
-  umbrella header "iOSBoilerplate-umbrella.h"
-
-  export *
-  module * { export * }
-}

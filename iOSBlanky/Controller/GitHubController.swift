@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import Moya
+import RxSwift
+import Moya_ObjectMapper
 
 class GitHubController: BaseController {
     
     private static var instance: GitHubController?
+    private let disposeBag = DisposeBag()
     
     internal static func getInstance() -> GitHubController {
         if instance == nil {
@@ -21,7 +25,18 @@ class GitHubController: BaseController {
     }
     
     func getUserRepos(gitHubUsername: String, onError: @escaping (_ message: String) -> Void, onComplete: @escaping (_ data: [RepoModel]?) -> Void) {
-        GitHubAPI.getUserRepos(gitHubUsername: gitHubUsername, onError: onError, onComplete: onComplete)
+        GitHubService.serviceProvider().request(.getUserRepos(username: gitHubUsername))
+            .mapObject(RepoModel.self)
+            .subscribe { event in
+            switch event {
+            case .next(let response): break
+            // do something with the data
+            case .error(let error): break
+            // handle the error
+            default:
+                break
+            }
+        }.addDisposableTo(disposeBag)
     }
     
 }
