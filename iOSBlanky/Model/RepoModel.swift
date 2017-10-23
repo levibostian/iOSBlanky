@@ -11,8 +11,8 @@ import ObjectMapper
 
 class RepoModel: Object, Mappable {
     
-    dynamic var fullName: String = ""
-    dynamic var repoDescription: String = ""
+    @objc dynamic var fullName: String = ""
+    @objc dynamic var repoDescription: String = ""
     
     required convenience init?(map: Map) {
         self.init()

@@ -20,9 +20,11 @@
 		F7338AB51CD978D1009BBC0A /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338AB41CD978D1009BBC0A /* RepoModel.swift */; };
 		F7338ABB1CDA7BC8009BBC0A /* GitHubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */; };
 		F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7338ABC1CDA849B009BBC0A /* BaseController.swift */; };
+		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
+		F747DF7A1F9E962900647449 /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7C1F9E962900647449 /* SwiftOverlays.framework */; };
+		F747DF7E1F9E999E00647449 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747DF7D1F9E999E00647449 /* ControllerExtensions.swift */; };
 		F751BAE01F9E5EA10048BB3D /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F751BADF1F9E5EA10048BB3D /* UIViewControllerExtensions.swift */; };
 		F751BAE21F9E63010048BB3D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F751BAE11F9E63010048BB3D /* UIColorExtensions.swift */; };
-		F751BAE61F9E6CCF0048BB3D /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */; };
 		F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */; };
 		F751BAE81F9E6CCF0048BB3D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAED1F9E6CCF0048BB3D /* ObjectMapper.framework */; };
 		F751BAE91F9E6CCF0048BB3D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEE1F9E6CCF0048BB3D /* Realm.framework */; };
@@ -33,6 +35,7 @@
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
 		F75DCD981CD8F10D00B8941F /* iOSBlankyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD971CD8F10D00B8941F /* iOSBlankyTests.swift */; };
 		F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */; };
+		F76835AA1F9E9BFC00219B30 /* MoyaAppendHeadersPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835A91F9E9BFC00219B30 /* MoyaAppendHeadersPlugin.swift */; };
 		F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* AppConstants.swift */; };
 		F7D3B8D31E149D2A00F2C3CB /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D21E149D2A00F2C3CB /* BasePopoverViewController.swift */; };
 		F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D41E14A00600F2C3CB /* DZNEmptyDataSet.framework */; };
@@ -44,7 +47,6 @@
 		F7EEDAE41E953DC20084D97E /* ErrorVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEDAE31E953DC20084D97E /* ErrorVo.swift */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
 		F7EF61A01CD95D2400721FE4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF619F1CD95D2400721FE4 /* MainViewController.swift */; };
-		F7F0A4491F9E7AD40083244D /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,9 @@
 		F7338AB41CD978D1009BBC0A /* RepoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RepoModel.swift; path = Model/RepoModel.swift; sourceTree = "<group>"; };
 		F7338ABA1CDA7BC8009BBC0A /* GitHubController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GitHubController.swift; path = Controller/GitHubController.swift; sourceTree = "<group>"; };
 		F7338ABC1CDA849B009BBC0A /* BaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseController.swift; path = Controller/BaseController.swift; sourceTree = "<group>"; };
+		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F747DF7C1F9E962900647449 /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F747DF7D1F9E999E00647449 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ControllerExtensions.swift; path = Extension/ControllerExtensions.swift; sourceTree = "<group>"; };
 		F751BADF1F9E5EA10048BB3D /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtensions.swift; path = Extension/UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F751BAE11F9E63010048BB3D /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = Extension/UIColorExtensions.swift; sourceTree = "<group>"; };
 		F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +112,7 @@
 		F75DCD9E1CD8F10D00B8941F /* iOSBlankyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSBlankyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBlankyUITests.swift; sourceTree = "<group>"; };
 		F75DCDA41CD8F10D00B8941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F76835A91F9E9BFC00219B30 /* MoyaAppendHeadersPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MoyaAppendHeadersPlugin.swift; path = API/Config/MoyaAppendHeadersPlugin.swift; sourceTree = "<group>"; };
 		F7A404511CD9031900A4D228 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
 		F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
@@ -141,8 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7F0A4491F9E7AD40083244D /* SwiftOverlays.framework in Frameworks */,
-				F751BAE61F9E6CCF0048BB3D /* Alamofire.framework in Frameworks */,
+				F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */,
+				F747DF7A1F9E962900647449 /* SwiftOverlays.framework in Frameworks */,
 				F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */,
 				F751BAE81F9E6CCF0048BB3D /* ObjectMapper.framework in Frameworks */,
 				F751BAE91F9E6CCF0048BB3D /* Realm.framework in Frameworks */,
@@ -199,6 +205,8 @@
 		C1715DC8E1D8C79F1A025E3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F747DF7B1F9E962900647449 /* Alamofire.framework */,
+				F747DF7C1F9E962900647449 /* SwiftOverlays.framework */,
 				F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */,
 				F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */,
 				F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */,
@@ -241,6 +249,7 @@
 		F7338AAE1CD9755D009BBC0A /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F76835A81F9E9BE400219B30 /* Config */,
 				F7338AAF1CD975E8009BBC0A /* GitHubAPI.swift */,
 			);
 			name = API;
@@ -332,11 +341,20 @@
 			path = iOSBlankyUITests;
 			sourceTree = "<group>";
 		};
+		F76835A81F9E9BE400219B30 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F76835A91F9E9BFC00219B30 /* MoyaAppendHeadersPlugin.swift */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
 		F7D3B8DA1E14A06700F2C3CB /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				F751BADF1F9E5EA10048BB3D /* UIViewControllerExtensions.swift */,
 				F751BAE11F9E63010048BB3D /* UIColorExtensions.swift */,
+				F747DF7D1F9E999E00647449 /* ControllerExtensions.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -454,18 +472,18 @@
 					F75DCD7E1CD8F10D00B8941F = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 552H65R858;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 					};
 					F75DCD921CD8F10D00B8941F = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 552H65R858;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						TestTargetID = F75DCD7E1CD8F10D00B8941F;
 					};
 					F75DCD9D1CD8F10D00B8941F = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 552H65R858;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						TestTargetID = F75DCD7E1CD8F10D00B8941F;
 					};
 				};
@@ -713,6 +731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F751BAE01F9E5EA10048BB3D /* UIViewControllerExtensions.swift in Sources */,
+				F76835AA1F9E9BFC00219B30 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F751BAE21F9E63010048BB3D /* UIColorExtensions.swift in Sources */,
 				F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */,
 				F7D3B90D1E14A80B00F2C3CB /* UserCredsManager.swift in Sources */,
@@ -726,6 +745,7 @@
 				F7338AB01CD975E8009BBC0A /* GitHubAPI.swift in Sources */,
 				F7D3B90F1E14A86500F2C3CB /* UserManager.swift in Sources */,
 				F7338ABD1CDA849B009BBC0A /* BaseController.swift in Sources */,
+				F747DF7E1F9E999E00647449 /* ControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,7 +917,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.debug.iOSBlanky;
 				PRODUCT_NAME = Debug;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -914,7 +935,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -928,7 +950,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Debug.app/Debug";
 			};
 			name = Debug;
@@ -943,7 +966,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Debug.app/Debug";
 			};
 			name = Release;
@@ -957,7 +981,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = iOSBlanky;
 			};
 			name = Debug;
@@ -971,7 +996,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = iOSBlanky;
 			};
 			name = Release;
@@ -1037,7 +1063,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.beta.iOSBlanky;
 				PRODUCT_NAME = Beta;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Beta;
 		};
@@ -1051,7 +1078,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Debug.app/Debug";
 			};
 			name = Beta;
@@ -1065,7 +1093,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = iOSBlanky;
 			};
 			name = Beta;

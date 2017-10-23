@@ -11,7 +11,7 @@ import Moya
 import RxSwift
 import Moya_ObjectMapper
 
-class GitHubController: BaseController {
+class GitHubController: Controller {
     
     private static var instance: GitHubController?
     private let disposeBag = DisposeBag()
@@ -25,18 +25,16 @@ class GitHubController: BaseController {
     }
     
     func getUserRepos(gitHubUsername: String, onError: @escaping (_ message: String) -> Void, onComplete: @escaping (_ data: [RepoModel]?) -> Void) {
-        GitHubService.serviceProvider().request(.getUserRepos(username: gitHubUsername))
-            .mapObject(RepoModel.self)
+        getMoyaProvider().rx.request(MultiTarget(GitHubService.getUserRepos(username: gitHubUsername)))
+            .mapArray(RepoModel.self)
             .subscribe { event in
-            switch event {
-            case .next(let response): break
-            // do something with the data
-            case .error(let error): break
-            // handle the error
-            default:
-                break
-            }
-        }.addDisposableTo(disposeBag)
+                switch event {
+                case .success(let response):
+                    NSLog("num repos %d", response.count)
+                case .error(let error):
+                    NSLog("error %@", error.localizedDescription)
+                }
+            }.disposed(by: disposeBag)
     }
     
 }

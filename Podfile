@@ -8,15 +8,16 @@ inhibit_all_warnings!
 
 target 'iOSBlanky' do
     pod 'SwiftLint'
-    pod 'SwiftOverlays', '~> 4.0.0'
-    pod 'Moya/RxSwift', '~> 8.0.5'
-    pod 'Moya-ObjectMapper/RxSwift', '~> 2.3.2'
-    pod 'RxCocoa', '~> 3.4.0'
-    pod 'Kingfisher', '~> 3.5.2'
-    pod 'KeychainAccess', '~> 3.0.1'
+    pod 'SwiftOverlays', '~> 4.0.1'
+    pod 'Moya/RxSwift', '~> 10.0.0'
+    # pod 'Moya-ObjectMapper/RxSwift', '~> 2.4.2'
+    pod 'Moya-ObjectMapper/RxSwift', :git => 'https://github.com/levibostian/Moya-ObjectMapper.git', :branch => 'swift4'
+    pod 'RxCocoa', '~> 4.0.0'
+    pod 'Kingfisher', '~> 4.2.0'
+    pod 'KeychainAccess', '~> 3.1.0'
     pod 'DZNEmptyDataSet', '~> 1.8.1'
-    pod 'IQKeyboardManagerSwift', '~> 4.0.8'
-    pod 'RealmSwift', '~> 2.10.2'
+    pod 'IQKeyboardManagerSwift', '~> 5.0.4'
+    pod 'RealmSwift', '~> 3.0.0'
 end
 
 target 'iOSBlankyTests' do

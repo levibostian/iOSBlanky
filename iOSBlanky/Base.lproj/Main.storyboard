@@ -33,7 +33,7 @@
                                         <rect key="frame" x="53.5" y="48" width="188" height="30"/>
                                         <state key="normal" title="How many repos do I have?"/>
                                         <connections>
-                                            <action selector="howManyReposButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWa-g6-56c"/>
+                                            <action selector="howManyReposButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Pe-pz-Fkf"/>
                                         </connections>
                                     </button>
                                 </subviews>

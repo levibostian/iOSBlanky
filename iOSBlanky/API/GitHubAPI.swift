@@ -12,18 +12,10 @@ import Moya
 
 enum GitHubService {
     case getUserRepos(username: String)
-    
-    static let serviceProvider = { () -> RxMoyaProvider<GitHubService> in
-        let httpHeaders: [String: String] = [:]
-        
-        let endpointClosure = { (target: GitHubService) -> Endpoint<GitHubService> in
-            return MoyaProvider<GitHubService>.defaultEndpointMapping(for: target).adding(newHTTPHeaderFields: httpHeaders)
-        }
-        return RxMoyaProvider(endpointClosure: endpointClosure)
-    }
 }
 
-extension GitHubService: TargetType {    
+extension GitHubService: TargetType {
+    
     var baseURL: URL { return URL(string: AppConstants.apiEndpoint)! }
     
     var path: String {
@@ -56,10 +48,13 @@ extension GitHubService: TargetType {
             return "{\"id\": 1, \"first_name\": \"Levi\", \"last_name\": \"Bostian\"}".data(using: .utf8)!
         }
     }
+    var headers: [String: String]? {
+        return nil
+    }
     var task: Task {
         switch self {
         case .getUserRepos:
-            return .request
+            return Task.requestPlain
         }
     }
 }
