@@ -23,7 +23,7 @@ class MoyaPluginProvider {
         return plugins
     }
     
-    static let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { (change, target) in
+    static let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { (change, _) in
         switch change {
         case .began:
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -31,13 +31,5 @@ class MoyaPluginProvider {
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     })
-    
-}
-
-extension Controller {
-    
-    func getMoyaProvider() -> MoyaProvider<MultiTarget> {
-        return MoyaProvider<MultiTarget>(plugins: MoyaPluginProvider.getPlugins(getNetworkActivityPlugin: true))
-    }
     
 }

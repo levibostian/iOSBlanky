@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="C32-iI-R6p">
-                                <rect key="frame" x="40" y="294.5" width="295" height="78"/>
+                                <rect key="frame" x="40" y="246.5" width="295" height="174"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="GitHub username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qNv-AK-tXK">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="30"/>
@@ -36,6 +36,18 @@
                                             <action selector="howManyReposButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Pe-pz-Fkf"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State of data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Teu-nb-BNJ">
+                                        <rect key="frame" x="98.5" y="96" width="98.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching status of data." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RQ-3i-Y19">
+                                        <rect key="frame" x="57" y="144" width="181" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="qNv-AK-tXK" firstAttribute="leading" secondItem="C32-iI-R6p" secondAttribute="leading" id="M5W-S0-l0S"/>
@@ -66,7 +78,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="iOSBlanky" id="gUN-1R-ZaN"/>
                     <connections>
+                        <outlet property="fetchingDataStatusLabel" destination="1RQ-3i-Y19" id="oE4-SG-PFh"/>
                         <outlet property="goButton" destination="t9O-hf-4Ew" id="ca0-WT-Kvw"/>
+                        <outlet property="stateOfDataLabel" destination="Teu-nb-BNJ" id="3ux-KO-PYC"/>
                         <outlet property="usernameTextField" destination="qNv-AK-tXK" id="Q7l-4V-JUA"/>
                     </connections>
                 </viewController>

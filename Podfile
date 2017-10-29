@@ -13,6 +13,7 @@ target 'iOSBlanky' do
     # pod 'Moya-ObjectMapper/RxSwift', '~> 2.4.2'
     pod 'Moya-ObjectMapper/RxSwift', :git => 'https://github.com/levibostian/Moya-ObjectMapper.git', :branch => 'swift4'
     pod 'RxCocoa', '~> 4.0.0'
+    pod 'RxRealm', '~> 0.7.4'
     pod 'Kingfisher', '~> 4.2.0'
     pod 'KeychainAccess', '~> 3.1.0'
     pod 'DZNEmptyDataSet', '~> 1.8.1'

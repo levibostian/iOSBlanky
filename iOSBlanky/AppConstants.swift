@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 
 class AppConstants {
-    
-    static let primaryColor: UIColor = UIColor(hexString: "#FFFFFF")
 
     #if DEBUG
     static let apiEndpoint: String = "https://api.github.com"
