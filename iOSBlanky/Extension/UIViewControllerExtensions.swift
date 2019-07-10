@@ -24,7 +24,7 @@ extension UIViewController {
     
     func setNavigationBarTitle(_ text: String = " ") {
         if self.navigationItem.titleView is UIButton {
-            (self.navigationItem.titleView as! UIButton).setTitle(text, for: UIControlState.normal) // swiftlint:disable:this force_cast
+            (self.navigationItem.titleView as! UIButton).setTitle(text, for: UIControl.State.normal) // swiftlint:disable:this force_cast
         } else {
             self.navigationController?.navigationBar.topItem?.title = text
         }

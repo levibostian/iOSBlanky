@@ -1,90 +1,269 @@
 PODS:
   - Alamofire (4.8.2)
   - DZNEmptyDataSet (1.8.1)
-  - IQKeyboardManagerSwift (5.0.8)
-  - KeychainAccess (3.1.2)
-  - Kingfisher (4.2.0)
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya-ObjectMapper/Core (2.8):
-    - Moya (~> 12.0)
-    - ObjectMapper (~> 3.4)
-  - Moya-ObjectMapper/RxSwift (2.8):
+  - Firebase/Analytics (6.4.0):
+    - Firebase/Core
+  - Firebase/Core (6.4.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.0.3)
+  - Firebase/CoreOnly (6.4.0):
+    - FirebaseCore (= 6.0.4)
+  - Firebase/DynamicLinks (6.4.0):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 4.0.0)
+  - Firebase/Messaging (6.4.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.1.1)
+  - Firebase/Performance (6.4.0):
+    - Firebase/CoreOnly
+    - FirebasePerformance (~> 3.1.1)
+  - Firebase/RemoteConfig (6.4.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 4.2.0)
+  - FirebaseABTesting (3.0.0):
+    - FirebaseCore (~> 6.0)
+    - Protobuf (~> 3.5)
+  - FirebaseAnalytics (6.0.3):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleAppMeasurement (= 6.0.3)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.2.0)
+  - FirebaseCore (6.0.4):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseDynamicLinks (4.0.0):
+    - FirebaseAnalyticsInterop (~> 1.0)
+    - FirebaseCore (~> 6.0)
+  - FirebaseInstanceID (4.2.1):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - FirebaseMessaging (4.1.1):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.1)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
+    - GoogleUtilities/Environment (~> 6.2)
+    - GoogleUtilities/Reachability (~> 6.2)
+    - GoogleUtilities/UserDefaults (~> 6.2)
+    - Protobuf (~> 3.1)
+  - FirebasePerformance (3.1.1):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.2)
+    - FirebaseRemoteConfig (~> 4.2)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/ISASwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+    - Protobuf (~> 3.5)
+  - FirebaseRemoteConfig (4.2.0):
+    - FirebaseABTesting (~> 3.0)
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.2)
+    - GoogleUtilities/Environment (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - Protobuf (~> 3.5)
+  - GoogleAppMeasurement (6.0.3):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - GoogleToolboxForMac/Logger (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - GoogleUtilities/AppDelegateSwizzler (6.2.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.2.1)
+  - GoogleUtilities/ISASwizzler (6.2.1)
+  - GoogleUtilities/Logger (6.2.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.2.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.2.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.2.1)"
+  - GoogleUtilities/Reachability (6.2.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.2.1):
+    - GoogleUtilities/Logger
+  - GTMSessionFetcher/Core (1.2.2)
+  - IQKeyboardManagerSwift (6.4.0)
+  - KeychainAccess (3.2.0)
+  - Kingfisher (5.7.0)
+  - Moya (14.0.0-alpha.1):
+    - Moya/Core (= 14.0.0-alpha.1)
+  - Moya-ObjectMapper/Core (2.9):
+    - Moya (~> 14.0.0-alpha.1)
+    - ObjectMapper (~> 3.5.1)
+  - Moya-ObjectMapper/RxSwift (2.9):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
-    - RxSwift (~> 4)
-  - Moya/Core (12.0.1):
+    - RxSwift (~> 5)
+  - Moya/Core (14.0.0-alpha.1):
     - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - Moya/RxSwift (12.0.1):
+    - Result (~> 4.1)
+  - Moya/RxSwift (14.0.0-alpha.1):
     - Moya/Core
-    - RxSwift (~> 4.0)
+    - RxSwift (~> 5.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - ObjectMapper (3.5.1)
-  - Realm (3.14.2):
-    - Realm/Headers (= 3.14.2)
-  - Realm/Headers (3.14.2)
-  - RealmSwift (3.14.2):
-    - Realm (= 3.14.2)
+  - Protobuf (3.8.0)
+  - Realm (3.17.0):
+    - Realm/Headers (= 3.17.0)
+  - Realm/Headers (3.17.0)
+  - RealmSwift (3.17.0):
+    - Realm (= 3.17.0)
+  - Require (2.0.0)
   - Result (4.1.0)
-  - RxCocoa (4.0.0):
-    - RxSwift (~> 4.0)
-  - RxRealm (0.7.6):
-    - RealmSwift (~> 3.0)
-    - RxSwift (~> 4.0)
-  - RxSwift (4.5.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRealm (1.0.0):
+    - RealmSwift (~> 3.14)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
+  - SnapKit (5.0.0)
   - SwiftLint (0.33.1)
-  - SwiftOverlays (4.0.1)
+  - SwiftOverlays (5.0.1)
+  - Teller (0.3.0-alpha):
+    - RxSwift (~> 5.0)
+  - Wendy (0.1.0-alpha):
+    - Require (~> 2.0.0)
 
 DEPENDENCIES:
   - DZNEmptyDataSet (~> 1.8.1)
-  - IQKeyboardManagerSwift (~> 5.0.4)
-  - KeychainAccess (~> 3.1.0)
-  - Kingfisher (~> 4.2.0)
-  - Moya-ObjectMapper/RxSwift (~> 2.8)
-  - Moya/RxSwift (~> 12.0.1)
-  - RealmSwift (~> 3.14.2)
-  - RxCocoa (~> 4.0.0)
-  - RxRealm (~> 0.7.4)
+  - Firebase/Analytics
+  - Firebase/DynamicLinks
+  - Firebase/Messaging
+  - Firebase/Performance
+  - Firebase/RemoteConfig
+  - IQKeyboardManagerSwift (~> 6.4.0)
+  - KeychainAccess (~> 3.2.0)
+  - Kingfisher (~> 5.7.0)
+  - Moya-ObjectMapper/RxSwift (from `https://github.com/814349837/Moya-ObjectMapper`, commit `6347b7bde5`)
+  - Moya/RxSwift (~> 14.0.0-alpha.1)
+  - RealmSwift (~> 3.17.0)
+  - RxCocoa (~> 5.0.0)
+  - RxRealm (~> 1.0.0)
+  - SnapKit (~> 5.0.0)
   - SwiftLint
-  - SwiftOverlays (~> 4.0.1)
+  - SwiftOverlays (~> 5.0.1)
+  - Teller (from `https://github.com/levibostian/Teller-iOS`, branch `swift5`)
+  - Wendy (~> 0.1.0-alpha)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - DZNEmptyDataSet
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseDynamicLinks
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - FirebasePerformance
+    - FirebaseRemoteConfig
+    - GoogleAppMeasurement
+    - GoogleToolboxForMac
+    - GoogleUtilities
+    - GTMSessionFetcher
     - IQKeyboardManagerSwift
     - KeychainAccess
     - Kingfisher
     - Moya
-    - Moya-ObjectMapper
+    - nanopb
     - ObjectMapper
+    - Protobuf
     - Realm
     - RealmSwift
+    - Require
     - Result
     - RxCocoa
     - RxRealm
+    - RxRelay
     - RxSwift
+    - SnapKit
     - SwiftLint
     - SwiftOverlays
+    - Wendy
+
+EXTERNAL SOURCES:
+  Moya-ObjectMapper:
+    :commit: 6347b7bde5
+    :git: https://github.com/814349837/Moya-ObjectMapper
+  Teller:
+    :branch: swift5
+    :git: https://github.com/levibostian/Teller-iOS
+
+CHECKOUT OPTIONS:
+  Moya-ObjectMapper:
+    :commit: 6347b7bde5
+    :git: https://github.com/814349837/Moya-ObjectMapper
+  Teller:
+    :commit: 9a7a8633ff46e5e39d9bdb3f4660de49ae76425b
+    :git: https://github.com/levibostian/Teller-iOS
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  IQKeyboardManagerSwift: 2e7dc7f98c111458c1ea2b373f893e8cf95e2b97
-  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
-  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Moya-ObjectMapper: c514b5eafcfd5e260f85f7a5bf66895a217e2b37
+  Firebase: 9445469655a98e9010737f4bc4720e5bda465873
+  FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
+  FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
+  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
+  FirebaseCore: 7ea99e200f0024262650be56623fbe6a7bef1707
+  FirebaseDynamicLinks: 25fc45fdf2557ee2ee630999c301245d8911792e
+  FirebaseInstanceID: 9782fcfb89e4d7da76cc28eac4b8543dc7be4a4b
+  FirebaseMessaging: 6bb0bdaf64c55fef7a219b7bb1e94e94a0855ced
+  FirebasePerformance: bd3666700af4d43caf2a13b93718f3b532b8a5ff
+  FirebaseRemoteConfig: 7f6a0899f51953999667cb34a13b2e479c17d840
+  GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
+  GoogleUtilities: c7a0b08bda3bf808be823ed151f0e28ac6866e71
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
+  KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  Moya: 65485239114b3b327a17dc2e839f6c8b7143aae9
+  Moya-ObjectMapper: 24595b5e913e278ce3e7ac2afa1993fea5938353
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  Realm: 179c6706e3a49dbfe112e572fd3c03d3169bea35
-  RealmSwift: 1797f272fb51c555b764fada32e82159a2c65247
+  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
+  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
+  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
+  Require: f93abc18dda985f665465cf027cea7166455fb28
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
-  RxRealm: 5379eddd74f8d617ca7681d1f8d144af25b432b0
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
+  RxRealm: 1e81dcfca1fb50c3e9b3e1f8102bc875c5156a2e
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftLint: 9fc1143bbacec37f94994a7d0d2a85b2154b6294
-  SwiftOverlays: dae1efb029c9401d357044dd70fd2cfce791fcb0
+  SwiftOverlays: ab459ea9194b0e96aaccaa00e9ead1bf6d46eef1
+  Teller: a7f72a0766524acf09b0513f42d1556bd7fdf19a
+  Wendy: 416b195f26f158784235072d24baf8a6e32cfbf3
 
-PODFILE CHECKSUM: e0a2fe58b5337e0b15ca187d45546bbab9d9e020
+PODFILE CHECKSUM: 6f354987ed427a1e32120a3142476dcab0544479
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.4
