@@ -1,6 +1,8 @@
 disabled_rules: # rule identifiers to exclude from running
   - line_length
   - trailing_whitespace
+  - empty_enum_arguments
+  - identifier_name
 opt_in_rules: # some rules are only opt-in
   # - empty_count
   # Find all the available rules by running:
@@ -18,13 +20,21 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
 force_cast: warning # implicitly
 force_try:
   severity: warning # explicitly
-variable_name:
+identifier_name:
   min_length: # only min_length
-    error: 4 # only error
+    error: 3 # only error
   excluded: # excluded via string array
     - key
     - id
-    - map 
+    - map
     - URL
     - GlobalAPIKey
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)
+
+custom_rules:
+  use_contentview_tableviewcell: # use `contentView` instead of the `view` property when adding views in TableViewCell subclasses.
+    included: ".*TableViewCell\\.swift" # regex that defines paths to include during linting. optional.
+    name: "Add subviews to `contentView` instead of the cell's `view`."
+    regex: "^(?!.*?contentView\\.addSubview).*addSubview.*" # matching pattern
+    message: "Are you sure you wanted to call `addSubview` on `self.view`? Did you mean to use the `contentView`?"
+    severity: error

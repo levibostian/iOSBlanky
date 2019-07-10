@@ -29,7 +29,7 @@ class GitHubUsernameDataSource: BaseLocalDataSource<GitHubUsername> {
     }
     
     override func isDataEmpty(_ data: GitHubUsername) -> Bool {
-        return data.characters.count <= 0
+        return data.count <= 0
     }
     
     override func getValue() -> GitHubUsername? {

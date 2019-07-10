@@ -15,7 +15,7 @@ enum StateDataOnlineDataState<DataType: Any> {
     case doneFetchingFreshData(errorCausedDoneFetching: Bool)
     case dataExists(data: DataType)
     case errorFound(error: Error)
-    case noState()
+    case noState
 }
 
 enum StateDataLocalDataState<DataType: Any> {
@@ -84,7 +84,7 @@ class StateData<DataType: Any> {
      * Call this function when an instance of [StateData] is given to you.
      */
     func onlineDataState() -> StateDataOnlineDataState<DataType> {
-        var returnStateData: StateDataOnlineDataState<DataType> = StateDataOnlineDataState.noState()
+        var returnStateData: StateDataOnlineDataState<DataType> = StateDataOnlineDataState.noState
         
         if isLoading { returnStateData = StateDataOnlineDataState.isLoading }
         if isEmptyData { returnStateData = StateDataOnlineDataState.isEmpty }

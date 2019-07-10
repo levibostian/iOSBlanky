@@ -104,7 +104,7 @@
 		F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75230371CD90B5D00DCAAC4 /* Kamagari.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamagari.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kamagari.framework"; sourceTree = "<group>"; };
 		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
-		F75DCD7F1CD8F10D00B8941F /* Debug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Debug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSBlanky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCD821CD8F10D00B8941F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F75DCD871CD8F10D00B8941F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F75DCD891CD8F10D00B8941F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 		F75DCD801CD8F10D00B8941F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F75DCD7F1CD8F10D00B8941F /* Debug.app */,
+				F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */,
 				F75DCD931CD8F10D00B8941F /* iOSBlankyTests.xctest */,
 				F75DCD9E1CD8F10D00B8941F /* iOSBlankyUITests.xctest */,
 			);
@@ -478,7 +478,6 @@
 				F75DCD7D1CD8F10D00B8941F /* Resources */,
 				F7B674F81CD8F2BC007C42FC /* SwiftLint */,
 				B286389F35A5B7FF41C2515E /* [CP] Embed Pods Frameworks */,
-				2476672DC7A2CBC095079549 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -486,7 +485,7 @@
 			);
 			name = iOSBlanky;
 			productName = iOSBlanky;
-			productReference = F75DCD7F1CD8F10D00B8941F /* Debug.app */;
+			productReference = F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F75DCD921CD8F10D00B8941F /* iOSBlankyTests */ = {
@@ -497,8 +496,6 @@
 				F75DCD8F1CD8F10D00B8941F /* Sources */,
 				F75DCD901CD8F10D00B8941F /* Frameworks */,
 				F75DCD911CD8F10D00B8941F /* Resources */,
-				8C62308AC9A0227BCAF12DCB /* [CP] Embed Pods Frameworks */,
-				312A9C4B2C3B1DC121098711 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -518,8 +515,6 @@
 				F75DCD9A1CD8F10D00B8941F /* Sources */,
 				F75DCD9B1CD8F10D00B8941F /* Frameworks */,
 				F75DCD9C1CD8F10D00B8941F /* Resources */,
-				B8C1182C8ADE99ABD95A7014 /* [CP] Copy Pods Resources */,
-				98BC121A0BC81C99F6131DC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -538,7 +533,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Curiosity IO";
 				TargetAttributes = {
 					F75DCD7E1CD8F10D00B8941F = {
@@ -562,7 +557,7 @@
 			};
 			buildConfigurationList = F75DCD7A1CD8F10D00B8941F /* Build configuration list for PBXProject "iOSBlanky" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -609,36 +604,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2476672DC7A2CBC095079549 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		312A9C4B2C3B1DC121098711 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		65D1495E3A409F6FB556008D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -675,36 +640,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8C62308AC9A0227BCAF12DCB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98BC121A0BC81C99F6131DC3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		99761CC9423E1F8BCD8AD343 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -729,7 +664,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -766,22 +701,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8C1182C8ADE99ABD95A7014 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F7B674F81CD8F2BC007C42FC /* SwiftLint */ = {
@@ -899,12 +819,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -954,12 +876,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1001,7 +925,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.debug.iOSBlanky;
-				PRODUCT_NAME = Debug;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = iOSBlanky;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1019,7 +944,8 @@
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlanky;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = iOSBlanky;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -1102,12 +1028,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1147,7 +1075,8 @@
 				INFOPLIST_FILE = iOSBlanky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.beta.iOSBlanky;
-				PRODUCT_NAME = Beta;
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = iOSBlanky;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};

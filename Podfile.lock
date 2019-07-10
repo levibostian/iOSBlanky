@@ -1,38 +1,38 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.8.2)
   - DZNEmptyDataSet (1.8.1)
-  - IQKeyboardManagerSwift (5.0.4)
-  - KeychainAccess (3.1.0)
+  - IQKeyboardManagerSwift (5.0.8)
+  - KeychainAccess (3.1.2)
   - Kingfisher (4.2.0)
-  - Moya (10.0.0):
-    - Moya/Core (= 10.0.0)
-  - Moya-ObjectMapper/Core (2.4.2):
-    - Moya (~> 10.0.0)
-    - ObjectMapper (~> 3.0.0)
-  - Moya-ObjectMapper/RxSwift (2.4.2):
+  - Moya (12.0.1):
+    - Moya/Core (= 12.0.1)
+  - Moya-ObjectMapper/Core (2.8):
+    - Moya (~> 12.0)
+    - ObjectMapper (~> 3.4)
+  - Moya-ObjectMapper/RxSwift (2.8):
     - Moya-ObjectMapper/Core
     - Moya/RxSwift
-    - RxSwift (~> 4.0.0)
-  - Moya/Core (10.0.0):
+    - RxSwift (~> 4)
+  - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
-    - Result (~> 3.0)
-  - Moya/RxSwift (10.0.0):
+    - Result (~> 4.0)
+  - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - ObjectMapper (3.0.0)
-  - Realm (3.0.0):
-    - Realm/Headers (= 3.0.0)
-  - Realm/Headers (3.0.0)
-  - RealmSwift (3.0.0):
-    - Realm (= 3.0.0)
-  - Result (3.2.4)
+  - ObjectMapper (3.5.1)
+  - Realm (3.14.2):
+    - Realm/Headers (= 3.14.2)
+  - Realm/Headers (3.14.2)
+  - RealmSwift (3.14.2):
+    - Realm (= 3.14.2)
+  - Result (4.1.0)
   - RxCocoa (4.0.0):
     - RxSwift (~> 4.0)
-  - RxRealm (0.7.4):
+  - RxRealm (0.7.6):
     - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.0.0)
-  - SwiftLint (0.23.1)
+  - RxSwift (4.5.0)
+  - SwiftLint (0.33.1)
   - SwiftOverlays (4.0.1)
 
 DEPENDENCIES:
@@ -40,42 +40,51 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 5.0.4)
   - KeychainAccess (~> 3.1.0)
   - Kingfisher (~> 4.2.0)
-  - Moya-ObjectMapper/RxSwift (from `https://github.com/levibostian/Moya-ObjectMapper.git`, branch `swift4`)
-  - Moya/RxSwift (~> 10.0.0)
-  - RealmSwift (~> 3.0.0)
+  - Moya-ObjectMapper/RxSwift (~> 2.8)
+  - Moya/RxSwift (~> 12.0.1)
+  - RealmSwift (~> 3.14.2)
   - RxCocoa (~> 4.0.0)
   - RxRealm (~> 0.7.4)
   - SwiftLint
   - SwiftOverlays (~> 4.0.1)
 
-EXTERNAL SOURCES:
-  Moya-ObjectMapper:
-    :branch: swift4
-    :git: https://github.com/levibostian/Moya-ObjectMapper.git
-
-CHECKOUT OPTIONS:
-  Moya-ObjectMapper:
-    :commit: b86636bc0c00ebb2259b86fc5f695621066c173c
-    :git: https://github.com/levibostian/Moya-ObjectMapper.git
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - DZNEmptyDataSet
+    - IQKeyboardManagerSwift
+    - KeychainAccess
+    - Kingfisher
+    - Moya
+    - Moya-ObjectMapper
+    - ObjectMapper
+    - Realm
+    - RealmSwift
+    - Result
+    - RxCocoa
+    - RxRealm
+    - RxSwift
+    - SwiftLint
+    - SwiftOverlays
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
-  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
+  IQKeyboardManagerSwift: 2e7dc7f98c111458c1ea2b373f893e8cf95e2b97
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
-  Moya: adb58b0f4e58430db43cc6e2f6ebab1836501186
-  Moya-ObjectMapper: 1b8a4361f56ada1079461dfd7963ff1a5ae30ff9
-  ObjectMapper: 92230db59bf8f341a5c3a3cf0b9fbdde3cf0d87f
-  Realm: dec0de73be8c57506e39db72694d513c189493b3
-  RealmSwift: 44a7090b16d1b22a406c6bf129bdd602db1bbecc
-  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  Moya-ObjectMapper: c514b5eafcfd5e260f85f7a5bf66895a217e2b37
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Realm: 179c6706e3a49dbfe112e572fd3c03d3169bea35
+  RealmSwift: 1797f272fb51c555b764fada32e82159a2c65247
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
-  RxRealm: 9e203070a6adadd8f2592b58bbc9c8cc40aa35ec
-  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
-  SwiftLint: 1b670ce79284c76520f84060e87d645078fd32fa
+  RxRealm: 5379eddd74f8d617ca7681d1f8d144af25b432b0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftLint: 9fc1143bbacec37f94994a7d0d2a85b2154b6294
   SwiftOverlays: dae1efb029c9401d357044dd70fd2cfce791fcb0
 
-PODFILE CHECKSUM: a2c9b5d8d58cfd459648f6d3361cee3cc7d6355c
+PODFILE CHECKSUM: e0a2fe58b5337e0b15ca187d45546bbab9d9e020
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.6.1

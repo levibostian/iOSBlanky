@@ -27,7 +27,7 @@ public struct ListTransform<T: RealmSwift.Object>: TransformType where T: Mappab
     }
     
     public func transformToJSON(_ value: Object?) -> JSON? {
-        return value?.flatMap { $0.toJSON() }
+        return value?.compactMap { $0.toJSON() }
     }
     
 }
