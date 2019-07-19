@@ -11,33 +11,35 @@ import RxSwift
 
 class ReposViewModel {
     
-    fileprivate var reposDataSource: ReposDataSource
-    fileprivate var githubUsernameDataSource: GitHubUsernameDataSource
+    fileprivate var reposRepository: ReposRepository
+    fileprivate var githubUsernameRepository: GitHubUsernameRepository
     
     convenience init() {
-        self.init(reposDataSource: ReposDataSource(), githubUsernameDataSource: GitHubUsernameDataSource())
+        self.init(reposRepository: ReposRepository(), githubUsernameRepository: GitHubUsernameRepository())
     }
     
-    init(reposDataSource: ReposDataSource, githubUsernameDataSource: GitHubUsernameDataSource) {
-        self.reposDataSource = reposDataSource
-        self.githubUsernameDataSource = githubUsernameDataSource
+    init(reposRepository: ReposRepository, githubUsernameRepository: GitHubUsernameRepository) {
+        self.reposRepository = reposRepository
+        self.githubUsernameRepository = githubUsernameRepository
         
-        if let existingGitHubUsername: GitHubUsername = githubUsernameDataSource.getValue() {
-            reposDataSource.setDataQueryRequirements(GetDataReposRequirements(githubUsername: existingGitHubUsername))
+        if let existingGitHubUsername: GitHubUsername = githubUsernameRepository.dataSource.value {
+            reposRepository.requirements = ReposDataSourceRequirements(githubUsername: existingGitHubUsername)
         }
     }
     
-    func setGitHubUsernameForRepos(_ username: String) {
-        githubUsernameDataSource.saveData(username)
-        reposDataSource.setDataQueryRequirements(GetDataReposRequirements(githubUsername: username))
+    func setGitHubUsernameForRepos(_ username: GitHubUsername) {
+        githubUsernameRepository.dataSource.saveData(data: username)
+        reposRepository.requirements = ReposDataSourceRequirements(githubUsername: username)
     }
     
-    func observeRepos() -> Observable<StateData<[RepoModel]>> {
-        return reposDataSource.getObservableState()
+    func observeRepos() -> Observable<StateOnlineData<[RepoModel]>> {
+        return reposRepository.observe()
+          .observeOn(MainScheduler.instance)
     }
     
-    func observeGitHubUsername() -> Observable<StateData<GitHubUsername>> {
-        return githubUsernameDataSource.getObservableState()
+    func observeGitHubUsername() -> Observable<StateLocalData<GitHubUsername>> {
+        return githubUsernameRepository.observe()
+          .observeOn(MainScheduler.instance)
     }
     
 }

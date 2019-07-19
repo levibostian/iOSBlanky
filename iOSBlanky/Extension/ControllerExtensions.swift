@@ -12,13 +12,9 @@ import Moya
 class MoyaPluginProvider {
     
     class func getPlugins(getNetworkActivityPlugin: Bool) -> [PluginType] {
-        var plugins: [PluginType] = []
-        plugins.append(MoyaAppendHeadersPlugin())
-        
+        var plugins: [PluginType] = [MoyaAppendHeadersPlugin(), HttpLoggerMoyaPlugin()]
+
         if getNetworkActivityPlugin { plugins.append(networkActivityPlugin) }
-        #if DEBUG
-            plugins.append(NetworkLoggerPlugin(verbose: false))
-        #endif
         
         return plugins
     }
@@ -26,9 +22,13 @@ class MoyaPluginProvider {
     static let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { (change, _) in
         switch change {
         case .began:
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            }
         case .ended:
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     })
     

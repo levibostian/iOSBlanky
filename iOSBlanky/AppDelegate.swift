@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,15 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        IQKeyboardManager.shared.enable = true
+        FirebaseApp.configure()
+
+        let iqKeyboardManager = IQKeyboardManager.shared
+        iqKeyboardManager.shouldResignOnTouchOutside = true
+        iqKeyboardManager.enableAutoToolbar = false
+        iqKeyboardManager.enable = true
         
         return true
-    }
-    
-    func deleteAllAppData() throws {
-//        RealmManager.deleteRealm()
-//        try UserManager.clearUserData()
-//        try UserCredsManager.clearUserData()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

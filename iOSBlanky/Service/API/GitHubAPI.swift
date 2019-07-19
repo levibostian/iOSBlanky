@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ObjectMapper
 import Moya
 
 enum GitHubService {
@@ -16,7 +15,7 @@ enum GitHubService {
 
 extension GitHubService: TargetType {
     
-    var baseURL: URL { return URL(string: AppConstants.apiEndpoint)! }
+    var baseURL: URL { return URL(string: Constants.apiEndpoint)! }
     
     var path: String {
         switch self {

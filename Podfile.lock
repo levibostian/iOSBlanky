@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (4.8.2)
+  - Crashlytics (3.13.4):
+    - Fabric (~> 1.10.2)
   - DZNEmptyDataSet (1.8.1)
+  - Fabric (1.10.2)
   - Firebase/Analytics (6.4.0):
     - Firebase/Core
   - Firebase/Core (6.4.0):
@@ -81,38 +84,29 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.2.1)
   - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
     - GoogleToolboxForMac/Defines (= 2.2.1)
-  - GoogleUtilities/AppDelegateSwizzler (6.2.1):
+  - GoogleUtilities/AppDelegateSwizzler (6.2.3):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.2.1)
-  - GoogleUtilities/ISASwizzler (6.2.1)
-  - GoogleUtilities/Logger (6.2.1):
+  - GoogleUtilities/Environment (6.2.3)
+  - GoogleUtilities/ISASwizzler (6.2.3)
+  - GoogleUtilities/Logger (6.2.3):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.2.1):
+  - GoogleUtilities/MethodSwizzler (6.2.3):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.2.1):
+  - GoogleUtilities/Network (6.2.3):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.2.1)"
-  - GoogleUtilities/Reachability (6.2.1):
+  - "GoogleUtilities/NSData+zlib (6.2.3)"
+  - GoogleUtilities/Reachability (6.2.3):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.2.1):
+  - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - IQKeyboardManagerSwift (6.4.0)
   - KeychainAccess (3.2.0)
   - Kingfisher (5.7.0)
-  - Moya (14.0.0-alpha.1):
-    - Moya/Core (= 14.0.0-alpha.1)
-  - Moya-ObjectMapper/Core (2.9):
-    - Moya (~> 14.0.0-alpha.1)
-    - ObjectMapper (~> 3.5.1)
-  - Moya-ObjectMapper/RxSwift (2.9):
-    - Moya-ObjectMapper/Core
-    - Moya/RxSwift
-    - RxSwift (~> 5)
   - Moya/Core (14.0.0-alpha.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
@@ -124,13 +118,12 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - ObjectMapper (3.5.1)
-  - Protobuf (3.8.0)
-  - Realm (3.17.0):
-    - Realm/Headers (= 3.17.0)
-  - Realm/Headers (3.17.0)
-  - RealmSwift (3.17.0):
-    - Realm (= 3.17.0)
+  - Protobuf (3.9.0)
+  - Realm (3.17.1):
+    - Realm/Headers (= 3.17.1)
+  - Realm/Headers (3.17.1)
+  - RealmSwift (3.17.1):
+    - Realm (= 3.17.1)
   - Require (2.0.0)
   - Result (4.1.0)
   - RxCocoa (5.0.0):
@@ -145,13 +138,16 @@ PODS:
   - SnapKit (5.0.0)
   - SwiftLint (0.33.1)
   - SwiftOverlays (5.0.1)
+  - Swinject (2.6.2)
   - Teller (0.3.0-alpha):
     - RxSwift (~> 5.0)
   - Wendy (0.1.0-alpha):
     - Require (~> 2.0.0)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3.13.4)
   - DZNEmptyDataSet (~> 1.8.1)
+  - Fabric (~> 1.10.2)
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/Messaging
@@ -160,7 +156,6 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift (~> 6.4.0)
   - KeychainAccess (~> 3.2.0)
   - Kingfisher (~> 5.7.0)
-  - Moya-ObjectMapper/RxSwift (from `https://github.com/814349837/Moya-ObjectMapper`, commit `6347b7bde5`)
   - Moya/RxSwift (~> 14.0.0-alpha.1)
   - RealmSwift (~> 3.17.0)
   - RxCocoa (~> 5.0.0)
@@ -168,13 +163,16 @@ DEPENDENCIES:
   - SnapKit (~> 5.0.0)
   - SwiftLint
   - SwiftOverlays (~> 5.0.1)
-  - Teller (from `https://github.com/levibostian/Teller-iOS`, branch `swift5`)
+  - Swinject (~> 2.6.2)
+  - Teller (from `https://github.com/levibostian/Teller-iOS`, branch `master`)
   - Wendy (~> 0.1.0-alpha)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Crashlytics
     - DZNEmptyDataSet
+    - Fabric
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -194,7 +192,6 @@ SPEC REPOS:
     - Kingfisher
     - Moya
     - nanopb
-    - ObjectMapper
     - Protobuf
     - Realm
     - RealmSwift
@@ -207,27 +204,24 @@ SPEC REPOS:
     - SnapKit
     - SwiftLint
     - SwiftOverlays
+    - Swinject
     - Wendy
 
 EXTERNAL SOURCES:
-  Moya-ObjectMapper:
-    :commit: 6347b7bde5
-    :git: https://github.com/814349837/Moya-ObjectMapper
   Teller:
-    :branch: swift5
+    :branch: master
     :git: https://github.com/levibostian/Teller-iOS
 
 CHECKOUT OPTIONS:
-  Moya-ObjectMapper:
-    :commit: 6347b7bde5
-    :git: https://github.com/814349837/Moya-ObjectMapper
   Teller:
-    :commit: 9a7a8633ff46e5e39d9bdb3f4660de49ae76425b
+    :commit: 6cca6872edcd998732aa3557775195fcf01da598
     :git: https://github.com/levibostian/Teller-iOS
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Crashlytics: 2dfd686bcb918dc10ee0e76f7f853fe42c7bd552
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
   FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
@@ -240,18 +234,16 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 7f6a0899f51953999667cb34a13b2e479c17d840
   GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
-  GoogleUtilities: c7a0b08bda3bf808be823ed151f0e28ac6866e71
+  GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   Moya: 65485239114b3b327a17dc2e839f6c8b7143aae9
-  Moya-ObjectMapper: 24595b5e913e278ce3e7ac2afa1993fea5938353
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
-  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
-  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
+  Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
+  Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
+  RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
   Require: f93abc18dda985f665465cf027cea7166455fb28
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
@@ -261,9 +253,10 @@ SPEC CHECKSUMS:
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SwiftLint: 9fc1143bbacec37f94994a7d0d2a85b2154b6294
   SwiftOverlays: ab459ea9194b0e96aaccaa00e9ead1bf6d46eef1
+  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   Teller: a7f72a0766524acf09b0513f42d1556bd7fdf19a
   Wendy: 416b195f26f158784235072d24baf8a6e32cfbf3
 
-PODFILE CHECKSUM: 6f354987ed427a1e32120a3142476dcab0544479
+PODFILE CHECKSUM: a7b6d165acca1141482d9d290f881d0dd99d1a24
 
 COCOAPODS: 1.7.4

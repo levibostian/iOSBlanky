@@ -9,15 +9,15 @@
 import Foundation
 import RealmSwift
 
-public class RealmInstanceManager: NSObject {
+class RealmInstanceManager: NSObject {
     
-    public static let sharedInstance = RealmInstanceManager()
+    static let sharedInstance = RealmInstanceManager()
     
-    public func getTempInstance() -> Realm {
+    func getTempInstance() -> Realm {
         return try! Realm(configuration: getInMemoryConfiguration())
     }
     
-    public func getInstance() -> Realm {
+    func getInstance() -> Realm {
         return try! Realm(configuration: getConfiguration())
     }
     

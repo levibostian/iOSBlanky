@@ -8,7 +8,6 @@
 See how I created this CocoaPod, how to integrate it into your own projects, and how you can create your own on my Youtube channel:
 https://youtu.be/gNMNeqXKnzw?list=PLyCWhRjveep2ytVeDwYb_xtQiEaM-KcUK
 
-
 # Create iOS project from iOSBlanky:
 
 (below, replace all instances of `coolNewApp` with the name of your new project.)
@@ -35,3 +34,14 @@ https://youtu.be/gNMNeqXKnzw?list=PLyCWhRjveep2ytVeDwYb_xtQiEaM-KcUK
 * Top left corner by the Play and Stop button. You see the schemas with name "iOSBlanky". Click on it and go to "Manage schemas". You can now click on iOSBlanky and rename it to coolNewApp. 
 * Hold down option key on keyboard and click on the Play button. You can now select in the list what build version you want to run. I start with debug/dev. Go ahead and try to run on a device now. 
 * Continue on with dev. Install Fabric for instance. 
+
+# Services 
+
+- [Firebase](https://firebase.google.com/docs/) - Used for analytics, error reporting, remote configuration, dynamic links. 
+
+This project is mostly setup already for Firebase. It's setup for a dev, beta, and production environment. Follow the directions below to finish setup. 
+
+Config:
+* Create a new Firebase project for this app. 
+* Create 3 separate iOS apps inside of this 1 new Firebase project. Create 1 app for the development version of the app, 1 for beta, and 1 for production. 
+* You will now have 3 separate `GoogleService-Info.plist` files you can download from the Firebase website. Download the files and replace the one inside of `iOSBlanky/Assets/Google Service/`. 

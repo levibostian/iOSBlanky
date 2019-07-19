@@ -10,28 +10,38 @@
 		24DE5BDB67601E9816EA8BA3 /* Pods_iOSBlankyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D92758990D338848451C6 /* Pods_iOSBlankyTests.framework */; };
 		41CFE39E9D54876C79774913 /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E732374E5503E88E49521 /* Pods_iOSBlankyUITests.framework */; };
 		672692D4097317A7D5DA0CD7 /* Pods_iOSBlanky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */; };
-		F7001A441F478AF8002D4A6E /* Moya_ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */; };
+		F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */; };
 		F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED8771F47854800AD018C /* Moya.framework */; };
 		F70ED87F1F47854800AD018C /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED87A1F47854800AD018C /* Result.framework */; };
 		F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED87B1F47854800AD018C /* RxCocoa.framework */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
 		F747DF7A1F9E962900647449 /* SwiftOverlays.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7C1F9E962900647449 /* SwiftOverlays.framework */; };
 		F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */; };
-		F751BAE81F9E6CCF0048BB3D /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAED1F9E6CCF0048BB3D /* ObjectMapper.framework */; };
 		F751BAE91F9E6CCF0048BB3D /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEE1F9E6CCF0048BB3D /* Realm.framework */; };
 		F751BAEA1F9E6CCF0048BB3D /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */; };
+		F75968F922E225500076253B /* DiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75968F822E225500076253B /* DiTests.swift */; };
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
 		F75DCD881CD8F10D00B8941F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD861CD8F10D00B8941F /* Main.storyboard */; };
 		F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
 		F75DCD981CD8F10D00B8941F /* iOSBlankyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD971CD8F10D00B8941F /* iOSBlankyTests.swift */; };
 		F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */; };
+		F7602FD422E224D300FDB5F3 /* Di.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58622DF71BB00202FDB /* Di.swift */; };
+		F7602FD522E224D300FDB5F3 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58E22DFB64200202FDB /* Dependencies.swift */; };
+		F7602FD622E224DB00FDB5F3 /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
+		F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */; };
+		F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58322DF703100202FDB /* CrashReportingLogger.swift */; };
+		F7602FD922E224DB00FDB5F3 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */; };
+		F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */; };
+		F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
+		F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
+		F7602FDE22E224E000FDB5F3 /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
+		F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* Constants.swift */; };
 		F76835AE1F9ECED200219B30 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubAPI.swift */; };
 		F76835B01F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AF1F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift */; };
 		F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76835B21F9ECFBF00219B30 /* Color.xcassets */; };
 		F76835B81F9ED0BB00219B30 /* UserCredsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835B61F9ED0BB00219B30 /* UserCredsManager.swift */; };
 		F76835B91F9ED0BB00219B30 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835B71F9ED0BB00219B30 /* UserManager.swift */; };
-		F76835BB1F9ED0C800219B30 /* ListTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835BA1F9ED0C800219B30 /* ListTransform.swift */; };
 		F76835BE1F9ED0D500219B30 /* ControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835BC1F9ED0D500219B30 /* ControllerExtensions.swift */; };
 		F76835BF1F9ED0D500219B30 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835BD1F9ED0D500219B30 /* UIViewControllerExtensions.swift */; };
 		F76835C51F9ED0F000219B30 /* ErrorVo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C41F9ED0F000219B30 /* ErrorVo.swift */; };
@@ -39,23 +49,41 @@
 		F76835CA1F9ED12B00219B30 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C81F9ED12B00219B30 /* MainViewController.swift */; };
 		F76835CB1F9ED12B00219B30 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C91F9ED12B00219B30 /* BasePopoverViewController.swift */; };
 		F76835DA1F9ED3C200219B30 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835D91F9ED3C200219B30 /* ReposViewModel.swift */; };
-		F76835DD1F9ED40100219B30 /* ReposDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835DC1F9ED40100219B30 /* ReposDataSource.swift */; };
-		F76835DF1F9ED42D00219B30 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835DE1F9ED42D00219B30 /* DataSource.swift */; };
-		F76835E21F9ED6AB00219B30 /* StateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835E11F9ED6AB00219B30 /* StateData.swift */; };
-		F76835E41F9F55F100219B30 /* StateDataCompoundBehaviorSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835E31F9F55F100219B30 /* StateDataCompoundBehaviorSubject.swift */; };
+		F76835DD1F9ED40100219B30 /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835DC1F9ED40100219B30 /* ReposRepository.swift */; };
 		F76835E61F9F583F00219B30 /* BehaviorSubjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835E51F9F583F00219B30 /* BehaviorSubjectExtensions.swift */; };
+		F785CC7622D692C500389076 /* Teller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F785CC7522D692C500389076 /* Teller.framework */; };
+		F785CC7A22D696FE00389076 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F7906E691FA4CD7C00638B2C /* RealmInstanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7906E681FA4CD7C00638B2C /* RealmInstanceManager.swift */; };
 		F7906E6C1FA4CE9200638B2C /* DaoInstanceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7906E6B1FA4CE9200638B2C /* DaoInstanceUtil.swift */; };
 		F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */; };
+		F799D58422DF703100202FDB /* CrashReportingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58322DF703100202FDB /* CrashReportingLogger.swift */; };
+		F799D58722DF71BB00202FDB /* Di.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58622DF71BB00202FDB /* Di.swift */; };
+		F799D58922DF71DB00202FDB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D58822DF71DB00202FDB /* SnapKit.framework */; };
+		F799D58B22DF71DB00202FDB /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D58A22DF71DB00202FDB /* Swinject.framework */; };
+		F799D58D22DF71DB00202FDB /* Wendy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D58C22DF71DB00202FDB /* Wendy.framework */; };
+		F799D58F22DFB64200202FDB /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58E22DFB64200202FDB /* Dependencies.swift */; };
+		F799D59422DFBDB300202FDB /* GoogleService-beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = F799D59322DFBDB300202FDB /* GoogleService-beta.plist */; };
+		F799D59622DFBDD700202FDB /* GoogleService-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = F799D59522DFBDD700202FDB /* GoogleService-dev.plist */; };
+		F799D59822DFBDEE00202FDB /* GoogleService-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F799D59722DFBDEE00202FDB /* GoogleService-prod.plist */; };
+		F799D59A22DFC00600202FDB /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
+		F799D59C22DFC4AF00202FDB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D59B22DFC4AF00202FDB /* FirebaseCore.framework */; };
+		F799D59E22DFC4AF00202FDB /* FirebaseDynamicLinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D59D22DFC4AF00202FDB /* FirebaseDynamicLinks.framework */; };
+		F799D5A022DFC4AF00202FDB /* FirebaseMessaging.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D59F22DFC4AF00202FDB /* FirebaseMessaging.framework */; };
+		F799D5A222DFC4AF00202FDB /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D5A122DFC4AF00202FDB /* GoogleToolboxForMac.framework */; };
+		F799D5A422DFC4AF00202FDB /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D5A322DFC4AF00202FDB /* GoogleUtilities.framework */; };
+		F799D5A722DFD15E00202FDB /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */; };
+		F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */; };
+		F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
 		F7A41B7F1FA4D48B00266B61 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB201E953FEE0084D97E /* RxRealm.framework */; };
-		F7A41B811FA512E600266B61 /* GitHubUsernameDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A41B801FA512E600266B61 /* GitHubUsernameDataSource.swift */; };
-		F7A41B851FA530C500266B61 /* OnlineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A41B841FA530C500266B61 /* OnlineDataSource.swift */; };
-		F7A41B871FA531BB00266B61 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A41B861FA531BB00266B61 /* LocalDataSource.swift */; };
-		F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* AppConstants.swift */; };
+		F7A41B811FA512E600266B61 /* GitHubUsernameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A41B801FA512E600266B61 /* GitHubUsernameRepository.swift */; };
+		F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* Constants.swift */; };
 		F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D41E14A00600F2C3CB /* DZNEmptyDataSet.framework */; };
 		F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */; };
 		F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */; };
+		F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
+		F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
+		F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +116,7 @@
 		DF8D47C1E9C6CD4664FE3954 /* Pods-iOSBlankyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlankyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlanky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky.debug.xcconfig"; sourceTree = "<group>"; };
 		F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya_ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya-ObjectMapper/Moya_ObjectMapper.framework"; sourceTree = "<group>"; };
+		F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpLoggerMoyaPlugin.swift; sourceTree = "<group>"; };
 		F70ED8771F47854800AD018C /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya/Moya.framework"; sourceTree = "<group>"; };
 		F70ED87A1F47854800AD018C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		F70ED87B1F47854800AD018C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
@@ -100,6 +129,7 @@
 		F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75230371CD90B5D00DCAAC4 /* Kamagari.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamagari.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kamagari.framework"; sourceTree = "<group>"; };
 		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
+		F75968F822E225500076253B /* DiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiTests.swift; sourceTree = "<group>"; };
 		F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSBlanky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCD821CD8F10D00B8941F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F75DCD871CD8F10D00B8941F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,7 +147,6 @@
 		F76835B21F9ECFBF00219B30 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		F76835B61F9ED0BB00219B30 /* UserCredsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredsManager.swift; sourceTree = "<group>"; };
 		F76835B71F9ED0BB00219B30 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		F76835BA1F9ED0C800219B30 /* ListTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTransform.swift; sourceTree = "<group>"; };
 		F76835BC1F9ED0D500219B30 /* ControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerExtensions.swift; sourceTree = "<group>"; };
 		F76835BD1F9ED0D500219B30 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F76835C41F9ED0F000219B30 /* ErrorVo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVo.swift; sourceTree = "<group>"; };
@@ -125,14 +154,31 @@
 		F76835C81F9ED12B00219B30 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F76835C91F9ED12B00219B30 /* BasePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopoverViewController.swift; sourceTree = "<group>"; };
 		F76835D91F9ED3C200219B30 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
-		F76835DC1F9ED40100219B30 /* ReposDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposDataSource.swift; sourceTree = "<group>"; };
-		F76835DE1F9ED42D00219B30 /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
-		F76835E11F9ED6AB00219B30 /* StateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateData.swift; sourceTree = "<group>"; };
-		F76835E31F9F55F100219B30 /* StateDataCompoundBehaviorSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateDataCompoundBehaviorSubject.swift; sourceTree = "<group>"; };
+		F76835DC1F9ED40100219B30 /* ReposRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposRepository.swift; sourceTree = "<group>"; };
 		F76835E51F9F583F00219B30 /* BehaviorSubjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BehaviorSubjectExtensions.swift; sourceTree = "<group>"; };
+		F785CC7522D692C500389076 /* Teller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Teller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F785CC7922D696FE00389076 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
 		F7906E681FA4CD7C00638B2C /* RealmInstanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInstanceManager.swift; sourceTree = "<group>"; };
 		F7906E6B1FA4CE9200638B2C /* DaoInstanceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaoInstanceUtil.swift; sourceTree = "<group>"; };
 		F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDao.swift; sourceTree = "<group>"; };
+		F799D58322DF703100202FDB /* CrashReportingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportingLogger.swift; sourceTree = "<group>"; };
+		F799D58622DF71BB00202FDB /* Di.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Di.swift; sourceTree = "<group>"; };
+		F799D58822DF71DB00202FDB /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D58A22DF71DB00202FDB /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D58C22DF71DB00202FDB /* Wendy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wendy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D58E22DFB64200202FDB /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		F799D59322DFBDB300202FDB /* GoogleService-beta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-beta.plist"; sourceTree = "<group>"; };
+		F799D59522DFBDD700202FDB /* GoogleService-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-dev.plist"; sourceTree = "<group>"; };
+		F799D59722DFBDEE00202FDB /* GoogleService-prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-prod.plist"; sourceTree = "<group>"; };
+		F799D59922DFC00600202FDB /* BuildFlavor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildFlavor.swift; sourceTree = "<group>"; };
+		F799D59B22DFC4AF00202FDB /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D59D22DFC4AF00202FDB /* FirebaseDynamicLinks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDynamicLinks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D59F22DFC4AF00202FDB /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D5A122DFC4AF00202FDB /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D5A322DFC4AF00202FDB /* GoogleUtilities.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentActivityLogger.swift; sourceTree = "<group>"; };
+		F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsActivityLogger.swift; sourceTree = "<group>"; };
 		F7A404511CD9031900A4D228 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
 		F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
@@ -142,20 +188,21 @@
 		F7A404571CD9031900A4D228 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
 		F7A404581CD9031900A4D228 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
 		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
-		F7A41B801FA512E600266B61 /* GitHubUsernameDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsernameDataSource.swift; sourceTree = "<group>"; };
-		F7A41B841FA530C500266B61 /* OnlineDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineDataSource.swift; sourceTree = "<group>"; };
-		F7A41B861FA531BB00266B61 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		F7A41B801FA512E600266B61 /* GitHubUsernameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUsernameRepository.swift; sourceTree = "<group>"; };
 		F7A9DD9F22D664E200AEEDEB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		F7D3B8D01E149B5F00F2C3CB /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		F7D3B8D01E149B5F00F2C3CB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F7D3B8D41E14A00600F2C3CB /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/DZNEmptyDataSet/DZNEmptyDataSet.framework"; sourceTree = "<group>"; };
 		F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManagerSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"; sourceTree = "<group>"; };
 		F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/KeychainAccess/KeychainAccess.framework"; sourceTree = "<group>"; };
 		F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSBoilerplate.framework; path = "Pods/../build/Debug-iphoneos/iOSBoilerplate/iOSBoilerplate.framework"; sourceTree = "<group>"; };
 		F7D3B9461E15CEE100F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "Pods/../build/Debug-iphoneos/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
 		F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
+		F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
 		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
 		F7EEDB211E953FEE0084D97E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
+		F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogger.swift; sourceTree = "<group>"; };
+		F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReportingActivityLogger.swift; sourceTree = "<group>"; };
 		F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,14 +212,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F799D59C22DFC4AF00202FDB /* FirebaseCore.framework in Frameworks */,
+				F799D59E22DFC4AF00202FDB /* FirebaseDynamicLinks.framework in Frameworks */,
+				F799D5A022DFC4AF00202FDB /* FirebaseMessaging.framework in Frameworks */,
+				F799D5A222DFC4AF00202FDB /* GoogleToolboxForMac.framework in Frameworks */,
+				F799D5A422DFC4AF00202FDB /* GoogleUtilities.framework in Frameworks */,
+				F799D58922DF71DB00202FDB /* SnapKit.framework in Frameworks */,
+				F799D58B22DF71DB00202FDB /* Swinject.framework in Frameworks */,
+				F799D58D22DF71DB00202FDB /* Wendy.framework in Frameworks */,
+				F785CC7622D692C500389076 /* Teller.framework in Frameworks */,
 				F7A41B7F1FA4D48B00266B61 /* RxRealm.framework in Frameworks */,
 				F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */,
 				F747DF7A1F9E962900647449 /* SwiftOverlays.framework in Frameworks */,
 				F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */,
-				F751BAE81F9E6CCF0048BB3D /* ObjectMapper.framework in Frameworks */,
 				F751BAE91F9E6CCF0048BB3D /* Realm.framework in Frameworks */,
 				F751BAEA1F9E6CCF0048BB3D /* RealmSwift.framework in Frameworks */,
-				F7001A441F478AF8002D4A6E /* Moya_ObjectMapper.framework in Frameworks */,
 				F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */,
 				F70ED87F1F47854800AD018C /* Result.framework in Frameworks */,
 				F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */,
@@ -222,6 +276,15 @@
 		C1715DC8E1D8C79F1A025E3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F799D59B22DFC4AF00202FDB /* FirebaseCore.framework */,
+				F799D59D22DFC4AF00202FDB /* FirebaseDynamicLinks.framework */,
+				F799D59F22DFC4AF00202FDB /* FirebaseMessaging.framework */,
+				F799D5A122DFC4AF00202FDB /* GoogleToolboxForMac.framework */,
+				F799D5A322DFC4AF00202FDB /* GoogleUtilities.framework */,
+				F799D58822DF71DB00202FDB /* SnapKit.framework */,
+				F799D58A22DF71DB00202FDB /* Swinject.framework */,
+				F799D58C22DF71DB00202FDB /* Wendy.framework */,
+				F785CC7522D692C500389076 /* Teller.framework */,
 				F7A9DD9F22D664E200AEEDEB /* Security.framework */,
 				F747DF7B1F9E962900647449 /* Alamofire.framework */,
 				F747DF7C1F9E962900647449 /* SwiftOverlays.framework */,
@@ -312,20 +375,17 @@
 		F75DCD811CD8F10D00B8941F /* iOSBlanky */ = {
 			isa = PBXGroup;
 			children = (
+				F799D58522DF71B000202FDB /* di */,
 				F76835B11F9ECF9A00219B30 /* Assets */,
 				F76835AC1F9ECDC700219B30 /* Service */,
 				F7D3B8FF1E14A70F00F2C3CB /* Manager */,
-				F7D3B8F91E14A6A800F2C3CB /* Transform */,
 				F7D3B8DA1E14A06700F2C3CB /* Extension */,
-				F7338AB61CD979BE009BBC0A /* VO */,
-				F7338AB11CD97861009BBC0A /* Model */,
-				F7338AAE1CD9755D009BBC0A /* API */,
 				F7EF619C1CD95CD600721FE4 /* ViewController */,
 				F75DCD821CD8F10D00B8941F /* AppDelegate.swift */,
 				F75DCD861CD8F10D00B8941F /* Main.storyboard */,
 				F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */,
 				F75DCD8E1CD8F10D00B8941F /* Info.plist */,
-				F7D3B8D01E149B5F00F2C3CB /* AppConstants.swift */,
+				F7D3B8D01E149B5F00F2C3CB /* Constants.swift */,
 			);
 			path = iOSBlanky;
 			sourceTree = "<group>";
@@ -333,6 +393,7 @@
 		F75DCD961CD8F10D00B8941F /* iOSBlankyTests */ = {
 			isa = PBXGroup;
 			children = (
+				F7602FE122E2250600FDB5F3 /* di */,
 				F75DCD971CD8F10D00B8941F /* iOSBlankyTests.swift */,
 				F75DCD991CD8F10D00B8941F /* Info.plist */,
 			);
@@ -348,10 +409,19 @@
 			path = iOSBlankyUITests;
 			sourceTree = "<group>";
 		};
+		F7602FE122E2250600FDB5F3 /* di */ = {
+			isa = PBXGroup;
+			children = (
+				F75968F822E225500076253B /* DiTests.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
 		F76835A81F9E9BE400219B30 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				F76835AF1F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift */,
+				F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -359,9 +429,14 @@
 		F76835AC1F9ECDC700219B30 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F799D58222DF702200202FDB /* log */,
+				F785CC7822D696E400389076 /* type */,
+				F785CC7722D695B900389076 /* repository */,
+				F7338AB11CD97861009BBC0A /* Model */,
+				F7338AB61CD979BE009BBC0A /* VO */,
+				F7338AAE1CD9755D009BBC0A /* API */,
+				F7DF7B1E22D686A200DBEF33 /* adapter */,
 				F7906E6A1FA4CE7F00638B2C /* DAO */,
-				F76835E01F9ED59000219B30 /* StateData */,
-				F76835DB1F9ED3EF00219B30 /* DataSource */,
 				F76835D81F9ED3A100219B30 /* ViewModel */,
 			);
 			path = Service;
@@ -370,6 +445,7 @@
 		F76835B11F9ECF9A00219B30 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F799D59022DFBC7800202FDB /* Google Services */,
 				F75DCD891CD8F10D00B8941F /* Assets.xcassets */,
 				F76835B21F9ECFBF00219B30 /* Color.xcassets */,
 			);
@@ -384,25 +460,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		F76835DB1F9ED3EF00219B30 /* DataSource */ = {
+		F785CC7722D695B900389076 /* repository */ = {
 			isa = PBXGroup;
 			children = (
-				F76835DC1F9ED40100219B30 /* ReposDataSource.swift */,
-				F76835DE1F9ED42D00219B30 /* DataSource.swift */,
-				F7A41B801FA512E600266B61 /* GitHubUsernameDataSource.swift */,
-				F7A41B841FA530C500266B61 /* OnlineDataSource.swift */,
-				F7A41B861FA531BB00266B61 /* LocalDataSource.swift */,
+				F7A41B801FA512E600266B61 /* GitHubUsernameRepository.swift */,
+				F76835DC1F9ED40100219B30 /* ReposRepository.swift */,
 			);
-			path = DataSource;
+			path = repository;
 			sourceTree = "<group>";
 		};
-		F76835E01F9ED59000219B30 /* StateData */ = {
+		F785CC7822D696E400389076 /* type */ = {
 			isa = PBXGroup;
 			children = (
-				F76835E11F9ED6AB00219B30 /* StateData.swift */,
-				F76835E31F9F55F100219B30 /* StateDataCompoundBehaviorSubject.swift */,
+				F785CC7922D696FE00389076 /* DataState.swift */,
+				F799D59922DFC00600202FDB /* BuildFlavor.swift */,
 			);
-			path = StateData;
+			path = type;
 			sourceTree = "<group>";
 		};
 		F7906E6A1FA4CE7F00638B2C /* DAO */ = {
@@ -412,6 +485,38 @@
 				F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */,
 			);
 			path = DAO;
+			sourceTree = "<group>";
+		};
+		F799D58222DF702200202FDB /* log */ = {
+			isa = PBXGroup;
+			children = (
+				F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */,
+				F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */,
+				F799D58322DF703100202FDB /* CrashReportingLogger.swift */,
+				F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */,
+				F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */,
+				F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */,
+			);
+			path = log;
+			sourceTree = "<group>";
+		};
+		F799D58522DF71B000202FDB /* di */ = {
+			isa = PBXGroup;
+			children = (
+				F799D58622DF71BB00202FDB /* Di.swift */,
+				F799D58E22DFB64200202FDB /* Dependencies.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		F799D59022DFBC7800202FDB /* Google Services */ = {
+			isa = PBXGroup;
+			children = (
+				F799D59322DFBDB300202FDB /* GoogleService-beta.plist */,
+				F799D59522DFBDD700202FDB /* GoogleService-dev.plist */,
+				F799D59722DFBDEE00202FDB /* GoogleService-prod.plist */,
+			);
+			path = "Google Services";
 			sourceTree = "<group>";
 		};
 		F7D3B8DA1E14A06700F2C3CB /* Extension */ = {
@@ -424,14 +529,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		F7D3B8F91E14A6A800F2C3CB /* Transform */ = {
-			isa = PBXGroup;
-			children = (
-				F76835BA1F9ED0C800219B30 /* ListTransform.swift */,
-			);
-			path = Transform;
-			sourceTree = "<group>";
-		};
 		F7D3B8FF1E14A70F00F2C3CB /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +537,14 @@
 				F7906E681FA4CD7C00638B2C /* RealmInstanceManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		F7DF7B1E22D686A200DBEF33 /* adapter */ = {
+			isa = PBXGroup;
+			children = (
+				F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */,
+			);
+			path = adapter;
 			sourceTree = "<group>";
 		};
 		F7EEDAE21E953DB50084D97E /* error */ = {
@@ -469,9 +574,11 @@
 				65D1495E3A409F6FB556008D /* [CP] Check Pods Manifest.lock */,
 				F75DCD7B1CD8F10D00B8941F /* Sources */,
 				F75DCD7C1CD8F10D00B8941F /* Frameworks */,
+				F799D5A522DFCB7900202FDB /* GoogleServices for Firebase */,
 				F75DCD7D1CD8F10D00B8941F /* Resources */,
 				F7B674F81CD8F2BC007C42FC /* SwiftLint */,
 				B286389F35A5B7FF41C2515E /* [CP] Embed Pods Frameworks */,
+				F799D58122DF6F7100202FDB /* Crashlytics (make sure last phase) */,
 			);
 			buildRules = (
 			);
@@ -490,6 +597,7 @@
 				F75DCD8F1CD8F10D00B8941F /* Sources */,
 				F75DCD901CD8F10D00B8941F /* Frameworks */,
 				F75DCD911CD8F10D00B8941F /* Resources */,
+				6FF7C6AB1B3122D08FF29A97 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -509,6 +617,7 @@
 				F75DCD9A1CD8F10D00B8941F /* Sources */,
 				F75DCD9B1CD8F10D00B8941F /* Frameworks */,
 				F75DCD9C1CD8F10D00B8941F /* Resources */,
+				DE37E3C0941F4A1A15B7F394 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -539,7 +648,6 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 552H65R858;
 						LastSwiftMigration = 1020;
-						TestTargetID = F75DCD7E1CD8F10D00B8941F;
 					};
 					F75DCD9D1CD8F10D00B8941F = {
 						CreatedOnToolsVersion = 7.3;
@@ -575,6 +683,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */,
+				F799D59622DFBDD700202FDB /* GoogleService-dev.plist in Resources */,
+				F799D59422DFBDB300202FDB /* GoogleService-beta.plist in Resources */,
+				F799D59822DFBDEE00202FDB /* GoogleService-prod.plist in Resources */,
 				F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */,
 				F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */,
 				F75DCD881CD8F10D00B8941F /* Main.storyboard in Resources */,
@@ -614,6 +725,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FF7C6AB1B3122D08FF29A97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftOverlays/SwiftOverlays.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
+				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOverlays.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86AFA7EE3E2770C827576DC4 /* [CP] Check Pods Manifest.lock */ = {
@@ -668,8 +843,6 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -681,6 +854,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftOverlays/SwiftOverlays.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
 				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -696,8 +870,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -709,6 +881,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOverlays.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -717,6 +890,107 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DE37E3C0941F4A1A15B7F394 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftOverlays/SwiftOverlays.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
+				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOverlays.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F799D58122DF6F7100202FDB /* Crashlytics (make sure last phase) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Crashlytics (make sure last phase)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		F799D5A522DFCB7900202FDB /* GoogleServices for Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "GoogleServices for Firebase";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Crashlytics, firebase analytics, etc all require the use of 1 GoogleService-Info.plist\n# file. You can configure it to work with others, but it's a pain and you lose features. \n# This method is just easier. \n#\n# Credits: https://stackoverflow.com/a/48789232/1486374\n\nPATH_TO_GOOGLE_PLISTS=\"${PROJECT_DIR}/iOSBlanky/Assets/Google Services\"\n\ncase \"${CONFIGURATION}\" in\n\n\"Debug\")\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-dev.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n\"Beta\")\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-beta.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n\"Release\")\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-prod.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n*)\n;;\nesac\n";
 		};
 		F7B674F81CD8F2BC007C42FC /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -730,7 +1004,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -740,29 +1014,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				F76835BF1F9ED0D500219B30 /* UIViewControllerExtensions.swift in Sources */,
-				F7A41B851FA530C500266B61 /* OnlineDataSource.swift in Sources */,
-				F76835DD1F9ED40100219B30 /* ReposDataSource.swift in Sources */,
+				F76835DD1F9ED40100219B30 /* ReposRepository.swift in Sources */,
 				F76835C71F9ED11E00219B30 /* RepoModel.swift in Sources */,
-				F76835E21F9ED6AB00219B30 /* StateData.swift in Sources */,
 				F76835E61F9F583F00219B30 /* BehaviorSubjectExtensions.swift in Sources */,
+				F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */,
+				F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */,
+				F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */,
 				F76835AE1F9ECED200219B30 /* GitHubAPI.swift in Sources */,
-				F76835E41F9F55F100219B30 /* StateDataCompoundBehaviorSubject.swift in Sources */,
+				F799D58422DF703100202FDB /* CrashReportingLogger.swift in Sources */,
 				F7906E6C1FA4CE9200638B2C /* DaoInstanceUtil.swift in Sources */,
-				F7D3B8D11E149B5F00F2C3CB /* AppConstants.swift in Sources */,
+				F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */,
 				F76835DA1F9ED3C200219B30 /* ReposViewModel.swift in Sources */,
+				F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */,
+				F785CC7A22D696FE00389076 /* DataState.swift in Sources */,
 				F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
-				F76835BB1F9ED0C800219B30 /* ListTransform.swift in Sources */,
 				F76835CA1F9ED12B00219B30 /* MainViewController.swift in Sources */,
-				F7A41B871FA531BB00266B61 /* LocalDataSource.swift in Sources */,
 				F76835C51F9ED0F000219B30 /* ErrorVo.swift in Sources */,
 				F76835CB1F9ED12B00219B30 /* BasePopoverViewController.swift in Sources */,
 				F7906E691FA4CD7C00638B2C /* RealmInstanceManager.swift in Sources */,
-				F7A41B811FA512E600266B61 /* GitHubUsernameDataSource.swift in Sources */,
-				F76835DF1F9ED42D00219B30 /* DataSource.swift in Sources */,
+				F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */,
+				F7A41B811FA512E600266B61 /* GitHubUsernameRepository.swift in Sources */,
 				F76835BE1F9ED0D500219B30 /* ControllerExtensions.swift in Sources */,
+				F799D58F22DFB64200202FDB /* Dependencies.swift in Sources */,
 				F76835B81F9ED0BB00219B30 /* UserCredsManager.swift in Sources */,
+				F799D5A722DFD15E00202FDB /* ConsoleLogger.swift in Sources */,
 				F76835B01F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift in Sources */,
+				F799D58722DF71BB00202FDB /* Di.swift in Sources */,
+				F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */,
+				F799D59A22DFC00600202FDB /* BuildFlavor.swift in Sources */,
 				F76835B91F9ED0BB00219B30 /* UserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,7 +1051,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */,
+				F7602FD922E224DB00FDB5F3 /* ConsoleLogger.swift in Sources */,
+				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
+				F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */,
+				F7602FD522E224D300FDB5F3 /* Dependencies.swift in Sources */,
+				F7602FDE22E224E000FDB5F3 /* BuildFlavor.swift in Sources */,
+				F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */,
+				F75968F922E225500076253B /* DiTests.swift in Sources */,
+				F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */,
 				F75DCD981CD8F10D00B8941F /* iOSBlankyTests.swift in Sources */,
+				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
+				F7602FD422E224D300FDB5F3 /* Di.swift in Sources */,
+				F7602FD622E224DB00FDB5F3 /* ActivityLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,6 +1223,7 @@
 			baseConfigurationReference = EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_FLAVOR = dev;
 				BUNDLE_ID_SUFFIX = .dev;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
@@ -951,6 +1244,7 @@
 			baseConfigurationReference = 1D3467C2DB09A6AC15A5089C /* Pods-iOSBlanky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_FLAVOR = prod;
 				BUNDLE_ID_SUFFIX = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
@@ -969,14 +1263,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF8D47C1E9C6CD4664FE3954 /* Pods-iOSBlankyTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 552H65R858;
 				INFOPLIST_FILE = iOSBlankyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSBlanky.app/iOSBlanky";
 			};
 			name = Debug;
 		};
@@ -984,14 +1276,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 68F63AD5A3F83EB1560CE5C0 /* Pods-iOSBlankyTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 552H65R858;
 				INFOPLIST_FILE = iOSBlankyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSBlanky.app/iOSBlanky";
 			};
 			name = Release;
 		};
@@ -1078,6 +1368,7 @@
 			baseConfigurationReference = 0F33F851F71D21025F5CEFB0 /* Pods-iOSBlanky.beta.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_FLAVOR = beta;
 				BUNDLE_ID_SUFFIX = .beta;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 552H65R858;
@@ -1096,14 +1387,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D33639E855A21D931067F6E5 /* Pods-iOSBlankyTests.beta.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 552H65R858;
 				INFOPLIST_FILE = iOSBlankyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOSBlanky.app/iOSBlanky";
 			};
 			name = Beta;
 		};

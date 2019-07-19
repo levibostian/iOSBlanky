@@ -9,11 +9,11 @@
 import Moya
 import Result
 
-public struct MoyaAppendHeadersPlugin: PluginType {
+struct MoyaAppendHeadersPlugin: PluginType {
     
-    public func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         var request = request
-        if let urlString = request.url?.absoluteString, urlString.hasPrefix(AppConstants.apiEndpoint) {
+        if let urlString = request.url?.absoluteString, urlString.hasPrefix(Constants.apiEndpoint) {
             if let authToken = UserCredsManager.authToken {
                 request.setValue(String(format: "Bearer %@", authToken), forHTTPHeaderField: "Authorization")
             }
@@ -21,7 +21,7 @@ public struct MoyaAppendHeadersPlugin: PluginType {
         return request
     }
     
-    public func didReceive(_ result: Result<Moya.Response, Moya.MoyaError>, target: TargetType) {
+    func didReceive(_ result: Result<Moya.Response, Moya.MoyaError>, target: TargetType) {
     }
     
 }

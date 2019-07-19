@@ -9,31 +9,46 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Teller
+
+struct GitHubUsernameDataSourceRequirements: LocalRepositoryGetDataRequirements {
+}
 
 typealias GitHubUsername = String
 
-class GitHubUsernameDataSource: BaseLocalDataSource<GitHubUsername> {
-    
-    fileprivate let githubUsernameUserDefaultsKey = "githubUsernameUserDefaultsKey"
-    
-    override func saveData(_ data: GitHubUsername?) {
-        UserDefaults.standard.set(data, forKey: self.githubUsernameUserDefaultsKey)
+class GitHubUsernameDataSource: LocalRepositoryDataSource {
+
+    typealias Cache = GitHubUsername
+    typealias GetDataRequirements = GitHubUsernameDataSourceRequirements
+
+    var value: GitHubUsername? {
+        return UserDefaults.standard.string(forKey: githubUsernameUserDefaultsKey)
     }
     
-    override func observeLocalData() -> Observable<GitHubUsername> {
+    fileprivate let githubUsernameUserDefaultsKey = "githubUsernameUserDefaultsKey"
+
+    func saveData(data: GitHubUsername) {
+        UserDefaults.standard.set(data, forKey: self.githubUsernameUserDefaultsKey)
+    }
+
+    func observeCachedData() -> Observable<GitHubUsername> {
         return UserDefaults.standard.rx.observe(String.self, githubUsernameUserDefaultsKey)
             .map({ (username: String?) -> String in
                 guard let username = username else { return "" }
                 return username
             })
     }
-    
-    override func isDataEmpty(_ data: GitHubUsername) -> Bool {
+
+    func isDataEmpty(data: GitHubUsername) -> Bool {
         return data.count <= 0
     }
     
-    override func getValue() -> GitHubUsername? {
-        return UserDefaults.standard.string(forKey: githubUsernameUserDefaultsKey)
+}
+
+class GitHubUsernameRepository: LocalRepository<GitHubUsernameDataSource> {
+
+    convenience init() {
+        self.init(dataSource: GitHubUsernameDataSource())
     }
-    
+
 }

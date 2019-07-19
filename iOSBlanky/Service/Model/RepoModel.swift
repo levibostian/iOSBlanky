@@ -7,20 +7,17 @@
 //
 
 import RealmSwift
-import ObjectMapper
 
-class RepoModel: Object, Mappable {
+class RepoModel: Object, Codable {
     
     @objc dynamic var fullName: String = ""
     @objc dynamic var repoDescription: String = ""
     
-    required convenience init?(map: Map) {
-        self.init()
+}
+
+extension RepoModel {
+    enum CodingKeys: String, CodingKey {
+        case fullName
+        case repoDescription = "description"
     }
-    
-    func mapping(map: Map) {
-        fullName <- map["full_name"]
-        repoDescription <- map["description"]
-    }
-    
 }

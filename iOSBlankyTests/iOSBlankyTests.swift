@@ -22,6 +22,7 @@ class iOSBlankyTests: XCTestCase {
     }
     
     func testExample() {
+        XCTAssertEqual(BuildFlavor.dev.description, "dfev")
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

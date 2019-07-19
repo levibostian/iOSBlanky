@@ -29,44 +29,40 @@ class MainViewController: UIViewController {
         self.goButton.isEnabled = false
         
         reposViewModel.observeGitHubUsername()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (stateData: StateData<GitHubUsername>) in
-                switch stateData.localDataState() {
-                case .isEmpty:
+            .subscribe(onNext: { (stateData: StateLocalData<GitHubUsername>) in
+                switch stateData.state() {
+                case .isEmpty?:
                     self.goButton.isEnabled = false
-                case .dataExists(let data):
+                case .data(let username)?:
                     self.goButton.isEnabled = true
-                    self.usernameTextField.text = data
-                case .errorFound(let error):
-                    self.goButton.isEnabled = true
-                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alert, animated: true, completion: nil)
+                    self.usernameTextField.text = username
+                case .none: break
                 }
             }).disposed(by: disposeBag)
         
-        reposViewModel.observeRepos()
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { (stateData: StateData<[RepoModel]>) in
-                switch stateData.onlineDataState() {
-                case .isEmpty:
+        reposViewModel.observeRepos()            
+            .subscribe(onNext: { (stateData: StateOnlineData<[RepoModel]>) in
+                switch stateData.cacheState() {
+                case .cacheEmpty?:
                     self.stateOfDataLabel.text = "User does not have any repos."
-                case .isLoading:
+                case .cacheData(let repos, _)?:
+                    self.stateOfDataLabel.text = "Num of repos for user: \(String(repos.count))"
+                case .none: break
+                }
+                switch stateData.noCacheState() {
+                case .noCache?:
+                    self.stateOfDataLabel.text = "User does not have any repos."
+                case .firstFetchOfData?:
                     self.stateOfDataLabel.text = "Loading repos for user..."
-                case .isFetchingFreshData:
+                default: break
+                }
+                switch stateData.fetchingFreshDataState() {
+                case .fetchingFreshCacheData?:
                     self.fetchingDataStatusLabel.text = "Fetching fresh data."
-                case .doneFetchingFreshData(let errorCausedDoneFetching):
+                case .finishedFetchingFreshCacheData(let errorDuringFetch)?:
                     self.fetchingDataStatusLabel.text = "Done fetching data."
-                    if errorCausedDoneFetching { self.fetchingDataStatusLabel.text = "Done fetching data because of an error." }
-                case .dataExists(let data):
-                    self.stateOfDataLabel.text = "Num of repos for user: \(String(data.count))"
-                case .errorFound(let error):
-                    self.stateOfDataLabel.text = ""
-                    let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel) { _ in })
-                    self.present(alert, animated: true, completion: nil)
-                case .noState:
-                    break
+                    if errorDuringFetch != nil { self.fetchingDataStatusLabel.text = "Done fetching data because of an error." }
+                case .none: break
                 }
             }).disposed(by: disposeBag)
         
