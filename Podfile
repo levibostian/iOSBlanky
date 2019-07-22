@@ -8,10 +8,8 @@ inhibit_all_warnings!
 
 def commonDepencencies
     pod 'SwiftLint'
-    pod 'SwiftOverlays', '~> 5.0.1'
-    pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'    
+    pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'
     pod 'RxCocoa', '~> 5.0.0'
-    pod 'RxRealm', '~> 1.0.0'
 
     pod 'Swinject', '~> 2.6.2'
 
@@ -27,10 +25,11 @@ def commonDepencencies
     pod 'KeychainAccess', '~> 3.2.0'
     pod 'DZNEmptyDataSet', '~> 1.8.1'
     pod 'IQKeyboardManagerSwift', '~> 6.4.0'
-    pod 'Wendy', '~> 0.1.0-alpha'
+    pod 'Wendy', :git => "https://github.com/levibostian/Wendy-iOS", :branch => 'swift5' #'~> 0.1.0-alpha'
     pod 'SnapKit', '~> 5.0.0'
-    pod 'Teller', :git => 'https://github.com/levibostian/Teller-iOS', :branch => 'master' # '~> 0.2.2-alpha'
-    pod 'RealmSwift', '~> 3.17.0'
+    pod 'Teller', :git => "https://github.com/levibostian/teller-ios", :branch => "swift5-result" # '~> 0.3.1-alpha'
+
+    pod 'WoodPeckeriOS', :configurations => ['Debug']
 end 
 
 target 'iOSBlanky' do

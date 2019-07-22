@@ -1,0 +1,8 @@
+"error_401_response_code" = "Sorry! You must login to your account, and try again.";
+"error_500_600_response_code" = "Sorry! Our system is currently not working. Come back in a few minutes and try again.";
+"error_network_connection_issue" = "There is an issue with your Internet connection. Fix it, then try again.";
+"generic_network_error_message" = "There was an issue with your Internet connection. Try again.";
+"github_username" = "GitHub username";
+"how_many_repos_button_text" = "Get number of repos";
+"no_internet_connection_error_message" = "You do not have an Internet connection. Connect, then try again.";
+"unhandled_http_response_code" = "Sorry! There was an error. The team has been notified. Please, try again later.";

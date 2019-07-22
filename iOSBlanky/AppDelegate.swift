@@ -18,12 +18,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 
+        window = UIWindow(frame: UIScreen.main.bounds)
+
         let iqKeyboardManager = IQKeyboardManager.shared
         iqKeyboardManager.shouldResignOnTouchOutside = true
         iqKeyboardManager.enableAutoToolbar = false
         iqKeyboardManager.enable = true
+
+        goToMainPartOfApp()
         
         return true
+    }
+
+    fileprivate func goToMainPartOfApp() {
+        let viewController = MainViewController()
+
+        self.window?.rootViewController = getNavigationController(rootViewController: viewController)
+        self.window?.makeKeyAndVisible()
+    }
+
+    fileprivate func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
+        let view = UINavigationController(rootViewController: rootViewController)
+
+        view.navigationBar.barTintColor = UIColor.gray
+        view.navigationBar.tintColor = UIColor.white
+        view.navigationBar.isTranslucent = false
+        view.navigationBar.barStyle = UIBarStyle.black // makes status bar text color white.
+
+        let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.darkText]
+        view.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key: Any]
+
+        return view
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

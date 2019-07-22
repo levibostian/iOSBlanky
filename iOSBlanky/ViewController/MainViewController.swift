@@ -9,39 +9,92 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import Moya
+import SnapKit
 
 class MainViewController: UIViewController {
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var goButton: UIButton!
-    @IBOutlet weak var stateOfDataLabel: UILabel!
-    @IBOutlet weak var fetchingDataStatusLabel: UILabel!
+
+    fileprivate var didSetupConstraints = false
+
+    let usernameTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = NSLocalizedString("github_username", comment: "")
+        view.keyboardType = .default
+        view.spellCheckingType = .no
+        view.autocorrectionType = .no
+        view.autocapitalizationType = .none
+        view.borderStyle = .roundedRect
+        return view
+    }()
+
+    let goButton: UIButton = {
+        let view = UIButton()
+        view.setTitle(NSLocalizedString("how_many_repos_button_text", comment: ""), for: .normal)
+        view.setTitleColor(UIColor.black, for: .normal)
+        return view
+    }()
+
+    let stateOfDataLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = UIColor.darkText
+        view.font = view.font.withSize(17)
+        return view
+    }()
+
+    let fetchingDataStatusLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = UIColor.darkText
+        view.font = view.font.withSize(17)
+        return view
+    }()
+
+    let rootView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.distribution = .equalSpacing
+        view.alignment = .center
+        view.spacing = 18
+        return view
+    }()
     
     private let disposeBag = DisposeBag()
-    private let reposViewModel: ReposViewModel = ReposViewModel()
+    private let reposViewModel = Di.inject.reposViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.stateOfDataLabel.text = ""
-        self.fetchingDataStatusLabel.text = ""
-        self.goButton.isEnabled = false
-        
+
+        view.backgroundColor = UIColor.white
+
+        rootView.addArrangedSubviews([
+            usernameTextField,
+            goButton,
+            stateOfDataLabel,
+            fetchingDataStatusLabel])
+
+        view.addSubview(rootView)
+        view.setNeedsUpdateConstraints()
+
+        setupViews()
+    }
+
+    private func setupViews() {
+        stateOfDataLabel.text = ""
+        fetchingDataStatusLabel.text = ""
+        goButton.isEnabled = false
+
+        goButton.addTarget(self, action: #selector(howManyReposButtonPressed), for: .touchUpInside)
+
         reposViewModel.observeGitHubUsername()
             .subscribe(onNext: { (stateData: StateLocalData<GitHubUsername>) in
                 switch stateData.state() {
-                case .isEmpty?:
-                    self.goButton.isEnabled = false
+                case .isEmpty?: break
                 case .data(let username)?:
-                    self.goButton.isEnabled = true
                     self.usernameTextField.text = username
                 case .none: break
                 }
             }).disposed(by: disposeBag)
-        
-        reposViewModel.observeRepos()            
-            .subscribe(onNext: { (stateData: StateOnlineData<[RepoModel]>) in
+
+        reposViewModel.observeRepos()
+            .subscribe(onNext: { (stateData: StateOnlineData<[Repo]>) in
                 switch stateData.cacheState() {
                 case .cacheEmpty?:
                     self.stateOfDataLabel.text = "User does not have any repos."
@@ -65,7 +118,7 @@ class MainViewController: UIViewController {
                 case .none: break
                 }
             }).disposed(by: disposeBag)
-        
+
         usernameTextField.rx.text.asObservable()
             .map { (text: String?) -> String? in
                 self.goButton.isEnabled = text != nil && !text!.isEmpty
@@ -73,9 +126,26 @@ class MainViewController: UIViewController {
             }
             .subscribe()
             .disposed(by: disposeBag)
-    }    
+    }
+
+    override func updateViewConstraints() {
+        if !didSetupConstraints {
+            rootView.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+                make.leading.equalToSuperview().offset(40)
+                make.trailing.equalToSuperview().inset(40)
+            }
+            usernameTextField.snp.makeConstraints { (make) in
+                make.width.equalToSuperview()
+            }
+
+            didSetupConstraints = true
+        }
+
+        super.updateViewConstraints()
+    }
     
-    @IBAction func howManyReposButtonPressed(_ sender: UIButton) {
+    @objc func howManyReposButtonPressed(_ sender: UIButton) {
         reposViewModel.setGitHubUsernameForRepos(usernameTextField.text!)
     }
     

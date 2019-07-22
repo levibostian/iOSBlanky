@@ -1,0 +1,87 @@
+//
+//  ReposDataSource.swift
+//  iOSBlanky
+//
+//  Created by Levi Bostian on 10/23/17.
+//  Copyright © 2017 Curiosity IO. All rights reserved.
+//
+
+import Foundation
+import RxSwift
+import Teller
+
+class ReposDataSourceRequirements: OnlineRepositoryGetDataRequirements {
+
+    let githubUsername: String
+    var tag: OnlineRepositoryGetDataRequirements.Tag {
+        return "Repos for GitHub username: \(githubUsername)"
+    }
+
+    init(githubUsername: String) {
+        self.githubUsername = githubUsername
+    }
+}
+
+enum ResposApiError: Error, LocalizedError {
+    case usernameDoesNotExist(username: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case .usernameDoesNotExist(let username):
+            return "The GitHub username \(username) does not exist."// comment: "GitHub returned 404 which means user does not exist.")
+        }
+    }
+}
+
+class ReposDataSource: OnlineRepositoryDataSource {
+
+    typealias Cache = [Repo]
+    typealias GetDataRequirements = ReposDataSourceRequirements
+    typealias FetchResult = [Repo]
+
+    fileprivate let githubApi: GitHubAPI
+    fileprivate let db: Database
+
+    fileprivate var observeCache: PublishSubject<[Repo]>?
+
+    init(githubApi: GitHubAPI, db: Database) {
+        self.githubApi = githubApi
+        self.db = db
+    }
+
+    var maxAgeOfData: Period = Period(unit: 3, component: .day)
+
+    func fetchFreshData(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo]>> {
+        return githubApi.getUserRepos(username: requirements.githubUsername)
+    }
+
+    func saveData(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) {
+        self.db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
+    }
+
+    private func newDataSaved(forUsername: GitHubUsername) {
+        self.observeCache?.on(.next(self.db.repositoryDao.getRepos(forUsername: forUsername)))
+    }
+
+    func observeCachedData(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
+        self.observeCache?.dispose()
+        self.observeCache = PublishSubject.init()
+
+        newDataSaved(forUsername: requirements.githubUsername)
+
+        return self.observeCache!
+    }
+
+    func isDataEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {
+        return cache.isEmpty
+    }
+    
+}
+
+class ReposRepository: OnlineRepository<ReposDataSource> {
+
+    required init(dataSource: ReposDataSource) {
+        super.init(dataSource: dataSource)
+    }
+
+}

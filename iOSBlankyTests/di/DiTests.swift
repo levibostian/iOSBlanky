@@ -28,10 +28,14 @@ class DiTests: XCTestCase {
 
     // MARK - property injectors. This works because an exception will be thrown when trying to force cast
     func test_activityLogger() {
-        XCTAssertNotNil(di.activityLogger)
+        XCTAssertNotNil(Di.inject.activityLogger)
     }
 
-    func testDependencyGraph() {
+    func test_reposViewModel() {
+        XCTAssertNotNil(Di.inject.reposViewModel)
+    }
+
+    func testDependencyGraphComplete() {
         for dependency in Dependency.allCases {
             XCTAssertNotNil(di.inject(dependency), "Dependency: \(dependency) not able to resolve in dependency graph")
         }
