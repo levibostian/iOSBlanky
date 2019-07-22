@@ -11,6 +11,10 @@
 		41CFE39E9D54876C79774913 /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E732374E5503E88E49521 /* Pods_iOSBlankyUITests.framework */; };
 		672692D4097317A7D5DA0CD7 /* Pods_iOSBlanky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */; };
 		F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */; };
+		F7096CF422E66BD1004389A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* MainViewController.swift */; };
+		F7096CF522E66BD1004389A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* MainViewController.swift */; };
+		F7096CF622E66BD1004389A5 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */; };
+		F7096CF722E66BD1004389A5 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */; };
 		F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED8771F47854800AD018C /* Moya.framework */; };
 		F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED87B1F47854800AD018C /* RxCocoa.framework */; };
 		F712CD9922E3B0BC00272FF5 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712CD9822E3B0BC00272FF5 /* FileManagerExtensions.swift */; };
@@ -60,8 +64,6 @@
 		F76835BE1F9ED0D500219B30 /* MoyaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835BC1F9ED0D500219B30 /* MoyaExtensions.swift */; };
 		F76835BF1F9ED0D500219B30 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835BD1F9ED0D500219B30 /* UIViewControllerExtensions.swift */; };
 		F76835C71F9ED11E00219B30 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C61F9ED11E00219B30 /* Repo.swift */; };
-		F76835CA1F9ED12B00219B30 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C81F9ED12B00219B30 /* MainViewController.swift */; };
-		F76835CB1F9ED12B00219B30 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C91F9ED12B00219B30 /* BasePopoverViewController.swift */; };
 		F76835DA1F9ED3C200219B30 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835D91F9ED3C200219B30 /* ReposViewModel.swift */; };
 		F76835DD1F9ED40100219B30 /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835DC1F9ED40100219B30 /* ReposRepository.swift */; };
 		F76DCDE322E2377900572E67 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */; };
@@ -154,6 +156,8 @@
 		EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlanky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky.debug.xcconfig"; sourceTree = "<group>"; };
 		F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya_ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya-ObjectMapper/Moya_ObjectMapper.framework"; sourceTree = "<group>"; };
 		F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpLoggerMoyaPlugin.swift; sourceTree = "<group>"; };
+		F7096CF222E66BD0004389A5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePopoverViewController.swift; sourceTree = "<group>"; };
 		F70ED8771F47854800AD018C /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya/Moya.framework"; sourceTree = "<group>"; };
 		F70ED87A1F47854800AD018C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		F70ED87B1F47854800AD018C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
@@ -193,8 +197,6 @@
 		F76835BC1F9ED0D500219B30 /* MoyaExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaExtensions.swift; sourceTree = "<group>"; };
 		F76835BD1F9ED0D500219B30 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		F76835C61F9ED11E00219B30 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
-		F76835C81F9ED12B00219B30 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F76835C91F9ED12B00219B30 /* BasePopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePopoverViewController.swift; sourceTree = "<group>"; };
 		F76835D91F9ED3C200219B30 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
 		F76835DC1F9ED40100219B30 /* ReposRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposRepository.swift; sourceTree = "<group>"; };
 		F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
@@ -373,6 +375,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F7096CF022E66BD0004389A5 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				F7096CF122E66BD0004389A5 /* viewcontroller */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		F7096CF122E66BD0004389A5 /* viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				F7096CF222E66BD0004389A5 /* MainViewController.swift */,
+				F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */,
+			);
+			path = viewcontroller;
+			sourceTree = "<group>";
+		};
 		F72043E822E4F19500DE7EA9 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,13 +421,6 @@
 				F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */,
 			);
 			path = api;
-			sourceTree = "<group>";
-		};
-		F7338AB11CD97861009BBC0A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F7338AB61CD979BE009BBC0A /* vo */ = {
@@ -444,18 +456,16 @@
 		F75DCD811CD8F10D00B8941F /* iOSBlanky */ = {
 			isa = PBXGroup;
 			children = (
-				F76DCDDB22E2320A00572E67 /* ui */,
+				F7096CF022E66BD0004389A5 /* ui */,
 				F799D58522DF71B000202FDB /* di */,
-				F76835B11F9ECF9A00219B30 /* Assets */,
 				F76835AC1F9ECDC700219B30 /* service */,
-				F7D3B8FF1E14A70F00F2C3CB /* Manager */,
 				F7D3B8DA1E14A06700F2C3CB /* extension */,
-				F7EF619C1CD95CD600721FE4 /* ViewController */,
 				F75DCD821CD8F10D00B8941F /* AppDelegate.swift */,
 				F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */,
 				F75DCD8E1CD8F10D00B8941F /* Info.plist */,
 				F7D3B8D01E149B5F00F2C3CB /* Constants.swift */,
 				F71D087422E24FDE000B1577 /* Localizable.strings */,
+				F76835B11F9ECF9A00219B30 /* Assets */,
 			);
 			path = iOSBlanky;
 			sourceTree = "<group>";
@@ -498,17 +508,17 @@
 		F76835AC1F9ECDC700219B30 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				F7D3B8FF1E14A70F00F2C3CB /* manager */,
 				F7C0FF2D22E5167B009E1203 /* service */,
 				F7C0FF0D22E50237009E1203 /* error */,
 				F727FB2C22E279DE00E56E2C /* db */,
 				F799D58222DF702200202FDB /* log */,
 				F785CC7822D696E400389076 /* type */,
 				F785CC7722D695B900389076 /* repository */,
-				F7338AB11CD97861009BBC0A /* Model */,
 				F7338AB61CD979BE009BBC0A /* vo */,
 				F7338AAE1CD9755D009BBC0A /* api */,
 				F7DF7B1E22D686A200DBEF33 /* adapter */,
-				F76835D81F9ED3A100219B30 /* ViewModel */,
+				F76835D81F9ED3A100219B30 /* viewmodel */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -523,27 +533,12 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		F76835D81F9ED3A100219B30 /* ViewModel */ = {
+		F76835D81F9ED3A100219B30 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
 				F76835D91F9ED3C200219B30 /* ReposViewModel.swift */,
 			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F76DCDDB22E2320A00572E67 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				F76DCDDC22E2321500572E67 /* view */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
-		F76DCDDC22E2321500572E67 /* view */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = view;
+			path = viewmodel;
 			sourceTree = "<group>";
 		};
 		F785CC7722D695B900389076 /* repository */ = {
@@ -647,13 +642,13 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
-		F7D3B8FF1E14A70F00F2C3CB /* Manager */ = {
+		F7D3B8FF1E14A70F00F2C3CB /* manager */ = {
 			isa = PBXGroup;
 			children = (
 				F76835B61F9ED0BB00219B30 /* UserCredsManager.swift */,
 				F76835B71F9ED0BB00219B30 /* UserManager.swift */,
 			);
-			path = Manager;
+			path = manager;
 			sourceTree = "<group>";
 		};
 		F7DF7B1E22D686A200DBEF33 /* adapter */ = {
@@ -662,15 +657,6 @@
 				F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */,
 			);
 			path = adapter;
-			sourceTree = "<group>";
-		};
-		F7EF619C1CD95CD600721FE4 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				F76835C91F9ED12B00219B30 /* BasePopoverViewController.swift */,
-				F76835C81F9ED12B00219B30 /* MainViewController.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1138,6 +1124,7 @@
 				F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */,
 				F76835AE1F9ECED200219B30 /* GitHubTargetType.swift in Sources */,
 				F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */,
+				F7096CF622E66BD1004389A5 /* BasePopoverViewController.swift in Sources */,
 				F712CD9922E3B0BC00272FF5 /* FileManagerExtensions.swift in Sources */,
 				F799D58422DF703100202FDB /* CrashReportingLogger.swift in Sources */,
 				F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */,
@@ -1146,10 +1133,9 @@
 				F785CC7A22D696FE00389076 /* DataState.swift in Sources */,
 				F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
+				F7096CF422E66BD1004389A5 /* MainViewController.swift in Sources */,
 				F7C0FF1622E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F7C0FF2822E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
-				F76835CA1F9ED12B00219B30 /* MainViewController.swift in Sources */,
-				F76835CB1F9ED12B00219B30 /* BasePopoverViewController.swift in Sources */,
 				F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */,
 				F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F7C0FF1F22E50847009E1203 /* UnauthorizedError.swift in Sources */,
@@ -1190,6 +1176,7 @@
 				F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */,
 				F7602FD522E224D300FDB5F3 /* Dependencies.swift in Sources */,
 				F72043F722E4F3CB00DE7EA9 /* JsonAdapter.swift in Sources */,
+				F7096CF722E66BD1004389A5 /* BasePopoverViewController.swift in Sources */,
 				F712CDA022E3B4CD00272FF5 /* SwinjectExtensions.swift in Sources */,
 				F7602FDE22E224E000FDB5F3 /* BuildFlavor.swift in Sources */,
 				F72043E522E4EE2E00DE7EA9 /* GitHubUsernameRepository.swift in Sources */,
@@ -1209,6 +1196,7 @@
 				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
 				F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F72043E622E4EE8D00DE7EA9 /* ReposViewModel.swift in Sources */,
+				F7096CF522E66BD1004389A5 /* MainViewController.swift in Sources */,
 				F7C0FF2622E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,
 				F7602FD422E224D300FDB5F3 /* Di.swift in Sources */,
 				F72043F622E4F35400DE7EA9 /* GitHubTargetType.swift in Sources */,
