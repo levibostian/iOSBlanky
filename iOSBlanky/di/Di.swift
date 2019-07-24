@@ -27,12 +27,22 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
         return container.inject(.reposViewModel)
     }
 
+    var remoteConfig: RemoteConfigProvider {
+        return container.inject(.remoteConfig)
+    }
+
+    var userManager: UserManager {
+        return container.inject(.userManager)
+    }
+
 }
 
 // Exists for when using
 protocol ConvenientInject {
     var activityLogger: ActivityLogger { get }
     var reposViewModel: ReposViewModel { get }
+    var remoteConfig: RemoteConfigProvider { get }
+    var userManager: UserManager { get }
 }
 
 class DiContainer {
@@ -88,6 +98,12 @@ class DiContainer {
                                   activityLogger: self.inject(.activityLogger, container),
                                   eventBus: self.inject(.eventBus, container))
         }
+        self.container.register(RemoteConfigProvider.self) { _ in
+            FirebaseRemoteConfig()
+        }
+        self.container.register(UserManager.self) { _ in
+            UserManager()
+        }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
@@ -114,6 +130,8 @@ class DiContainer {
         case .database: return resolver.resolve(Database.self)! as Any
         case .eventBus: return resolver.resolve(EventBus.self)! as Any
         case .moyaResponseProcessor: return resolver.resolve(MoyaResponseProcessor.self)! as Any
+        case .remoteConfig: return resolver.resolve(RemoteConfigProvider.self)! as Any
+        case .userManager: return resolver.resolve(UserManager.self)! as Any
         }
     }
 

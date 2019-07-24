@@ -1,0 +1,20 @@
+# This file contains is the default arguments for `sync_code_signing` (aka: `match`) action. 
+#
+# There are instructions for what you need to do before you can use use fastlane match. 
+# * Create a new git repo (private) on GitHub where you will store all of the certificates, profiles, etc. from match. 
+# * Generate a long, random string that you will use to encrypt your files. Store this string in Travis-CI as an environment variable secret, `MATCH_PASSWORD`. 
+
+# Where certs/keys/profiles are stored. 
+storage_mode "git"
+git_url "git@github.com:username/AppName-iOS-certs.git"
+git_full_name "Fastlane bot"
+git_user_email ENV["ADMIN_EMAIL"]
+git_branch "master" # branch in repo where data is stored. 
+readonly true 
+# Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'
+force_for_new_devices true
+type "development" # Can be: appstore, adhoc, enterprise or development
+platform "ios"
+
+# For all available options run `fastlane match --help`
+# Remove the # in the beginning of the line to enable the other options

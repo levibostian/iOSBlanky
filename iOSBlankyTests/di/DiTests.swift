@@ -35,6 +35,10 @@ class DiTests: XCTestCase {
         XCTAssertNotNil(Di.inject.reposViewModel)
     }
 
+    func test_remoteConfig() {
+        XCTAssertNotNil(Di.inject.remoteConfig)
+    }
+
     func testDependencyGraphComplete() {
         for dependency in Dependency.allCases {
             XCTAssertNotNil(di.inject(dependency), "Dependency: \(dependency) not able to resolve in dependency graph")

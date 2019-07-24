@@ -15,6 +15,13 @@
 		F7096CF522E66BD1004389A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* MainViewController.swift */; };
 		F7096CF622E66BD1004389A5 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */; };
 		F7096CF722E66BD1004389A5 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */; };
+		F7096CF922E66DA5004389A5 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF822E66DA5004389A5 /* DateExtensions.swift */; };
+		F7096CFA22E66DA5004389A5 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF822E66DA5004389A5 /* DateExtensions.swift */; };
+		F7096CFC22E66E3D004389A5 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CFB22E66E3D004389A5 /* UIControlExtensions.swift */; };
+		F7096CFD22E66E3D004389A5 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CFB22E66E3D004389A5 /* UIControlExtensions.swift */; };
+		F7096CFE22E67063004389A5 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */; };
+		F7096D0022E7AE31004389A5 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */; };
+		F7096D0122E7AE31004389A5 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */; };
 		F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED8771F47854800AD018C /* Moya.framework */; };
 		F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F70ED87B1F47854800AD018C /* RxCocoa.framework */; };
 		F712CD9922E3B0BC00272FF5 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712CD9822E3B0BC00272FF5 /* FileManagerExtensions.swift */; };
@@ -36,6 +43,10 @@
 		F72043F622E4F35400DE7EA9 /* GitHubTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */; };
 		F72043F722E4F3CB00DE7EA9 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
 		F72043FB22E4F67D00DE7EA9 /* MoyaExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835BC1F9ED0D500219B30 /* MoyaExtensions.swift */; };
+		F721AB4D22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
+		F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
+		F721AB5022E7B85F00F77F66 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */; };
+		F721AB5122E7B85F00F77F66 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */; };
 		F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F727FB3122E2805200E56E2C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727FB3022E2805200E56E2C /* CoreDataManager.swift */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
@@ -158,6 +169,9 @@
 		F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpLoggerMoyaPlugin.swift; sourceTree = "<group>"; };
 		F7096CF222E66BD0004389A5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePopoverViewController.swift; sourceTree = "<group>"; };
+		F7096CF822E66DA5004389A5 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		F7096CFB22E66E3D004389A5 /* UIControlExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
+		F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		F70ED8771F47854800AD018C /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya/Moya.framework"; sourceTree = "<group>"; };
 		F70ED87A1F47854800AD018C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Result/Result.framework"; sourceTree = "<group>"; };
 		F70ED87B1F47854800AD018C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxCocoa/RxCocoa.framework"; sourceTree = "<group>"; };
@@ -167,6 +181,8 @@
 		F712CDA222E3BCBC00272FF5 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		F712CDA522E3BD7B00272FF5 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
 		F71D087322E24FDE000B1577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FirebaseRemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -626,6 +642,8 @@
 			isa = PBXGroup;
 			children = (
 				F7C0FF2E22E51689009E1203 /* EventBus.swift */,
+				F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */,
+				F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -638,6 +656,9 @@
 				F76835BD1F9ED0D500219B30 /* UIViewControllerExtensions.swift */,
 				F712CD9822E3B0BC00272FF5 /* FileManagerExtensions.swift */,
 				F712CD9E22E3B49000272FF5 /* SwinjectExtensions.swift */,
+				F7096CF822E66DA5004389A5 /* DateExtensions.swift */,
+				F7096CFB22E66E3D004389A5 /* UIControlExtensions.swift */,
+				F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -781,6 +802,7 @@
 				F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */,
 				F799D59622DFBDD700202FDB /* GoogleService-dev.plist in Resources */,
 				F799D59422DFBDB300202FDB /* GoogleService-beta.plist in Resources */,
+				F721AB4D22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F71D087222E24FDE000B1577 /* Localizable.strings in Resources */,
 				F799D59822DFBDEE00202FDB /* GoogleService-prod.plist in Resources */,
 				F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */,
@@ -792,6 +814,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,10 +1139,12 @@
 				F7C0FF1C22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7C0FF2222E5086C009E1203 /* UnhandledHttpResponseError.swift in Sources */,
 				F76835C71F9ED11E00219B30 /* Repo.swift in Sources */,
+				F721AB5022E7B85F00F77F66 /* URLExtensions.swift in Sources */,
 				F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */,
 				F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */,
 				F712CDA322E3BCBC00272FF5 /* Database.swift in Sources */,
 				F712CD9F22E3B49000272FF5 /* SwinjectExtensions.swift in Sources */,
+				F7096CFC22E66E3D004389A5 /* UIControlExtensions.swift in Sources */,
 				F712CDA622E3BD7B00272FF5 /* GitHubAPI.swift in Sources */,
 				F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */,
 				F76835AE1F9ECED200219B30 /* GitHubTargetType.swift in Sources */,
@@ -1132,12 +1157,14 @@
 				F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F785CC7A22D696FE00389076 /* DataState.swift in Sources */,
 				F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */,
+				F7096CF922E66DA5004389A5 /* DateExtensions.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
 				F7096CF422E66BD1004389A5 /* MainViewController.swift in Sources */,
 				F7C0FF1622E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F7C0FF2822E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
 				F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */,
 				F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */,
+				F7096D0022E7AE31004389A5 /* RemoteConfig.swift in Sources */,
 				F7C0FF1F22E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7A41B811FA512E600266B61 /* GitHubUsernameRepository.swift in Sources */,
 				F7C0FF2F22E51689009E1203 /* EventBus.swift in Sources */,
@@ -1164,6 +1191,7 @@
 				F7C0FF1A22E505F4009E1203 /* ConflictResponseError.swift in Sources */,
 				F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */,
 				F712CD9D22E3B40D00272FF5 /* FileManagerExtensions.swift in Sources */,
+				F7096CFD22E66E3D004389A5 /* UIControlExtensions.swift in Sources */,
 				F7C0FF1D22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7C0FF3222E660CC009E1203 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F7C0FF2922E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
@@ -1171,6 +1199,7 @@
 				F712CDA122E3B86600272FF5 /* RepositoryDao.swift in Sources */,
 				F7C0FF3422E66100009E1203 /* UserCredsManager.swift in Sources */,
 				F7602FD922E224DB00FDB5F3 /* ConsoleLogger.swift in Sources */,
+				F721AB5122E7B85F00F77F66 /* URLExtensions.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */,
@@ -1190,11 +1219,14 @@
 				F712CD9C22E3B3A700272FF5 /* CoreDataManager.swift in Sources */,
 				F75968F922E225500076253B /* DiTests.swift in Sources */,
 				F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */,
+				F7096CFA22E66DA5004389A5 /* DateExtensions.swift in Sources */,
 				F712CDA422E3BCBC00272FF5 /* Database.swift in Sources */,
 				F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
 				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
+				F7096CFE22E67063004389A5 /* UIStackViewExtensions.swift in Sources */,
 				F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
+				F7096D0122E7AE31004389A5 /* RemoteConfig.swift in Sources */,
 				F72043E622E4EE8D00DE7EA9 /* ReposViewModel.swift in Sources */,
 				F7096CF522E66BD1004389A5 /* MainViewController.swift in Sources */,
 				F7C0FF2622E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,

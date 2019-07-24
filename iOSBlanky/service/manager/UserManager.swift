@@ -11,8 +11,8 @@ import Foundation
 class UserManager { 
     
     fileprivate static let userIdKey: String = "userIdKey"
-    
-    static var userId: Int? {
+
+    var userId: Int? {
         get {
             let userIdUserDefaults = UserDefaults.standard.integer(forKey: userIdKey)
             return userIdUserDefaults == 0 ? nil : userIdUserDefaults
@@ -22,7 +22,7 @@ class UserManager {
         }
     }
     
-    class func isUserLoggedIn() -> Bool {
+    func isUserLoggedIn() -> Bool {
         return userId != 0
     }
     
