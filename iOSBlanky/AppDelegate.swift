@@ -1,19 +1,10 @@
-//
-//  AppDelegate.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 5/3/16.
-//  Copyright © 2016 Curiosity IO. All rights reserved.
-//
-
-import UIKit
-import IQKeyboardManagerSwift
 import Firebase
+import IQKeyboardManagerSwift
 import RxSwift
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     fileprivate var remoteConfig: RemoteConfigProvider!
@@ -23,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 
-        self.logger = Di.inject.activityLogger
-        self.remoteConfig = Di.inject.remoteConfig
-        self.userManager = Di.inject.userManager
+        logger = Di.inject.activityLogger
+        remoteConfig = Di.inject.remoteConfig
+        userManager = Di.inject.userManager
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
@@ -46,15 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         goToMainPartOfApp()
 
         registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
-        
+
         return true
     }
 
     fileprivate func goToMainPartOfApp() {
         let viewController = MainViewController()
 
-        self.window?.rootViewController = getNavigationController(rootViewController: viewController)
-        self.window?.makeKeyAndVisible()
+        window?.rootViewController = getNavigationController(rootViewController: viewController)
+        window?.makeKeyAndVisible()
     }
 
     fileprivate func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
@@ -92,12 +83,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
 }
 
 // MARK: Firebase messaging
-extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
 
+extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     // Asks user for permission to receive push notifications *and* sets up firebase messaging.
     // Note: Only ask for this when you can (1) register the FCM token with an authenticated user and (2) the user is far enough along in the app that asking them for permission to recieve push notifications is not annoying to ask.
     func registerForPushNotifications() {
@@ -107,7 +97,7 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
             UNUserNotificationCenter.current().delegate = self
 
             let authOptions: UNAuthorizationOptions = [.alert, .badge] // Options: .alert, .badge, .sound
-            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: {_, _ in })
+            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in })
 
             application.registerForRemoteNotifications()
         }
@@ -120,8 +110,7 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     }
 
     // APN (Apple push notification token. Different from Firebase FCM token) token received. We do not need to do anything with it because Firebase does this automatically for us with swizzling.
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {}
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(.alert) // If a push notification is received while app is in foreground, I want to still have it show up.
@@ -133,17 +122,16 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
         } else if response.actionIdentifier == UNNotificationDefaultActionIdentifier { // User selected the notification to launch the app. They *did not* use one of the custom action buttons on the action, just the default action of selecting the notification.
         }
     }
-
 }
 
 // MARK: Firebase Dynamic links
-extension AppDelegate {
 
+extension AppDelegate {
     // Used whn DynamicLinks are clicked on the device when your app is opened for the first time after installation on any version of iOS.
     // Also, used when a link with your custom URL scheme is called: yourappname://foo
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if let firebaseDynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-            self.handleFirebaseDynamicLink(firebaseDynamicLink)
+            handleFirebaseDynamicLink(firebaseDynamicLink)
             return true
         }
 
@@ -154,7 +142,7 @@ extension AppDelegate {
 
     // Used when DynamicLinks are clicked on the device and your app is already installed.
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (dynamiclink, error) in
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamiclink, error in
             if let error = error {
                 self.logger.errorOccurred(error)
             }
@@ -178,5 +166,4 @@ extension AppDelegate {
             UIApplication.shared.open(dynamicLink, options: [:], completionHandler: nil)
         }
     }
-
 }

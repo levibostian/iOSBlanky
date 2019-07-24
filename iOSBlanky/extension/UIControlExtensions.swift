@@ -1,16 +1,7 @@
-//
-//  UIControlExtensions.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/22/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
 extension UIControl {
-
     func removeAllTargets() {
         removeTarget(nil, action: nil, for: .allEvents)
     }
@@ -20,5 +11,4 @@ extension UIControl {
         removeAllTargets()
         addTarget(target, action: action, for: controlEvents)
     }
-
 }

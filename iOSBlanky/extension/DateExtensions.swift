@@ -1,15 +1,6 @@
-//
-//  DateExtensions.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/22/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 
 extension Date {
-
     // Returns "5 hours ago" type of human readable text.
     func humanReadableTimeAgoSince(numericDates: Bool = true) -> String {
         let calendar = Calendar.current
@@ -71,7 +62,5 @@ extension Date {
         } else {
             return "Just now"
         }
-
     }
-
 }

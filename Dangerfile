@@ -53,10 +53,18 @@ def assertFirebaseRemoteConfigDefaultsSet
 end
 
 if ENV["CI"] 
+  swiftformat.check_format(fail_on_error: true)
+  swiftformat.binary_path = "Pods/SwiftFormat/CommandLineTool/swiftformat"
+
+  swiftlint.lint_files fail_on_error: true
+  swiftlint.config_file = '.swiftlint.yml'
+  swiftlint.binary_path = 'Pods/SwiftLint/swiftlint'
+  swiftlint.max_num_violations = 0
+
   if github.branch_for_base == "master"
     if !(github.pr_title + github.pr_body).include?("#non-release")
       determineIfRelease()
-      assertFirebaseRemoteConfigDefaultsSet()
+      assertFirebaseRemoteConfigDefaultsSet()      
     end
   end
 else 

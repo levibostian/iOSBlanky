@@ -1,17 +1,8 @@
-//
-//  DiTests.swift
-//  iOSBlankyTests
-//
-//  Created by Levi Bostian on 7/19/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
-import XCTest
 @testable import iOSBlanky
+import XCTest
 
 class DiTests: XCTestCase {
-
     private var di: DiContainer!
 
     override func setUp() {
@@ -26,7 +17,8 @@ class DiTests: XCTestCase {
         super.tearDown()
     }
 
-    // MARK - property injectors. This works because an exception will be thrown when trying to force cast
+    // MARK: - property injectors. This works because an exception will be thrown when trying to force cast
+
     func test_activityLogger() {
         XCTAssertNotNil(Di.inject.activityLogger)
     }
@@ -44,5 +36,4 @@ class DiTests: XCTestCase {
             XCTAssertNotNil(di.inject(dependency), "Dependency: \(dependency) not able to resolve in dependency graph")
         }
     }
-
 }

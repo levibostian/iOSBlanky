@@ -36,3 +36,9 @@ PrePush:
     quiet: false
     enabled: true
     command: ['ruby', 'scripts/git_pre_push.rb']
+
+PreCommit:
+  PreCommit:    
+    quiet: false
+    enabled: true
+    command: ['ruby', 'scripts/git_pre_commit.rb']

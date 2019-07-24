@@ -6,8 +6,12 @@ use_frameworks!
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-def commonDepencencies
+def developmentDependencies
+    pod 'SwiftFormat/CLI'
     pod 'SwiftLint'
+end 
+
+def commonDepencencies    
     pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'
     pod 'RxCocoa', '~> 5.0.0'
 
@@ -34,6 +38,7 @@ end
 
 target 'iOSBlanky' do
     commonDepencencies()
+    developmentDependencies()
 end
 
 target 'iOSBlankyTests' do

@@ -1,23 +1,13 @@
-//
-//  Container.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/17/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
-import Swinject
 import Moya
+import Swinject
 
 class Di: ConvenientInject { // swiftlint:disable:this type_name
-
     static var inject: Di = Di()
 
     private let container = DiContainer()
 
-    private init() {
-    }
+    private init() {}
 
     var activityLogger: ActivityLogger {
         return container.inject(.activityLogger)
@@ -34,7 +24,6 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
     var userManager: UserManager {
         return container.inject(.userManager)
     }
-
 }
 
 // Exists for when using
@@ -46,45 +35,45 @@ protocol ConvenientInject {
 }
 
 class DiContainer {
-
-    fileprivate let container: Container = Container()
+    private let container: Container = Container()
 
     init() {
-        self.registerDependencies()
+        registerDependencies()
     }
 
     private func registerDependencies() {
-        self.container.register(ActivityLogger.self) { _ in AppActivityLogger() }
-        self.container.register(CoreDataManager.self) { _ in CoreDataManager() }.singleton()
-        self.container.register(RepositoryDao.self) { container in
+        container.register(ActivityLogger.self) { _ in AppActivityLogger() }
+        container.register(CoreDataManager.self) { _ in CoreDataManager() }.singleton()
+        container.register(RepositoryDao.self) { container in
             RepositoryDao(coreDataManager: self.inject(.coreDataManager, container))
         }
-        self.container.register(ReposDataSource.self) { container in
+        container.register(ReposDataSource.self) { container in
             ReposDataSource(githubApi: self.inject(.githubApi, container),
                             db: self.inject(.database, container))
         }
-        self.container.register(ReposRepository.self) { container in
+        container.register(ReposRepository.self) { container in
             ReposRepository(dataSource: self.inject(.reposDataSource, container))
         }
-        self.container.register(ReposViewModel.self) { container in
+        container.register(ReposViewModel.self) { container in
             ReposViewModel(reposRepository: self.inject(.reposRepository, container),
                            githubUsernameRepository: self.inject(.githubUsernameRepository, container))
         }
-        self.container.register(GitHubUsernameRepository.self) { container in
+        container.register(GitHubUsernameRepository.self) { container in
             GitHubUsernameRepository(dataSource: self.inject(.githubDataSource, container))
         }
-        self.container.register(GitHubUsernameDataSource.self) { _ in
+        container.register(GitHubUsernameDataSource.self) { _ in
             GitHubUsernameDataSource()
         }
-        self.container.register(MoyaInstance.self) { container in
+        container.register(MoyaInstance.self) { container in
             let productionPlugins: [PluginType] = [
                 MoyaAppendHeadersPlugin(userCredsManager: self.inject(.userCredsManager, container)),
-                HttpLoggerMoyaPlugin()]
+                HttpLoggerMoyaPlugin()
+            ]
 
             var plugins: [PluginType] = []
             plugins.append(contentsOf: productionPlugins)
 
-            let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { (change, _) in
+            let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { change, _ in
                 switch change {
                 case .began:
                     DispatchQueue.main.async {
@@ -101,38 +90,38 @@ class DiContainer {
 
             return MoyaProvider<MultiTarget>(plugins: plugins)
         }
-        self.container.register(GitHubAPI.self) { container in
+        container.register(GitHubAPI.self) { container in
             AppGitHubApi(moyaProvider: self.inject(.moyaProvider, container),
                          jsonAdapter: self.inject(.jsonAdapter, container),
                          responseProcessor: self.inject(.moyaResponseProcessor, container))
         }
-        self.container.register(JsonAdapter.self) { _ in
+        container.register(JsonAdapter.self) { _ in
             SwiftJsonAdpter()
         }
-        self.container.register(Database.self) { container in
+        container.register(Database.self) { container in
             Database(repositoryDao: self.inject(.repositoryDao, container))
         }
-        self.container.register(EventBus.self) { _ in
+        container.register(EventBus.self) { _ in
             NotificationCenterEventBus()
         }
-        self.container.register(MoyaResponseProcessor.self) { container in
+        container.register(MoyaResponseProcessor.self) { container in
             MoyaResponseProcessor(jsonAdapter: self.inject(.jsonAdapter, container),
                                   activityLogger: self.inject(.activityLogger, container),
                                   eventBus: self.inject(.eventBus, container))
         }
-        self.container.register(RemoteConfigProvider.self) { _ in
+        container.register(RemoteConfigProvider.self) { _ in
             FirebaseRemoteConfig()
         }
-        self.container.register(UserManager.self) { _ in
+        container.register(UserManager.self) { _ in
             UserManager()
         }
-        self.container.register(UserCredsManager.self) { container in
+        container.register(UserCredsManager.self) { container in
             UserCredsManager(userManager: self.inject(.userManager, container))
         }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
-        return inject(dep, self.container)
+        return inject(dep, container)
     }
 
     fileprivate func inject<T>(_ dep: Dependency, _ resolver: Resolver) -> T {
@@ -160,5 +149,4 @@ class DiContainer {
         case .userCredsManager: return resolver.resolve(UserCredsManager.self)! as Any
         }
     }
-
 }

@@ -1,13 +1,5 @@
-//
-//  CrashReportingLogger.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/17/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
-import Foundation
 import Crashlytics
+import Foundation
 
 protocol CrashReportingLogger {
     func identifyUser(userId: String?) // used to identify a user in crashes
@@ -18,7 +10,6 @@ protocol CrashReportingLogger {
 
 // https://firebase.google.com/docs/crashlytics/customize-crash-reports?platform=ios
 class CrashlyticsCrashReportingLogger: CrashReportingLogger {
-
     func log(key: String, value: String?) {
         Crashlytics.sharedInstance().setValue(value, forKey: key)
     }
@@ -34,5 +25,4 @@ class CrashlyticsCrashReportingLogger: CrashReportingLogger {
     func log(_ message: String) {
         CLSLogv(message, getVaList([]))
     }
-
 }

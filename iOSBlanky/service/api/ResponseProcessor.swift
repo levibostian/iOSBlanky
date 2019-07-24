@@ -1,11 +1,3 @@
-//
-//  ResponseProcessor.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/21/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import Moya
 
@@ -15,10 +7,9 @@ struct ProcessedResponse {
 }
 
 class MoyaResponseProcessor {
-
-    fileprivate let jsonAdapter: JsonAdapter
-    fileprivate let logger: ActivityLogger
-    fileprivate let eventBus: EventBus
+    private let jsonAdapter: JsonAdapter
+    private let logger: ActivityLogger
+    private let eventBus: EventBus
 
     init(jsonAdapter: JsonAdapter, activityLogger: ActivityLogger, eventBus: EventBus) {
         self.jsonAdapter = jsonAdapter
@@ -37,7 +28,7 @@ class MoyaResponseProcessor {
                     switch urlError.code {
                     case URLError.Code.notConnectedToInternet:
                         return ProcessedResponse(response: response, error: NoInternetConnectionError(message: NSLocalizedString("no_internet_connection_error_message", comment: "The user does not have an Internet connection.")))
-                        // These are errors that can happen when you have a slow network connection.
+                    // These are errors that can happen when you have a slow network connection.
                     // Note: .cancelled is currently here because if a request is cancelled, it's probably because the user left the screen? So, they may not see the error message anyway. So, just return this generic "bad internet connection" error.
                     case URLError.Code.timedOut, URLError.Code.networkConnectionLost, URLError.Code.dnsLookupFailed, URLError.Code.secureConnectionFailed, URLError.Code.cancelled:
                         return ProcessedResponse(response: response, error: NetworkConnectionIssueError(message: NSLocalizedString("error_network_connection_issue", comment: "Error to show to the user. The user has a bad Internet connection.")))
@@ -85,9 +76,8 @@ class MoyaResponseProcessor {
                 return ProcessedResponse(response: response, error: UnhandledHttpResponseError(message: NSLocalizedString("unhandled_http_response_code", comment: "There is an unknown error. The team has been notified to fix it. Try again later.")))
             }
         default:
-            // successful. 
+            // successful.
             return ProcessedResponse(response: response, error: nil)
         }
     }
-
 }
