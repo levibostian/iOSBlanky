@@ -10,7 +10,7 @@ import Foundation
 
 class UserManager { 
     
-    fileprivate static let userIdKey: String = "userIdKey"
+    fileprivate let userIdKey: String = "userIdKey"
 
     var userId: Int? {
         get {

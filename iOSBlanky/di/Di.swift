@@ -76,8 +76,30 @@ class DiContainer {
         self.container.register(GitHubUsernameDataSource.self) { _ in
             GitHubUsernameDataSource()
         }
-        self.container.register(MoyaInstance.self) { _ in
-            MoyaInstance.instance()
+        self.container.register(MoyaInstance.self) { container in
+            let productionPlugins: [PluginType] = [
+                MoyaAppendHeadersPlugin(userCredsManager: self.inject(.userCredsManager, container)),
+                HttpLoggerMoyaPlugin()]
+
+            var plugins: [PluginType] = []
+            plugins.append(contentsOf: productionPlugins)
+
+            let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { (change, _) in
+                switch change {
+                case .began:
+                    DispatchQueue.main.async {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                    }
+                case .ended:
+                    DispatchQueue.main.async {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    }
+                }
+            })
+
+            plugins.append(networkActivityPlugin)
+
+            return MoyaProvider<MultiTarget>(plugins: plugins)
         }
         self.container.register(GitHubAPI.self) { container in
             AppGitHubApi(moyaProvider: self.inject(.moyaProvider, container),
@@ -103,6 +125,9 @@ class DiContainer {
         }
         self.container.register(UserManager.self) { _ in
             UserManager()
+        }
+        self.container.register(UserCredsManager.self) { container in
+            UserCredsManager(userManager: self.inject(.userManager, container))
         }
     }
 
@@ -132,6 +157,7 @@ class DiContainer {
         case .moyaResponseProcessor: return resolver.resolve(MoyaResponseProcessor.self)! as Any
         case .remoteConfig: return resolver.resolve(RemoteConfigProvider.self)! as Any
         case .userManager: return resolver.resolve(UserManager.self)! as Any
+        case .userCredsManager: return resolver.resolve(UserCredsManager.self)! as Any
         }
     }
 

@@ -14,3 +14,4 @@ gem "danger-ios_version_change", "~> 0.1.6"
 gem "danger", "~> 6.0.9"
 gem "rest-client", "~> 2.0" # Required for "mailgun" fastlane action
 gem "cocoapods", "~> 1.5"
+gem "overcommit", "~> 0.49.0"

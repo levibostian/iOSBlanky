@@ -25,4 +25,5 @@ enum Dependency: CaseIterable {
     case moyaResponseProcessor
     case remoteConfig
     case userManager
+    case userCredsManager
 }

@@ -11,17 +11,25 @@ import KeychainAccess
 
 class UserCredsManager {
     
-    fileprivate static let userAuthTokenKey: String = "userAuthTokenKey"
-    fileprivate static var keychain: Keychain? {
-        if let loggedInUserId = UserManager.userId {
+    fileprivate let userAuthTokenKey: String = "userAuthTokenKey"
+
+    fileprivate var keychain: Keychain? {
+        if let loggedInUserId = self.userManager.userId {
             return Keychain(service: String.init(format: "%@ %d", Bundle.main.bundleIdentifier!, loggedInUserId))
         }
         return nil
     }
+    fileprivate let userManager: UserManager
+
+    init(userManager: UserManager) {
+        self.userManager = userManager
+    }
     
-    class func areUserCredsAvailable() -> Bool { return authToken != nil }
+    func areUserCredsAvailable() -> Bool {
+        return authToken != nil
+    }
     
-    static var authToken: String? {
+    var authToken: String? {
         get { return try! keychain?.getString(userAuthTokenKey) }
         set { if let newValue = newValue { try! keychain?.set(newValue, key: userAuthTokenKey) } }
     }

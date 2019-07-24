@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-// MARK - Firebase messaging
+// MARK: Firebase messaging
 extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
 
     // Asks user for permission to receive push notifications *and* sets up firebase messaging.
@@ -136,7 +136,7 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
 
 }
 
-// MARK - Firebase Dynamic links
+// MARK: Firebase Dynamic links
 extension AppDelegate {
 
     // Used whn DynamicLinks are clicked on the device when your app is opened for the first time after installation on any version of iOS.
@@ -171,7 +171,7 @@ extension AppDelegate {
             return
         }
 
-        if let _ = dynamicLink.getQueryParamValue("auth_token_access_token") {
+        if let authTokenAccessToken = dynamicLink.getQueryParamValue("auth_token_access_token") {
             // handle case where user wants to login. Send up accessToken to server to exchange it for an access token.
         } else {
             // more then likely, this dynamic link is a short URL that we need to expand in order to pick out the query parameters. So, do this hack to re-open the short link to expand it and re-open our app.

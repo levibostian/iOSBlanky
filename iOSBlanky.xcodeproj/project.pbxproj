@@ -47,6 +47,8 @@
 		F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
 		F721AB5022E7B85F00F77F66 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */; };
 		F721AB5122E7B85F00F77F66 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */; };
+		F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
+		F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
 		F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F727FB3122E2805200E56E2C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727FB3022E2805200E56E2C /* CoreDataManager.swift */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
@@ -183,6 +185,7 @@
 		F71D087322E24FDE000B1577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FirebaseRemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
+		F721AB5222E7DEEA00F77F66 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -482,6 +485,7 @@
 				F7D3B8D01E149B5F00F2C3CB /* Constants.swift */,
 				F71D087422E24FDE000B1577 /* Localizable.strings */,
 				F76835B11F9ECF9A00219B30 /* Assets */,
+				F721AB5222E7DEEA00F77F66 /* Settings.bundle */,
 			);
 			path = iOSBlanky;
 			sourceTree = "<group>";
@@ -806,6 +810,7 @@
 				F71D087222E24FDE000B1577 /* Localizable.strings in Resources */,
 				F799D59822DFBDEE00202FDB /* GoogleService-prod.plist in Resources */,
 				F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */,
+				F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,6 +819,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -201,6 +201,7 @@ Developer tools you need:
 ```bash
 bundle install 
 pod install 
+bundle exec overcommit --install # Install git hooks via https://github.com/sds/overcommit
 ```
 
 Now, open up your workspace file in XCode. 
