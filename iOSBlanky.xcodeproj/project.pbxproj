@@ -84,6 +84,10 @@
 		F76835DA1F9ED3C200219B30 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835D91F9ED3C200219B30 /* ReposViewModel.swift */; };
 		F76835DD1F9ED40100219B30 /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835DC1F9ED40100219B30 /* ReposRepository.swift */; };
 		F76DCDE322E2377900572E67 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */; };
+		F785CB6B22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */; };
+		F785CB6C22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */; };
+		F785CB6E22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
+		F785CB6F22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
 		F785CC7622D692C500389076 /* Teller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F785CC7522D692C500389076 /* Teller.framework */; };
 		F785CC7A22D696FE00389076 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */; };
@@ -225,6 +229,8 @@
 		F76835D91F9ED3C200219B30 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
 		F76835DC1F9ED40100219B30 /* ReposRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposRepository.swift; sourceTree = "<group>"; };
 		F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
+		F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTasksFactory.swift; sourceTree = "<group>"; };
+		F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySyncService.swift; sourceTree = "<group>"; };
 		F785CC7522D692C500389076 /* Teller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Teller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F785CC7922D696FE00389076 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
 		F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDao.swift; sourceTree = "<group>"; };
@@ -534,6 +540,7 @@
 		F76835AC1F9ECDC700219B30 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				F785CB6922E8D02400AA53B0 /* pending tasks */,
 				F7D3B8FF1E14A70F00F2C3CB /* manager */,
 				F7C0FF2D22E5167B009E1203 /* service */,
 				F7C0FF0D22E50237009E1203 /* error */,
@@ -565,6 +572,14 @@
 				F76835D91F9ED3C200219B30 /* ReposViewModel.swift */,
 			);
 			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		F785CB6922E8D02400AA53B0 /* pending tasks */ = {
+			isa = PBXGroup;
+			children = (
+				F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */,
+			);
+			path = "pending tasks";
 			sourceTree = "<group>";
 		};
 		F785CC7722D695B900389076 /* repository */ = {
@@ -656,6 +671,7 @@
 				F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */,
 				F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */,
 				F761644422E8B5F4006F2D2A /* SecureStorage.swift */,
+				F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -772,6 +788,11 @@
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 552H65R858;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					F75DCD921CD8F10D00B8941F = {
 						CreatedOnToolsVersion = 7.3;
@@ -1161,6 +1182,7 @@
 				F712CDA322E3BCBC00272FF5 /* Database.swift in Sources */,
 				F712CD9F22E3B49000272FF5 /* SwinjectExtensions.swift in Sources */,
 				F7096CFC22E66E3D004389A5 /* UIControlExtensions.swift in Sources */,
+				F785CB6E22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */,
 				F712CDA622E3BD7B00272FF5 /* GitHubAPI.swift in Sources */,
 				F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */,
 				F76835AE1F9ECED200219B30 /* GitHubTargetType.swift in Sources */,
@@ -1181,6 +1203,7 @@
 				F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */,
 				F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F7096D0022E7AE31004389A5 /* RemoteConfig.swift in Sources */,
+				F785CB6B22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */,
 				F7C0FF1F22E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7A41B811FA512E600266B61 /* GitHubUsernameRepository.swift in Sources */,
 				F7C0FF2F22E51689009E1203 /* EventBus.swift in Sources */,
@@ -1207,6 +1230,7 @@
 				F7C0FF1A22E505F4009E1203 /* ConflictResponseError.swift in Sources */,
 				F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */,
 				F712CD9D22E3B40D00272FF5 /* FileManagerExtensions.swift in Sources */,
+				F785CB6F22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */,
 				F7096CFD22E66E3D004389A5 /* UIControlExtensions.swift in Sources */,
 				F7C0FF1D22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7C0FF3222E660CC009E1203 /* MoyaAppendHeadersPlugin.swift in Sources */,
@@ -1221,6 +1245,7 @@
 				F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */,
 				F7602FD522E224D300FDB5F3 /* Dependencies.swift in Sources */,
 				F72043F722E4F3CB00DE7EA9 /* JsonAdapter.swift in Sources */,
+				F785CB6C22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */,
 				F7096CF722E66BD1004389A5 /* BasePopoverViewController.swift in Sources */,
 				F712CDA022E3B4CD00272FF5 /* SwinjectExtensions.swift in Sources */,
 				F7602FDE22E224E000FDB5F3 /* BuildFlavor.swift in Sources */,

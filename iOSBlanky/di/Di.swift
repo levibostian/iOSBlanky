@@ -24,14 +24,19 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
     var userManager: UserManager {
         return container.inject(.userManager)
     }
+
+    var repositorySyncService: RepositorySyncService {
+        return container.inject(.repositorySyncService)
+    }
 }
 
-// Exists for when using
+// Exists for when using `Di.inject.______` mostly in UI related classes when there is not a constructor to provide dependencies for.
 protocol ConvenientInject {
     var activityLogger: ActivityLogger { get }
     var reposViewModel: ReposViewModel { get }
     var remoteConfig: RemoteConfigProvider { get }
     var userManager: UserManager { get }
+    var repositorySyncService: RepositorySyncService { get }
 }
 
 class DiContainer {
@@ -125,6 +130,10 @@ class DiContainer {
         container.register(SecureStorage.self) { container in
             KeychainAccessSecureStorage(userManager: self.inject(.userManager, container))
         }
+        container.register(RepositorySyncService.self) { container in
+            TellerRepositorySyncService(reposRepository: self.inject(.reposRepository, container),
+                                        githubUsernameRepository: self.inject(.githubUsernameRepository, container))
+        }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
@@ -156,6 +165,7 @@ class DiContainer {
         case .userCredsManager: return resolver.resolve(UserCredsManager.self)! as Any
         case .keyValueStorage: return resolver.resolve(KeyValueStorage.self)! as Any
         case .secureStorage: return resolver.resolve(SecureStorage.self)! as Any
+        case .repositorySyncService: return resolver.resolve(RepositorySyncService.self)! as Any
         }
     }
 }

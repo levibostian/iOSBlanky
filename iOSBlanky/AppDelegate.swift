@@ -2,6 +2,7 @@ import Firebase
 import IQKeyboardManagerSwift
 import RxSwift
 import UIKit
+import Wendy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -10,6 +11,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var remoteConfig: RemoteConfigProvider!
     fileprivate var userManager: UserManager!
     fileprivate var logger: ActivityLogger!
+    fileprivate var repositorySyncService: RepositorySyncService!
+
+    fileprivate var isDebug: Bool {
+        #if DEBUG
+        return true
+        #else
+        return false
+        #endif
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -17,12 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logger = Di.inject.activityLogger
         remoteConfig = Di.inject.remoteConfig
         userManager = Di.inject.userManager
+        repositorySyncService = Di.inject.repositorySyncService
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
             self.logger.errorOccurred(error)
             fatalError()
         }
+
+        Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: isDebug)
 
         Messaging.messaging().delegate = self
         remoteConfig.fetch()
@@ -166,4 +179,24 @@ extension AppDelegate {
             UIApplication.shared.open(dynamicLink, options: [:], completionHandler: nil)
         }
     }
+}
+
+// MARK: Background syncing
+extension AppDelegate {
+
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        let backgroundPendingTasksResult = Wendy.shared.backgroundFetchRunTasks(application, performFetchWithCompletionHandler: completionHandler).backgroundFetchResult
+        let repositorySyncResult = repositorySyncService.sync()
+
+        var backgroundSyncResult: UIBackgroundFetchResult = .noData
+
+        if backgroundPendingTasksResult == .newData || repositorySyncResult == .newData {
+            backgroundSyncResult = .newData
+        } else if backgroundPendingTasksResult == .failed || repositorySyncResult == .failed {
+            backgroundSyncResult = .failed
+        }
+
+        completionHandler(backgroundSyncResult)
+    }
+
 }
