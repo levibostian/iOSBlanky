@@ -1,15 +1,20 @@
 import Foundation
 
 class UserManager {
+
     private let userIdKey: String = "userIdKey"
+    private let keyValueStore: KeyValueStorage
+
+    init(storage: KeyValueStorage) {
+        self.keyValueStore = storage
+    }
 
     var userId: Int? {
         get {
-            let userIdUserDefaults = UserDefaults.standard.integer(forKey: userIdKey)
-            return userIdUserDefaults == 0 ? nil : userIdUserDefaults
+            return keyValueStore.integer(forKey: userIdKey)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: userIdKey)
+            keyValueStore.set(newValue, forKey: userIdKey)
         }
     }
 

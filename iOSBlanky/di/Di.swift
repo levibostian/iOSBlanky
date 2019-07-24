@@ -112,11 +112,18 @@ class DiContainer {
         container.register(RemoteConfigProvider.self) { _ in
             FirebaseRemoteConfig()
         }
-        container.register(UserManager.self) { _ in
-            UserManager()
+        container.register(UserManager.self) { container in
+            UserManager(storage: self.inject(.keyValueStorage, container))
         }
         container.register(UserCredsManager.self) { container in
-            UserCredsManager(userManager: self.inject(.userManager, container))
+            UserCredsManager(userManager: self.inject(.userManager, container),
+                             secureStorage: self.inject(.secureStorage, container))
+        }
+        container.register(KeyValueStorage.self) { _ in
+            UserDefaultsKeyValueStorage(userDefaults: UserDefaults.standard)
+        }
+        container.register(SecureStorage.self) { container in
+            KeychainAccessSecureStorage(userManager: self.inject(.userManager, container))
         }
     }
 
@@ -147,6 +154,8 @@ class DiContainer {
         case .remoteConfig: return resolver.resolve(RemoteConfigProvider.self)! as Any
         case .userManager: return resolver.resolve(UserManager.self)! as Any
         case .userCredsManager: return resolver.resolve(UserCredsManager.self)! as Any
+        case .keyValueStorage: return resolver.resolve(KeyValueStorage.self)! as Any
+        case .secureStorage: return resolver.resolve(SecureStorage.self)! as Any
         }
     }
 }

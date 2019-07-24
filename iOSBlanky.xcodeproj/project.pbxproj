@@ -49,6 +49,8 @@
 		F721AB5122E7B85F00F77F66 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */; };
 		F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
 		F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
+		F721AB5722E8A62B00F77F66 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */; };
+		F721AB5822E8A62B00F77F66 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */; };
 		F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F727FB3122E2805200E56E2C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727FB3022E2805200E56E2C /* CoreDataManager.swift */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
@@ -69,6 +71,8 @@
 		F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F7602FDE22E224E000FDB5F3 /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
 		F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* Constants.swift */; };
+		F761644522E8B5F4006F2D2A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761644422E8B5F4006F2D2A /* SecureStorage.swift */; };
+		F761644622E8B5F4006F2D2A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761644422E8B5F4006F2D2A /* SecureStorage.swift */; };
 		F76835AE1F9ECED200219B30 /* GitHubTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */; };
 		F76835B01F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AF1F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift */; };
 		F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76835B21F9ECFBF00219B30 /* Color.xcassets */; };
@@ -186,6 +190,7 @@
 		F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FirebaseRemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		F721AB5222E7DEEA00F77F66 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +213,7 @@
 		F75DCD9E1CD8F10D00B8941F /* iOSBlankyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSBlankyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBlankyUITests.swift; sourceTree = "<group>"; };
 		F75DCDA41CD8F10D00B8941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F761644422E8B5F4006F2D2A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubTargetType.swift; sourceTree = "<group>"; };
 		F76835AF1F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaAppendHeadersPlugin.swift; sourceTree = "<group>"; };
 		F76835B21F9ECFBF00219B30 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
@@ -648,6 +654,8 @@
 				F7C0FF2E22E51689009E1203 /* EventBus.swift */,
 				F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */,
 				F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */,
+				F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */,
+				F761644422E8B5F4006F2D2A /* SecureStorage.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1138,7 +1146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F761644522E8B5F4006F2D2A /* SecureStorage.swift in Sources */,
 				F76835BF1F9ED0D500219B30 /* UIViewControllerExtensions.swift in Sources */,
+				F721AB5722E8A62B00F77F66 /* KeyValueStorage.swift in Sources */,
 				F7C0FF2522E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,
 				F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */,
 				F76835DD1F9ED40100219B30 /* ReposRepository.swift in Sources */,
@@ -1221,6 +1231,7 @@
 				F72043E722E4EED100DE7EA9 /* ReposRepository.swift in Sources */,
 				F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */,
 				F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */,
+				F721AB5822E8A62B00F77F66 /* KeyValueStorage.swift in Sources */,
 				F72043FB22E4F67D00DE7EA9 /* MoyaExtensions.swift in Sources */,
 				F712CD9C22E3B3A700272FF5 /* CoreDataManager.swift in Sources */,
 				F75968F922E225500076253B /* DiTests.swift in Sources */,
@@ -1230,6 +1241,7 @@
 				F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
 				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
+				F761644622E8B5F4006F2D2A /* SecureStorage.swift in Sources */,
 				F7096CFE22E67063004389A5 /* UIStackViewExtensions.swift in Sources */,
 				F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F7096D0122E7AE31004389A5 /* RemoteConfig.swift in Sources */,

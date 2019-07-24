@@ -2,19 +2,15 @@ import Foundation
 import KeychainAccess
 
 class UserCredsManager {
+
     private let userAuthTokenKey: String = "userAuthTokenKey"
 
-    private var keychain: Keychain? {
-        if let loggedInUserId = self.userManager.userId {
-            return Keychain(service: String(format: "%@ %d", Bundle.main.bundleIdentifier!, loggedInUserId))
-        }
-        return nil
-    }
-
     private let userManager: UserManager
+    private let secureStorage: SecureStorage
 
-    init(userManager: UserManager) {
+    init(userManager: UserManager, secureStorage: SecureStorage) {
         self.userManager = userManager
+        self.secureStorage = secureStorage
     }
 
     func areUserCredsAvailable() -> Bool {
@@ -22,7 +18,7 @@ class UserCredsManager {
     }
 
     var authToken: String? {
-        get { return try! keychain?.getString(userAuthTokenKey) }
-        set { if let newValue = newValue { try! keychain?.set(newValue, key: userAuthTokenKey) } }
+        get { return secureStorage.getString(userAuthTokenKey) }
+        set { secureStorage.set(newValue, key: userAuthTokenKey) }
     }
 }

@@ -18,4 +18,6 @@ enum Dependency: CaseIterable {
     case remoteConfig
     case userManager
     case userCredsManager
+    case keyValueStorage
+    case secureStorage
 }
