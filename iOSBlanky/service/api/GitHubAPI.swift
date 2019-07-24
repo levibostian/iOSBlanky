@@ -1,11 +1,3 @@
-//
-//  API.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/20/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import Moya
 import RxSwift
@@ -15,7 +7,6 @@ protocol GitHubAPI {
 }
 
 class AppGitHubApi: GitHubAPI {
-
     fileprivate let moyaProvider: MoyaInstance
     fileprivate let jsonAdapter: JsonAdapter
     fileprivate let responseProcessor: MoyaResponseProcessor
@@ -28,21 +19,20 @@ class AppGitHubApi: GitHubAPI {
 
     func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], Error>> {
         return moyaProvider.rx.request(MultiTarget(GitHubService.getUserRepos(username: username)))
-            .map({ (response) -> ProcessedResponse in
-                return self.responseProcessor.process(response, extraResponseHandling: { (statusCode) -> Error? in
+            .map { (response) -> ProcessedResponse in
+                self.responseProcessor.process(response, extraResponseHandling: { (statusCode) -> Error? in
                     if statusCode == 404 {
                         return ResposApiError.usernameDoesNotExist(username: username)
                     }
                     return nil
                 })
-            }).map({ (processedResponse) -> Result<[Repo], Error> in
+            }.map { (processedResponse) -> Result<[Repo], Error> in
                 if let error = processedResponse.error {
                     return Result.failure(error)
                 }
                 return Result.success(self.jsonAdapter.fromJsonArray(processedResponse.response!.data))
-            }).catchError({ (error) -> Single<Result<[Repo], Error>> in
-                return Single.just(Result.failure(self.responseProcessor.process(error).error!))
-            })
+            }.catchError { (error) -> Single<Result<[Repo], Error>> in
+                Single.just(Result.failure(self.responseProcessor.process(error).error!))
+            }
     }
-
 }

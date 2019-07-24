@@ -1,11 +1,3 @@
-//
-//  DebugActivityLogger.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/21/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 
 class LogHttpFailError: LocalizedError {
@@ -27,9 +19,8 @@ protocol DebugActivityLogger: ActivityLogger {
 }
 
 extension DebugActivityLogger {
-
     func setUserId(id: String?) {
-        self.identifyUser(id: id)
+        identifyUser(id: id)
     }
 
     func trackEvent(_ event: ActivityEvent, data: [String: Any]?) {
@@ -55,5 +46,4 @@ extension DebugActivityLogger {
     func errorOccurred(_ error: Error) {
         logError(error)
     }
-
 }

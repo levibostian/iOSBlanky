@@ -1,0 +1,52 @@
+os: osx
+osx_image: xcode10.2
+language: swift
+
+before_cache:
+  - cocoacache save 
+cache:
+  bundler: true 
+  directories:    
+    - Specs
+install:  
+  - bundle install
+  - cocoacache restore
+  - bundle exec pod check || (bundle exec pod install --repo-update) # use () to group commands together to run if `pod check` returns false
+env:
+  global:
+    # FASTLANE_PASSWORD= password to the Apple ID account used to login for fastlane. At this time, you can find the user's email in ./fastlane/AppFile to determine who's password you need to set here. Note: This password is escaped. Remove all '\' characters to get the real password in plain text.    
+    # MATCH_PASSWORD= the password used by fastlane match to decrypt the profiles/certs located in the fastlane ios certs github repo.
+    # DANGER_GITHUB_API_TOKEN= the personal github access token that gives access to private repos. I personally use a bot account to do this so this is the access token to the bot account that will post on github PRs for you.
+    - MAILGUN_DOMAIN_API_KEY=key-11111111111111 # api key for domain name to be able to send emails from postmaster email address.     
+    - ADMIN_EMAIL=admin@you.com # email address of developer who maintains this app. 
+    - APPLE_DEV_EMAIL=you@you.com # email address to login to Apple developer account. 
+    - APPLE_DEV_TEAM_NAME="Name of team" # Team name of your Apple developer account. Login to your Apple developer account profile to find. 
+    - APPLE_DEV_TEAM_ID=2334 # Team ID of your Apple developer account. Login to your Apple developer account profile to find. 
+    - APPLE_DEV_APP_ID=1234 # The App ID for the app you created. 
+    - SOURCE_CODE_SUBDIRECTORY=iOSBlanky # subdirectory in the root of your project where the app's source code is located. 
+
+jobs:
+  include:
+  - stage: lint
+    script: ./Pods/SwiftLint/swiftlint --strict
+  - stage: danger
+    script: danger --fail-on-errors=true  
+  - stage: tests
+    script: ruby scripts/run_tests.rb
+  - stage: deploy
+    name: "Deploy app"
+    script: bundle exec fastlane deploy
+  - stage: maintenance
+    script: bundle exec fastlane maintenance
+
+stages:
+  - name: lint 
+    if: type IN (pull_request, push) AND tag IS blank
+  - name: danger 
+    if: type IN (pull_request)
+  - name: tests
+    if: type IN (pull_request, push) AND tag IS blank
+  - name: deploy
+    if: tag IS present  
+  - name: maintenance
+    if: type IN (cron)

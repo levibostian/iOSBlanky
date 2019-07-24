@@ -1,0 +1,9 @@
+# Values that are used across *all* fastlane actions. Mostly dealing with account information
+
+apple_id ENV["APPLE_DEV_EMAIL"]
+
+team_name ENV["APPLE_DEV_TEAM_NAME"]
+team_id ENV["APPLE_DEV_TEAM_ID"]
+
+itc_team_name ENV["APPLE_DEV_TEAM_NAME"]
+itc_team_id ENV["APPLE_DEV_TEAM_ID"]

@@ -1,11 +1,3 @@
-//
-//  ConflictResponseError.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/21/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 
 enum ErrorIdType {
@@ -16,18 +8,16 @@ enum ErrorIdType {
  HTTP response code was 409
  */
 struct ConflictResponseError: Codable {
-
     let message: String
     let errorId: String
 
     var errorIdType: ErrorIdType? {
-        switch self.errorId {
+        switch errorId {
         case "phone-number-taken":
             return .phoneNumberTaken
-        default: fatalError("forgot case for: \(self.errorId)")
+        default: fatalError("forgot case for: \(errorId)")
         }
     }
-
 }
 
 extension ConflictResponseError: LocalizedError {

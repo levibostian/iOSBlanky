@@ -1,16 +1,7 @@
-//
-//  Database.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/19/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
-import Foundation
 import CoreData
+import Foundation
 
 class CoreDataManager {
-
     lazy var uiContext: NSManagedObjectContext = {
         var managedObjectContext: NSManagedObjectContext?
         if #available(iOS 10.0, *) {
@@ -25,7 +16,7 @@ class CoreDataManager {
     }()
 
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        self.persistentContainer.performBackgroundTask(block)
+        persistentContainer.performBackgroundTask(block)
     }
 
     private lazy var applicationDocumentsDirectory: URL = {
@@ -60,7 +51,7 @@ class CoreDataManager {
          error conditions that could cause the creation of the store to fail.
          */
         let container = NSPersistentContainer(name: "Wendy", managedObjectModel: self.managedObjectModel)
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -79,10 +70,10 @@ class CoreDataManager {
         return container
     }()
 
-    func saveContext () {
-        if self.uiContext.hasChanges {
+    func saveContext() {
+        if uiContext.hasChanges {
             do {
-                try self.uiContext.save()
+                try uiContext.save()
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -91,5 +82,4 @@ class CoreDataManager {
             }
         }
     }
-
 }

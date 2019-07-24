@@ -1,0 +1,101 @@
+###################### More Options ######################
+# If you want to have even more control, check out the documentation
+# https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md
+
+# -------------- Edit variables here ------------------
+company_contact_first_name = "First"
+company_contact_last_name = "Last"
+company_name = "Company name"
+company_address_line1 = "123 Sesame St" # can add line2 and line3
+company_city_name = "City"
+company_state = "Iowa"
+company_country = "United States"
+company_postal_code = "43221"
+company_email_address = "you@company.com"
+company_phone_number = "+1 3333333333"
+
+app_developer_first_name = "First"
+app_developer_last_name = "Last"
+app_developer_phone_number = "+1 3333333333"
+app_developer_email_address = ENV["ADMIN_EMAIL"]
+
+demo_user_account_username = "demo@you.com"
+demo_user_account_password = "password"
+demo_notes = "Login with email and password at the login screen."
+
+privacy_policy_url = "https://you.com/privacy/index.html"
+
+# See: https://docs.fastlane.tools/actions/deliver/#available-categories for options
+primary_category "MZGenre.Games"
+primary_first_sub_category "MZGenre.Sports"
+secondary_category "MZGenre.Sports"
+
+# See: https://github.com/artsy/eigen/blob/faa02e2746194d8d7c11899474de9c517435eca4/fastlane/Fastfile#L131-L149 for options
+submission_information({
+  add_id_info_serves_ads: false,
+  add_id_info_uses_idfa: false, #If using admob, set to true
+  add_id_info_tracks_install: false,
+  add_id_info_tracks_action: false,
+  content_rights_contains_third_party_content: false,
+  export_compliance_contains_proprietary_cryptography: false,
+  export_compliance_contains_third_party_cryptography: false,
+  export_compliance_uses_encryption: true, # If using keychain, set to true
+  export_compliance_is_exempt: true # If only using keychain, set to true
+})
+
+# Check out the fastlane/rating_config.json file and fill it out. 
+# See: https://docs.fastlane.tools/actions/deliver/#available-age-rating-groups for options 
+# -----------------------------------------------------
+
+app ENV["APPLE_DEV_APP_ID"]
+
+languages(['en-US'])
+
+app_icon "./fastlane/icons/prod.jpg"
+
+release_notes({
+  'en-US' => File.open(Dir.pwd + "/fastlane/release_notes.txt", "rb").read
+})
+
+metadata_path "./fastlane/metadata"
+screenshots_path "./fastlane/screenshots/"
+
+force true # Skip the HTML report file verification
+submit_for_review true 
+automatic_release true
+price_tier 0 # price 
+overwrite_screenshots true
+
+trade_representative_contact_information(
+  first_name: company_contact_first_name,
+  last_name: company_contact_last_name,
+  trade_name: company_name,
+  address_line1: company_address_line1,
+  city_name: company_city_name,
+  state: company_state,
+  country: company_country,
+  postal_code: company_postal_code,
+  phone_number: company_phone_number,
+  email_address: company_email_address,
+  is_displayed_on_app_store: false
+)
+
+app_review_information(
+  first_name: app_developer_first_name,
+  last_name: app_developer_last_name,
+  phone_number: app_developer_phone_number,
+  email_address: app_developer_email_address,
+  demo_user: demo_user_account_username,
+  demo_password: demo_user_account_password,
+  notes: demo_notes
+)
+
+app_rating_config_path './fastlane/rating_config.json'
+
+platform 'ios'
+
+copyright "#{Time.now.year} #{company_name}"
+
+privacy_url({
+  'en-US' => privacy_policy_url
+})

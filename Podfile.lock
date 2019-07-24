@@ -128,11 +128,12 @@ PODS:
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
   - SnapKit (5.0.0)
+  - SwiftFormat/CLI (0.40.10)
   - SwiftLint (0.34.0)
   - Swinject (2.6.2)
-  - Teller (0.3.1-alpha):
+  - Teller (0.4.0-alpha):
     - RxSwift (~> 5.0)
-  - Wendy (0.1.0-alpha):
+  - Wendy (0.2.0-alpha):
     - Require (~> 2.0.0)
   - WoodPeckeriOS (1.2.2)
 
@@ -151,10 +152,11 @@ DEPENDENCIES:
   - Moya/RxSwift (~> 14.0.0-alpha.1)
   - RxCocoa (~> 5.0.0)
   - SnapKit (~> 5.0.0)
+  - SwiftFormat/CLI
   - SwiftLint
   - Swinject (~> 2.6.2)
-  - Teller (from `https://github.com/levibostian/teller-ios`, branch `swift5-result`)
-  - Wendy (from `https://github.com/levibostian/Wendy-iOS`, branch `swift5`)
+  - Teller (~> 0.4.0-alpha)
+  - Wendy (~> 0.2.0-alpha)
   - WoodPeckeriOS
 
 SPEC REPOS:
@@ -189,25 +191,12 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SnapKit
+    - SwiftFormat
     - SwiftLint
     - Swinject
+    - Teller
+    - Wendy
     - WoodPeckeriOS
-
-EXTERNAL SOURCES:
-  Teller:
-    :branch: swift5-result
-    :git: https://github.com/levibostian/teller-ios
-  Wendy:
-    :branch: swift5
-    :git: https://github.com/levibostian/Wendy-iOS
-
-CHECKOUT OPTIONS:
-  Teller:
-    :commit: 48fdd69d97cf02ce50b8bc9c27fba9fa82efb1de
-    :git: https://github.com/levibostian/teller-ios
-  Wendy:
-    :commit: 744626bcb691c58d2c02d2862ef74cad4b137c28
-    :git: https://github.com/levibostian/Wendy-iOS
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -240,12 +229,13 @@ SPEC CHECKSUMS:
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SwiftFormat: d0e2118da5bfccc0158f0b8eff80c476c5acd984
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
-  Teller: 9ec5f0ef4c8392b45045f960b5bdcad31c5fb524
-  Wendy: 89a283bc3d4d7c702fdaea6b1ab4f4eefff3014c
+  Teller: 0c82e954716b83b1cb267517c95c75cbc7c7c29d
+  Wendy: bb3c22635b248dde4a0044785faf43db6fc839ce
   WoodPeckeriOS: 3802768524692cf3ff7c3a1973b4add455597861
 
-PODFILE CHECKSUM: e3660fcdb87485047ea9a16650ef9baf2463b15d
+PODFILE CHECKSUM: 5634fd0c356b8876a6c8358377b95466288a1ab7
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.7.5

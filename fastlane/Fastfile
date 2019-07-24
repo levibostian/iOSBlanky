@@ -1,0 +1,244 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.128.0"
+
+default_platform :ios
+
+class BuildTarget
+  def initialize(name, identifier)
+    @name = name
+    @identifier = identifier
+  end
+
+  def name
+    @name
+  end
+  def identifier
+    @identifier
+  end
+end
+
+# -------------- Edit here variables -------------------
+name_of_app = "Name of App"
+prod_build_target = BuildTarget.new("#{name_of_app}", "com.example.nameapp")
+beta_build_target = BuildTarget.new("#{name_of_app} Beta", "com.example.nameapp.beta")
+dev_build_target = BuildTarget.new("#{name_of_app} dev", "com.example.nameapp.debug")
+path_to_certs = "./misc/push_notification_certs/"
+source_code_subdirectory = "NameDirectoryToSource"
+xcode_scheme = "SchemeName" # Make sure your scheme in XCode is marked as shared
+beta_feedback_email = "you@example.com"
+# ------------------------------------------------------
+
+# use: emailAdmin(
+#   subject: "this is subject", # required 
+#   message: "this is message", # required 
+#   attachments: ["path/to/file"] #optional
+# )
+def emailAdmin(params)
+  mailgun(
+    postmaster: "postmaster@noreply.yourdomain.com",
+    apikey: ENV["MAILGUN_DOMAIN_API_KEY"],
+    to: ENV["ADMIN_EMAIL"],
+    from: "#{name_of_app} Fastlane bot",
+    app_link: "https://github.com/#{ENV["TRAVIS_REPO_SLUG"]}",
+    success: true,
+    subject: params[:subject],
+    message: params[:message],
+    attachment: params[:attachments]
+  )
+end
+
+build_targets = [
+  prod_build_target,
+  beta_build_target,
+  dev_build_target
+]
+
+platform :ios do
+
+  before_all do |lane, options|
+    setup_travis
+  end
+  
+  # To use, `bundle exec fastlane refresh_dsms version:0.1.1 build_number:2222 app_id:com.foo.com`
+  desc "Manually download dsym files from iTunes Connect/TestFlight (from processed builds by Apple) and uploads them to Crashlytics for reports."
+  lane :refresh_dsyms do |values| 
+    download_dsyms(
+      version: values[:version],
+      build_number: values[:build_number], 
+      app_identifier: values[:app_id])
+    upload_symbols_to_crashlytics
+    clean_build_artifacts
+  end
+
+  desc "Create apps in iTunes Connect and developer account"
+  lane :create_apps do |values|
+    build_targets.each { |target|
+      create_app_online(        
+        app_identifier: target.identifier,
+        app_name: target.name,
+        language: 'English',
+        enable_services: {
+          push_notification: "on"
+        }
+      )
+    }
+  end
+
+  desc "Setup computer for development"
+  lane :init_dev do |values|
+    sync_code_signing(
+      app_identifier: build_targets.map { |target| target.identifier },       
+      readonly: false,
+      type: "development")
+    sync_code_signing(
+      app_identifier: build_targets.map { |target| target.identifier }, 
+      readonly: false,
+      type: "appstore")    
+  end
+
+  desc "Tasks to maintain the app after launch."
+  lane :maintenance do |values|
+    build_target_identifiers = []
+    build_targets.each { |target|
+      get_push_certificate(        
+        app_identifier: target.identifier,        
+        save_private_key: true,
+        output_path: path_to_certs,
+        new_profile: proc do |profile_path| # this block gets called when a new profile was generated
+          email_message = [
+            "New push notifications certificate created for #{target.name} (#{target.identifier}) app. Firebase uses a key instead of your certificates so there is nothing you need to do there.",
+            "However, you do need to take the attached certificates, put them inside #{path_to_certs} in the #{name_of_app} iOS code, and make an app release so that push notifications will continue to work."
+          ].join("\n") + "\n"
+
+          emailAdmin(
+            subject: "#{target.name}: New push notification certificates created",
+            message: email_message,
+            attachments: [
+              profile_path
+            ]
+          )
+        end
+      )
+      build_target_identifiers.push(target.identifier)
+    }
+
+    register_devices(devices_file: "./fastlane/devices.txt")
+  end
+
+  lane :deploy do |values|
+    if ENV["TRAVIS_TAG"].end_with?("-beta")
+      beta_build_release()
+    else
+      prod_build_release()
+    end 
+  end 
+
+  desc "Build and upload beta app to TestFlight"
+  lane :beta_build_release do |values|
+    changelog = File.read("./release_notes.txt")
+    description = File.read("./metadata/en-US/description.txt")
+    buildVersion = Time.now.to_i.to_s
+    
+    sync_code_signing(
+      type: "appstore",       
+      app_identifier: beta_build_target.identifier)
+
+    set_info_plist_value(path: "./#{source_code_subdirectory}/Info.plist", key: "CFBundleVersion", value: buildVersion) # Set bundle version to epoch time to assert it's always unique.
+    build_ios_app(
+      scheme: xcode_scheme,
+      configuration: 'Beta',
+      export_method: 'app-store',
+      output_name: "Beta.ipa",
+      output_directory: 'build')
+
+    testflight(
+      changelog: changelog,               
+      app_identifier: beta_build_target.identifier,
+      beta_app_description: description,
+      beta_app_feedback_email: beta_feedback_email,
+      distribute_external: false,
+      ipa: './build/Beta.ipa',
+      app_platform: 'ios',
+      wait_for_uploaded_build: true,
+      skip_waiting_for_build_processing: false) # I have decided to not skip waiting for build process because with testflight, skipping will result in changelog and such not being updated and sending app to external testers.
+    versionOfApp = get_version_number(target: xcode_scheme)    
+
+    emailAdmin(
+      subject: "#{beta_build_target.name} v#{versionOfApp} deployed",
+      message: "Build: #{beta_build_target.identifier} has been released on TestFlight.")
+  end
+
+  desc "Build and upload production app to the App Store"
+  lane :prod_build_release do |values|
+    changelog = File.read("./release_notes.txt")
+    buildVersion = Time.now.to_i.to_s
+
+    sync_code_signing(
+      type: "appstore", 
+      app_identifier: prod_build_target.identifier)    
+
+    set_info_plist_value(path: "./#{source_code_subdirectory}/Info.plist", key: "CFBundleVersion", value: buildVersion) # Set bundle version to epoch time to assert it's always unique.    
+    build_ios_app(
+      scheme: xcode_scheme,
+      configuration: 'Release',
+      export_method: 'app-store',
+      output_name: "Prod.ipa",
+      output_directory: 'build')
+    
+    upload_to_app_store(
+      app_identifier: prod_build_target.identifier,
+      ipa: './build/Prod.ipa',
+      precheck_default_rule_level: :error) 
+
+    versionOfApp = get_version_number(target: xcode_scheme)    
+
+    emailAdmin(
+      subject: "#{prod_build_target.name} v#{versionOfApp} deployed",
+      message: "Build: #{prod_build_target.identifier} has been released to the App Store.")
+  end
+
+  # You must: `brew install graphicsmagick` to install the GraphicsMagick library as required by `appicon` action
+  # You must `brew install librsvg` to install RSVG as required by `add_badge` action
+  lane :generate_icons do    
+    app_icon_path = "./fastlane/icons/icon.jpg"
+    icon_sets = ["AppIcon", "AppIconBeta", "AppIconDev"]
+
+    icon_sets.each { |icon_set|
+      appicon(appicon_image_file: app_icon_path,
+        appicon_devices: [:ipad, :iphone, :ios_marketing],
+        appicon_path: "#{source_code_subdirectory}/Assets/Assets.xcassets",
+        appicon_name: "#{icon_set}.appiconset")
+    }
+
+    # Add 'beta' badge to beta build of app
+    add_badge(
+      glob: "/**/AppIconBeta.appiconset/*.{png,PNG}",
+      dark: false, # add a dark badge instead of white one.
+      alpha: false, # uses "alpha" text instead of "beta"
+      badge_gravity: "SouthEast" # where to position the badge 
+    )
+  end
+
+  error do |lane, exception|
+    email_message = [
+      "Exception occurred during Fastlane job",
+      "Lane: #{lane}",
+      "Exception message: #{exception.message}"
+    ].join("\n") + "\n"
+
+    emailAdmin(
+      subject: "Fastlane job Error: #{name_of_app}",
+      message: email_message,
+      success: false 
+    )
+  end
+end

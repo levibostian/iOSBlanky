@@ -6,8 +6,12 @@ use_frameworks!
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-def commonDepencencies
+def developmentDependencies
+    pod 'SwiftFormat/CLI'
     pod 'SwiftLint'
+end 
+
+def commonDepencencies    
     pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'
     pod 'RxCocoa', '~> 5.0.0'
 
@@ -25,15 +29,16 @@ def commonDepencencies
     pod 'KeychainAccess', '~> 3.2.0'
     pod 'DZNEmptyDataSet', '~> 1.8.1'
     pod 'IQKeyboardManagerSwift', '~> 6.4.0'
-    pod 'Wendy', :git => "https://github.com/levibostian/Wendy-iOS", :branch => 'swift5' #'~> 0.1.0-alpha'
+    pod 'Wendy', '~> 0.2.0-alpha'
     pod 'SnapKit', '~> 5.0.0'
-    pod 'Teller', :git => "https://github.com/levibostian/teller-ios", :branch => "swift5-result" # '~> 0.3.1-alpha'
+    pod 'Teller', '~> 0.4.0-alpha'
 
     pod 'WoodPeckeriOS', :configurations => ['Debug']
 end 
 
 target 'iOSBlanky' do
     commonDepencencies()
+    developmentDependencies()
 end
 
 target 'iOSBlankyTests' do

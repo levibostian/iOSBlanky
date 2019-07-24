@@ -1,18 +1,9 @@
-//
-//  ViewController.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 5/3/16.
-//  Copyright © 2016 Curiosity IO. All rights reserved.
-//
-
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
 import SnapKit
+import UIKit
 
 class MainViewController: UIViewController {
-
     fileprivate var didSetupConstraints = false
 
     let usernameTextField: UITextField = {
@@ -55,10 +46,10 @@ class MainViewController: UIViewController {
         view.spacing = 18
         return view
     }()
-    
+
     private let disposeBag = DisposeBag()
     private let reposViewModel = Di.inject.reposViewModel
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,7 +59,8 @@ class MainViewController: UIViewController {
             usernameTextField,
             goButton,
             stateOfDataLabel,
-            fetchingDataStatusLabel])
+            fetchingDataStatusLabel
+        ])
 
         view.addSubview(rootView)
         view.setNeedsUpdateConstraints()
@@ -135,7 +127,7 @@ class MainViewController: UIViewController {
                 make.leading.equalToSuperview().offset(40)
                 make.trailing.equalToSuperview().inset(40)
             }
-            usernameTextField.snp.makeConstraints { (make) in
+            usernameTextField.snp.makeConstraints { make in
                 make.width.equalToSuperview()
             }
 
@@ -144,9 +136,8 @@ class MainViewController: UIViewController {
 
         super.updateViewConstraints()
     }
-    
+
     @objc func howManyReposButtonPressed(_ sender: UIButton) {
         reposViewModel.setGitHubUsernameForRepos(usernameTextField.text!)
     }
-    
 }

@@ -1,17 +1,8 @@
-//
-//  HttpLoggerMoyaPlugin.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/16/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import Moya
 import Result
 
 class HttpLoggerMoyaPlugin: PluginType {
-
     fileprivate let ignoreHeaderKeys: [String] = ["Authorization"]
 
     fileprivate let logger = Di.inject.activityLogger
@@ -41,13 +32,12 @@ class HttpLoggerMoyaPlugin: PluginType {
 }
 
 private extension HttpLoggerMoyaPlugin {
-
     func logNetworkRequest(_ request: URLRequest?, target: TargetType) -> String {
         var output = "Request \(target.method) \(target.path): "
 
         if let headers = request?.allHTTPHeaderFields {
             output += "Headers: "
-            headers.forEach { (key, value) in
+            headers.forEach { key, value in
                 if !ignoreHeaderKeys.contains(key) {
                     output += "\(key):\(value) "
                 }
@@ -66,9 +56,9 @@ private extension HttpLoggerMoyaPlugin {
 
         // We only want to log response body if failed.
 //        if response.statusCode >= 400 {
-            if let body = data, let stringBody = String(data: body, encoding: String.Encoding.utf8) {
-                output += "Body: \(stringBody)"
-            }
+        if let body = data, let stringBody = String(data: body, encoding: String.Encoding.utf8) {
+            output += "Body: \(stringBody)"
+        }
 //        }
 
         return output
