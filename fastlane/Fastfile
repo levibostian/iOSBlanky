@@ -65,6 +65,7 @@ build_targets = [
 platform :ios do
 
   before_all do |lane, options|
+    update_fastlane
     setup_travis
   end
   
