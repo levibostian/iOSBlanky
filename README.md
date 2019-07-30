@@ -116,7 +116,8 @@ This project is mostly setup already for Firebase. It's setup for a dev, beta, a
 Configure:
 * Create a new Firebase project for this app. 
 * Create 3 separate iOS apps inside of this 1 new Firebase project. Create 1 app for the development version of the app, 1 for beta, and 1 for production. 
-* You will now have 3 separate `GoogleService-Info.plist` files you can download from the Firebase website. Download the files and replace the one inside of `SourceDirectory/Assets/Google Service/`. 
+* You will now have 3 separate `GoogleService-Info.plist` files you can download from the Firebase website. Download the files into `<SourceDirectory>/Assets/Google Service/`. Name them (1) `GoogleService-dev.plist` for the development version, (2) `GoogleService-beta.plist` for the beta version, (3) `GoogleService-prod.plist` for the prod version. 
+* Optionally: Delete the entry in the `.gitignore` file to ignore the Google Services files. 
 
 Now, here are some configuration instructions for how to get up and running fast with each of the added Firebase services. *Note: If a Firebase service is not listed below, it's already configured for you!*
 

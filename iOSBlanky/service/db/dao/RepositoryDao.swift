@@ -1,5 +1,8 @@
 import CoreData
 import Foundation
+import UIKit
+import RxSwift
+import RxCoreData
 
 class RepositoryDao {
     private let coreDataManager: CoreDataManager
@@ -10,10 +13,6 @@ class RepositoryDao {
 
     func replaceRepos(_ repos: [Repo], forUsername: GitHubUsername) {
         coreDataManager.performBackgroundTask { context in
-            let existingReposFetch: NSFetchRequest<NSFetchRequestResult> = RepoModel.fetchRequest()
-            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: existingReposFetch)
-            try! context.execute(batchDeleteRequest)
-
             repos.forEach { repo in
                 _ = RepoModel.insertFrom(repo, context: context)
             }
@@ -22,12 +21,16 @@ class RepositoryDao {
         }
     }
 
-    func getRepos(forUsername: GitHubUsername) -> [Repo] {
+    func observeRepos(forUsername username: GitHubUsername) -> Observable<[Repo]> {
         let pendingTaskFetchRequest: NSFetchRequest<RepoModel> = RepoModel.fetchRequest()
-        pendingTaskFetchRequest.predicate = NSPredicate(format: "fullName == %@", forUsername)
+        pendingTaskFetchRequest.predicate = NSPredicate(format: "fullName BEGINSWITH %@", username)
+        pendingTaskFetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "fullName", ascending: true)]
 
-        return try! coreDataManager.uiContext.fetch(pendingTaskFetchRequest).map { (repoModel) -> Repo in
-            repoModel.toRepo()
+        return coreDataManager.uiContext.rx.entities(fetchRequest: pendingTaskFetchRequest).map { (repoModels) -> [Repo] in
+            return repoModels.map({ (repoModel) -> Repo in
+                repoModel.toRepo()
+            })
         }
     }
+
 }

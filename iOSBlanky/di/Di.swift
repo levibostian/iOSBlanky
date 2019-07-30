@@ -28,6 +28,10 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
     var repositorySyncService: RepositorySyncService {
         return container.inject(.repositorySyncService)
     }
+
+    var startupUtil: StartupUtil {
+        return container.inject(.startupUtil)
+    }
 }
 
 // Exists for when using `Di.inject.______` mostly in UI related classes when there is not a constructor to provide dependencies for.
@@ -37,6 +41,7 @@ protocol ConvenientInject {
     var remoteConfig: RemoteConfigProvider { get }
     var userManager: UserManager { get }
     var repositorySyncService: RepositorySyncService { get }
+    var startupUtil: StartupUtil { get }
 }
 
 class DiContainer {
@@ -48,7 +53,9 @@ class DiContainer {
 
     private func registerDependencies() {
         container.register(ActivityLogger.self) { _ in AppActivityLogger() }
-        container.register(CoreDataManager.self) { _ in CoreDataManager() }.singleton()
+        container.register(CoreDataManager.self) { container in
+            CoreDataManager(threadUtil: self.inject(.threadUtil, container))
+        }.singleton()
         container.register(RepositoryDao.self) { container in
             RepositoryDao(coreDataManager: self.inject(.coreDataManager, container))
         }
@@ -134,6 +141,12 @@ class DiContainer {
             TellerRepositorySyncService(reposRepository: self.inject(.reposRepository, container),
                                         githubUsernameRepository: self.inject(.githubUsernameRepository, container))
         }
+        container.register(ThreadUtil.self) { _ in
+            AppThreadUtil()
+        }
+        container.register(StartupUtil.self) { container in
+            AppStartupUtil(coreDataManager: self.inject(.coreDataManager, container))
+        }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
@@ -166,6 +179,8 @@ class DiContainer {
         case .keyValueStorage: return resolver.resolve(KeyValueStorage.self)! as Any
         case .secureStorage: return resolver.resolve(SecureStorage.self)! as Any
         case .repositorySyncService: return resolver.resolve(RepositorySyncService.self)! as Any
+        case .threadUtil: return resolver.resolve(ThreadUtil.self)! as Any
+        case .startupUtil: return resolver.resolve(StartupUtil.self)! as Any
         }
     }
 }

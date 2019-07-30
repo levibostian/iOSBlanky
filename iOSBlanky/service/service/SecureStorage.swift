@@ -16,12 +16,12 @@ protocol SecureStorage {
 
 class KeychainAccessSecureStorage: SecureStorage {
 
-    private var keychain: Keychain {
+    private var keychain: Keychain? {
         guard let loggedInUserId = self.userManager.userId else {
-            fatalError("Cannot get keychain withour user being logged in")
+            return nil
         }
 
-            return Keychain(service: String(format: "%@ %d", Bundle.main.bundleIdentifier!, loggedInUserId))
+        return Keychain(service: String(format: "%@ %d", Bundle.main.bundleIdentifier!, loggedInUserId))
     }
 
     private let userManager: UserManager
@@ -31,10 +31,14 @@ class KeychainAccessSecureStorage: SecureStorage {
     }
 
     func getString(_ key: String) -> String? {
-        return try! keychain.get(key)
+        return try! keychain?.get(key)
     }
 
     func set(_ value: String?, key: String) {
+        guard let keychain = keychain else {
+            fatalError("Keychain cannot be nil to save to it.")
+        }
+
         if let newValue = value {
         try! keychain.set(newValue, key: key)
         } else {
