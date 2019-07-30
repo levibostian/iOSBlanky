@@ -21,4 +21,6 @@ enum Dependency: CaseIterable {
     case keyValueStorage
     case secureStorage
     case repositorySyncService
+    case threadUtil
+    case startupUtil
 }

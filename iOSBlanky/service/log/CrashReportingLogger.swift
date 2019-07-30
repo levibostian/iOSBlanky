@@ -11,7 +11,7 @@ protocol CrashReportingLogger {
 // https://firebase.google.com/docs/crashlytics/customize-crash-reports?platform=ios
 class CrashlyticsCrashReportingLogger: CrashReportingLogger {
     func log(key: String, value: String?) {
-        Crashlytics.sharedInstance().setValue(value, forKey: key)
+        Crashlytics.sharedInstance().setObjectValue(value, forKey: key)
     }
 
     func identifyUser(userId: String?) {

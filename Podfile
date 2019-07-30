@@ -9,11 +9,14 @@ inhibit_all_warnings!
 def developmentDependencies
     pod 'SwiftFormat/CLI'
     pod 'SwiftLint'
+
+    pod 'WoodPeckeriOS', :configurations => ['Debug']
 end 
 
 def commonDepencencies    
     pod 'Moya/RxSwift', '~> 14.0.0-alpha.1'
     pod 'RxCocoa', '~> 5.0.0'
+    pod "RxCoreData", "~> 1.0.0"    
 
     pod 'Swinject', '~> 2.6.2'
 
@@ -32,8 +35,6 @@ def commonDepencencies
     pod 'Wendy', '~> 0.2.0-alpha'
     pod 'SnapKit', '~> 5.0.0'
     pod 'Teller', '~> 0.4.0-alpha'
-
-    pod 'WoodPeckeriOS', :configurations => ['Debug']
 end 
 
 target 'iOSBlanky' do

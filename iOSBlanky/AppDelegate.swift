@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var userManager: UserManager!
     fileprivate var logger: ActivityLogger!
     fileprivate var repositorySyncService: RepositorySyncService!
+    fileprivate var startupUtil: StartupUtil!
 
     fileprivate var isDebug: Bool {
         #if DEBUG
@@ -22,12 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+        FirebaseApp.configure() // Do first so crashlytics starts up to record errors.
 
         logger = Di.inject.activityLogger
         remoteConfig = Di.inject.remoteConfig
         userManager = Di.inject.userManager
         repositorySyncService = Di.inject.repositorySyncService
+        startupUtil = Di.inject.startupUtil
+
+        // Show our launch screen for longer then the default duration of time while we load data and get app asynchronously setup.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreenId")
+        showViewController(launchScreenViewController)
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
@@ -40,16 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         remoteConfig.fetch()
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-
         let iqKeyboardManager = IQKeyboardManager.shared
         iqKeyboardManager.shouldResignOnTouchOutside = true
         iqKeyboardManager.enableAutoToolbar = false
         iqKeyboardManager.enable = true
 
-        goToMainPartOfApp()
+        startupUtil.runStartupTasks { (error) in
+            if let error = error {
+                self.logger.errorOccurred(error)
+                fatalError("Cannot startup app with an error in the startup tasks")
+            }
 
-        registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
+            self.goToMainPartOfApp()
+            self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
+        }
 
         return true
     }
@@ -57,8 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate func goToMainPartOfApp() {
         let viewController = MainViewController()
 
-        window?.rootViewController = getNavigationController(rootViewController: viewController)
-        window?.makeKeyAndVisible()
+        showViewController(getNavigationController(rootViewController: viewController))
     }
 
     fileprivate func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
@@ -73,6 +83,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         view.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key: Any]
 
         return view
+    }
+
+    private func showViewController(_ viewController: UIViewController, animate: Bool = true) {
+        let duration = (animate) ? 0.3 : 0.0
+
+        UIView.transition(with: self.window!, duration: duration, options: .transitionCrossDissolve, animations: {
+            self.window?.rootViewController = viewController
+            self.window?.makeKeyAndVisible()
+        }, completion: nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

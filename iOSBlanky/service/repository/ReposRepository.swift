@@ -32,8 +32,6 @@ class ReposDataSource: OnlineRepositoryDataSource {
     fileprivate let githubApi: GitHubAPI
     fileprivate let db: Database
 
-    fileprivate var observeCache: PublishSubject<[Repo]>?
-
     init(githubApi: GitHubAPI, db: Database) {
         self.githubApi = githubApi
         self.db = db
@@ -46,20 +44,11 @@ class ReposDataSource: OnlineRepositoryDataSource {
     }
 
     func saveData(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) {
-        db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
-    }
-
-    private func newDataSaved(forUsername: GitHubUsername) {
-        observeCache?.on(.next(db.repositoryDao.getRepos(forUsername: forUsername)))
+        self.db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
     }
 
     func observeCachedData(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
-        observeCache?.dispose()
-        observeCache = PublishSubject()
-
-        newDataSaved(forUsername: requirements.githubUsername)
-
-        return observeCache!
+        return db.repositoryDao.observeRepos(forUsername: requirements.githubUsername)
     }
 
     func isDataEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {

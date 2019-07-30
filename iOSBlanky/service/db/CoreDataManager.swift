@@ -1,85 +1,121 @@
 import CoreData
 import Foundation
 
+// Ideas from: https://gist.github.com/kharrison/0d19af0729ae324b8243a738844f8245
 class CoreDataManager {
-    lazy var uiContext: NSManagedObjectContext = {
-        var managedObjectContext: NSManagedObjectContext?
-        if #available(iOS 10.0, *) {
-            managedObjectContext = self.persistentContainer.viewContext
-        } else {
-            // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
-            let coordinator = self.persistentStoreCoordinator
-            managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-            managedObjectContext?.persistentStoreCoordinator = coordinator
-        }
-        return managedObjectContext!
-    }()
+    let persistentContainerQueue = OperationQueue() // make a queue for performing write operations to avoid conflicts with multiple writes at the same time from different contexts.
+    let nameOfModelFile = "Model" // The name of the .xcdatamodeld file you want to use.
+    private let threadUtil: ThreadUtil
 
-    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        persistentContainer.performBackgroundTask(block)
+    // Note: Must call `loadStore()` to initialize. Do not forget to do that.
+    init(threadUtil: ThreadUtil) {
+        self.threadUtil = threadUtil
+
+        persistentContainerQueue.maxConcurrentOperationCount = 1
     }
 
-    private lazy var applicationDocumentsDirectory: URL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named in the application's documents Application Support directory.
-        var documentUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
-        documentUrl.appendPathComponent("WendyDataModel.sqlite")
-        return documentUrl
-    }()
+    // Perform read operations on UI thread
+    var uiContext: NSManagedObjectContext {
+        threadUtil.assertMain()
 
-    private lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = Bundle.main.url(forResource: "Model", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOf: modelURL)!
-    }()
+        return self.persistentContainer.viewContext
+    }
 
-    private lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+    // Perform write operation on UI thread.
+    func performBackgroundTaskOnUI(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        threadUtil.assertMain()
 
-        let dirURL = FileManager.documentsDirectory()
-        let fileURL = URL(string: "Database.sql", relativeTo: dirURL)!
-        try! coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: fileURL, options: nil)
+        persistentContainerQueue.addOperation {
+            self.persistentContainer.performBackgroundTask({ (context) in
+                block(context)
+                try! context.save()
+            })
+        }
+    }
 
-        return coordinator
-    }()
+    // Perform write operations on background thread
+    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        threadUtil.assertBackground()
 
-    @available(iOS 10.0, *)
-    private lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        let container = NSPersistentContainer(name: "Wendy", managedObjectModel: self.managedObjectModel)
-        container.loadPersistentStores(completionHandler: { _, error in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error with core data \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    func saveContext() {
-        if uiContext.hasChanges {
-            do {
-                try uiContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        persistentContainerQueue.addOperation {
+            let context: NSManagedObjectContext = self.persistentContainer.newBackgroundContext()
+            context.performAndWait {
+                block(context)
+                try! context.save()
             }
         }
+    }
+
+    /// The `URL` of the persistent store for this Core Data Stack. If there
+    /// is more than one store this property returns the first store it finds.
+    /// The store may not yet exist. It will be created at this URL by default
+    /// when first loaded.
+    var storeURL: URL? {
+        var url: URL?
+        let descriptions = persistentContainer.persistentStoreDescriptions
+        if let firstDescription = descriptions.first {
+            url = firstDescription.url
+        }
+        return url
+    }
+
+    /// Destroy a persistent store.
+    ///
+    /// - Parameter storeURL: An `NSURL` for the persistent store to be
+    ///   destroyed.
+    /// - Returns: A flag indicating if the operation was successful.
+    /// - Throws: If the store cannot be destroyed.
+    func destroyPersistentStore(at storeURL: URL) throws {
+        let psc = persistentContainer.persistentStoreCoordinator
+        try psc.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
+    }
+
+    /// Replace a persistent store.
+    ///
+    /// - Parameter destinationURL: An `NSURL` for the persistent store to be
+    ///   replaced.
+    /// - Parameter sourceURL: An `NSURL` for the source persistent store.
+    /// - Returns: A flag indicating if the operation was successful.
+    /// - Throws: If the persistent store cannot be replaced.
+    func replacePersistentStore(at url: URL, withPersistentStoreFrom sourceURL: URL) throws {
+        let psc = persistentContainer.persistentStoreCoordinator
+        try psc.replacePersistentStore(at: url, destinationOptions: nil,
+                                       withPersistentStoreFrom: sourceURL, sourceOptions: nil, ofType: NSSQLiteStoreType)
+    }
+
+    /// A read-only flag indicating if the persistent store is loaded.
+    public private (set) var isStoreLoaded = false
+
+    // Note: Meant to be called from UI thread as completionHandler will be called to Ui thread.
+    func loadStore(completionHandler: @escaping (Error?) -> Void) {
+        if let storeURL = self.storeURL {
+            let description = storeDescription(with: storeURL)
+            persistentContainer.persistentStoreDescriptions = [description]
+        }
+
+        persistentContainer.loadPersistentStores { (_, error) in
+            if error == nil {
+                self.isStoreLoaded = true
+                self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+                self.persistentContainer.viewContext.shouldDeleteInaccessibleFaults = true
+            }
+
+            DispatchQueue.main.async {
+                completionHandler(error)
+            }
+        }
+    }
+
+    private lazy var persistentContainer: NSPersistentContainer = {
+        return NSPersistentContainer(name: nameOfModelFile)
+    }()
+
+    private func storeDescription(with url: URL) -> NSPersistentStoreDescription {
+        let description = NSPersistentStoreDescription(url: url)
+        description.shouldMigrateStoreAutomatically = true
+        description.shouldInferMappingModelAutomatically = true
+        description.shouldAddStoreAsynchronously = true
+        description.isReadOnly = false
+        return description
     }
 }
