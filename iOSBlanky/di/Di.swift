@@ -147,6 +147,9 @@ class DiContainer {
         container.register(StartupUtil.self) { container in
             AppStartupUtil(coreDataManager: self.inject(.coreDataManager, container))
         }
+        container.register(FileStorage.self) { _ in
+            FileMangerFileStorage()
+        }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
@@ -181,6 +184,7 @@ class DiContainer {
         case .repositorySyncService: return resolver.resolve(RepositorySyncService.self)! as Any
         case .threadUtil: return resolver.resolve(ThreadUtil.self)! as Any
         case .startupUtil: return resolver.resolve(StartupUtil.self)! as Any
+        case .fileStorage: return resolver.resolve(FileStorage.self)! as Any
         }
     }
 }

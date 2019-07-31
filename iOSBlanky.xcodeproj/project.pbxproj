@@ -11,8 +11,8 @@
 		41CFE39E9D54876C79774913 /* Pods_iOSBlankyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D2E732374E5503E88E49521 /* Pods_iOSBlankyUITests.framework */; };
 		672692D4097317A7D5DA0CD7 /* Pods_iOSBlanky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */; };
 		F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */; };
-		F7096CF422E66BD1004389A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* MainViewController.swift */; };
-		F7096CF522E66BD1004389A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* MainViewController.swift */; };
+		F7096CF422E66BD1004389A5 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* LaunchViewController.swift */; };
+		F7096CF522E66BD1004389A5 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF222E66BD0004389A5 /* LaunchViewController.swift */; };
 		F7096CF622E66BD1004389A5 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */; };
 		F7096CF722E66BD1004389A5 /* BasePopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */; };
 		F7096CF922E66DA5004389A5 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CF822E66DA5004389A5 /* DateExtensions.swift */; };
@@ -110,6 +110,8 @@
 		F799D5A722DFD15E00202FDB /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */; };
 		F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */; };
 		F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
+		F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
+		F79BE39E22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
 		F7A41B811FA512E600266B61 /* GitHubUsernameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A41B801FA512E600266B61 /* GitHubUsernameRepository.swift */; };
 		F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */; };
 		F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
@@ -182,7 +184,7 @@
 		EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSBlanky.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky.debug.xcconfig"; sourceTree = "<group>"; };
 		F7001A431F478AF8002D4A6E /* Moya_ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya_ObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Moya-ObjectMapper/Moya_ObjectMapper.framework"; sourceTree = "<group>"; };
 		F704D85422DE989500FE635A /* HttpLoggerMoyaPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpLoggerMoyaPlugin.swift; sourceTree = "<group>"; };
-		F7096CF222E66BD0004389A5 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F7096CF222E66BD0004389A5 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePopoverViewController.swift; sourceTree = "<group>"; };
 		F7096CF822E66DA5004389A5 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F7096CFB22E66E3D004389A5 /* UIControlExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentActivityLogger.swift; sourceTree = "<group>"; };
 		F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsActivityLogger.swift; sourceTree = "<group>"; };
+		F79BE39C22F11329008EB064 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		F7A404511CD9031900A4D228 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
 		F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
@@ -427,7 +430,7 @@
 		F7096CF122E66BD0004389A5 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
-				F7096CF222E66BD0004389A5 /* MainViewController.swift */,
+				F7096CF222E66BD0004389A5 /* LaunchViewController.swift */,
 				F7096CF322E66BD0004389A5 /* BasePopoverViewController.swift */,
 			);
 			path = viewcontroller;
@@ -684,6 +687,7 @@
 				F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */,
 				F761644422E8B5F4006F2D2A /* SecureStorage.swift */,
 				F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */,
+				F79BE39C22F11329008EB064 /* FileStorage.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1220,8 +1224,9 @@
 				F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */,
 				F7096CF922E66DA5004389A5 /* DateExtensions.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
-				F7096CF422E66BD1004389A5 /* MainViewController.swift in Sources */,
+				F7096CF422E66BD1004389A5 /* LaunchViewController.swift in Sources */,
 				F7C0FF1622E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
+				F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */,
 				F7C0FF2822E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
 				F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */,
 				F704D85522DE989500FE635A /* HttpLoggerMoyaPlugin.swift in Sources */,
@@ -1280,6 +1285,7 @@
 				F7C0FF3322E660D1009E1203 /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F7C0FF1122E50257009E1203 /* ResponseServerError.swift in Sources */,
 				F72043E722E4EED100DE7EA9 /* ReposRepository.swift in Sources */,
+				F79BE39E22F11329008EB064 /* FileStorage.swift in Sources */,
 				F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */,
 				F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */,
 				F721AB5822E8A62B00F77F66 /* KeyValueStorage.swift in Sources */,
@@ -1297,7 +1303,7 @@
 				F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F7096D0122E7AE31004389A5 /* RemoteConfig.swift in Sources */,
 				F72043E622E4EE8D00DE7EA9 /* ReposViewModel.swift in Sources */,
-				F7096CF522E66BD1004389A5 /* MainViewController.swift in Sources */,
+				F7096CF522E66BD1004389A5 /* LaunchViewController.swift in Sources */,
 				F7C0FF2622E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,
 				F7602FD422E224D300FDB5F3 /* Di.swift in Sources */,
 				F72043F622E4F35400DE7EA9 /* GitHubTargetType.swift in Sources */,

@@ -15,6 +15,9 @@ struct MoyaAppendHeadersPlugin: PluginType {
                 request.setValue(String(format: "Bearer %@", authToken), forHTTPHeaderField: "Authorization")
             }
         }
+
+        request.setValue("accept-version", forHTTPHeaderField: Constants.apiVersion)
+
         return request
     }
 

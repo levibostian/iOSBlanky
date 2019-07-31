@@ -3,7 +3,7 @@ import RxSwift
 import SnapKit
 import UIKit
 
-class MainViewController: UIViewController {
+class LaunchViewController: UIViewController {
     fileprivate var didSetupConstraints = false
 
     let usernameTextField: UITextField = {

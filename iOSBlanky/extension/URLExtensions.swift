@@ -8,4 +8,8 @@ extension URL {
 
         return url.queryItems?.first(where: { $0.name == param })?.value
     }
+
+    var doesFileExist: Bool {
+        return FileManager.default.fileExists(atPath: absoluteString)
+    }
 }

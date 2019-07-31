@@ -70,7 +70,7 @@ def main(argv):
         sys.exit(2)
 
     if(not OPTIONS.outputfile.endswith('.plist')):
-        print "Error: Outputfile must end in .plist"
+        print "Error: Outputfile ,{0}, must end in .plist".format(OPTIONS.outputfile)        
         sys.exit(2)
 
     plist = plistFromDir(OPTIONS.inputpath, OPTIONS.excludes)

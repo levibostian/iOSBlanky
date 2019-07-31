@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     fileprivate func goToMainPartOfApp() {
-        let viewController = MainViewController()
+        let viewController = LaunchViewController()
 
         showViewController(getNavigationController(rootViewController: viewController))
     }

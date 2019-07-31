@@ -23,4 +23,5 @@ enum Dependency: CaseIterable {
     case repositorySyncService
     case threadUtil
     case startupUtil
+    case fileStorage
 }
