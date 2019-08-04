@@ -10,6 +10,6 @@ extension URL {
     }
 
     var doesFileExist: Bool {
-        return FileManager.default.fileExists(atPath: absoluteString)
+        return FileManager.default.fileExists(atPath: path)
     }
 }

@@ -141,3 +141,17 @@ class LaunchViewController: UIViewController {
         reposViewModel.setGitHubUsernameForRepos(usernameTextField.text!)
     }
 }
+
+extension LaunchViewController: ThemableViewController {
+    var navigationBarTitle: String? {
+        return "Repos"
+    }
+
+    var navigationBarBackButtonText: String? {
+        return nil
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return currentTheme.statusBarStyle
+    }
+}

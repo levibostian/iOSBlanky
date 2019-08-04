@@ -31,8 +31,8 @@ extension DebugActivityLogger {
         logEvent(tag: "HttpEvent", message: "Request method: \(method), url: \(url)")
     }
 
-    func httpSuccessEvent(method: String, url: String) {
-        logEvent(tag: "HttpEvent", message: "Request success: \(method), url: \(url)")
+    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
+        logEvent(tag: "HttpEvent", message: "Response Success! method: \(method), url: \(url), code: \(code), res body: \(resBody ?? "(none)")")
     }
 
     func httpFailEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {

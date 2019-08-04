@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var logger: ActivityLogger!
     fileprivate var repositorySyncService: RepositorySyncService!
     fileprivate var startupUtil: StartupUtil!
+    var themeManager: ThemeManager!
 
     fileprivate var isDebug: Bool {
         #if DEBUG
@@ -30,17 +31,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userManager = Di.inject.userManager
         repositorySyncService = Di.inject.repositorySyncService
         startupUtil = Di.inject.startupUtil
-
-        // Show our launch screen for longer then the default duration of time while we load data and get app asynchronously setup.
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreenId")
-        showViewController(launchScreenViewController)
+        themeManager = Di.inject.themeManager
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
             self.logger.errorOccurred(error)
             fatalError()
         }
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        UIViewController.swizzle
+        themeManager.applyAppTheme(themeManager.currentTheme)
+
+        // Show our launch screen for longer then the default duration of time while we load data and get app asynchronously setup.
+        let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreenId")
+        showViewController(launchScreenViewController)
 
         Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: isDebug)
 
@@ -52,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iqKeyboardManager.enableAutoToolbar = false
         iqKeyboardManager.enable = true
 
-        startupUtil.runStartupTasks { (error) in
+        startupUtil.runStartupTasks { error in
             if let error = error {
                 self.logger.errorOccurred(error)
                 fatalError("Cannot startup app with an error in the startup tasks")
@@ -72,23 +78,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     fileprivate func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
-        let view = UINavigationController(rootViewController: rootViewController)
-
-        view.navigationBar.barTintColor = UIColor.gray
-        view.navigationBar.tintColor = UIColor.white
-        view.navigationBar.isTranslucent = false
-        view.navigationBar.barStyle = UIBarStyle.black // makes status bar text color white.
-
-        let titleDict: NSDictionary = [NSAttributedString.Key.foregroundColor: UIColor.darkText]
-        view.navigationBar.titleTextAttributes = titleDict as? [NSAttributedString.Key: Any]
-
-        return view
+        return BaseNavigationController(rootViewController: rootViewController)
     }
 
     private func showViewController(_ viewController: UIViewController, animate: Bool = true) {
-        let duration = (animate) ? 0.3 : 0.0
+        let duration = animate ? 0.3 : 0.0
 
-        UIView.transition(with: self.window!, duration: duration, options: .transitionCrossDissolve, animations: {
+        UIView.transition(with: window!, duration: duration, options: .transitionCrossDissolve, animations: {
             self.window?.rootViewController = viewController
             self.window?.makeKeyAndVisible()
         }, completion: nil)
@@ -201,8 +197,8 @@ extension AppDelegate {
 }
 
 // MARK: Background syncing
-extension AppDelegate {
 
+extension AppDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         let backgroundPendingTasksResult = Wendy.shared.backgroundFetchRunTasks(application, performFetchWithCompletionHandler: completionHandler).backgroundFetchResult
         let repositorySyncResult = repositorySyncService.sync()
@@ -217,5 +213,4 @@ extension AppDelegate {
 
         completionHandler(backgroundSyncResult)
     }
-
 }

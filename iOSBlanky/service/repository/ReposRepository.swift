@@ -44,7 +44,7 @@ class ReposDataSource: OnlineRepositoryDataSource {
     }
 
     func saveData(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) {
-        self.db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
+        db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
     }
 
     func observeCachedData(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {

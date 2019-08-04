@@ -1,3 +1,5 @@
+name_of_project = "iOSBlanky"
+
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '11.0'
@@ -6,9 +8,19 @@ use_frameworks!
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
+# Store secrets in your packaged application. https://github.com/orta/cocoapods-keys
+plugin 'cocoapods-keys', {
+  :project => name_of_project,
+  :keys => [
+    "ApiAdminKeyDev",
+    "ApiAdminKeyBeta",
+    "ApiAdminKeyProd"
+  ]
+}
+
 def developmentDependencies
     pod 'SwiftFormat/CLI'
-    pod 'SwiftLint'
+    pod 'SwiftLint'    
 
     pod 'WoodPeckeriOS', :configurations => ['Debug']
 end 
@@ -37,16 +49,16 @@ def commonDepencencies
     pod 'Teller', '~> 0.4.0-alpha'
 end 
 
-target 'iOSBlanky' do
+target name_of_project do
     commonDepencencies()
     developmentDependencies()
 end
 
-target 'iOSBlankyTests' do
+target "#{name_of_project}Tests" do
     commonDepencencies()
 end
 
-target 'iOSBlankyUITests' do
+target "#{name_of_project}UITests" do
     commonDepencencies()
 end
 

@@ -1,11 +1,3 @@
-//
-//  SecureStorage.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/24/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import KeychainAccess
 
@@ -15,7 +7,6 @@ protocol SecureStorage {
 }
 
 class KeychainAccessSecureStorage: SecureStorage {
-
     private var keychain: Keychain? {
         guard let loggedInUserId = self.userManager.userId else {
             return nil
@@ -40,10 +31,9 @@ class KeychainAccessSecureStorage: SecureStorage {
         }
 
         if let newValue = value {
-        try! keychain.set(newValue, key: key)
+            try! keychain.set(newValue, key: key)
         } else {
             try! keychain.remove(key)
         }
     }
-
 }

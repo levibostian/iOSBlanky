@@ -7,7 +7,7 @@ protocol ActivityLogger {
     func setUserId(id: String?)
     func trackEvent(_ event: ActivityEvent, data: [String: Any]?)
     func httpRequestEvent(method: String, url: String)
-    func httpSuccessEvent(method: String, url: String)
+    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)
     func httpFailEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)
     func errorOccurred(_ error: Error)
 }
@@ -50,8 +50,8 @@ class AppActivityLogger: ActivityLogger {
         loggers.forEach { $0.httpRequestEvent(method: method, url: url) }
     }
 
-    func httpSuccessEvent(method: String, url: String) {
-        loggers.forEach { $0.httpSuccessEvent(method: method, url: url) }
+    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
+        loggers.forEach { $0.httpSuccessEvent(method: method, url: url, code: code, reqHeaders: reqHeaders, resHeaders: resHeaders, resBody: resBody) }
     }
 
     func httpFailEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {

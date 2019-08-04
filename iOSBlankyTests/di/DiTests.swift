@@ -39,6 +39,10 @@ class DiTests: XCTestCase {
         XCTAssertNotNil(Di.inject.startupUtil)
     }
 
+    func test_themeManager() {
+        XCTAssertNotNil(Di.inject.themeManager)
+    }
+
     func testDependencyGraphComplete() {
         for dependency in Dependency.allCases {
             XCTAssertNotNil(di.inject(dependency), "Dependency: \(dependency) not able to resolve in dependency graph")

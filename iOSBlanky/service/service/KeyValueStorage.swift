@@ -1,21 +1,13 @@
-//
-//  KeyValueStorage.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/24/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 
 protocol KeyValueStorage {
     func integer(forKey key: String) -> Int?
     func set(_ value: Int?, forKey key: String)
     func string(forKey key: String) -> String?
+    func set(_ value: String?, forKey key: String)
 }
 
 class UserDefaultsKeyValueStorage: KeyValueStorage {
-
     private let userDefaults: UserDefaults
 
     init(userDefaults: UserDefaults) {
@@ -35,4 +27,7 @@ class UserDefaultsKeyValueStorage: KeyValueStorage {
         return userDefaults.string(forKey: key)
     }
 
+    func set(_ value: String?, forKey key: String) {
+        userDefaults.set(value, forKey: key)
+    }
 }

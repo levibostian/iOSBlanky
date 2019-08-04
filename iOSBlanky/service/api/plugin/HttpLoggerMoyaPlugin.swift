@@ -5,7 +5,11 @@ import Result
 class HttpLoggerMoyaPlugin: PluginType {
     fileprivate let ignoreHeaderKeys: [String] = ["Authorization"]
 
-    fileprivate let logger = Di.inject.activityLogger
+    fileprivate let logger: ActivityLogger
+
+    init(logger: ActivityLogger) {
+        self.logger = logger
+    }
 
     func willSend(_ request: RequestType, target: TargetType) {
         logger.httpRequestEvent(method: request.request!.httpMethod!, url: request.request!.url!.absoluteString)
@@ -21,7 +25,7 @@ class HttpLoggerMoyaPlugin: PluginType {
             let resBody = String(decoding: response.data, as: UTF8.self)
 
             if response.isSucccessfulResponse() {
-                logger.httpSuccessEvent(method: method, url: url)
+                logger.httpSuccessEvent(method: method, url: url, code: response.statusCode, reqHeaders: reqHeaders, resHeaders: resHeaders, resBody: resBody)
             } else {
                 logger.httpFailEvent(method: method, url: url, code: response.statusCode, reqHeaders: reqHeaders, resHeaders: resHeaders, resBody: resBody)
             }

@@ -2,7 +2,6 @@ import Foundation
 import KeychainAccess
 
 class UserCredsManager {
-
     private let userAuthTokenKey: String = "userAuthTokenKey"
 
     private let userManager: UserManager
