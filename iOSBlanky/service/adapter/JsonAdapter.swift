@@ -13,6 +13,9 @@ class SwiftJsonAdpter: JsonAdapter {
     init() {
         self.decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+
+        encoder.dateEncodingStrategy = .iso8601
     }
 
     func fromJson<T: Decodable>(_ json: Data) -> T {

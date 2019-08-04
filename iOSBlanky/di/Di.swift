@@ -32,6 +32,10 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
     var startupUtil: StartupUtil {
         return container.inject(.startupUtil)
     }
+
+    var themeManager: ThemeManager {
+        return container.inject(.themeManager)
+    }
 }
 
 // Exists for when using `Di.inject.______` mostly in UI related classes when there is not a constructor to provide dependencies for.
@@ -42,6 +46,7 @@ protocol ConvenientInject {
     var userManager: UserManager { get }
     var repositorySyncService: RepositorySyncService { get }
     var startupUtil: StartupUtil { get }
+    var themeManager: ThemeManager { get }
 }
 
 class DiContainer {
@@ -79,7 +84,7 @@ class DiContainer {
         container.register(MoyaInstance.self) { container in
             let productionPlugins: [PluginType] = [
                 MoyaAppendHeadersPlugin(userCredsManager: self.inject(.userCredsManager, container)),
-                HttpLoggerMoyaPlugin()
+                HttpLoggerMoyaPlugin(logger: self.inject(.activityLogger, container))
             ]
 
             var plugins: [PluginType] = []
@@ -150,6 +155,9 @@ class DiContainer {
         container.register(FileStorage.self) { _ in
             FileMangerFileStorage()
         }
+        container.register(ThemeManager.self) { container in
+            AppThemeManager(keyValueStorage: self.inject(.keyValueStorage, container))
+        }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
@@ -185,6 +193,7 @@ class DiContainer {
         case .threadUtil: return resolver.resolve(ThreadUtil.self)! as Any
         case .startupUtil: return resolver.resolve(StartupUtil.self)! as Any
         case .fileStorage: return resolver.resolve(FileStorage.self)! as Any
+        case .themeManager: return resolver.resolve(ThemeManager.self)! as Any
         }
     }
 }

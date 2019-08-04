@@ -18,7 +18,7 @@ class CoreDataManager {
     var uiContext: NSManagedObjectContext {
         threadUtil.assertMain()
 
-        return self.persistentContainer.viewContext
+        return persistentContainer.viewContext
     }
 
     // Perform write operation on UI thread.
@@ -26,10 +26,10 @@ class CoreDataManager {
         threadUtil.assertMain()
 
         persistentContainerQueue.addOperation {
-            self.persistentContainer.performBackgroundTask({ (context) in
+            self.persistentContainer.performBackgroundTask { context in
                 block(context)
                 try! context.save()
-            })
+            }
         }
     }
 
@@ -84,7 +84,7 @@ class CoreDataManager {
     }
 
     /// A read-only flag indicating if the persistent store is loaded.
-    public private (set) var isStoreLoaded = false
+    public private(set) var isStoreLoaded = false
 
     // Note: Meant to be called from UI thread as completionHandler will be called to Ui thread.
     func loadStore(completionHandler: @escaping (Error?) -> Void) {
@@ -93,7 +93,7 @@ class CoreDataManager {
             persistentContainer.persistentStoreDescriptions = [description]
         }
 
-        persistentContainer.loadPersistentStores { (_, error) in
+        persistentContainer.loadPersistentStores { _, error in
             if error == nil {
                 self.isStoreLoaded = true
                 self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
@@ -107,7 +107,7 @@ class CoreDataManager {
     }
 
     private lazy var persistentContainer: NSPersistentContainer = {
-        return NSPersistentContainer(name: nameOfModelFile)
+        NSPersistentContainer(name: nameOfModelFile)
     }()
 
     private func storeDescription(with url: URL) -> NSPersistentStoreDescription {

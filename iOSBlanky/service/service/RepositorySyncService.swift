@@ -1,11 +1,3 @@
-//
-//  RepositorySyncService.swift
-//  iOSBlanky
-//
-//  Created by Levi Bostian on 7/24/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import RxSwift
 import Teller
@@ -16,7 +8,6 @@ protocol RepositorySyncService {
 }
 
 class TellerRepositorySyncService: RepositorySyncService {
-
     private let reposRepository: ReposRepository
     private let githubUsernameRepository: GitHubUsernameRepository
 
@@ -42,7 +33,7 @@ class TellerRepositorySyncService: RepositorySyncService {
         reposRepository.requirements = ReposDataSource.GetDataRequirements(githubUsername: usernameReposToFetch)
 
         try! reposRepository.refresh(force: false)
-            .subscribe(onSuccess: { (result) in
+            .subscribe(onSuccess: { result in
                 fetchResults.append(result)
 
                 onComplete(fetchResults)
@@ -54,10 +45,10 @@ class TellerRepositorySyncService: RepositorySyncService {
             syncDispatchGroup.enter()
             var backgroundFetchResult: UIBackgroundFetchResult!
 
-            syncRepositories(onComplete: { (refreshResults) in
-                let numberSuccessfulFetches = refreshResults.filter({ $0.didSucceed() }).count
-                let numberSkippedTasks = refreshResults.filter({ $0.didSkip() }).count
-                let numberFailedTasks = refreshResults.filter({ $0.didFail() }).count
+            syncRepositories(onComplete: { refreshResults in
+                let numberSuccessfulFetches = refreshResults.filter { $0.didSucceed() }.count
+                let numberSkippedTasks = refreshResults.filter { $0.didSkip() }.count
+                let numberFailedTasks = refreshResults.filter { $0.didFail() }.count
 
                 if refreshResults.isEmpty || numberSkippedTasks == refreshResults.count {
                     backgroundFetchResult = .noData
@@ -74,5 +65,4 @@ class TellerRepositorySyncService: RepositorySyncService {
             return backgroundFetchResult
         }
     }
-
 }

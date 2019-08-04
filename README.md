@@ -106,6 +106,7 @@ All libraries installed via [Cocoapods](https://cocoapods.org/).
 - [SnapKit](https://github.com/SnapKit/snapkit/) - Create views and layouts of your app screens using code with ease. 
 - [Teller](https://github.com/levibostian/teller-ios) - iOS library that manages your app's cached data with ease.
 - [WoodPecker](https://github.com/appwoodpecker/woodpecker-ios) - Handy tool for development to view files, network requests/responses, and more from the development device. 
+- [Cocoapods-keys](https://github.com/orta/cocoapods-keys) - Store client side secrets in a secure (well, [more secure](https://github.com/orta/cocoapods-keys#security) anyway) way. 
 
 # Services 
 

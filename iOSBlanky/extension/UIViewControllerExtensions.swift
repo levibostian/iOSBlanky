@@ -2,21 +2,20 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    func getAppDelegate() -> AppDelegate {
+    var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
     }
+}
 
-    func setBackButtonText(_ text: String = " ") {
-        let backItem = UIBarButtonItem()
-        backItem.title = text
-        navigationItem.backBarButtonItem = backItem
-    }
+extension UIViewController {
+    static let swizzle: Void = {
+        let originalSelector = #selector(viewWillAppear(_:))
+        let swizzledSelector = #selector(swizzledViewWillAppear(_:))
+        Swizzler.swizzling(UIViewController.self, originalSelector, swizzledSelector)
+    }()
 
-    func setNavigationBarTitle(_ text: String = " ") {
-        if navigationItem.titleView is UIButton {
-            (navigationItem.titleView as! UIButton).setTitle(text, for: UIControl.State.normal) // swiftlint:disable:this force_cast
-        } else {
-            navigationController?.navigationBar.topItem?.title = text
-        }
+    @objc func swizzledViewWillAppear(_ animated: Bool) {
+        (self as? ThemableViewController)?.applyTheme() // This must exist here, or some of the properties set on the VC will not set for the theme.
+        swizzledViewWillAppear(animated) // call the original method
     }
 }

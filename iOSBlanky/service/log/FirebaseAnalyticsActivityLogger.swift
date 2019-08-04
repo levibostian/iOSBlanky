@@ -14,7 +14,7 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         // No need to log this to analytics.
     }
 
-    func httpSuccessEvent(method: String, url: String) {
+    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
         // No need to log this to analytics.
     }
 

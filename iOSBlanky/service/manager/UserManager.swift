@@ -1,7 +1,6 @@
 import Foundation
 
 class UserManager {
-
     private let userIdKey: String = "userIdKey"
     private let keyValueStore: KeyValueStorage
 

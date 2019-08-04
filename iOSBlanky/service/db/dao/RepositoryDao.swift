@@ -1,8 +1,8 @@
 import CoreData
 import Foundation
-import UIKit
-import RxSwift
 import RxCoreData
+import RxSwift
+import UIKit
 
 class RepositoryDao {
     private let coreDataManager: CoreDataManager
@@ -24,13 +24,12 @@ class RepositoryDao {
     func observeRepos(forUsername username: GitHubUsername) -> Observable<[Repo]> {
         let pendingTaskFetchRequest: NSFetchRequest<RepoModel> = RepoModel.fetchRequest()
         pendingTaskFetchRequest.predicate = NSPredicate(format: "fullName BEGINSWITH %@", username)
-        pendingTaskFetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "fullName", ascending: true)]
+        pendingTaskFetchRequest.sortDescriptors = [NSSortDescriptor(key: "fullName", ascending: true)]
 
         return coreDataManager.uiContext.rx.entities(fetchRequest: pendingTaskFetchRequest).map { (repoModels) -> [Repo] in
-            return repoModels.map({ (repoModel) -> Repo in
+            repoModels.map { (repoModel) -> Repo in
                 repoModel.toRepo()
-            })
+            }
         }
     }
-
 }
