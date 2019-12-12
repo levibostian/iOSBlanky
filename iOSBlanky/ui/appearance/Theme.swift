@@ -1,7 +1,7 @@
-import Foundation
-import UIKit
 import Empty
+import Foundation
 import PleaseHold
+import UIKit
 
 struct Theme {
     let name: String
@@ -65,7 +65,7 @@ class AppThemeManager: ThemeManager {
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.navigationBarItemColor
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: theme.navigationBarTextColor]
-        
+
         EmptyViewConfig.shared = theme.emptyViewStyle.config
         PleaseHoldViewConfig.shared = theme.pleaseHoldViewStyle.config
     }

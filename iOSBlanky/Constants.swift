@@ -14,5 +14,4 @@ class Constants {
     #else
     static let apiEndpoint: String = "https://api.github.com"
     #endif
-    
 }

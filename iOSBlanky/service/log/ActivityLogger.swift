@@ -14,6 +14,7 @@ protocol ActivityLogger {
     func httpFailEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)
     func errorOccurred(_ error: Error)
 }
+
 extension ActivityLogger {
     func appEventOccurred(_ event: String, extras: [String: Any]?, file: StaticString = #file) {
         appEventOccurred(event, extras: extras, from: "\(file)".pathToFileName())
