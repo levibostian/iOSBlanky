@@ -1,16 +1,10 @@
-name_of_project = "iOSBlanky"
+require 'dotenv/load'
+
+name_of_project = ENV["APP_TARGET_NAME"]
 
 platform :ios, '11.0'
 use_frameworks!
 inhibit_all_warnings!
-
-# Store secrets in your packaged application. https://github.com/orta/cocoapods-keys
-# plugin 'cocoapods-keys', {
-#   :project => name_of_project,
-#   :keys => [
-#     "ApiAdminKey"
-#   ]
-# }
 
 def developmentDependencies
     pod 'SwiftFormat/CLI'

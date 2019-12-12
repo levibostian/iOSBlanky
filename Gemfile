@@ -21,3 +21,5 @@ gem "danger-swiftformat", "~> 0.5.0"
 gem "danger-swiftlint", "~> 0.22.0"
 
 gem "cocoapods-keys", "~> 2.1"
+
+gem "dotenv", "~> 2.7"

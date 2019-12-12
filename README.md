@@ -1,5 +1,5 @@
 ![Swift 5.0.x](https://img.shields.io/badge/Swift-5.0.x-orange.svg)
-![XCode 10.2](https://img.shields.io/badge/XCode-10.2-grey.svg)
+![XCode 11.2](https://img.shields.io/badge/XCode-11.2-grey.svg)
 
 # iOSBlanky
 
@@ -49,6 +49,7 @@ git config user.name "First Last"
 git add .; git commit -m "Initial commit. Created project from levibostian/iOSBlanky boilerplate.";
 pod install
 bundle install
+./hooks/autohook.sh install
 ```
 
 * Open `iOSBlanky.xcworkspace` in XCode.
