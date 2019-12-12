@@ -1,6 +1,5 @@
 import Foundation
 import Moya
-import Result
 
 class HttpLoggerMoyaPlugin: PluginType {
     fileprivate let ignoreHeaderKeys: [String] = ["Authorization"]
@@ -12,7 +11,11 @@ class HttpLoggerMoyaPlugin: PluginType {
     }
 
     func willSend(_ request: RequestType, target: TargetType) {
-        logger.httpRequestEvent(method: request.request!.httpMethod!, url: request.request!.url!.absoluteString)
+        var reqBody: String?
+        if let body = request.request!.httpBody {
+            reqBody = String(decoding: body, as: UTF8.self)
+        }
+        logger.httpRequestEvent(method: request.request!.httpMethod!, url: request.request!.url!.absoluteString, reqBody: reqBody)
     }
 
     func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {

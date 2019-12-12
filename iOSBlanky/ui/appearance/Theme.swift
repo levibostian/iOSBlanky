@@ -1,5 +1,7 @@
 import Foundation
 import UIKit
+import Empty
+import PleaseHold
 
 struct Theme {
     let name: String
@@ -8,6 +10,8 @@ struct Theme {
     let navigationBarItemColor: UIColor // color of bar items
     let navigationBarColor: UIColor
     let statusBarStyle: UIStatusBarStyle
+    let emptyViewStyle: EmptyViewConfigPreset
+    let pleaseHoldViewStyle: PleaseHoldViewConfigPreset
 }
 
 protocol ThemeManager {
@@ -31,7 +35,9 @@ class AppThemeManager: ThemeManager {
                                   navigationBarTextColor: UIColor.white,
                                   navigationBarItemColor: UIColor.white,
                                   navigationBarColor: UIColor.darkGray,
-                                  statusBarStyle: .lightContent)
+                                  statusBarStyle: .lightContent,
+                                  emptyViewStyle: EmptyViewConfig.light,
+                                  pleaseHoldViewStyle: PleaseHoldViewConfig.light)
         self.themes = [
             defaultTheme
         ]
@@ -40,7 +46,7 @@ class AppThemeManager: ThemeManager {
     var currentTheme: Theme {
         set {
             guard themes.contains(where: { $0.name == newValue.name }) else {
-                fatalError("Cannot save current theme: \(newValue) when themes: \(themes)")
+                fatalError("Cannot save current theme: \(newValue) when themes: \(String(describing: themes))")
             }
 
             keyValueStorage.set(newValue.name, forKey: currentThemeKey)
@@ -59,6 +65,9 @@ class AppThemeManager: ThemeManager {
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.navigationBarItemColor
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: theme.navigationBarTextColor]
+        
+        EmptyViewConfig.shared = theme.emptyViewStyle.config
+        PleaseHoldViewConfig.shared = theme.pleaseHoldViewStyle.config
     }
 
     func applyTheme(to viewController: ThemableViewController) {

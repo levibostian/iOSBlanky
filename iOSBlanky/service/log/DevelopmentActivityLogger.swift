@@ -10,8 +10,12 @@ class DevelopmentActivityLogger: DebugActivityLogger {
         }
     }
 
-    func logEvent(tag: String, message: String) {
-        ConsoleLogger.d("\(tag): \(message)")
+    func logAppEvent(_ message: String, extras: [String: Any]?) {
+        ConsoleLogger.d("[APP/EVENT] \(message): Extras: \(extras?.description ?? "(null)")")
+    }
+
+    func logDebug(_ message: String, extras: [String: Any]?) {
+        ConsoleLogger.d("[APP/DEBUG] \(message): Extras: \(extras?.description ?? "(null)")")
     }
 
     func logError(_ error: Error) {

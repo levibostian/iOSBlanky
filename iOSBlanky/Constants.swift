@@ -1,5 +1,4 @@
 import Foundation
-import Keys
 
 class Constants {
     static var buildFlavor: BuildFlavor {
@@ -15,14 +14,5 @@ class Constants {
     #else
     static let apiEndpoint: String = "https://api.github.com"
     #endif
-
-    static var oauthToken: String {
-        let keys = IOSBlankyKeys()
-
-        switch Constants.buildFlavor {
-        case .dev: return keys.apiAdminKeyDev
-        case .beta: return keys.apiAdminKeyBeta
-        case .prod: return keys.apiAdminKeyProd
-        }
-    }
+    
 }

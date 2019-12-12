@@ -6,11 +6,15 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         Analytics.setUserID(id)
     }
 
-    func trackEvent(_ event: ActivityEvent, data: [String: Any]?) {
-        Analytics.logEvent(event.description, parameters: data)
+    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String) {
+        Analytics.logEvent(event, parameters: extras)
     }
 
-    func httpRequestEvent(method: String, url: String) {
+    func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {
+        // No need to log this to analytics.
+    }
+
+    func httpRequestEvent(method: String, url: String, reqBody: String?) {
         // No need to log this to analytics.
     }
 

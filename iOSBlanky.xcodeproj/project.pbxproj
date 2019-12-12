@@ -56,6 +56,12 @@
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
 		F74AF30222F0D1100089BADC /* RxCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74AF30122F0D1100089BADC /* RxCoreData.framework */; };
 		F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */; };
+		F75944C623A1B3EC009258D9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C523A1B3EC009258D9 /* StringExtensions.swift */; };
+		F75944C723A1B3EC009258D9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C523A1B3EC009258D9 /* StringExtensions.swift */; };
+		F75944C823A1B3EC009258D9 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C523A1B3EC009258D9 /* StringExtensions.swift */; };
+		F75944CA23A1B43A009258D9 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
+		F75944CB23A1B43A009258D9 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
+		F75944CC23A1B43A009258D9 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
 		F75968F922E225500076253B /* DiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75968F822E225500076253B /* DiTests.swift */; };
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
 		F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
@@ -149,7 +155,6 @@
 		F76835DD1F9ED40100219B30 /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835DC1F9ED40100219B30 /* ReposRepository.swift */; };
 		F76ACF4922F7841B00B1A41D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* UIColor.swift */; };
 		F76ACF4A22F7841B00B1A41D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* UIColor.swift */; };
-		F76ACF4C22F7844C00B1A41D /* Keys.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76ACF4B22F7844C00B1A41D /* Keys.framework */; };
 		F76ACF4E22F7848B00B1A41D /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4D22F7848B00B1A41D /* Swizzler.swift */; };
 		F76ACF4F22F7848B00B1A41D /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4D22F7848B00B1A41D /* Swizzler.swift */; };
 		F76ACF5122F784D800B1A41D /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF5022F784D800B1A41D /* UIColorExtensions.swift */; };
@@ -164,6 +169,12 @@
 		F76ACF5F22F7866C00B1A41D /* ThemableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF5D22F7866C00B1A41D /* ThemableViewController.swift */; };
 		F76ACF6022F786E300B1A41D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF5A22F785F300B1A41D /* Theme.swift */; };
 		F76DCDE322E2377900572E67 /* UIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */; };
+		F76EF43523A1BB10005F933C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */; };
+		F76EF43623A1BB10005F933C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */; };
+		F76EF43723A1BB10005F933C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */; };
+		F76EF43B23A1BC59005F933C /* Empty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EF43823A1BC59005F933C /* Empty.framework */; };
+		F76EF43D23A1BC59005F933C /* PleaseHold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EF43923A1BC59005F933C /* PleaseHold.framework */; };
+		F76EF43F23A1BC59005F933C /* Swapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EF43A23A1BC59005F933C /* Swapper.framework */; };
 		F785CB6B22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */; };
 		F785CB6C22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */; };
 		F785CB6E22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
@@ -177,9 +188,6 @@
 		F799D58B22DF71DB00202FDB /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D58A22DF71DB00202FDB /* Swinject.framework */; };
 		F799D58D22DF71DB00202FDB /* Wendy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D58C22DF71DB00202FDB /* Wendy.framework */; };
 		F799D58F22DFB64200202FDB /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58E22DFB64200202FDB /* Dependencies.swift */; };
-		F799D59422DFBDB300202FDB /* GoogleService-beta.plist in Resources */ = {isa = PBXBuildFile; fileRef = F799D59322DFBDB300202FDB /* GoogleService-beta.plist */; };
-		F799D59622DFBDD700202FDB /* GoogleService-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = F799D59522DFBDD700202FDB /* GoogleService-dev.plist */; };
-		F799D59822DFBDEE00202FDB /* GoogleService-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = F799D59722DFBDEE00202FDB /* GoogleService-prod.plist */; };
 		F799D59A22DFC00600202FDB /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
 		F799D59C22DFC4AF00202FDB /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D59B22DFC4AF00202FDB /* FirebaseCore.framework */; };
 		F799D59E22DFC4AF00202FDB /* FirebaseDynamicLinks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D59D22DFC4AF00202FDB /* FirebaseDynamicLinks.framework */; };
@@ -223,7 +231,6 @@
 		F7CC939B22F0C2C700C7FF16 /* AppStartupUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC939A22F0C2C700C7FF16 /* AppStartupUtil.swift */; };
 		F7CC939C22F0C2C700C7FF16 /* AppStartupUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC939A22F0C2C700C7FF16 /* AppStartupUtil.swift */; };
 		F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* Constants.swift */; };
-		F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D41E14A00600F2C3CB /* DZNEmptyDataSet.framework */; };
 		F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */; };
 		F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */; };
 		F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
@@ -293,6 +300,8 @@
 		F751BAEF1F9E6CCF0048BB3D /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75230371CD90B5D00DCAAC4 /* Kamagari.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kamagari.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Kamagari.framework"; sourceTree = "<group>"; };
 		F75230381CD90B5D00DCAAC4 /* SwiftOverlays.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftOverlays.framework; path = "Pods/../build/Debug-iphoneos/SwiftOverlays.framework"; sourceTree = "<group>"; };
+		F75944C523A1B3EC009258D9 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		F75944C923A1B43A009258D9 /* FileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileName.swift; sourceTree = "<group>"; };
 		F75968F822E225500076253B /* DiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiTests.swift; sourceTree = "<group>"; };
 		F75DCD7F1CD8F10D00B8941F /* iOSBlanky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSBlanky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCD821CD8F10D00B8941F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +333,10 @@
 		F76ACF5A22F785F300B1A41D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F76ACF5D22F7866C00B1A41D /* ThemableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableViewController.swift; sourceTree = "<group>"; };
 		F76DCDE222E2377900572E67 /* UIStackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtensions.swift; sourceTree = "<group>"; };
+		F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F76EF43823A1BC59005F933C /* Empty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Empty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F76EF43923A1BC59005F933C /* PleaseHold.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PleaseHold.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F76EF43A23A1BC59005F933C /* Swapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTasksFactory.swift; sourceTree = "<group>"; };
 		F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySyncService.swift; sourceTree = "<group>"; };
 		F785CC7522D692C500389076 /* Teller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Teller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,9 +348,6 @@
 		F799D58A22DF71DB00202FDB /* Swinject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swinject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F799D58C22DF71DB00202FDB /* Wendy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Wendy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F799D58E22DFB64200202FDB /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
-		F799D59322DFBDB300202FDB /* GoogleService-beta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-beta.plist"; sourceTree = "<group>"; };
-		F799D59522DFBDD700202FDB /* GoogleService-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-dev.plist"; sourceTree = "<group>"; };
-		F799D59722DFBDEE00202FDB /* GoogleService-prod.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-prod.plist"; sourceTree = "<group>"; };
 		F799D59922DFC00600202FDB /* BuildFlavor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildFlavor.swift; sourceTree = "<group>"; };
 		F799D59B22DFC4AF00202FDB /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F799D59D22DFC4AF00202FDB /* FirebaseDynamicLinks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseDynamicLinks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -394,24 +404,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F76ACF4C22F7844C00B1A41D /* Keys.framework in Frameworks */,
 				F74AF30222F0D1100089BADC /* RxCoreData.framework in Frameworks */,
 				F712CD9B22E3B32100272FF5 /* CoreData.framework in Frameworks */,
 				F799D59C22DFC4AF00202FDB /* FirebaseCore.framework in Frameworks */,
 				F799D59E22DFC4AF00202FDB /* FirebaseDynamicLinks.framework in Frameworks */,
 				F799D5A022DFC4AF00202FDB /* FirebaseMessaging.framework in Frameworks */,
+				F76EF43D23A1BC59005F933C /* PleaseHold.framework in Frameworks */,
 				F799D5A222DFC4AF00202FDB /* GoogleToolboxForMac.framework in Frameworks */,
+				F76EF43F23A1BC59005F933C /* Swapper.framework in Frameworks */,
 				F799D5A422DFC4AF00202FDB /* GoogleUtilities.framework in Frameworks */,
 				F799D58922DF71DB00202FDB /* SnapKit.framework in Frameworks */,
 				F799D58B22DF71DB00202FDB /* Swinject.framework in Frameworks */,
 				F799D58D22DF71DB00202FDB /* Wendy.framework in Frameworks */,
+				F76EF43B23A1BC59005F933C /* Empty.framework in Frameworks */,
 				F785CC7622D692C500389076 /* Teller.framework in Frameworks */,
 				F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */,
 				F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */,
 				F70ED87C1F47854800AD018C /* Moya.framework in Frameworks */,
 				F70ED8801F47854800AD018C /* RxCocoa.framework in Frameworks */,
 				F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */,
-				F7D3B8D71E14A00600F2C3CB /* DZNEmptyDataSet.framework in Frameworks */,
 				F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */,
 				F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */,
 				672692D4097317A7D5DA0CD7 /* Pods_iOSBlanky.framework in Frameworks */,
@@ -456,6 +467,9 @@
 		C1715DC8E1D8C79F1A025E3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F76EF43823A1BC59005F933C /* Empty.framework */,
+				F76EF43923A1BC59005F933C /* PleaseHold.framework */,
+				F76EF43A23A1BC59005F933C /* Swapper.framework */,
 				F76ACF4B22F7844C00B1A41D /* Keys.framework */,
 				F74AF30122F0D1100089BADC /* RxCoreData.framework */,
 				F712CD9A22E3B32100272FF5 /* CoreData.framework */,
@@ -599,6 +613,7 @@
 				F75DCD821CD8F10D00B8941F /* AppDelegate.swift */,
 				F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */,
 				F75DCD8E1CD8F10D00B8941F /* Info.plist */,
+				F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */,
 				F7D3B8D01E149B5F00F2C3CB /* Constants.swift */,
 				F71D087422E24FDE000B1577 /* Localizable.strings */,
 				F76835B11F9ECF9A00219B30 /* Assets */,
@@ -667,7 +682,6 @@
 		F76835B11F9ECF9A00219B30 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				F799D59022DFBC7800202FDB /* Google Services */,
 				F75DCD891CD8F10D00B8941F /* Assets.xcassets */,
 				F76835B21F9ECFBF00219B30 /* Color.xcassets */,
 				F76ACF4822F7841B00B1A41D /* UIColor.swift */,
@@ -713,6 +727,7 @@
 			children = (
 				F785CC7922D696FE00389076 /* DataState.swift */,
 				F799D59922DFC00600202FDB /* BuildFlavor.swift */,
+				F75944C923A1B43A009258D9 /* FileName.swift */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -746,16 +761,6 @@
 				F799D58E22DFB64200202FDB /* Dependencies.swift */,
 			);
 			path = di;
-			sourceTree = "<group>";
-		};
-		F799D59022DFBC7800202FDB /* Google Services */ = {
-			isa = PBXGroup;
-			children = (
-				F799D59322DFBDB300202FDB /* GoogleService-beta.plist */,
-				F799D59522DFBDD700202FDB /* GoogleService-dev.plist */,
-				F799D59722DFBDEE00202FDB /* GoogleService-prod.plist */,
-			);
-			path = "Google Services";
 			sourceTree = "<group>";
 		};
 		F7C0FF0D22E50237009E1203 /* error */ = {
@@ -815,6 +820,7 @@
 				F721AB4F22E7B85F00F77F66 /* URLExtensions.swift */,
 				F76ACF5022F784D800B1A41D /* UIColorExtensions.swift */,
 				F76ACF5322F784ED00B1A41D /* UITableViewExtensions.swift */,
+				F75944C523A1B3EC009258D9 /* StringExtensions.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -961,14 +967,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */,
-				F799D59622DFBDD700202FDB /* GoogleService-dev.plist in Resources */,
-				F799D59422DFBDB300202FDB /* GoogleService-beta.plist in Resources */,
 				F721AB4D22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F71D087222E24FDE000B1577 /* Localizable.strings in Resources */,
-				F799D59822DFBDEE00202FDB /* GoogleService-prod.plist in Resources */,
 				F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */,
 				F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */,
+				F76EF43523A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +982,7 @@
 			files = (
 				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
+				F76EF43623A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +990,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F76EF43723A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,23 +1023,23 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyTests/Pods-iOSBlankyTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Empty/Empty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Swapper/Swapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
 				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
@@ -1042,23 +1048,23 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Empty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
@@ -1113,53 +1119,51 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iOSBlanky/Pods-iOSBlanky-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Empty/Empty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Swapper/Swapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
 				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
-				"${PODS_ROOT}/WoodPeckeriOS/WoodPeckeriOS.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Empty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WoodPeckeriOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,23 +1179,23 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Empty/Empty.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Swapper/Swapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
 				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
@@ -1200,23 +1204,23 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Empty.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
@@ -1280,7 +1284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Crashlytics, firebase analytics, etc all require the use of 1 GoogleService-Info.plist\n# file. You can configure it to work with others, but it's a pain and you lose features. \n# This method is just easier. \n#\n# Credits: https://stackoverflow.com/a/48789232/1486374\n\nPATH_TO_GOOGLE_PLISTS=\"${PROJECT_DIR}/iOSBlanky/Assets/Google Services\"\n\ncase \"${CONFIGURATION}\" in\n\n\"Debug\")\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-dev.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n\"Beta\")\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-beta.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n\"Release\")\ncp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-prod.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n*)\n;;\nesac\n";
+			shellScript = "# Crashlytics, firebase analytics, etc all require the use of 1 GoogleService-Info.plist\n# file. You can configure it to work with others, but it's a pain and you lose features. \n# This method is just easier. \n#\n# Credits: https://stackoverflow.com/a/48789232/1486374\n\nPATH_TO_GOOGLE_PLISTS=\"${PROJECT_DIR}/GoogleServices\"\nDESTINATION=\"${PROJECT_DIR}/iOSBlanky/GoogleService-Info.plist\"\n\ncase \"${CONFIGURATION}\" in\n\n\"Debug\")\n  cp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-dev.plist\" \"$DESTINATION\" \n  ;;\n\n\"Release\")\n  cp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-prod.plist\" \"$DESTINATION\" \n  ;;\nesac\n";
 		};
 		F7B674F81CD8F2BC007C42FC /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1317,6 +1321,7 @@
 				F721AB5022E7B85F00F77F66 /* URLExtensions.swift in Sources */,
 				F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */,
 				F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */,
+				F75944CA23A1B43A009258D9 /* FileName.swift in Sources */,
 				F712CDA322E3BCBC00272FF5 /* Database.swift in Sources */,
 				F712CD9F22E3B49000272FF5 /* SwinjectExtensions.swift in Sources */,
 				F76ACF5422F784ED00B1A41D /* UITableViewExtensions.swift in Sources */,
@@ -1327,6 +1332,7 @@
 				F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */,
 				F76835AE1F9ECED200219B30 /* GitHubTargetType.swift in Sources */,
 				F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */,
+				F75944C623A1B3EC009258D9 /* StringExtensions.swift in Sources */,
 				F7096CF622E66BD1004389A5 /* BasePopoverViewController.swift in Sources */,
 				F712CD9922E3B0BC00272FF5 /* FileManagerExtensions.swift in Sources */,
 				F799D58422DF703100202FDB /* CrashReportingLogger.swift in Sources */,
@@ -1387,6 +1393,7 @@
 				F7CC939922F0BB0100C7FF16 /* ThreadUtil.swift in Sources */,
 				F76765B522F78AD700ED2A11 /* AppDelegate.swift in Sources */,
 				F712CDA122E3B86600272FF5 /* RepositoryDao.swift in Sources */,
+				F75944CB23A1B43A009258D9 /* FileName.swift in Sources */,
 				F7C0FF3422E66100009E1203 /* UserCredsManager.swift in Sources */,
 				F76765B222F78AD700ED2A11 /* UIViewControllerExtensions.swift in Sources */,
 				F76765B422F78AD700ED2A11 /* UITableViewExtensions.swift in Sources */,
@@ -1397,6 +1404,7 @@
 				F76765B622F78AD700ED2A11 /* UIColor.swift in Sources */,
 				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */,
+				F75944C723A1B3EC009258D9 /* StringExtensions.swift in Sources */,
 				F7602FD522E224D300FDB5F3 /* Dependencies.swift in Sources */,
 				F72043F722E4F3CB00DE7EA9 /* JsonAdapter.swift in Sources */,
 				F785CB6C22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */,
@@ -1457,6 +1465,7 @@
 				F76765A822F78AC000ED2A11 /* RepositoryDao.swift in Sources */,
 				F76765BA22F78AD800ED2A11 /* GitHubUsernameRepository.swift in Sources */,
 				F76765CC22F78AD800ED2A11 /* AppDelegate.swift in Sources */,
+				F75944CC23A1B43A009258D9 /* FileName.swift in Sources */,
 				F76765BB22F78AD800ED2A11 /* ReposRepository.swift in Sources */,
 				F76765C622F78AD800ED2A11 /* UIViewControllerExtensions.swift in Sources */,
 				F76ACF5522F784ED00B1A41D /* UITableViewExtensions.swift in Sources */,
@@ -1467,6 +1476,7 @@
 				F76765AF22F78AC000ED2A11 /* DevelopmentActivityLogger.swift in Sources */,
 				F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */,
 				F767659722F78AB400ED2A11 /* PendingTasksFactory.swift in Sources */,
+				F75944C823A1B3EC009258D9 /* StringExtensions.swift in Sources */,
 				F76765AA22F78AC000ED2A11 /* Database.swift in Sources */,
 				F767659922F78AB400ED2A11 /* UserManager.swift in Sources */,
 				F76ACF5822F785DA00B1A41D /* BaseNavigationController.swift in Sources */,

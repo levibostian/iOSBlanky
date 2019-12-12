@@ -7,8 +7,12 @@ class ErrorReportingActivityLogger: DebugActivityLogger {
         logger.identifyUser(userId: id)
     }
 
-    func logEvent(tag: String, message: String) {
-        logger.log(key: tag, value: message)
+    func logAppEvent(_ message: String, extras: [String: Any]?) {
+        logger.log("\(message) -- Extras: \(extras?.description ?? "(null)")")
+    }
+
+    func logDebug(_ message: String, extras: [String: Any]?) {
+        logger.log("\(message) -- Extras: \(extras?.description ?? "(null)")")
     }
 
     func logError(_ error: Error) {

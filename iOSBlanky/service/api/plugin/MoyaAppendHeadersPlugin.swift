@@ -1,5 +1,4 @@
 import Moya
-import Result
 
 struct MoyaAppendHeadersPlugin: PluginType {
     fileprivate let userCredsManager: UserCredsManager

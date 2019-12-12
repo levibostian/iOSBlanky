@@ -5,11 +5,23 @@ import Foundation
  */
 protocol ActivityLogger {
     func setUserId(id: String?)
-    func trackEvent(_ event: ActivityEvent, data: [String: Any]?)
-    func httpRequestEvent(method: String, url: String)
+    // meant for analytics purposes
+    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String)
+    // meant for debugging purposes only.
+    func breadcrumb(_ event: String, extras: [String: Any]?, from file: String)
+    func httpRequestEvent(method: String, url: String, reqBody: String?)
     func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)
     func httpFailEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)
     func errorOccurred(_ error: Error)
+}
+extension ActivityLogger {
+    func appEventOccurred(_ event: String, extras: [String: Any]?, file: StaticString = #file) {
+        appEventOccurred(event, extras: extras, from: "\(file)".pathToFileName())
+    }
+
+    func breadcrumb(_ event: String, extras: [String: Any]?, file: StaticString = #file) {
+        breadcrumb(event, extras: extras, from: "\(file)".pathToFileName())
+    }
 }
 
 enum ActivityEvent {
@@ -42,12 +54,20 @@ class AppActivityLogger: ActivityLogger {
         loggers.forEach { $0.setUserId(id: id) }
     }
 
-    func trackEvent(_ event: ActivityEvent, data: [String: Any]?) {
-        loggers.forEach { $0.trackEvent(event, data: data) }
+    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String) {
+        let eventName = Util.makeEventNameAppropriate(event)
+
+        loggers.forEach { $0.appEventOccurred(eventName, extras: extras, from: file) }
     }
 
-    func httpRequestEvent(method: String, url: String) {
-        loggers.forEach { $0.httpRequestEvent(method: method, url: url) }
+    func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {
+        let eventName = Util.makeEventNameAppropriate(event)
+
+        loggers.forEach { $0.breadcrumb(eventName, extras: extras, from: file) }
+    }
+
+    func httpRequestEvent(method: String, url: String, reqBody: String?) {
+        loggers.forEach { $0.httpRequestEvent(method: method, url: url, reqBody: reqBody) }
     }
 
     func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
@@ -60,5 +80,24 @@ class AppActivityLogger: ActivityLogger {
 
     func errorOccurred(_ error: Error) {
         loggers.forEach { $0.errorOccurred(error) }
+    }
+
+    class Util {
+        // Only allow letters, numbers, or underscores
+        class func makeEventNameAppropriate(_ name: String) -> String {
+            let okayChars = Set("abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
+            let replacementChar = "_"
+
+            var returnName = name
+            name.forEach { character in
+                let characterString = String(character)
+
+                if !okayChars.contains(character) {
+                    returnName = returnName.replacingOccurrences(of: characterString, with: replacementChar)
+                }
+            }
+
+            return returnName
+        }
     }
 }
