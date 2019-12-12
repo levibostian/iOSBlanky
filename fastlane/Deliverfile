@@ -2,6 +2,9 @@
 # If you want to have even more control, check out the documentation
 # https://github.com/fastlane/fastlane/blob/master/deliver/Deliverfile.md
 
+require 'dotenv'
+Dotenv.load("../.env")
+
 # -------------- Edit variables here ------------------
 company_contact_first_name = "First"
 company_contact_last_name = "Last"
@@ -17,7 +20,6 @@ company_phone_number = "+1 3333333333"
 app_developer_first_name = "First"
 app_developer_last_name = "Last"
 app_developer_phone_number = "+1 3333333333"
-app_developer_email_address = ENV["ADMIN_EMAIL"]
 
 demo_user_account_username = "demo@you.com"
 demo_user_account_password = "password"
@@ -47,11 +49,12 @@ submission_information({
 # See: https://docs.fastlane.tools/actions/deliver/#available-age-rating-groups for options 
 # -----------------------------------------------------
 
-app ENV["APPLE_DEV_APP_ID"]
+app ENV["APPLE_APP_ID"]
 
 languages(['en-US'])
 
-app_icon "./fastlane/icons/prod.jpg"
+# must be exactly 1024x1024px
+app_icon "./fastlane/icons/#{ENV["APP_ICON_FILE_NAME"]}"
 
 release_notes({
   'en-US' => File.open(Dir.pwd + "/fastlane/release_notes.txt", "rb").read
@@ -84,7 +87,7 @@ app_review_information(
   first_name: app_developer_first_name,
   last_name: app_developer_last_name,
   phone_number: app_developer_phone_number,
-  email_address: app_developer_email_address,
+  email_address: ENV["ADMIN_EMAIL"],
   demo_user: demo_user_account_username,
   demo_password: demo_user_account_password,
   notes: demo_notes

@@ -1,3 +1,18 @@
+require 'dotenv'
+$env_vars = Dotenv.parse("../.env")
+
+def get_env(name)
+  value = $env_vars[name]
+  raise "Forgot to define #{name} in .env" unless value 
+
+  return value 
+end 
+
+env = {
+  :match_git_repo => get_env("MATCH_GIT_REPO"),
+  :admin_email => get_env("ADMIN_EMAIL")
+}
+
 # This file contains is the default arguments for `sync_code_signing` (aka: `match`) action. 
 #
 # There are instructions for what you need to do before you can use use fastlane match. 
@@ -6,15 +21,12 @@
 
 # Where certs/keys/profiles are stored. 
 storage_mode "git"
-git_url "git@github.com:username/AppName-iOS-certs.git"
+git_url env[:match_git_repo]
 git_full_name "Fastlane bot"
-git_user_email ENV["ADMIN_EMAIL"]
+git_user_email env[:admin_email]
 git_branch "master" # branch in repo where data is stored. 
-readonly true 
+readonly ENV["CI"]
 # Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'
 force_for_new_devices true
 type "development" # Can be: appstore, adhoc, enterprise or development
 platform "ios"
-
-# For all available options run `fastlane match --help`
-# Remove the # in the beginning of the line to enable the other options

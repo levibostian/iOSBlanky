@@ -49,7 +49,6 @@ git config user.name "First Last"
 git add .; git commit -m "Initial commit. Created project from levibostian/iOSBlanky boilerplate.";
 pod install
 bundle install
-./hooks/autohook.sh install
 ```
 
 * Open `iOSBlanky.xcworkspace` in XCode.
@@ -150,7 +149,8 @@ Most of the code to handle DynamicLinks is already setup. However, you will need
 
 Configure:
 * Create a [Travis](https://travis-ci.com/) account, and enable your GitHub repo for your API project in your Travis profile page.
-* Edit the `.travis.yml` file. You really only need to edit the environment variables for now. 
+* In the `.travis.yml` file, you will see some secret environment variables you need to define in the travis project. 
+* Then, go into your travis project settings and create a cronjob, daily, on the master branch. This will enable some fastlane tasks to run daily for up-keep. 
 
 I have setup the CI server workflow to work as follows:
 
@@ -177,17 +177,9 @@ Configure:
 
 Configure:
 * We are assuming you have already done the instructions for setting up Travis. 
-* Go through all of the files in the `fastlane/` directory. You will need to edit some values in these files. The files will walk you through what to edit and what you do not need to edit. 
+* Edit the `fastlane/Deliverfile` values for your app. Also, edit the `fastlane/metadata/` directory of files for your app. 
 
-Fastlane is setup to run some tasks on a CI server and some tasks are run manually by yourself. 
-
-Tasks to run manually:
-* Edit the file, `fastlane/icons/icon.jpg` to be your icon to use for your app. Then run this command: `bundle exec fastlane generate_icons` to generate alll of the app icons for the app. 
-* Crashlytics is setup to automatically upload dsyms for you when you build your app, but in case some go missing, you can run this command: `bundle exec fastlane refresh_dsms version:0.1.1 build_number:2222 app_id:com.foo.com` to download dsyms from Apple and upload to Crashlytics. 
-* Run: `bundle exec fastlane create_apps` to create apps in your Apple Developer Account to push to them later. 
-* Run: `bundle exec fastlane init_dev` to create profiles and certificates for development and production pushing. This saves to a git repo that you setup to store the files in to share with your team and CI server. 
-
-*Note: Fastlane uses Mailgun behind the scenes for sending emails to your developer when issues go wrong and tasks are successful. Create a Mailgun account, add your domain name to the account, then set your API key in `.travis.yml` as a secret environment variable with the value `MAILGUN_DOMAIN_API_KEY`. 
+After you create your app ID in your developer account online, you will now want to run `bundle exec fastlane match` and `bundle exec fastlane match --development` on your local machine in order to get your certificates and profiles generated. 
 
 # Development
 
@@ -203,8 +195,10 @@ Developer tools you need:
 
 ```bash
 bundle install 
+./hooks/autohook.sh install
 pod install 
-bundle exec overcommit --install # Install git hooks via https://github.com/sds/overcommit
+bundle exec fastlane match appstore
+bundle exec fastlane match development # Can be: appstore, adhoc, enterprise or development
 ```
 
 Now, open up your workspace file in XCode. 

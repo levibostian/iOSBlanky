@@ -20,22 +20,12 @@ or alternatively using `brew cask install fastlane`
 ```
 fastlane ios refresh_dsyms
 ```
-Manually download dsym files from iTunes Connect/TestFlight (from processed builds by Apple) and uploads them to Crashlytics for reports.
-### ios create_apps
+Downloads dsym files from iTunes Connect (from processed builds by Apple) and uploads them to Crashlytics for reports.
+### ios create_app
 ```
-fastlane ios create_apps
+fastlane ios create_app
 ```
-Create apps in iTunes Connect and developer account
-### ios init_dev
-```
-fastlane ios init_dev
-```
-Setup computer for development
-### ios maintenance
-```
-fastlane ios maintenance
-```
-Tasks to maintain the app after launch.
+
 ### ios deploy
 ```
 fastlane ios deploy

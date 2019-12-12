@@ -1,6 +1,8 @@
 # Manually added
 GoogleService-*.plist
 .env
+build/
+reports/
 
 # Xcode
 #
