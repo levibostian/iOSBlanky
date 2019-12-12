@@ -1,13 +1,23 @@
 import Foundation
 
 class ConsoleLogger {
-    class func d(_ message: String) {
-        print("debug: \(message)\n")
+    private let environment: Environment
+
+    init(environment: Environment) {
+        self.environment = environment
     }
 
-    class func e(_ error: Error) {
-        print("----------ERROR-----------\n")
-        print("description: \(error.localizedDescription)\n")
-        print("--------------------------\n")
+    func d(_ message: String) {
+        if environment.isDevelopment {
+            print("debug: \(message)\n")
+        }
+    }
+
+    func e(_ error: Error) {
+        if environment.isDevelopment {
+            print("----------ERROR-----------\n")
+            print("description: \(error.localizedDescription)\n")
+            print("--------------------------\n")
+        }
     }
 }

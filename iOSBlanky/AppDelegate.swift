@@ -13,15 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var logger: ActivityLogger!
     fileprivate var repositorySyncService: RepositorySyncService!
     fileprivate var startupUtil: StartupUtil!
+    fileprivate var environment: Environment!
     var themeManager: ThemeManager!
-
-    fileprivate var isDebug: Bool {
-        #if DEBUG
-        return true
-        #else
-        return false
-        #endif
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure() // Do first so crashlytics starts up to record errors.
@@ -32,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         repositorySyncService = Di.inject.repositorySyncService
         startupUtil = Di.inject.startupUtil
         themeManager = Di.inject.themeManager
+        environment = Di.inject.environment
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
@@ -48,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreenId")
         showViewController(launchScreenViewController)
 
-        Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: isDebug)
+        Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: environment.isDevelopment)
 
         Messaging.messaging().delegate = self
         remoteConfig.fetch()

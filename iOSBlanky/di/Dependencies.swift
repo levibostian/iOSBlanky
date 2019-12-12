@@ -25,4 +25,5 @@ enum Dependency: CaseIterable {
     case startupUtil
     case fileStorage
     case themeManager
+    case environment
 }

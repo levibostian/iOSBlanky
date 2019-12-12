@@ -42,14 +42,15 @@ extension ActivityEvent {
 }
 
 class AppActivityLogger: ActivityLogger {
-    #if DEBUG
-    private let loggers: [ActivityLogger] = [ErrorReportingActivityLogger(),
-                                             DevelopmentActivityLogger(),
-                                             FirebaseAnalyticsActivityLogger()]
-    #else
-    private let loggers: [ActivityLogger] = [ErrorReportingActivityLogger(),
-                                             FirebaseAnalyticsActivityLogger()]
-    #endif
+    private let loggers: [ActivityLogger]
+
+    init(environment: Environment) {
+        self.loggers = [
+            ErrorReportingActivityLogger(),
+            DevelopmentActivityLogger(environment: environment),
+            FirebaseAnalyticsActivityLogger()
+        ]
+    }
 
     func setUserId(id: String?) {
         loggers.forEach { $0.setUserId(id: id) }

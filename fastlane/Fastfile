@@ -17,11 +17,7 @@ env = {
   :testflight_beta_feedback_email => get_env("TESTFLIGHT_BETA_FEEDBACK_EMAIL"),
   :xcode_scheme => get_env("XCODE_SCHEME"),
   :app_icon_file_name => get_env("APP_ICON_FILE_NAME"),
-  :app_icon_badge => get_env("APP_ICON_BADGE"),
-  :aws_sns_app_update_topic => get_env("AWS_SNS_APP_UPDATE_TOPIC"),
-  :aws_iam_access_key => get_env("AWS_IAM_ACCESS_KEY"),
-  :aws_iam_access_secret => get_env("AWS_IAM_ACCESS_SECRET"),
-  :aws_region => get_env("AWS_REGION")
+  :app_icon_badge => get_env("APP_ICON_BADGE")
 }
 
 default_platform :ios
@@ -44,14 +40,13 @@ platform :ios do
     )
     clean_build_artifacts
   end
-  
-  lane :create_app do |values|
-    create_app_online(
-      app_name: env[:app_name],
-      language: 'English',
-      enable_services: {
-        push_notification: "on"
-      }
+
+  desc "From a .env file, change the app's properties. It's easier to do in fastlane, so that's why we're doing it here."
+  lane :set_environment do 
+    update_info_plist(
+      app_identifier: env[:bundle_id],
+      plist_path: "#{env[:source_code_directory]}/Info.plist",
+      display_name: env[:app_name]
     )
   end
 
@@ -89,10 +84,10 @@ platform :ios do
     ].join("\n") + "\n"
 
     aws_sns_topic(
-      access_key: env[:aws_iam_access_key],
-      secret_access_key: env[:aws_iam_access_secret],
-      region: env[:aws_region],
-      topic_arn: env[:aws_sns_app_update_topic],
+      access_key: ENV["AWS_IAM_ACCESS_KEY"],
+      secret_access_key: ENV["AWS_IAM_ACCESS_SECRET"],
+      region: ENV["AWS_REGION"],
+      topic_arn: ENV["AWS_SNS_APP_UPDATE_TOPIC"],
       subject: "#{env[:app_name]} v#{versionOfApp} app update",
       message: notification_message_body
     )

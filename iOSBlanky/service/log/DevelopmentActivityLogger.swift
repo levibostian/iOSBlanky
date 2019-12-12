@@ -2,24 +2,30 @@ import Foundation
 
 // Meant to be used during development.
 class DevelopmentActivityLogger: DebugActivityLogger {
+    private let consoleLogger: ConsoleLogger
+
+    init(environment: Environment) {
+        self.consoleLogger = ConsoleLogger(environment: environment)
+    }
+
     func identifyUser(id: String?) {
         if let userId = id {
-            ConsoleLogger.d("User logged in. Id: \(userId)")
+            consoleLogger.d("User logged in. Id: \(userId)")
         } else {
-            ConsoleLogger.d("User logged out.")
+            consoleLogger.d("User logged out.")
         }
     }
 
     func logAppEvent(_ message: String, extras: [String: Any]?) {
-        ConsoleLogger.d("[APP/EVENT] \(message): Extras: \(extras?.description ?? "(null)")")
+        consoleLogger.d("[APP/EVENT] \(message): Extras: \(extras?.description ?? "(null)")")
     }
 
     func logDebug(_ message: String, extras: [String: Any]?) {
-        ConsoleLogger.d("[APP/DEBUG] \(message): Extras: \(extras?.description ?? "(null)")")
+        consoleLogger.d("[APP/DEBUG] \(message): Extras: \(extras?.description ?? "(null)")")
     }
 
     func logError(_ error: Error) {
-        ConsoleLogger.e(error)
+        consoleLogger.e(error)
         fatalError("Error occurred during development. Get it fixed.") // If an error occurs in development, we need to make sure to stop so we can fix it.
     }
 }

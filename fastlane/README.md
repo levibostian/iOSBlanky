@@ -21,31 +21,23 @@ or alternatively using `brew cask install fastlane`
 fastlane ios refresh_dsyms
 ```
 Downloads dsym files from iTunes Connect (from processed builds by Apple) and uploads them to Crashlytics for reports.
-### ios create_app
+### ios set_environment
 ```
-fastlane ios create_app
+fastlane ios set_environment
 ```
-
+From a .env file, change the app's properties. It's easier to do in fastlane, so that's why we're doing it here.
 ### ios deploy
 ```
 fastlane ios deploy
 ```
 
-### ios beta_build_release
-```
-fastlane ios beta_build_release
-```
-Build and upload beta app to TestFlight
-### ios prod_build_release
-```
-fastlane ios prod_build_release
-```
-Build and upload production app to the App Store
 ### ios generate_icons
 ```
 fastlane ios generate_icons
 ```
+Build and upload beta app to TestFlight
 
+Build and upload production app to the App Store
 
 ----
 

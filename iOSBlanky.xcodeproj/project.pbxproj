@@ -233,6 +233,12 @@
 		F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* Constants.swift */; };
 		F7D3B8D81E14A00600F2C3CB /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D51E14A00600F2C3CB /* IQKeyboardManagerSwift.framework */; };
 		F7D3B8D91E14A00600F2C3CB /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7D3B8D61E14A00600F2C3CB /* KeychainAccess.framework */; };
+		F7D575B423A2D22000D6B6BC /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B323A2D22000D6B6BC /* Env.swift */; };
+		F7D575B523A2D22000D6B6BC /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B323A2D22000D6B6BC /* Env.swift */; };
+		F7D575B623A2D22000D6B6BC /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B323A2D22000D6B6BC /* Env.swift */; };
+		F7D575B823A2D3B800D6B6BC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B723A2D3B800D6B6BC /* Environment.swift */; };
+		F7D575B923A2D3B800D6B6BC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B723A2D3B800D6B6BC /* Environment.swift */; };
+		F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B723A2D3B800D6B6BC /* Environment.swift */; };
 		F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
 		F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
@@ -389,6 +395,8 @@
 		F7D3B9361E1566B700F2C3CB /* iOSBoilerplate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSBoilerplate.framework; path = "Pods/../build/Debug-iphoneos/iOSBoilerplate/iOSBoilerplate.framework"; sourceTree = "<group>"; };
 		F7D3B9461E15CEE100F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "Pods/../build/Debug-iphoneos/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
 		F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
+		F7D575B323A2D22000D6B6BC /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		F7D575B723A2D3B800D6B6BC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
 		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
@@ -612,7 +620,9 @@
 				F7D3B8DA1E14A06700F2C3CB /* extension */,
 				F75DCD821CD8F10D00B8941F /* AppDelegate.swift */,
 				F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */,
+				F7D575B723A2D3B800D6B6BC /* Environment.swift */,
 				F75DCD8E1CD8F10D00B8941F /* Info.plist */,
+				F7D575B323A2D22000D6B6BC /* Env.swift */,
 				F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */,
 				F7D3B8D01E149B5F00F2C3CB /* Constants.swift */,
 				F71D087422E24FDE000B1577 /* Localizable.strings */,
@@ -849,12 +859,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F75DCDA71CD8F10D00B8941F /* Build configuration list for PBXNativeTarget "iOSBlanky" */;
 			buildPhases = (
+				F7D575B223A2C9B100D6B6BC /* Env */,
 				65D1495E3A409F6FB556008D /* [CP] Check Pods Manifest.lock */,
 				F75DCD7B1CD8F10D00B8941F /* Sources */,
 				F75DCD7C1CD8F10D00B8941F /* Frameworks */,
 				F799D5A522DFCB7900202FDB /* GoogleServices for Firebase */,
 				F75DCD7D1CD8F10D00B8941F /* Resources */,
-				F71D086822E24895000B1577 /* Lint strings */,
 				F7B674F81CD8F2BC007C42FC /* SwiftLint */,
 				B286389F35A5B7FF41C2515E /* [CP] Embed Pods Frameworks */,
 				F799D58122DF6F7100202FDB /* Crashlytics (make sure last phase) */,
@@ -1231,24 +1241,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iOSBlankyUITests/Pods-iOSBlankyUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F71D086822E24895000B1577 /* Lint strings */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Lint strings";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./scripts/localized_strings_lint.sh\n";
-		};
 		F799D58122DF6F7100202FDB /* Crashlytics (make sure last phase) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1300,6 +1292,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		F7D575B223A2C9B100D6B6BC /* Env */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Env;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8\nexport PATH=~/.rbenv/shims:$PATH\n\n# Type a script or drag a script file from your workspace to insert its path.\n./dot_env_ios.rb\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1328,6 +1338,7 @@
 				F7096CFC22E66E3D004389A5 /* UIControlExtensions.swift in Sources */,
 				F76ACF5122F784D800B1A41D /* UIColorExtensions.swift in Sources */,
 				F785CB6E22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */,
+				F7D575B423A2D22000D6B6BC /* Env.swift in Sources */,
 				F712CDA622E3BD7B00272FF5 /* GitHubAPI.swift in Sources */,
 				F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */,
 				F76835AE1F9ECED200219B30 /* GitHubTargetType.swift in Sources */,
@@ -1358,6 +1369,7 @@
 				F7C0FF2F22E51689009E1203 /* EventBus.swift in Sources */,
 				F76835BE1F9ED0D500219B30 /* MoyaExtensions.swift in Sources */,
 				F76ACF5B22F785F300B1A41D /* Theme.swift in Sources */,
+				F7D575B823A2D3B800D6B6BC /* Environment.swift in Sources */,
 				F799D58F22DFB64200202FDB /* Dependencies.swift in Sources */,
 				F76835B81F9ED0BB00219B30 /* UserCredsManager.swift in Sources */,
 				F7C0FF1322E50296009E1203 /* ResponseProcessor.swift in Sources */,
@@ -1400,6 +1412,7 @@
 				F7602FD922E224DB00FDB5F3 /* ConsoleLogger.swift in Sources */,
 				F76765B322F78AD700ED2A11 /* UIColorExtensions.swift in Sources */,
 				F721AB5122E7B85F00F77F66 /* URLExtensions.swift in Sources */,
+				F7D575B523A2D22000D6B6BC /* Env.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F76765B622F78AD700ED2A11 /* UIColor.swift in Sources */,
 				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
@@ -1430,6 +1443,7 @@
 				F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
 				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
+				F7D575B923A2D3B800D6B6BC /* Environment.swift in Sources */,
 				F767659122F78AAB00ED2A11 /* BaseNavigationController.swift in Sources */,
 				F761644622E8B5F4006F2D2A /* SecureStorage.swift in Sources */,
 				F7096CFE22E67063004389A5 /* UIStackViewExtensions.swift in Sources */,
@@ -1472,6 +1486,7 @@
 				F76765C422F78AD800ED2A11 /* UIStackViewExtensions.swift in Sources */,
 				F767659422F78AAC00ED2A11 /* Di.swift in Sources */,
 				F76765BC22F78AD800ED2A11 /* Repo.swift in Sources */,
+				F7D575B623A2D22000D6B6BC /* Env.swift in Sources */,
 				F76765CA22F78AD800ED2A11 /* UIControlExtensions.swift in Sources */,
 				F76765AF22F78AC000ED2A11 /* DevelopmentActivityLogger.swift in Sources */,
 				F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */,
@@ -1502,6 +1517,7 @@
 				F76765A722F78AC000ED2A11 /* RepoModel.swift in Sources */,
 				F76765AD22F78AC000ED2A11 /* CrashReportingLogger.swift in Sources */,
 				F767659C22F78AB400ED2A11 /* KeyValueStorage.swift in Sources */,
+				F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */,
 				F76765A622F78ABA00ED2A11 /* UserEnteredBadDataError.swift in Sources */,
 				F76765B122F78AC000ED2A11 /* DebugActivityLogger.swift in Sources */,
 				F76ACF5222F784D800B1A41D /* UIColorExtensions.swift in Sources */,
@@ -1667,8 +1683,6 @@
 			baseConfigurationReference = EF04C46E7D6721B042214695 /* Pods-iOSBlanky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_FLAVOR = dev;
-				BUNDLE_ID_SUFFIX = .dev;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6FUGF49KXB;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1688,8 +1702,6 @@
 			baseConfigurationReference = 1D3467C2DB09A6AC15A5089C /* Pods-iOSBlanky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_FLAVOR = prod;
-				BUNDLE_ID_SUFFIX = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 6FUGF49KXB;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1757,103 +1769,6 @@
 			};
 			name = Release;
 		};
-		F774AA3F1CE2796100FFBA76 /* Beta */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Beta;
-		};
-		F774AA401CE2796100FFBA76 /* Beta */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F33F851F71D21025F5CEFB0 /* Pods-iOSBlanky.beta.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_FLAVOR = beta;
-				BUNDLE_ID_SUFFIX = .beta;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 6FUGF49KXB;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = iOSBlanky/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iosblanky.beta;
-				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
-				PRODUCT_NAME = iOSBlanky;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Beta;
-		};
-		F774AA411CE2796100FFBA76 /* Beta */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D33639E855A21D931067F6E5 /* Pods-iOSBlankyTests.beta.xcconfig */;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 552H65R858;
-				INFOPLIST_FILE = iOSBlankyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Beta;
-		};
-		F774AA421CE2796100FFBA76 /* Beta */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CF1F86F77007F2457F5CB27 /* Pods-iOSBlankyUITests.beta.xcconfig */;
-			buildSettings = {
-				DEVELOPMENT_TEAM = 552H65R858;
-				INFOPLIST_FILE = iOSBlankyUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iOSBlanky;
-			};
-			name = Beta;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1862,7 +1777,6 @@
 			buildConfigurations = (
 				F75DCDA51CD8F10D00B8941F /* Debug */,
 				F75DCDA61CD8F10D00B8941F /* Release */,
-				F774AA3F1CE2796100FFBA76 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1872,7 +1786,6 @@
 			buildConfigurations = (
 				F75DCDA81CD8F10D00B8941F /* Debug */,
 				F75DCDA91CD8F10D00B8941F /* Release */,
-				F774AA401CE2796100FFBA76 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1882,7 +1795,6 @@
 			buildConfigurations = (
 				F75DCDAB1CD8F10D00B8941F /* Debug */,
 				F75DCDAC1CD8F10D00B8941F /* Release */,
-				F774AA411CE2796100FFBA76 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1892,7 +1804,6 @@
 			buildConfigurations = (
 				F75DCDAE1CD8F10D00B8941F /* Debug */,
 				F75DCDAF1CD8F10D00B8941F /* Release */,
-				F774AA421CE2796100FFBA76 /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -16,3 +16,5 @@ gem "danger-swiftlint", "~> 0.22.0"
 gem "dotenv", "~> 2.7"
 
 gem "danger-junit", "~> 1.0"
+
+gem "dotenv-ios", "~> 0.1.1"

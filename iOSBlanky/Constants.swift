@@ -8,10 +8,5 @@ class Constants {
     }
 
     static let apiVersion = "0.1.0"
-
-    #if DEBUG
-    static let apiEndpoint: String = "https://api.github.com"
-    #else
-    static let apiEndpoint: String = "https://api.github.com"
-    #endif
+    static let apiEndpoint: String = Env.apiEndpoint
 }

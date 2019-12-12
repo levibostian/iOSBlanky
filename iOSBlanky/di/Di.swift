@@ -36,6 +36,10 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
     var themeManager: ThemeManager {
         return container.inject(.themeManager)
     }
+
+    var environment: Environment {
+        return container.inject(.environment)
+    }
 }
 
 // Exists for when using `Di.inject.______` mostly in UI related classes when there is not a constructor to provide dependencies for.
@@ -47,6 +51,7 @@ protocol ConvenientInject {
     var repositorySyncService: RepositorySyncService { get }
     var startupUtil: StartupUtil { get }
     var themeManager: ThemeManager { get }
+    var environment: Environment { get }
 }
 
 class DiContainer {
@@ -57,7 +62,9 @@ class DiContainer {
     }
 
     private func registerDependencies() {
-        container.register(ActivityLogger.self) { _ in AppActivityLogger() }
+        container.register(ActivityLogger.self) { container in
+            AppActivityLogger(environment: self.inject(.environment, container))
+        }
         container.register(CoreDataManager.self) { container in
             CoreDataManager(threadUtil: self.inject(.threadUtil, container))
         }.singleton()
@@ -158,6 +165,9 @@ class DiContainer {
         container.register(ThemeManager.self) { container in
             AppThemeManager(keyValueStorage: self.inject(.keyValueStorage, container))
         }
+        container.register(Environment.self) { _ in
+            AppEnvironment()
+        }
     }
 
     func inject<T>(_ dep: Dependency) -> T {
@@ -194,6 +204,7 @@ class DiContainer {
         case .startupUtil: return resolver.resolve(StartupUtil.self)! as Any
         case .fileStorage: return resolver.resolve(FileStorage.self)! as Any
         case .themeManager: return resolver.resolve(ThemeManager.self)! as Any
+        case .environment: return resolver.resolve(Environment.self)! as Any
         }
     }
 }
