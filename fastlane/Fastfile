@@ -43,9 +43,15 @@ platform :ios do
 
   desc "From a .env file, change the app's properties. It's easier to do in fastlane, so that's why we're doing it here."
   lane :set_environment do 
-    update_info_plist(
+    info_plist_location = "#{env[:source_code_directory]}/Info.plist"
+  
+    update_app_identifier(
       app_identifier: env[:bundle_id],
-      plist_path: "#{env[:source_code_directory]}/Info.plist",
+      plist_path: info_plist_location
+    )  
+
+    update_info_plist(      
+      plist_path: info_plist_location,
       display_name: env[:app_name]
     )
   end

@@ -135,7 +135,7 @@ PODS:
   - SwiftFormat/CLI (0.40.10)
   - SwiftLint (0.34.0)
   - Swinject (2.6.2)
-  - Teller (0.4.0-alpha):
+  - Teller (0.5.0):
     - RxSwift (~> 5.0)
   - Wendy (0.2.0-alpha):
     - Require (~> 2.0.0)
@@ -162,8 +162,8 @@ DEPENDENCIES:
   - SwiftFormat/CLI
   - SwiftLint
   - Swinject (~> 2.6.2)
-  - Teller (~> 0.4.0-alpha)
-  - Wendy (~> 0.2.0-alpha)
+  - Teller (~> 0.5.0)
+  - Wendy (from `https://github.com/levibostian/wendy-ios`, commit `b7cbdc1c1a`)
 
 SPEC REPOS:
   trunk:
@@ -204,7 +204,16 @@ SPEC REPOS:
     - SwiftLint
     - Swinject
     - Teller
-    - Wendy
+
+EXTERNAL SOURCES:
+  Wendy:
+    :commit: b7cbdc1c1a
+    :git: https://github.com/levibostian/wendy-ios
+
+CHECKOUT OPTIONS:
+  Wendy:
+    :commit: b7cbdc1c1a
+    :git: https://github.com/levibostian/wendy-ios
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
@@ -243,9 +252,9 @@ SPEC CHECKSUMS:
   SwiftFormat: d0e2118da5bfccc0158f0b8eff80c476c5acd984
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
-  Teller: 0c82e954716b83b1cb267517c95c75cbc7c7c29d
+  Teller: c5fcfd9d4b502db58352952510bfe35452ee4d1b
   Wendy: bb3c22635b248dde4a0044785faf43db6fc839ce
 
-PODFILE CHECKSUM: 723772392581d62f6202cf243df9731decf32b32
+PODFILE CHECKSUM: 2c15cd65486a7ae1efa6782b9e0b486ffb602892
 
 COCOAPODS: 1.8.4

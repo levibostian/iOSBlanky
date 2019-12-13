@@ -10,13 +10,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     fileprivate var remoteConfig: RemoteConfigProvider!
     fileprivate var userManager: UserManager!
+    fileprivate var eventBusRegister: EventBusRegisterCounter!
     fileprivate var logger: ActivityLogger!
     fileprivate var repositorySyncService: RepositorySyncService!
     fileprivate var startupUtil: StartupUtil!
     fileprivate var environment: Environment!
+    fileprivate var backgroundJobRunner: BackgroundJobRunner!
     var themeManager: ThemeManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure() // Do first so crashlytics starts up to record errors.
 
         logger = Di.inject.activityLogger
@@ -26,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         startupUtil = Di.inject.startupUtil
         themeManager = Di.inject.themeManager
         environment = Di.inject.environment
+        backgroundJobRunner = Di.inject.backgroundJobRunner
+        let eventBus = Di.inject.eventBus
+        eventBusRegister = EventBusRegisterCounter(eventBus: eventBus)
+        eventBusRegister.listener = self
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
@@ -33,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError()
         }
 
-        window = UIWindow(frame: UIScreen.main.bounds)
+        registerEventListeners()
 
         UIViewController.swizzle
         themeManager.applyAppTheme(themeManager.currentTheme)
@@ -41,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Show our launch screen for longer then the default duration of time while we load data and get app asynchronously setup.
         let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateViewController(withIdentifier: "LaunchScreenId")
         showViewController(launchScreenViewController)
+
+        // setup background fetch
+        let numberMinutesMinimumToRunBackgroundFetches: Double = 60
+        UIApplication.shared.setMinimumBackgroundFetchInterval(numberMinutesMinimumToRunBackgroundFetches * 60) // * 60 as function wants value in seconds
 
         Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: environment.isDevelopment)
 
@@ -59,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
             self.goToMainPartOfApp()
+
+            // Need to start wendy when app starts up.
+            Wendy.shared.runTasks(filter: nil)
+
             self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
         }
 
@@ -103,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        unregisterEventListeners()
     }
 }
 
@@ -190,21 +205,40 @@ extension AppDelegate {
     }
 }
 
+// MARK: Register listeners
+
+extension AppDelegate: EventBusEventListener {
+    fileprivate func registerEventListeners() {
+        logger.breadcrumb("registering event listeners", extras: nil)
+
+//        eventBusRegister.register(event: .logout)
+    }
+
+    fileprivate func unregisterEventListeners() {
+        logger.breadcrumb("unregistering event listeners", extras: nil)
+
+        eventBusRegister.unregister(event: .logout)
+    }
+
+    func eventBusEvent(_ event: EventBusEvent, extras: EventBusExtras?) {
+        logger.breadcrumb("event bus event recieved. name: \(event.name)", extras: extras)
+
+        switch event {
+        default: break
+        }
+    }
+}
+
 // MARK: Background syncing
 
 extension AppDelegate {
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let backgroundPendingTasksResult = Wendy.shared.backgroundFetchRunTasks(application, performFetchWithCompletionHandler: completionHandler).backgroundFetchResult
-        let repositorySyncResult = repositorySyncService.sync()
+        registerEventListeners()
 
-        var backgroundSyncResult: UIBackgroundFetchResult = .noData
+        backgroundJobRunner.runPeriodicBackgroundJobs { result in
+            self.unregisterEventListeners()
 
-        if backgroundPendingTasksResult == .newData || repositorySyncResult == .newData {
-            backgroundSyncResult = .newData
-        } else if backgroundPendingTasksResult == .failed || repositorySyncResult == .failed {
-            backgroundSyncResult = .failed
+            completionHandler(result)
         }
-
-        completionHandler(backgroundSyncResult)
     }
 }

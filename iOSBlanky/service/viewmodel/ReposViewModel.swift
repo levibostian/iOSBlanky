@@ -1,31 +1,41 @@
 import Foundation
 import RxSwift
+import Teller
 
 class ReposViewModel {
-    private var reposRepository: ReposRepository
-    private var githubUsernameRepository: GitHubUsernameRepository
+    private let reposRepository: ReposRepository
+    private let keyValueStorage: KeyValueStorage
 
-    init(reposRepository: ReposRepository, githubUsernameRepository: GitHubUsernameRepository) {
+    private let githubUsernameUserDefaultsKey = "githubUsernameUserDefaultsKey"
+
+    var gitHubUsername: GitHubUsername? {
+        get {
+            return keyValueStorage.string(forKey: githubUsernameUserDefaultsKey)
+        }
+        set {
+            keyValueStorage.set(newValue, forKey: githubUsernameUserDefaultsKey)
+
+            if let newValue = newValue {
+                reposRepository.requirements = ReposDataSourceRequirements(githubUsername: newValue)
+            }
+        }
+    }
+
+    init(reposRepository: ReposRepository, keyValueStorage: KeyValueStorage) {
         self.reposRepository = reposRepository
-        self.githubUsernameRepository = githubUsernameRepository
+        self.keyValueStorage = keyValueStorage
 
-        if let existingGitHubUsername: GitHubUsername = githubUsernameRepository.dataSource.value {
+        if let existingGitHubUsername = gitHubUsername {
             reposRepository.requirements = ReposDataSourceRequirements(githubUsername: existingGitHubUsername)
         }
     }
 
-    func setGitHubUsernameForRepos(_ username: GitHubUsername) {
-        githubUsernameRepository.dataSource.saveData(data: username)
-        reposRepository.requirements = ReposDataSourceRequirements(githubUsername: username)
-    }
-
-    func observeRepos() -> Observable<StateOnlineData<[Repo]>> {
+    func observeRepos() -> Observable<DataState<[Repo]>> {
         return reposRepository.observe()
             .observeOn(MainScheduler.instance)
     }
 
-    func observeGitHubUsername() -> Observable<StateLocalData<GitHubUsername>> {
-        return githubUsernameRepository.observe()
-            .observeOn(MainScheduler.instance)
+    func observeGitHubUsername() -> Observable<GitHubUsername> {
+        return keyValueStorage.observeString(forKey: githubUsernameUserDefaultsKey)
     }
 }

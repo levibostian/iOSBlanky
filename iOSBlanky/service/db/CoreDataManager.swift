@@ -35,7 +35,7 @@ class CoreDataManager {
 
     // Perform write operations on background thread
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        threadUtil.assertBackground()
+//        threadUtil.assertBackground()
 
         persistentContainerQueue.addOperation {
             let context: NSManagedObjectContext = self.persistentContainer.newBackgroundContext()

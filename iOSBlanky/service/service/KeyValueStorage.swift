@@ -1,10 +1,13 @@
 import Foundation
+import RxSwift
 
 protocol KeyValueStorage {
     func integer(forKey key: String) -> Int?
     func set(_ value: Int?, forKey key: String)
     func string(forKey key: String) -> String?
     func set(_ value: String?, forKey key: String)
+    // Does not emit when value is nil
+    func observeString(forKey key: String) -> Observable<String>
 }
 
 class UserDefaultsKeyValueStorage: KeyValueStorage {
@@ -29,5 +32,14 @@ class UserDefaultsKeyValueStorage: KeyValueStorage {
 
     func set(_ value: String?, forKey key: String) {
         userDefaults.set(value, forKey: key)
+    }
+
+    func observeString(forKey key: String) -> Observable<String> {
+        return userDefaults.rx.observe(String.self, key)
+            .filter { (value) -> Bool in
+                value != nil
+            }.map { (value) -> String in
+                value!
+            }
     }
 }

@@ -2,67 +2,51 @@ import Foundation
 import RxSwift
 import Teller
 
+/**
+ Object meant for repository syncing. Mainly used for background tasks.
+ */
 protocol RepositorySyncService {
-    func syncRepositories(onComplete: @escaping ([RefreshResult]) -> Void)
-    func sync() -> UIBackgroundFetchResult
+    func syncAll(onComplete: @escaping ([RefreshResult]) -> Void) // no forcing to refresh.
+    // individual repository syncing
+    func syncRepos(force: Bool, onComplete: @escaping (RefreshResult) -> Void)
 }
 
 class TellerRepositorySyncService: RepositorySyncService {
-    private let reposRepository: ReposRepository
-    private let githubUsernameRepository: GitHubUsernameRepository
+    fileprivate let reposRepository: ReposRepository
+    fileprivate let logger: ActivityLogger
 
-    private let syncQueue = DispatchQueue(label: "RepositorySyncService.syncQueue")
-    private let syncDispatchGroup = DispatchGroup()
+    fileprivate let disposeBag = DisposeBag()
 
-    private let disposeBag = DisposeBag()
-
-    init(reposRepository: ReposRepository,
-         githubUsernameRepository: GitHubUsernameRepository) {
+    init(reposRepository: ReposRepository, logger: ActivityLogger) {
         self.reposRepository = reposRepository
-        self.githubUsernameRepository = githubUsernameRepository
+        self.logger = logger
     }
 
-    func syncRepositories(onComplete: @escaping ([RefreshResult]) -> Void) {
-        guard let usernameReposToFetch = githubUsernameRepository.dataSource.value else {
-            onComplete([])
-            return
-        }
-
+    func syncAll(onComplete: @escaping ([RefreshResult]) -> Void) {
         var fetchResults: [RefreshResult] = []
 
-        reposRepository.requirements = ReposDataSource.GetDataRequirements(githubUsername: usernameReposToFetch)
+        logger.breadcrumb("begin syncAll", extras: nil)
 
-        try! reposRepository.refresh(force: false)
-            .subscribe(onSuccess: { result in
-                fetchResults.append(result)
+        syncRepos(force: false) { result in
+            fetchResults.append(result)
 
-                onComplete(fetchResults)
-            }).disposed(by: disposeBag)
+            self.logger.breadcrumb("end syncAll", extras: nil)
+            onComplete(fetchResults)
+        }
     }
 
-    func sync() -> UIBackgroundFetchResult {
-        return syncQueue.sync {
-            syncDispatchGroup.enter()
-            var backgroundFetchResult: UIBackgroundFetchResult!
+    // This is not the best example, as it's just syncing a random username, but it's here for example. We probably wouldn't need to sync this repo anyway.
+    func syncRepos(force: Bool, onComplete: @escaping (RefreshResult) -> Void) {
+        reposRepository.requirements = ReposDataSourceRequirements(githubUsername: "")
 
-            syncRepositories(onComplete: { refreshResults in
-                let numberSuccessfulFetches = refreshResults.filter { $0.didSucceed() }.count
-                let numberSkippedTasks = refreshResults.filter { $0.didSkip() }.count
-                let numberFailedTasks = refreshResults.filter { $0.didFail() }.count
+        logger.breadcrumb("start reposRepository sync", extras: nil)
+        try! reposRepository.refresh(force: force)
+            .subscribe(onSuccess: { result in
+                self.logger.breadcrumb("done repos repository sync", extras: [
+                    "result": result.description
+                ])
 
-                if refreshResults.isEmpty || numberSkippedTasks == refreshResults.count {
-                    backgroundFetchResult = .noData
-                } else if numberSuccessfulFetches >= numberFailedTasks {
-                    backgroundFetchResult = .newData
-                } else {
-                    backgroundFetchResult = .failed
-                }
-
-                self.syncDispatchGroup.leave()
-            })
-
-            _ = syncDispatchGroup.wait(timeout: .distantFuture)
-            return backgroundFetchResult
-        }
+                onComplete(result)
+            }).disposed(by: disposeBag)
     }
 }

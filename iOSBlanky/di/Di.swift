@@ -1,6 +1,7 @@
 import Foundation
 import Moya
 import Swinject
+import Teller
 
 class Di: ConvenientInject { // swiftlint:disable:this type_name
     static var inject: Di = Di()
@@ -40,6 +41,14 @@ class Di: ConvenientInject { // swiftlint:disable:this type_name
     var environment: Environment {
         return container.inject(.environment)
     }
+
+    var backgroundJobRunner: BackgroundJobRunner {
+        return container.inject(.backgroundJobRunner)
+    }
+
+    var eventBus: EventBus {
+        return container.inject(.eventBus)
+    }
 }
 
 // Exists for when using `Di.inject.______` mostly in UI related classes when there is not a constructor to provide dependencies for.
@@ -52,6 +61,8 @@ protocol ConvenientInject {
     var startupUtil: StartupUtil { get }
     var themeManager: ThemeManager { get }
     var environment: Environment { get }
+    var backgroundJobRunner: BackgroundJobRunner { get }
+    var eventBus: EventBus { get }
 }
 
 class DiContainer {
@@ -76,17 +87,11 @@ class DiContainer {
                             db: self.inject(.database, container))
         }
         container.register(ReposRepository.self) { container in
-            ReposRepository(dataSource: self.inject(.reposDataSource, container))
+            Repository(dataSource: self.inject(.reposDataSource, container))
         }
         container.register(ReposViewModel.self) { container in
             ReposViewModel(reposRepository: self.inject(.reposRepository, container),
-                           githubUsernameRepository: self.inject(.githubUsernameRepository, container))
-        }
-        container.register(GitHubUsernameRepository.self) { container in
-            GitHubUsernameRepository(dataSource: self.inject(.githubDataSource, container))
-        }
-        container.register(GitHubUsernameDataSource.self) { _ in
-            GitHubUsernameDataSource()
+                           keyValueStorage: self.inject(.keyValueStorage, container))
         }
         container.register(MoyaInstance.self) { container in
             let productionPlugins: [PluginType] = [
@@ -125,8 +130,9 @@ class DiContainer {
         container.register(Database.self) { container in
             Database(repositoryDao: self.inject(.repositoryDao, container))
         }
-        container.register(EventBus.self) { _ in
-            NotificationCenterEventBus()
+        container.register(EventBus.self) { container in
+            NotificationCenterEventBus(notificationCenter: self.inject(.notificationCenterManager, container),
+                                       activityLogger: self.inject(.activityLogger, container))
         }
         container.register(MoyaResponseProcessor.self) { container in
             MoyaResponseProcessor(jsonAdapter: self.inject(.jsonAdapter, container),
@@ -151,7 +157,7 @@ class DiContainer {
         }
         container.register(RepositorySyncService.self) { container in
             TellerRepositorySyncService(reposRepository: self.inject(.reposRepository, container),
-                                        githubUsernameRepository: self.inject(.githubUsernameRepository, container))
+                                        logger: self.inject(.activityLogger, container))
         }
         container.register(ThreadUtil.self) { _ in
             AppThreadUtil()
@@ -167,6 +173,17 @@ class DiContainer {
         }
         container.register(Environment.self) { _ in
             AppEnvironment()
+        }
+        container.register(BackgroundJobRunner.self) { container in
+            AppBackgroundJobRunner(logger: self.inject(.activityLogger, container),
+                                   pendingTasks: self.inject(.pendingTasks, container),
+                                   repositorySyncService: self.inject(.repositorySyncService, container))
+        }
+        container.register(PendingTasks.self) { _ in
+            WendyPendingTasks()
+        }
+        container.register(NotificationCenterManager.self) { _ in
+            AppNotificationCenterManager()
         }
     }
 
@@ -186,8 +203,6 @@ class DiContainer {
         case .reposDataSource: return resolver.resolve(ReposDataSource.self)! as Any
         case .reposRepository: return resolver.resolve(ReposRepository.self)! as Any
         case .reposViewModel: return resolver.resolve(ReposViewModel.self)! as Any
-        case .githubUsernameRepository: return resolver.resolve(GitHubUsernameRepository.self)! as Any
-        case .githubDataSource: return resolver.resolve(GitHubUsernameDataSource.self)! as Any
         case .moyaProvider: return resolver.resolve(MoyaInstance.self)! as Any
         case .githubApi: return resolver.resolve(GitHubAPI.self)! as Any
         case .jsonAdapter: return resolver.resolve(JsonAdapter.self)! as Any
@@ -205,6 +220,9 @@ class DiContainer {
         case .fileStorage: return resolver.resolve(FileStorage.self)! as Any
         case .themeManager: return resolver.resolve(ThemeManager.self)! as Any
         case .environment: return resolver.resolve(Environment.self)! as Any
+        case .backgroundJobRunner: return resolver.resolve(BackgroundJobRunner.self)! as Any
+        case .pendingTasks: return resolver.resolve(PendingTasks.self)! as Any
+        case .notificationCenterManager: return resolver.resolve(NotificationCenterManager.self)! as Any
         }
     }
 }

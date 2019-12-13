@@ -1,5 +1,4 @@
 import Foundation
-import Teller
+import struct Teller.DataState
 
-typealias StateOnlineData = OnlineDataState
-typealias StateLocalData = LocalDataState
+typealias DataState = Teller.DataState

@@ -75,39 +75,31 @@ class LaunchViewController: UIViewController {
 
         goButton.addTarget(self, action: #selector(howManyReposButtonPressed), for: .touchUpInside)
 
+        usernameTextField.text = nil
         reposViewModel.observeGitHubUsername()
-            .subscribe(onNext: { (stateData: StateLocalData<GitHubUsername>) in
-                switch stateData.state() {
-                case .isEmpty?: break
-                case .data(let username)?:
-                    self.usernameTextField.text = username
-                case .none: break
-                }
+            .subscribe(onNext: { username in
+                self.usernameTextField.text = username
             }).disposed(by: disposeBag)
 
         reposViewModel.observeRepos()
-            .subscribe(onNext: { (stateData: StateOnlineData<[Repo]>) in
-                switch stateData.cacheState() {
-                case .cacheEmpty?:
-                    self.stateOfDataLabel.text = "User does not have any repos."
-                case .cacheData(let repos, _)?:
-                    self.stateOfDataLabel.text = "Num of repos for user: \(String(repos.count))"
+            .subscribe(onNext: { (dataState: DataState<[Repo]>) in
+                switch dataState.state() {
                 case .none: break
-                }
-                switch stateData.noCacheState() {
-                case .noCache?:
+                case .noCache(let fetching, let errorDuringFetch):
                     self.stateOfDataLabel.text = "User does not have any repos."
-                case .firstFetchOfData?:
-                    self.stateOfDataLabel.text = "Loading repos for user..."
-                default: break
+                case .cache(let cache, let lastFetched, let firstCache, let fetching, let successfulFetch, let errorDuringFetch):
+                    if let repos = cache {
+                        self.stateOfDataLabel.text = "Num of repos for user: \(String(repos.count))"
+                    } else {
+                        self.stateOfDataLabel.text = "User does not have any repos."
+                    }
                 }
-                switch stateData.fetchingFreshDataState() {
-                case .fetchingFreshCacheData?:
-                    self.fetchingDataStatusLabel.text = "Fetching fresh data."
-                case .finishedFetchingFreshCacheData(let errorDuringFetch)?:
-                    self.fetchingDataStatusLabel.text = "Done fetching data."
-                    if errorDuringFetch != nil { self.fetchingDataStatusLabel.text = "Done fetching data because of an error." }
-                case .none: break
+
+                switch dataState.fetchingState() {
+                case .fetching(let fetching, let noCache, let errorDuringFetch, let successfulFetch):
+                    if fetching {
+                        self.stateOfDataLabel.text = "Loading repos for user..."
+                    }
                 }
             }).disposed(by: disposeBag)
 
@@ -138,7 +130,7 @@ class LaunchViewController: UIViewController {
     }
 
     @objc func howManyReposButtonPressed(_ sender: UIButton) {
-        reposViewModel.setGitHubUsernameForRepos(usernameTextField.text!)
+        reposViewModel.gitHubUsername = usernameTextField.text!
     }
 }
 

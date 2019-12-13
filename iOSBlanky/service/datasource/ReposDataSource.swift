@@ -2,9 +2,11 @@ import Foundation
 import RxSwift
 import Teller
 
-class ReposDataSourceRequirements: OnlineRepositoryGetDataRequirements {
+typealias ReposRepository = Repository<ReposDataSource>
+
+class ReposDataSourceRequirements: RepositoryRequirements {
     let githubUsername: String
-    var tag: OnlineRepositoryGetDataRequirements.Tag {
+    var tag: RepositoryRequirements.Tag {
         return "Repos for GitHub username: \(githubUsername)"
     }
 
@@ -24,9 +26,9 @@ enum ResposApiError: Error, LocalizedError {
     }
 }
 
-class ReposDataSource: OnlineRepositoryDataSource {
+class ReposDataSource: RepositoryDataSource {
     typealias Cache = [Repo]
-    typealias GetDataRequirements = ReposDataSourceRequirements
+    typealias Requirements = ReposDataSourceRequirements
     typealias FetchResult = [Repo]
 
     fileprivate let githubApi: GitHubAPI
@@ -37,27 +39,21 @@ class ReposDataSource: OnlineRepositoryDataSource {
         self.db = db
     }
 
-    var maxAgeOfData: Period = Period(unit: 3, component: .day)
+    var maxAgeOfCache: Period = Period(unit: 3, component: .day)
 
-    func fetchFreshData(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo]>> {
+    func fetchFreshCache(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo]>> {
         return githubApi.getUserRepos(username: requirements.githubUsername)
     }
 
-    func saveData(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) {
+    func saveCache(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) throws {
         db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
     }
 
-    func observeCachedData(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
+    func observeCache(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
         return db.repositoryDao.observeRepos(forUsername: requirements.githubUsername)
     }
 
-    func isDataEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {
+    func isCacheEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {
         return cache.isEmpty
-    }
-}
-
-class ReposRepository: OnlineRepository<ReposDataSource> {
-    required init(dataSource: ReposDataSource) {
-        super.init(dataSource: dataSource)
     }
 }

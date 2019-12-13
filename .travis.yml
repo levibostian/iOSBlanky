@@ -37,10 +37,10 @@ jobs:
       - bundle exec fastlane scan
       - bundle exec danger --fail-on-errors=true 
   - stage: deploy
-    script: bundle exec fastlane deploy
+    script: rm .env; cp secrets/production/.env .env; ./set_environment.rb; bundle exec fastlane deploy
   - stage: cron
     script: 
-      - rm .env; cp secrets/production/.env .env; bundle exec fastlane refresh_dsyms;
+      - rm .env; cp secrets/production/.env .env; ./set_environment.rb; bundle exec fastlane refresh_dsyms;
 
 stages:
   - name: pr

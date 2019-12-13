@@ -7,8 +7,6 @@ enum Dependency: CaseIterable {
     case reposDataSource
     case reposRepository
     case reposViewModel
-    case githubUsernameRepository
-    case githubDataSource
     case moyaProvider
     case githubApi
     case jsonAdapter
@@ -26,4 +24,7 @@ enum Dependency: CaseIterable {
     case fileStorage
     case themeManager
     case environment
+    case backgroundJobRunner
+    case pendingTasks
+    case notificationCenterManager
 }
