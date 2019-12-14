@@ -272,7 +272,7 @@
 		F7B9A02F23A5596C004A4011 /* RepositorySyncServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00323A5596C004A4011 /* RepositorySyncServiceTests.swift */; };
 		F7B9A03023A5596C004A4011 /* FileStorageIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00423A5596C004A4011 /* FileStorageIntegrationTests.swift */; };
 		F7B9A03123A5596C004A4011 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00623A5596C004A4011 /* StringsTests.swift */; };
-		F7B9A03223A5596C004A4011 /* UIImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00723A5596C004A4011 /* UIImagesTests.swift */; };
+		F7B9A03223A5596C004A4011 /* ImagesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00723A5596C004A4011 /* ImagesTests.swift */; };
 		F7B9A03323A5596C004A4011 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00823A5596C004A4011 /* TestUtil.swift */; };
 		F7B9A03423A5596C004A4011 /* ThemeFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00A23A5596C004A4011 /* ThemeFake.swift */; };
 		F7B9A04623A5597E004A4011 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A04023A5597D004A4011 /* StringExtensionTests.swift */; };
@@ -305,6 +305,12 @@
 		F7B9A06A23A5792C004A4011 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
 		F7B9A06B23A5792C004A4011 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
 		F7B9A06C23A5792C004A4011 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
+		F7B9A06E23A57CD1004A4011 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06D23A57CD1004A4011 /* Images.swift */; };
+		F7B9A06F23A57CD1004A4011 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06D23A57CD1004A4011 /* Images.swift */; };
+		F7B9A07023A57CD1004A4011 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06D23A57CD1004A4011 /* Images.swift */; };
+		F7B9A07223A57F17004A4011 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07123A57F17004A4011 /* UnitTest.swift */; };
+		F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
+		F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */; };
 		F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
 		F7C0FF1122E50257009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
@@ -515,7 +521,7 @@
 		F7B9A00323A5596C004A4011 /* RepositorySyncServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositorySyncServiceTests.swift; sourceTree = "<group>"; };
 		F7B9A00423A5596C004A4011 /* FileStorageIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStorageIntegrationTests.swift; sourceTree = "<group>"; };
 		F7B9A00623A5596C004A4011 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
-		F7B9A00723A5596C004A4011 /* UIImagesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagesTests.swift; sourceTree = "<group>"; };
+		F7B9A00723A5596C004A4011 /* ImagesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagesTests.swift; sourceTree = "<group>"; };
 		F7B9A00823A5596C004A4011 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		F7B9A00A23A5596C004A4011 /* ThemeFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeFake.swift; sourceTree = "<group>"; };
 		F7B9A04023A5597D004A4011 /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
@@ -532,6 +538,8 @@
 		F7B9A05F23A56D09004A4011 /* file.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = file.txt; sourceTree = "<group>"; };
 		F7B9A06323A56F44004A4011 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		F7B9A06923A5792C004A4011 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		F7B9A06D23A57CD1004A4011 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		F7B9A07123A57F17004A4011 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServerError.swift; sourceTree = "<group>"; };
 		F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessor.swift; sourceTree = "<group>"; };
@@ -841,6 +849,7 @@
 				F7B99FE323A5596C004A4011 /* ViewControllerUnitTest.swift */,
 				F7602FE122E2250600FDB5F3 /* di */,
 				F75DCD991CD8F10D00B8941F /* Info.plist */,
+				F7B9A07123A57F17004A4011 /* UnitTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -900,6 +909,7 @@
 				F76835B21F9ECFBF00219B30 /* Color.xcassets */,
 				F76ACF4822F7841B00B1A41D /* UIColor.swift */,
 				F7B9A06323A56F44004A4011 /* Strings.swift */,
+				F7B9A06D23A57CD1004A4011 /* Images.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1114,7 +1124,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B9A00623A5596C004A4011 /* StringsTests.swift */,
-				F7B9A00723A5596C004A4011 /* UIImagesTests.swift */,
+				F7B9A00723A5596C004A4011 /* ImagesTests.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1387,6 +1397,7 @@
 				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F7B9A06023A56D09004A4011 /* file.txt in Resources */,
+				F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */,
 				F76EF43623A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1397,6 +1408,7 @@
 			files = (
 				F7B9A06123A56D09004A4011 /* file.txt in Resources */,
 				F7B9A06823A57728004A4011 /* Localizable.strings in Resources */,
+				F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */,
 				F76EF43723A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1787,6 +1799,7 @@
 				F785CB6B22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */,
 				F70B16FE23A5400D006D5A60 /* LaunchViewController.swift in Sources */,
 				F7C0FF1F22E50847009E1203 /* UnauthorizedError.swift in Sources */,
+				F7B9A06E23A57CD1004A4011 /* Images.swift in Sources */,
 				F70B16F823A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
 				F7B99F9623A554AB004A4011 /* UIControlExtensions.swift in Sources */,
 				F7B99FB123A554AB004A4011 /* URLExtensions.swift in Sources */,
@@ -1833,9 +1846,10 @@
 				F7C0FF1D22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7C0FF3222E660CC009E1203 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F7C0FF2922E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
+				F7B9A07223A57F17004A4011 /* UnitTest.swift in Sources */,
 				F7B9A02523A5596C004A4011 /* AtomicCounterCollectionTests.swift in Sources */,
 				F7C0FF3122E660C4009E1203 /* RepoModel.swift in Sources */,
-				F7B9A03223A5596C004A4011 /* UIImagesTests.swift in Sources */,
+				F7B9A03223A5596C004A4011 /* ImagesTests.swift in Sources */,
 				F7CC939C22F0C2C700C7FF16 /* AppStartupUtil.swift in Sources */,
 				F7B9A02E23A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift in Sources */,
 				F7B99FAC23A554AB004A4011 /* DateExtensions.swift in Sources */,
@@ -1929,6 +1943,7 @@
 				F7B99FAF23A554AB004A4011 /* MoyaExtensions.swift in Sources */,
 				F72043E622E4EE8D00DE7EA9 /* ReposViewModel.swift in Sources */,
 				F7B9A01C23A5596C004A4011 /* ViewControllerTestUtil.swift in Sources */,
+				F7B9A06F23A57CD1004A4011 /* Images.swift in Sources */,
 				F7B9A04E23A55CBB004A4011 /* NotificationUtil.swift in Sources */,
 				F7C0FF2622E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,
 				F7B99F9D23A554AB004A4011 /* UIViewControllerExtensions.swift in Sources */,
@@ -2036,6 +2051,7 @@
 				F76765AE22F78AC000ED2A11 /* ConsoleLogger.swift in Sources */,
 				F76765B022F78AC000ED2A11 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F76765AB22F78AC000ED2A11 /* ActivityLogger.swift in Sources */,
+				F7B9A07023A57CD1004A4011 /* Images.swift in Sources */,
 				F76765BF22F78AD800ED2A11 /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F70B16E623A53F73006D5A60 /* AutoDependencyInjection.generated.swift in Sources */,
 				F767659D22F78AB400ED2A11 /* SecureStorage.swift in Sources */,
