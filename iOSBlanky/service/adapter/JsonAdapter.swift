@@ -6,6 +6,7 @@ protocol JsonAdapter {
     func toJson<T: Encodable>(_ obj: T) -> Data
 }
 
+// sourcery: InjectRegister = "JsonAdapter"
 class SwiftJsonAdpter: JsonAdapter {
     fileprivate let decoder: JSONDecoder
     fileprivate let encoder = JSONEncoder()

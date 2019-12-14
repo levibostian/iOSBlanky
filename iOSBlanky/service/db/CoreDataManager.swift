@@ -2,6 +2,8 @@ import CoreData
 import Foundation
 
 // Ideas from: https://gist.github.com/kharrison/0d19af0729ae324b8243a738844f8245
+// sourcery: InjectRegister = "CoreDataManager"
+// sourcery: InjectSingleton
 class CoreDataManager {
     let persistentContainerQueue = OperationQueue() // make a queue for performing write operations to avoid conflicts with multiple writes at the same time from different contexts.
     let nameOfModelFile = "Model" // The name of the .xcdatamodeld file you want to use.

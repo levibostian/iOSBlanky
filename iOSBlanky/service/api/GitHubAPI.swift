@@ -6,19 +6,20 @@ protocol GitHubAPI {
     func getUserRepos(username: String) -> Single<Result<[Repo], Error>>
 }
 
+// sourcery: InjectRegister = "GitHubAPI"
 class AppGitHubApi: GitHubAPI {
-    fileprivate let moyaProvider: MoyaInstance
+    fileprivate let moyaProvider: GitHubMoyaProvider
     fileprivate let jsonAdapter: JsonAdapter
     fileprivate let responseProcessor: MoyaResponseProcessor
 
-    init(moyaProvider: MoyaInstance, jsonAdapter: JsonAdapter, responseProcessor: MoyaResponseProcessor) {
-        self.moyaProvider = moyaProvider
+    init(gitHubMoyaProvider: GitHubMoyaProvider, jsonAdapter: JsonAdapter, responseProcessor: MoyaResponseProcessor) {
+        self.moyaProvider = gitHubMoyaProvider
         self.jsonAdapter = jsonAdapter
         self.responseProcessor = responseProcessor
     }
 
     func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], Error>> {
-        return moyaProvider.rx.request(MultiTarget(GitHubService.getUserRepos(username: username)))
+        return moyaProvider.rx.request(GitHubService.getUserRepos(username: username))
             .map { (response) -> ProcessedResponse in
                 self.responseProcessor.process(response, extraResponseHandling: { (statusCode) -> Error? in
                     if statusCode == 404 {

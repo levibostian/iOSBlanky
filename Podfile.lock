@@ -134,7 +134,6 @@ PODS:
   - Swapper (0.1.1)
   - SwiftFormat/CLI (0.40.10)
   - SwiftLint (0.34.0)
-  - Swinject (2.6.2)
   - Teller (0.5.0):
     - RxSwift (~> 5.0)
   - Wendy (0.2.0-alpha):
@@ -161,7 +160,6 @@ DEPENDENCIES:
   - Swapper (~> 0.1)
   - SwiftFormat/CLI
   - SwiftLint
-  - Swinject (~> 2.6.2)
   - Teller (~> 0.5.0)
   - Wendy (from `https://github.com/levibostian/wendy-ios`, commit `b7cbdc1c1a`)
 
@@ -202,7 +200,6 @@ SPEC REPOS:
     - Swapper
     - SwiftFormat
     - SwiftLint
-    - Swinject
     - Teller
 
 EXTERNAL SOURCES:
@@ -251,10 +248,9 @@ SPEC CHECKSUMS:
   Swapper: 8c7ff04022f2415bdd46cc0ef9da9ce6eb40f12d
   SwiftFormat: d0e2118da5bfccc0158f0b8eff80c476c5acd984
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
-  Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
   Teller: c5fcfd9d4b502db58352952510bfe35452ee4d1b
   Wendy: bb3c22635b248dde4a0044785faf43db6fc839ce
 
-PODFILE CHECKSUM: 2c15cd65486a7ae1efa6782b9e0b486ffb602892
+PODFILE CHECKSUM: 3e41835f9d531d74c87d95f305486e7edcdd0720
 
 COCOAPODS: 1.8.4

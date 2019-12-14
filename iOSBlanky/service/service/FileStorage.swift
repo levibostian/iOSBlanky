@@ -18,6 +18,7 @@ enum FileManagerError: Error {
     case directoryDoesNotExist
 }
 
+// sourcery: InjectRegister = "FileStorage"
 class FileMangerFileStorage: FileStorage {
     func write(_ text: String, fileName: String, location: FileManager.SearchPathDirectory = .documentDirectory) throws {
         let fileUrl = try getFileUrl(fileName: fileName, inDirectory: location)

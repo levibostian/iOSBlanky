@@ -1,0 +1,91 @@
+// swiftlint:disable line_length
+// swiftlint:disable variable_name
+// swiftlint:disable force_cast
+
+// File generated from Sourcery-DI project: https://github.com/levibostian/Sourcery-DI
+// Template version 0.1.0
+
+import Foundation
+#if os(iOS) || os(tvOS) || os(watchOS)
+import UIKit
+#elseif os(OSX)
+import AppKit
+#endif
+
+{# enum that contains list of all dependencies in our app. This allows automated unit testing against our dependency graph. #}
+enum Dependency: CaseIterable {
+    {# types.all to support classes, enums, structs, custom injecting, etc. #}
+    {% for dep in types.all where dep|annotated:"InjectRegister" %}
+    case {{ dep.annotations["InjectRegister"]|lowerFirstLetter }}
+    {% endfor %}
+}
+
+class DI {
+    {# Singleton DI graph #}
+    static var shared: DI = DI()
+    {# Override a dependency. Used in testing, only #}
+    private var overrides: [Dependency: Any] = [:]
+    
+    private init() {
+    }
+
+    /**
+    Designed to be used only for testing purposes to override dependencies. 
+    */
+    func override<Value: Any>(_ dep: Dependency, value: Value, forType type: Value.Type) {
+        overrides[dep] = value 
+    }
+
+    /**
+    Reset overrides. Meant to be used in `tearDown()` of tests. 
+    */
+    func resetOverrides() {        
+        overrides = [:]
+    }
+
+    /**
+    Use this generic method of getting a dependency, if you wish. 
+    */
+    func inject<T>(_ dep: Dependency) -> T {                            
+        switch dep {
+            {% for dep in types.all where dep|annotated:"InjectRegister" %}
+            case .{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: return self.{{ dep.annotations["InjectRegister"]|lowerFirstLetter }} as! T 
+            {% endfor %}                
+        }
+    }
+
+    /**
+    Use the property accessors below to inject pre-typed dependencies. 
+    */
+
+    {% for dep in types.classes where dep|annotated:"InjectRegister" %}{% if not dep|annotated:"InjectCustom" %}
+    {% if dep|annotated:"InjectSingleton" %}
+    // {{ dep.annotations["InjectRegister"] }} (singleton)
+    {# Use a DispatchQueue to make singleton thread safe #}
+    private let _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_queue = DispatchQueue(label: "DI_get_{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_queue")
+    private var _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_shared: {{ dep.annotations["InjectRegister"] }}?
+    var {{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: {{ dep.annotations["InjectRegister"] }} {
+        return _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_queue.sync {
+            if let overridenDep = self.overrides[.{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}] {
+                return overridenDep as! {{ dep.annotations["InjectRegister"] }}
+            }
+            let res = _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_shared ?? _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}()
+            _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_shared = res
+            return res
+        }
+    }
+    private func _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}() -> {{ dep.annotations["InjectRegister"] }} {
+        return {{ dep.name }}({% for initializer in dep.initializers %}{% if not initializer.isConvenienceInitializer %}{% for param in initializer.parameters %}{{ param.name }}: self.{{ param.typeName|lowerFirstLetter }}{% if not forloop.last%}, {% endif %}{% endfor %}{% endif %}{% endfor %})
+    }
+    {% else %}
+    // {{ dep.annotations["InjectRegister"] }}
+    var {{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: {{ dep.annotations["InjectRegister"] }} {    
+        if let overridenDep = self.overrides[.{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}] {
+            return overridenDep as! {{ dep.annotations["InjectRegister"] }}
+        }
+        return {{ dep.name}}({% for initializer in dep.initializers %}{% if not initializer.isConvenienceInitializer %}{% for param in initializer.parameters %}{{ param.name }}: self.{{ param.typeName|lowerFirstLetter }}{% if not forloop.last%}, {% endif %}{% endfor %}{% endif %}{% endfor %})
+    }
+    {% endif %}
+    {% endif %}
+    {% endfor %} 
+}

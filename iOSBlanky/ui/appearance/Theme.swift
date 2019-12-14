@@ -21,6 +21,7 @@ protocol ThemeManager {
     func applyTheme(to viewController: ThemableViewController)
 }
 
+// sourcery: InjectRegister = "ThemeManager"
 class AppThemeManager: ThemeManager {
     private let keyValueStorage: KeyValueStorage
     private let currentThemeKey = "currentThemeKey"

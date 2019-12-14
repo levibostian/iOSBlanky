@@ -45,6 +45,7 @@ protocol EventBus: AutoMockable {
     func unregisterAll(_ listener: EventBusEventListener)
 }
 
+// sourcery: InjectRegister = "EventBus"
 class NotificationCenterEventBus: EventBus {
     private var listeners: [EventBusEvent: NSHashTable<EventBusEventListener>] = [:]
     private let dispatch = DispatchQueue(label: "NotificationCenterEventBus")
@@ -133,6 +134,7 @@ protocol NotificationCenterManager: AutoMockable {
     func removeObserver(_ observer: Any, name: String)
 }
 
+// sourcery: InjectRegister = "NotificationCenterManager"
 class AppNotificationCenterManager: NotificationCenterManager {
     private let notificationCenter = NotificationCenter.default
 

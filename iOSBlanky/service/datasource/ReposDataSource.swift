@@ -3,6 +3,13 @@ import RxSwift
 import Teller
 
 typealias ReposRepository = Repository<ReposDataSource>
+// sourcery: InjectRegister = "UserDefaults"
+// sourcery: InjectCustom
+extension DI {
+    var reposRepository: ReposRepository {
+        return Repository(dataSource: inject(.reposDataSource))
+    }
+}
 
 class ReposDataSourceRequirements: RepositoryRequirements {
     let githubUsername: String
@@ -26,6 +33,7 @@ enum ResposApiError: Error, LocalizedError {
     }
 }
 
+// sourcery: InjectRegister = "ReposDataSource"
 class ReposDataSource: RepositoryDataSource {
     typealias Cache = [Repo]
     typealias Requirements = ReposDataSourceRequirements

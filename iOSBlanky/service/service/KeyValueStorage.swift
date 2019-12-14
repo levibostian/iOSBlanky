@@ -10,6 +10,7 @@ protocol KeyValueStorage {
     func observeString(forKey key: String) -> Observable<String>
 }
 
+// sourcery: InjectRegister = "KeyValueStorage"
 class UserDefaultsKeyValueStorage: KeyValueStorage {
     private let userDefaults: UserDefaults
 

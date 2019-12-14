@@ -1,6 +1,7 @@
 import Foundation
 import KeychainAccess
 
+// sourcery: InjectRegister = "UserCredsManager"
 class UserCredsManager {
     private let userAuthTokenKey: String = "userAuthTokenKey"
 

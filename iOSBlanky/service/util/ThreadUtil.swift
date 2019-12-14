@@ -8,6 +8,7 @@ protocol ThreadUtil {
     func assertBackground()
 }
 
+// sourcery: InjectRegister = "ThreadUtil"
 class AppThreadUtil: ThreadUtil {
     var isMain: Bool {
         return Thread.isMainThread

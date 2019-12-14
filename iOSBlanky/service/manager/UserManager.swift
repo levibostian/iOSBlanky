@@ -1,5 +1,6 @@
 import Foundation
 
+// sourcery: InjectRegister = "UserManager"
 class UserManager {
     private let userIdKey: String = "userIdKey"
     private let keyValueStore: KeyValueStorage

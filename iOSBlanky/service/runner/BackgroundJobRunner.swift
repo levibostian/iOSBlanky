@@ -5,6 +5,7 @@ protocol BackgroundJobRunner {
     func runPeriodicBackgroundJobs(onComplete: @escaping (UIBackgroundFetchResult) -> Void)
 }
 
+// sourcery: InjectRegister = "BackgroundJobRunner"
 class AppBackgroundJobRunner: BackgroundJobRunner {
     fileprivate let logger: ActivityLogger
     fileprivate let pendingTasks: PendingTasks

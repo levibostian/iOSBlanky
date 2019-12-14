@@ -11,6 +11,7 @@ protocol RepositorySyncService {
     func syncRepos(force: Bool, onComplete: @escaping (RefreshResult) -> Void)
 }
 
+// sourcery: InjectRegister = "RepositorySyncService"
 class TellerRepositorySyncService: RepositorySyncService {
     fileprivate let reposRepository: ReposRepository
     fileprivate let logger: ActivityLogger

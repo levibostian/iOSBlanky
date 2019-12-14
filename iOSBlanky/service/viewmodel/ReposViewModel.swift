@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 import Teller
 
+// sourcery: InjectRegister = "ReposViewModel"
 class ReposViewModel {
     private let reposRepository: ReposRepository
     private let keyValueStorage: KeyValueStorage

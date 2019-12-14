@@ -41,6 +41,7 @@ extension ActivityEvent {
     }
 }
 
+// sourcery: InjectRegister = "ActivityLogger"
 class AppActivityLogger: ActivityLogger {
     private let loggers: [ActivityLogger]
 

@@ -6,6 +6,7 @@ struct ProcessedResponse {
     let error: Error?
 }
 
+// sourcery: InjectRegister = "MoyaResponseProcessor"
 class MoyaResponseProcessor {
     private let jsonAdapter: JsonAdapter
     private let logger: ActivityLogger

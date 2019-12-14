@@ -6,11 +6,13 @@ protocol RemoteConfigProvider {
     func fetch()
 }
 
+// sourcery: InjectRegister = "RemoteConfigProvider"
 class FirebaseRemoteConfig: RemoteConfigProvider {
     fileprivate let remoteConfig = RemoteConfig.remoteConfig()
-    fileprivate let logger = Di.inject.activityLogger
+    fileprivate let logger: ActivityLogger
 
-    init() {
+    init(logger: ActivityLogger) {
+        self.logger = logger
         remoteConfig.setDefaults(fromPlist: "FirebaseRemoteConfigDefaults")
     }
 

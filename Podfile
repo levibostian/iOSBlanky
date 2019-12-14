@@ -17,8 +17,6 @@ def commonDepencencies
     pod 'RxCocoa', '~> 5.0.0'
     pod "RxCoreData", "~> 1.0.0"
 
-    pod 'Swinject', '~> 2.6.2'
-
     pod 'Firebase/Analytics'
     pod 'Firebase/RemoteConfig'
     pod 'Firebase/Messaging'

@@ -4,6 +4,7 @@ import RxCoreData
 import RxSwift
 import UIKit
 
+// sourcery: InjectRegister = "RepositoryDao"
 class RepositoryDao {
     private let coreDataManager: CoreDataManager
 

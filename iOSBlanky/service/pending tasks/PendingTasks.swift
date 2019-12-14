@@ -3,12 +3,13 @@ import UIKit
 import Wendy
 
 protocol PendingTasks: AutoMockable {
-    func addDownloadDriveFilesPendingTask() -> Double
+    func addDownloadNewFilesPendingTask() -> Double
     func runAllTasks() -> UIBackgroundFetchResult
 }
 
+// sourcery: InjectRegister = "PendingTasks"
 class WendyPendingTasks: PendingTasks {
-    func addDownloadDriveFilesPendingTask() -> Double {
+    func addDownloadNewFilesPendingTask() -> Double {
         return 0
 //         return Wendy.shared.addTask(DownloadDriveFilesPendingTask())
     }

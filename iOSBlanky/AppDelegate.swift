@@ -22,15 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         FirebaseApp.configure() // Do first so crashlytics starts up to record errors.
 
-        logger = Di.inject.activityLogger
-        remoteConfig = Di.inject.remoteConfig
-        userManager = Di.inject.userManager
-        repositorySyncService = Di.inject.repositorySyncService
-        startupUtil = Di.inject.startupUtil
-        themeManager = Di.inject.themeManager
-        environment = Di.inject.environment
-        backgroundJobRunner = Di.inject.backgroundJobRunner
-        let eventBus = Di.inject.eventBus
+        logger = DI.shared.activityLogger
+        remoteConfig = DI.shared.remoteConfigProvider
+        userManager = DI.shared.userManager
+        repositorySyncService = DI.shared.repositorySyncService
+        startupUtil = DI.shared.startupUtil
+        themeManager = DI.shared.themeManager
+        environment = DI.shared.environment
+        backgroundJobRunner = DI.shared.backgroundJobRunner
+        let eventBus = DI.shared.eventBus
         eventBusRegister = EventBusRegisterCounter(eventBus: eventBus)
         eventBusRegister.listener = self
 

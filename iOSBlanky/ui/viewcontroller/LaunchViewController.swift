@@ -48,7 +48,7 @@ class LaunchViewController: UIViewController {
     }()
 
     private let disposeBag = DisposeBag()
-    private let reposViewModel = Di.inject.reposViewModel
+    private let reposViewModel = DI.shared.reposViewModel
 
     override func viewDidLoad() {
         super.viewDidLoad()

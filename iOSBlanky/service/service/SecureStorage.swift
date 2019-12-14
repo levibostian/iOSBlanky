@@ -6,6 +6,7 @@ protocol SecureStorage {
     func set(_ value: String?, key: String)
 }
 
+// sourcery: InjectRegister = "SecureStorage"
 class KeychainAccessSecureStorage: SecureStorage {
     private var keychain: Keychain? {
         guard let loggedInUserId = self.userManager.userId else {
