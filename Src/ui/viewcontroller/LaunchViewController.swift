@@ -87,9 +87,9 @@ class LaunchViewController: UIViewController {
             .subscribe(onNext: { (dataState: DataState<[Repo]>) in
                 switch dataState.state() {
                 case .none: break
-                case .noCache(let fetching, let errorDuringFetch):
+                case .noCache:
                     self.stateOfDataLabel.text = "User does not have any repos."
-                case .cache(let cache, let lastFetched, let firstCache, let fetching, let successfulFetch, let errorDuringFetch):
+                case .cache(let cache, _, _, _, _, _):
                     if let repos = cache {
                         self.stateOfDataLabel.text = "Num of repos for user: \(String(repos.count))"
                     } else {
@@ -98,7 +98,7 @@ class LaunchViewController: UIViewController {
                 }
 
                 switch dataState.fetchingState() {
-                case .fetching(let fetching, let noCache, let errorDuringFetch, let successfulFetch):
+                case .fetching(let fetching, _, _, _):
                     if fetching {
                         self.stateOfDataLabel.text = "Loading repos for user..."
                     }

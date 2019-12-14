@@ -311,6 +311,11 @@
 		F7B9A07223A57F17004A4011 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07123A57F17004A4011 /* UnitTest.swift */; };
 		F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
+		F7B9A07723A58074004A4011 /* MoyaProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */; };
+		F7B9A07823A58074004A4011 /* MoyaProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */; };
+		F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */; };
+		F7B9A07C23A581C7004A4011 /* RepoFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07B23A581C7004A4011 /* RepoFakes.swift */; };
+		F7B9A07D23A581C7004A4011 /* RepoFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07B23A581C7004A4011 /* RepoFakes.swift */; };
 		F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */; };
 		F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
 		F7C0FF1122E50257009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
@@ -540,6 +545,9 @@
 		F7B9A06923A5792C004A4011 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		F7B9A06D23A57CD1004A4011 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		F7B9A07123A57F17004A4011 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
+		F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderMock.swift; sourceTree = "<group>"; };
+		F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubApiTest.swift; sourceTree = "<group>"; };
+		F7B9A07B23A581C7004A4011 /* RepoFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFakes.swift; sourceTree = "<group>"; };
 		F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServerError.swift; sourceTree = "<group>"; };
 		F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessor.swift; sourceTree = "<group>"; };
@@ -838,6 +846,7 @@
 		F75DCD961CD8F10D00B8941F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F7B9A07523A5805D004A4011 /* mocks */,
 				F7B9A03F23A5597D004A4011 /* extensions */,
 				F7B9A00523A5596C004A4011 /* Assets */,
 				F7B99FD923A5596B004A4011 /* ErrorForTesting.swift */,
@@ -1080,6 +1089,7 @@
 		F7B99FF923A5596C004A4011 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1136,6 +1146,7 @@
 				F7B9A00A23A5596C004A4011 /* ThemeFake.swift */,
 				F7B9A05923A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift */,
 				F7B9A05C23A56CE6004A4011 /* FileFakes.swift */,
+				F7B9A07B23A581C7004A4011 /* RepoFakes.swift */,
 			);
 			path = fakeData;
 			sourceTree = "<group>";
@@ -1159,6 +1170,14 @@
 				F7B9A04D23A55CBB004A4011 /* NotificationUtil.swift */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		F7B9A07523A5805D004A4011 /* mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */,
+			);
+			path = mocks;
 			sourceTree = "<group>";
 		};
 		F7C0FF0D22E50237009E1203 /* error */ = {
@@ -1462,6 +1481,8 @@
 				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
 				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1486,6 +1507,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1614,6 +1637,8 @@
 				"${BUILT_PRODUCTS_DIR}/Teller/Teller.framework",
 				"${BUILT_PRODUCTS_DIR}/Wendy/Wendy.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
+				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1638,6 +1663,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Teller.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Wendy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1880,6 +1907,7 @@
 				F70B16F323A5400D006D5A60 /* Theme.swift in Sources */,
 				F7D575B523A2D22000D6B6BC /* Env.swift in Sources */,
 				F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */,
+				F7B9A07723A58074004A4011 /* MoyaProviderMock.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7B9A04B23A5597E004A4011 /* XCTestCaseExtension.swift in Sources */,
 				F76765B622F78AD700ED2A11 /* UIColor.swift in Sources */,
@@ -1907,6 +1935,7 @@
 				F70B16F923A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
 				F7B99FA023A554AB004A4011 /* FileManagerExtensions.swift in Sources */,
 				F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */,
+				F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */,
 				F7B99FC723A554AB004A4011 /* UIImageExtensions.swift in Sources */,
 				F714EB7723A4363000E7AFB5 /* BackgroundJobRunner.swift in Sources */,
 				F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */,
@@ -1955,6 +1984,7 @@
 				F7B9A01523A5596C004A4011 /* ErrorForTesting.swift in Sources */,
 				F7B9A04A23A5597E004A4011 /* EventBusMockExtensions.swift in Sources */,
 				F712CDA722E3BD7B00272FF5 /* GitHubAPI.swift in Sources */,
+				F7B9A07C23A581C7004A4011 /* RepoFakes.swift in Sources */,
 				F7C0FF3522E66122009E1203 /* UserManager.swift in Sources */,
 				F7602FD622E224DB00FDB5F3 /* ActivityLogger.swift in Sources */,
 			);
@@ -2024,6 +2054,7 @@
 				F76765BE22F78AD800ED2A11 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F7B99FC823A554AB004A4011 /* UIImageExtensions.swift in Sources */,
 				F76765A022F78ABA00ED2A11 /* ResponseServerError.swift in Sources */,
+				F7B9A07823A58074004A4011 /* MoyaProviderMock.swift in Sources */,
 				F70B170023A5400D006D5A60 /* LaunchViewController.swift in Sources */,
 				F76765A722F78AC000ED2A11 /* RepoModel.swift in Sources */,
 				F70B16FA23A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
@@ -2041,6 +2072,7 @@
 				F7B9A06623A56F44004A4011 /* Strings.swift in Sources */,
 				F7B99F9E23A554AB004A4011 /* UIViewControllerExtensions.swift in Sources */,
 				F7B9A05B23A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift in Sources */,
+				F7B9A07D23A581C7004A4011 /* RepoFakes.swift in Sources */,
 				F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */,
 				F76765A622F78ABA00ED2A11 /* UserEnteredBadDataError.swift in Sources */,
 				F7B99FBF23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,

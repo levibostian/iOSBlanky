@@ -232,16 +232,16 @@ extension AppDelegate {
     }
 
     fileprivate func handleFirebaseDynamicLink(_ firebaseDynamicLink: DynamicLink) {
-        guard let dynamicLink = firebaseDynamicLink.url else {
-            return
-        }
+//        guard let dynamicLink = firebaseDynamicLink.url else {
+//            return
+//        }
 
-        if let authTokenAccessToken = dynamicLink.getQueryParamValue("auth_token_access_token") {
-            // handle case where user wants to login. Send up accessToken to server to exchange it for an access token.
-        } else {
-            // more then likely, this dynamic link is a short URL that we need to expand in order to pick out the query parameters. So, do this hack to re-open the short link to expand it and re-open our app.
-            UIApplication.shared.open(dynamicLink, options: [:], completionHandler: nil)
-        }
+//        if let authTokenAccessToken = dynamicLink.getQueryParamValue("auth_token_access_token") {
+//            // handle case where user wants to login. Send up accessToken to server to exchange it for an access token.
+//        } else {
+//            // more then likely, this dynamic link is a short URL that we need to expand in order to pick out the query parameters. So, do this hack to re-open the short link to expand it and re-open our app.
+//            UIApplication.shared.open(dynamicLink, options: [:], completionHandler: nil)
+//        }
     }
 }
 

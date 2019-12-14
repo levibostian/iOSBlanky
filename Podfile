@@ -2,14 +2,19 @@ require 'dotenv/load'
 
 name_of_project = ENV["APP_TARGET_NAME"]
 
+project "#{name_of_project}.xcodeproj"
 platform :ios, '11.0'
 use_frameworks!
 inhibit_all_warnings!
 
-def developmentDependencies
+def testingDependencies 
+    # Include CLIs in testing as we don't need to bundle with app target 
     pod 'SwiftFormat/CLI'
     pod 'SwiftLint'
     pod 'Sourcery'
+
+    pod 'RxBlocking', '~> 5.0'
+    pod 'RxTest', '~> 5.0'     
 end 
 
 def commonDepencencies    
@@ -38,14 +43,15 @@ end
 
 target name_of_project do
     commonDepencencies()
-    developmentDependencies()
 end
 
 target "#{name_of_project}Tests" do
     commonDepencencies()
+    testingDependencies()
 end
 
 target "#{name_of_project}UITests" do
     commonDepencencies()
+    testingDependencies()
 end
 

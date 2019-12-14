@@ -120,6 +120,8 @@ PODS:
   - PleaseHold (0.2.0)
   - Protobuf (3.9.0)
   - Require (2.0.0)
+  - RxBlocking (5.0.1):
+    - RxSwift (~> 5)
   - RxCocoa (5.0.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -129,6 +131,8 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - RxTest (5.0.1):
+    - RxSwift (~> 5)
   - SnapKit (5.0.0)
   - Sourcery (0.17.0)
   - Swapper (0.1.1)
@@ -153,8 +157,10 @@ DEPENDENCIES:
   - Kingfisher (~> 5.7.0)
   - Moya/RxSwift (~> 14.0.0-beta.6)
   - PleaseHold (~> 0.2)
+  - RxBlocking (~> 5.0)
   - RxCocoa (~> 5.0.0)
   - RxCoreData (~> 1.0.0)
+  - RxTest (~> 5.0)
   - SnapKit (~> 5.0.0)
   - Sourcery
   - Swapper (~> 0.1)
@@ -191,10 +197,12 @@ SPEC REPOS:
     - PleaseHold
     - Protobuf
     - Require
+    - RxBlocking
     - RxCocoa
     - RxCoreData
     - RxRelay
     - RxSwift
+    - RxTest
     - SnapKit
     - Sourcery
     - Swapper
@@ -239,10 +247,12 @@ SPEC CHECKSUMS:
   PleaseHold: 022c1191ee68720b2c36550355c48aa5c6356c08
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   Require: f93abc18dda985f665465cf027cea7166455fb28
+  RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  RxTest: 0132f952a61da82d5233abedaa559df91e5330e5
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   Sourcery: 3ed61be7c8a1218fce349266139379dba477efe0
   Swapper: 8c7ff04022f2415bdd46cc0ef9da9ce6eb40f12d
@@ -251,6 +261,6 @@ SPEC CHECKSUMS:
   Teller: c5fcfd9d4b502db58352952510bfe35452ee4d1b
   Wendy: bb3c22635b248dde4a0044785faf43db6fc839ce
 
-PODFILE CHECKSUM: 3e41835f9d531d74c87d95f305486e7edcdd0720
+PODFILE CHECKSUM: 26ea2613b247af840a33f6cb7f844b9c1d14f735
 
 COCOAPODS: 1.8.4

@@ -18,4 +18,40 @@ class StringExtensionTests: XCTestCase {
 
         XCTAssertEqual(actual, "FileName.png")
     }
+
+    func test_capitalizingFirstLetter_givenNoCaps_expectCapitalizeFirstLetter() {
+        let given = "given"
+        let expected = "Given"
+
+        let actual = given.capitalizingFirstLetter()
+
+        XCTAssertEqual(actual, expected)
+    }
+
+    func test_capitalizingFirstLetter_givenAllCaps_expectCapitalizeFirstLetter() {
+        let given = "GIVEN"
+        let expected = "Given"
+
+        let actual = given.capitalizingFirstLetter()
+
+        XCTAssertEqual(actual, expected)
+    }
+
+    func test_capitalizingFirstLetter_givenAlreadyCapsFirstLetter_expectEqual() {
+        let given = "Given"
+        let expected = "Given"
+
+        let actual = given.capitalizingFirstLetter()
+
+        XCTAssertEqual(actual, expected)
+    }
+
+    func test_capitalizeFirstLetter_expectMutate() {
+        var given = "GIVEN"
+        let expected = "Given"
+
+        given.capitalizeFirstLetter()
+
+        XCTAssertEqual(expected, given)
+    }
 }
