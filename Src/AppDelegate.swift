@@ -128,27 +128,67 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     // Asks user for permission to receive push notifications *and* sets up firebase messaging.
     // Note: Only ask for this when you can (1) register the FCM token with an authenticated user and (2) the user is far enough along in the app that asking them for permission to recieve push notifications is not annoying to ask.
     func registerForPushNotifications() {
-        if userManager.isUserLoggedIn() {
-            let application = UIApplication.shared
+        let application = UIApplication.shared
 
-            UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().delegate = self
 
-            let authOptions: UNAuthorizationOptions = [.alert, .badge] // Options: .alert, .badge, .sound
-            UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in })
+        // I only care to send "data" FCM push notifications to no need to get authorized for alerts
+        let authOptions: UNAuthorizationOptions = [] // Options: .alert, .badge, .sound
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _, _ in })
 
-            application.registerForRemoteNotifications()
-        }
+        application.registerForRemoteNotifications()
     }
 
     // Firebase FCM token refreshed.
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         // If we were sending push notifications via API, we would use this to send the push notification to the server. However, we don't need to do anything to send manually from Firebase console.
         // at any time you need, you can get the current token via: let token = Messaging.messaging().fcmToken
+        logger.breadcrumb("FCM token refreshed", extras: [
+            "token": fcmToken
+        ])
+
+        // Now is also the best time to subscribe to topics.
+        Messaging.messaging().subscribe(toTopic: FcmTopicKeys.filesToDownload.value) { error in
+            if let error = error {
+                self.logger.errorOccurred(error)
+            }
+
+            self.logger.breadcrumb("FCM topic subscribed", extras: [
+                "topic": FcmTopicKeys.filesToDownload.value
+            ])
+        }
     }
 
     // APN (Apple push notification token. Different from Firebase FCM token) token received. We do not need to do anything with it because Firebase does this automatically for us with swizzling.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {}
 
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        logger.breadcrumb("received data push notification", extras: [
+            "raw": userInfo.description
+        ])
+
+        guard let dataNotification = NotificationUtil.parseDataNotification(from: userInfo) else {
+            completionHandler(.noData)
+            return
+        }
+
+        if let notificationAction = NotificationUtil.getActionFrom(dataNotification: dataNotification) {
+            switch notificationAction {
+            case .updateDrive:
+                registerEventListeners()
+
+                backgroundJobRunner.runPeriodicBackgroundJobs { result in
+                    self.unregisterEventListeners()
+
+                    completionHandler(result)
+                }
+            }
+        }
+    }
+
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {}
+
+    // FCM push notification with a "notification" payload attached will call this *if* app in foreground.
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler(.alert) // If a push notification is received while app is in foreground, I want to still have it show up.
     }

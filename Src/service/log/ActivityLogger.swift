@@ -3,7 +3,7 @@ import Foundation
 /**
  No need to track screen because firebase does this automatically.
  */
-protocol ActivityLogger {
+protocol ActivityLogger: AutoMockable {
     func setUserId(id: String?)
     // meant for analytics purposes
     func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String)

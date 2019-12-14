@@ -4,6 +4,7 @@ import UIKit
 protocol ThemableViewController: UIViewController {
     var navigationBarTitle: String? { get }
     var navigationBarBackButtonText: String? { get }
+    var themeManager: ThemeManager { get }
 
     // Note: Must set "View controller-based status bar appearance" to YES in Info.plist to work
     var preferredStatusBarStyle: UIStatusBarStyle { get }

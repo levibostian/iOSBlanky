@@ -6,6 +6,8 @@ import UIKit
 class LaunchViewController: UIViewController {
     fileprivate var didSetupConstraints = false
 
+    internal let themeManager = DI.shared.themeManager
+
     let usernameTextField: UITextField = {
         let view = UITextField()
         view.placeholder = NSLocalizedString("github_username", comment: "")

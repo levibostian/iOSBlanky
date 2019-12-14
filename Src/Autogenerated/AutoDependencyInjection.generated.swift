@@ -24,7 +24,6 @@ enum Dependency: CaseIterable {
     case coreDataManager
     case userDefaults
     case database
-    case fileStorage
     case remoteConfigProvider
     case secureStorage
     case moyaResponseProcessor
@@ -75,7 +74,6 @@ class DI {
         case .coreDataManager: return coreDataManager as! T
         case .userDefaults: return userDefaults as! T
         case .database: return database as! T
-        case .fileStorage: return fileStorage as! T
         case .remoteConfigProvider: return remoteConfigProvider as! T
         case .secureStorage: return secureStorage as! T
         case .moyaResponseProcessor: return moyaResponseProcessor as! T
@@ -184,14 +182,6 @@ class DI {
             return overridenDep as! Database
         }
         return Database(repositoryDao: repositoryDao)
-    }
-
-    // FileStorage
-    var fileStorage: FileStorage {
-        if let overridenDep = self.overrides[.fileStorage] {
-            return overridenDep as! FileStorage
-        }
-        return FileMangerFileStorage()
     }
 
     // RemoteConfigProvider

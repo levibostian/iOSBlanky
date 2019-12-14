@@ -5,7 +5,7 @@ import Teller
 /**
  Object meant for repository syncing. Mainly used for background tasks.
  */
-protocol RepositorySyncService {
+protocol RepositorySyncService: AutoMockable {
     func syncAll(onComplete: @escaping ([RefreshResult]) -> Void) // no forcing to refresh.
     // individual repository syncing
     func syncRepos(force: Bool, onComplete: @escaping (RefreshResult) -> Void)

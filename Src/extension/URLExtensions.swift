@@ -12,4 +12,8 @@ extension URL {
     var doesFileExist: Bool {
         return FileManager.default.fileExists(atPath: path)
     }
+
+    var doesDirectoryExist: Bool {
+        return doesFileExist
+    }
 }

@@ -6,6 +6,7 @@ import UIKit
 struct Theme {
     let name: String
 
+    let viewControllerBackgroundColor: UIColor
     let navigationBarTextColor: UIColor
     let navigationBarItemColor: UIColor // color of bar items
     let navigationBarColor: UIColor
@@ -33,6 +34,7 @@ class AppThemeManager: ThemeManager {
         self.keyValueStorage = keyValueStorage
 
         self.defaultTheme = Theme(name: "light",
+                                  viewControllerBackgroundColor: UIColor.white,
                                   navigationBarTextColor: UIColor.white,
                                   navigationBarItemColor: UIColor.white,
                                   navigationBarColor: UIColor.darkGray,
@@ -72,6 +74,8 @@ class AppThemeManager: ThemeManager {
     }
 
     func applyTheme(to viewController: ThemableViewController) {
+        let theme = viewController.themeManager.currentTheme
+
         func setNavigationBarTitle(_ text: String) {
             if viewController.navigationItem.titleView is UIButton {
                 (viewController.navigationItem.titleView as! UIButton).setTitle(text, for: UIControl.State.normal) // swiftlint:disable:this force_cast
@@ -89,5 +93,7 @@ class AppThemeManager: ThemeManager {
         setBackButtonText(viewController.navigationBarBackButtonText ?? " ")
 
         viewController.setNeedsStatusBarAppearanceUpdate() // To get the status bar style to work.
+
+        viewController.view.backgroundColor = theme.viewControllerBackgroundColor
     }
 }
