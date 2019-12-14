@@ -17,4 +17,8 @@ extension XCTestCase {
             XCTFail("You're NOT on the main thread. That's not what you wanted.")
         }
     }
+
+    var bundle: Bundle {
+        return Bundle(for: TestUtil.self)
+    }
 }

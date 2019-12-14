@@ -10,7 +10,7 @@ class LaunchViewController: UIViewController {
 
     let usernameTextField: UITextField = {
         let view = UITextField()
-        view.placeholder = NSLocalizedString("github_username", comment: "")
+        view.placeholder = Strings.githubUsername.localized
         view.keyboardType = .default
         view.spellCheckingType = .no
         view.autocorrectionType = .no
@@ -21,7 +21,7 @@ class LaunchViewController: UIViewController {
 
     let goButton: UIButton = {
         let view = UIButton()
-        view.setTitle(NSLocalizedString("how_many_repos_button_text", comment: ""), for: .normal)
+        view.setTitle(Strings.howManyReposButtonText.localized, for: .normal)
         view.setTitleColor(UIColor.black, for: .normal)
         return view
     }()

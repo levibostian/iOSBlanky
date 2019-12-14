@@ -9,7 +9,7 @@ extension UIViewController {
     func getErrorAlert(title: String?, message: String?) -> UIAlertController {
         let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+        controller.addAction(UIAlertAction(title: Strings.ok.localized, style: .default, handler: { _ in
             controller.dismiss(animated: true, completion: nil)
         }))
 

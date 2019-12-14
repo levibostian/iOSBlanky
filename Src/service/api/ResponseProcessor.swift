@@ -28,16 +28,16 @@ class MoyaResponseProcessor {
                 if let urlError = error as? URLError {
                     switch urlError.code {
                     case URLError.Code.notConnectedToInternet:
-                        return ProcessedResponse(response: response, error: NoInternetConnectionError(message: NSLocalizedString("no_internet_connection_error_message", comment: "The user does not have an Internet connection.")))
+                        return ProcessedResponse(response: response, error: NoInternetConnectionError(message: Strings.noInternetConnectionErrorMessage.localized))
                     // These are errors that can happen when you have a slow network connection.
                     // Note: .cancelled is currently here because if a request is cancelled, it's probably because the user left the screen? So, they may not see the error message anyway. So, just return this generic "bad internet connection" error.
                     case URLError.Code.timedOut, URLError.Code.networkConnectionLost, URLError.Code.dnsLookupFailed, URLError.Code.secureConnectionFailed, URLError.Code.cancelled:
-                        return ProcessedResponse(response: response, error: NetworkConnectionIssueError(message: NSLocalizedString("error_network_connection_issue", comment: "Error to show to the user. The user has a bad Internet connection.")))
+                        return ProcessedResponse(response: response, error: NetworkConnectionIssueError(message: Strings.networkConnectionIssueErrorMessage.localized))
                     default:
                         // There was another network issue I am not aware of that happened.
                         // Because many events can happen when a network connection is bad, I am catching them and evaluating what to do after I receive the incoming crash reports on certain errors. If an event happens often because of a slow network connection, I will put it in the list above to be handled in the app. If it's an issue with the API server, then I will fix it there.
                         logger.errorOccurred(urlError)
-                        let errorMessage = NSLocalizedString("generic_network_error_message", comment: "Generic message to send to user indicating a network error happened we are not sure about.")
+                        let errorMessage = Strings.uncaughtNetworkErrorMessage.localized
                         return ProcessedResponse(response: response, error: NetworkConnectionIssueError(message: errorMessage))
                     }
                 } else {
@@ -60,21 +60,21 @@ class MoyaResponseProcessor {
     func process(_ response: Response, extraResponseHandling: (_ statusCode: Int) -> Error?) -> ProcessedResponse {
         switch response.statusCode {
         case 500...600:
-            return ProcessedResponse(response: response, error: ResponseServerError(message: NSLocalizedString("error_500_600_response_code", comment: "Error message to show to user")))
+            return ProcessedResponse(response: response, error: ResponseServerError(message: Strings.error500ResponseCode.localized))
         case 409: // Conflict. User needs to edit something.
             let conflictError: ConflictResponseError = jsonAdapter.fromJson(response.data)
             return ProcessedResponse(response: response, error: conflictError)
         case 401:
             eventBus.post(.logout, extras: nil)
 
-            return ProcessedResponse(response: response, error: UnauthorizedError(message: NSLocalizedString("error_401_response_code", comment: "Error to show to user")))
+            return ProcessedResponse(response: response, error: UnauthorizedError(message: Strings.error401ResponseCode.localized))
         case 400..<500:
             if let handledError = extraResponseHandling(response.statusCode) {
                 return ProcessedResponse(response: response, error: handledError)
             } else {
                 logger.errorOccurred(UnhandledHttpResponseError(message: "Http call, \(response.request?.httpMethod ?? "(none)") \(response.request?.url?.absoluteString ?? "(none)"), unsuccessful (code: \(response.statusCode)) and the app code does not handle this response case."))
 
-                return ProcessedResponse(response: response, error: UnhandledHttpResponseError(message: NSLocalizedString("unhandled_http_response_code", comment: "There is an unknown error. The team has been notified to fix it. Try again later.")))
+                return ProcessedResponse(response: response, error: UnhandledHttpResponseError(message: Strings.uncaughtNetworkErrorMessage.localized))
             }
         default:
             // successful.

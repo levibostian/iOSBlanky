@@ -8,13 +8,18 @@ class StringsTests: XCTestCase {
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        TestUtil.tearDown()
+
         super.tearDown()
     }
 
     func test_allStringsLocalizationsDefined() {
-//        for string in Strings.allCases {
-//            XCTAssertNotNil(string.localized)
-//        }
+        DI.shared.override(.bundle, value: bundle, forType: Bundle.self)
+
+        for key in Strings.allCases {
+            let value = key.localized
+            XCTAssertNotNil(value)
+            XCTAssertNotEqual(value, key.rawValue) // If key and value are equal, then the string was not defined in the localization file
+        }
     }
 }

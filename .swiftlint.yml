@@ -45,3 +45,9 @@ custom_rules:
     regex: "^(?!.*?contentView\\.addSubview).*addSubview.*" # matching pattern
     message: "Are you sure you wanted to call `addSubview` on `self.view`? Did you mean to use the `contentView`?"
     severity: error
+  use_strings_enum: # use Strings enum instead of NSLocalizedString()
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    name: "Strings.xx enum"
+    regex: "NSLocalizedString\\(.+\\)" # matching pattern
+    message: "Use `Strings.xx.localized` instead"
+    severity: error    

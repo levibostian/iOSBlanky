@@ -22,7 +22,7 @@ enum Dependency: CaseIterable {
     case themeManager
     case threadUtil
     case coreDataManager
-    case userDefaults
+    case bundle
     case database
     case remoteConfigProvider
     case secureStorage
@@ -72,7 +72,7 @@ class DI {
         case .themeManager: return themeManager as! T
         case .threadUtil: return threadUtil as! T
         case .coreDataManager: return coreDataManager as! T
-        case .userDefaults: return userDefaults as! T
+        case .bundle: return bundle as! T
         case .database: return database as! T
         case .remoteConfigProvider: return remoteConfigProvider as! T
         case .secureStorage: return secureStorage as! T

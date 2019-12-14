@@ -297,6 +297,14 @@
 		F7B9A06023A56D09004A4011 /* file.txt in Resources */ = {isa = PBXBuildFile; fileRef = F7B9A05F23A56D09004A4011 /* file.txt */; };
 		F7B9A06123A56D09004A4011 /* file.txt in Resources */ = {isa = PBXBuildFile; fileRef = F7B9A05F23A56D09004A4011 /* file.txt */; };
 		F7B9A06223A56D3B004A4011 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00823A5596C004A4011 /* TestUtil.swift */; };
+		F7B9A06423A56F44004A4011 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06323A56F44004A4011 /* Strings.swift */; };
+		F7B9A06523A56F44004A4011 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06323A56F44004A4011 /* Strings.swift */; };
+		F7B9A06623A56F44004A4011 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06323A56F44004A4011 /* Strings.swift */; };
+		F7B9A06723A57727004A4011 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F71D087422E24FDE000B1577 /* Localizable.strings */; };
+		F7B9A06823A57728004A4011 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F71D087422E24FDE000B1577 /* Localizable.strings */; };
+		F7B9A06A23A5792C004A4011 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
+		F7B9A06B23A5792C004A4011 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
+		F7B9A06C23A5792C004A4011 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
 		F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */; };
 		F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
 		F7C0FF1122E50257009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
@@ -522,6 +530,8 @@
 		F7B9A05923A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloadedEventBusExtrasFake.swift; sourceTree = "<group>"; };
 		F7B9A05C23A56CE6004A4011 /* FileFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileFakes.swift; sourceTree = "<group>"; };
 		F7B9A05F23A56D09004A4011 /* file.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = file.txt; sourceTree = "<group>"; };
+		F7B9A06323A56F44004A4011 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		F7B9A06923A5792C004A4011 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
 		F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServerError.swift; sourceTree = "<group>"; };
 		F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessor.swift; sourceTree = "<group>"; };
@@ -889,6 +899,7 @@
 				F75DCD891CD8F10D00B8941F /* Assets.xcassets */,
 				F76835B21F9ECFBF00219B30 /* Color.xcassets */,
 				F76ACF4822F7841B00B1A41D /* UIColor.swift */,
+				F7B9A06323A56F44004A4011 /* Strings.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -925,6 +936,7 @@
 				F75944C923A1B43A009258D9 /* FileName.swift */,
 				F714EB6023A3070E00E7AFB5 /* GitHubUsername.swift */,
 				F7B9A05123A55D7A004A4011 /* FcmTopicKeys.swift */,
+				F7B9A06923A5792C004A4011 /* Bundle.swift */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -1371,6 +1383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B9A06723A57727004A4011 /* Localizable.strings in Resources */,
 				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F7B9A06023A56D09004A4011 /* file.txt in Resources */,
@@ -1383,6 +1396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7B9A06123A56D09004A4011 /* file.txt in Resources */,
+				F7B9A06823A57728004A4011 /* Localizable.strings in Resources */,
 				F76EF43723A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1713,6 +1727,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F761644522E8B5F4006F2D2A /* SecureStorage.swift in Sources */,
+				F7B9A06A23A5792C004A4011 /* Bundle.swift in Sources */,
 				F721AB5722E8A62B00F77F66 /* KeyValueStorage.swift in Sources */,
 				F7CC939822F0BB0100C7FF16 /* ThreadUtil.swift in Sources */,
 				F7B99FBA23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
@@ -1794,6 +1809,7 @@
 				F799D5A722DFD15E00202FDB /* ConsoleLogger.swift in Sources */,
 				F7CC939B22F0C2C700C7FF16 /* AppStartupUtil.swift in Sources */,
 				F76835B01F9ECEDD00219B30 /* MoyaAppendHeadersPlugin.swift in Sources */,
+				F7B9A06423A56F44004A4011 /* Strings.swift in Sources */,
 				F70B16E423A53F73006D5A60 /* AutoDependencyInjection.generated.swift in Sources */,
 				F727FB3122E2805200E56E2C /* CoreDataManager.swift in Sources */,
 				F714EB8323A4373E00E7AFB5 /* PendingTasks.swift in Sources */,
@@ -1854,6 +1870,7 @@
 				F7B9A04B23A5597E004A4011 /* XCTestCaseExtension.swift in Sources */,
 				F76765B622F78AD700ED2A11 /* UIColor.swift in Sources */,
 				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
+				F7B9A06523A56F44004A4011 /* Strings.swift in Sources */,
 				F7B9A02D23A5596C004A4011 /* NotificationCenterEventBusTests.swift in Sources */,
 				F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */,
 				F714EB8823A4380100E7AFB5 /* Aliases.swift in Sources */,
@@ -1890,6 +1907,7 @@
 				F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */,
 				F7B9A04823A5597E004A4011 /* DictionaryExtensionTests.swift in Sources */,
 				F7B99FBB23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
+				F7B9A06B23A5792C004A4011 /* Bundle.swift in Sources */,
 				F7B9A02723A5596C004A4011 /* BackgroundJobRunnerTests.swift in Sources */,
 				F7B9A05323A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
 				F7B9A05D23A56CE6004A4011 /* FileFakes.swift in Sources */,
@@ -1974,6 +1992,7 @@
 				F7B9A05423A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
 				F714EB6323A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
 				F76ACF4F22F7848B00B1A41D /* Swizzler.swift in Sources */,
+				F7B9A06C23A5792C004A4011 /* Bundle.swift in Sources */,
 				F767659622F78AB400ED2A11 /* ThreadUtil.swift in Sources */,
 				F70B16FD23A5400D006D5A60 /* ThemableViewController.swift in Sources */,
 				F76765C322F78AD800ED2A11 /* ReposViewModel.swift in Sources */,
@@ -2004,6 +2023,7 @@
 				F714EB5F23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
 				F714EB6F23A4356B00E7AFB5 /* Atomic.swift in Sources */,
 				F7B9A05E23A56CE6004A4011 /* FileFakes.swift in Sources */,
+				F7B9A06623A56F44004A4011 /* Strings.swift in Sources */,
 				F7B99F9E23A554AB004A4011 /* UIViewControllerExtensions.swift in Sources */,
 				F7B9A05B23A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift in Sources */,
 				F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */,
