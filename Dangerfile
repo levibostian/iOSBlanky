@@ -4,8 +4,7 @@ require 'dotenv/load'
 
 ReleaseFile = Struct.new(:relative_file_path, :warn_or_fail, :deployment_instruction)
 
-$source_code_location = ENV["SOURCE_CODE_DIRECTORY"]
-$info_plist_location = "#{$source_code_location}/Info.plist"
+$info_plist_location = "Src/Info.plist"
 $files_to_update_for_releases = [ # we will also check the version changed in Info.plist. Don't include here. 
   # Edit your Info.plist 
   ReleaseFile.new('CHANGELOG.md', 'fail', "Add a new changelog entry detailing for future developers what has been done in the app."),

@@ -13,7 +13,6 @@ env = {
   :admin_email => get_env("ADMIN_EMAIL"),
   :google_services_file_name => get_env("GOOGLE_SERVICES_FILE_NAME"),
   :app_name => get_env("APP_NAME"),
-  :source_code_directory => get_env("SOURCE_CODE_DIRECTORY"),
   :testflight_beta_feedback_email => get_env("TESTFLIGHT_BETA_FEEDBACK_EMAIL"),
   :xcode_scheme => get_env("XCODE_SCHEME"),
   :app_icon_file_name => get_env("APP_ICON_FILE_NAME"),
@@ -43,7 +42,7 @@ platform :ios do
 
   desc "From a .env file, change the app's properties. It's easier to do in fastlane, so that's why we're doing it here."
   lane :set_environment do 
-    info_plist_location = "#{env[:source_code_directory]}/Info.plist"
+    info_plist_location = "Src/Info.plist"
   
     update_app_identifier(
       app_identifier: env[:bundle_id],
@@ -69,7 +68,7 @@ platform :ios do
     
     sync_code_signing(type: "appstore")
 
-    set_info_plist_value(path: "./#{env[:source_code_directory]}/Info.plist", key: "CFBundleVersion", value: buildVersion) # Set bundle version to epoch time to assert it's always unique.
+    set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleVersion", value: buildVersion) # Set bundle version to epoch time to assert it's always unique.
 
     publicity_message = "This update is *not* available to the public. The update was uploaded to the TestFlight app and is only available for beta testing. You can download the update with the TestFlight app on your phone, now."
     if ENV["TRAVIS_TAG"].end_with?("-beta")
@@ -140,7 +139,7 @@ platform :ios do
 
     appicon(appicon_image_file: app_icon_path,
       appicon_devices: [:ipad, :iphone, :ios_marketing],
-      appicon_path: "#{env[:source_code_directory]}/Assets/Assets.xcassets",
+      appicon_path: "Src/Assets/Assets.xcassets",
       appicon_name: "AppIcon.appiconset")
 
     badge = env[:app_icon_badge]
