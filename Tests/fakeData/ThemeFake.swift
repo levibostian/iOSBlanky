@@ -8,6 +8,8 @@ enum ThemeFake {
     var theme: Theme {
         switch self {
         case .ugly: return Theme(name: "ugly",
+                                 textColor: .blue,
+                                 buttonColor: .green,
                                  viewControllerBackgroundColor: .red,
                                  navigationBarTextColor: .green,
                                  navigationBarItemColor: .blue,

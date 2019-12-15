@@ -32,6 +32,8 @@ import Moya
 typealias GitHubMoyaProvider = MoyaProvider<GitHubService>
 // sourcery: InjectRegister = "GitHubMoyaProvider"
 // sourcery: InjectCustom
+extension GitHubMoyaProvider {}
+
 extension DI {
     var gitHubMoyaProvider: GitHubMoyaProvider {
         let productionPlugins: [PluginType] = [
@@ -63,6 +65,8 @@ extension DI {
 
 // sourcery: InjectRegister = "UserDefaults"
 // sourcery: InjectCustom
+extension UserDefaults {}
+
 extension DI {
     var userDefaults: UserDefaults {
         return UserDefaults.standard

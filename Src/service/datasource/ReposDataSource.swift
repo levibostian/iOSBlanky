@@ -3,8 +3,10 @@ import RxSwift
 import Teller
 
 typealias ReposRepository = Repository<ReposDataSource>
-// sourcery: InjectRegister = "UserDefaults"
+// sourcery: InjectRegister = "ReposRepository"
 // sourcery: InjectCustom
+extension ReposRepository {}
+
 extension DI {
     var reposRepository: ReposRepository {
         return Repository(dataSource: inject(.reposDataSource))

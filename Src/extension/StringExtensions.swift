@@ -23,4 +23,8 @@ extension String {
     func randomName(length: Int) -> String {
         return String((0..<length).map { _ in abcLetters.randomElement()! }).capitalizingFirstLetter()
     }
+
+    func data() -> Data {
+        return data(using: .utf8)!
+    }
 }

@@ -16,6 +16,11 @@ extension UIViewController {
         return controller
     }
 
+    // Call when you press a "Done" button, for example, do to tasks such as closing the keyboard.
+    func doneEditing() {
+        view.endEditing(true) // close keyboard
+    }
+
     func runOnMain(_ run: @escaping () -> Void) {
         DispatchQueue.main.asyncOrSyncIfMain(run)
     }

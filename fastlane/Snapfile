@@ -1,0 +1,17 @@
+# Uncomment the lines below you want to change by removing the # in the beginning
+
+# A list of devices you want to take the screenshots from
+devices([
+  "iPhone 11"
+])
+
+languages([
+  "en-US"
+])
+scheme("UITests")
+output_directory("./fastlane/screenshots")
+clear_previous_screenshots(true)
+dark_mode(false)
+
+# For more information about all available options run
+# fastlane action snapshot

@@ -2,8 +2,14 @@ import Foundation
 import RxSwift
 import Teller
 
+protocol ReposViewModel: AutoMockable {
+    var gitHubUsername: GitHubUsername? { get set }
+    func observeRepos() -> Observable<DataState<[Repo]>>
+    func observeGitHubUsername() -> Observable<GitHubUsername>
+}
+
 // sourcery: InjectRegister = "ReposViewModel"
-class ReposViewModel {
+class AppReposViewModel: ReposViewModel {
     private let reposRepository: ReposRepository
     private let keyValueStorage: KeyValueStorage
 

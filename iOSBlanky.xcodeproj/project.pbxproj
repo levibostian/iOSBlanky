@@ -96,7 +96,7 @@
 		F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
 		F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD8B1CD8F10D00B8941F /* LaunchScreen.storyboard */; };
-		F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */; };
+		F75DCDA31CD8F10D00B8941F /* LaunchViewControllerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCDA21CD8F10D00B8941F /* LaunchViewControllerUITests.swift */; };
 		F7602FD622E224DB00FDB5F3 /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
 		F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */; };
 		F7602FD822E224DB00FDB5F3 /* CrashReportingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58322DF703100202FDB /* CrashReportingLogger.swift */; };
@@ -190,11 +190,14 @@
 		F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
 		F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
 		F79BE39E22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
+		F7A8552923A6EE26009362B0 /* LaunchViewControllerPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8552823A6EE26009362B0 /* LaunchViewControllerPageObject.swift */; };
 		F7AC968623A58A2F0037CCA2 /* ReposDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC968523A58A2F0037CCA2 /* ReposDataSourceTests.swift */; };
 		F7AC968723A58E360037CCA2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F7AC968823A58E370037CCA2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F7AC968923A5B83E0037CCA2 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76835B21F9ECFBF00219B30 /* Color.xcassets */; };
 		F7AC968A23A5B83F0037CCA2 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76835B21F9ECFBF00219B30 /* Color.xcassets */; };
+		F7AC968E23A69EC50037CCA2 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC968D23A69EC50037CCA2 /* UITest.swift */; };
+		F7AC969423A6A9A00037CCA2 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC969323A6A9A00037CCA2 /* SnapshotHelper.swift */; };
 		F7B99F9323A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */; };
 		F7B99F9423A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */; };
 		F7B99F9523A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */; };
@@ -316,8 +319,6 @@
 		F7B9A07223A57F17004A4011 /* UnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07123A57F17004A4011 /* UnitTest.swift */; };
 		F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
-		F7B9A07723A58074004A4011 /* MoyaProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */; };
-		F7B9A07823A58074004A4011 /* MoyaProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */; };
 		F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */; };
 		F7B9A07C23A581C7004A4011 /* RepoFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07B23A581C7004A4011 /* RepoFakes.swift */; };
 		F7B9A07D23A581C7004A4011 /* RepoFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07B23A581C7004A4011 /* RepoFakes.swift */; };
@@ -360,6 +361,24 @@
 		F7D575B823A2D3B800D6B6BC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B723A2D3B800D6B6BC /* Environment.swift */; };
 		F7D575B923A2D3B800D6B6BC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B723A2D3B800D6B6BC /* Environment.swift */; };
 		F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D575B723A2D3B800D6B6BC /* Environment.swift */; };
+		F7D9195C23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9195B23A6C5C200BF3CF7 /* DataDestroyer.swift */; };
+		F7D9195D23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9195B23A6C5C200BF3CF7 /* DataDestroyer.swift */; };
+		F7D9195E23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9195B23A6C5C200BF3CF7 /* DataDestroyer.swift */; };
+		F7D9196023A6C68300BF3CF7 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9195F23A6C68300BF3CF7 /* Dao.swift */; };
+		F7D9196123A6C68300BF3CF7 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9195F23A6C68300BF3CF7 /* Dao.swift */; };
+		F7D9196223A6C68300BF3CF7 /* Dao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9195F23A6C68300BF3CF7 /* Dao.swift */; };
+		F7D9196423A6C7A600BF3CF7 /* OnComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */; };
+		F7D9196523A6C7A600BF3CF7 /* OnComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */; };
+		F7D9196623A6C7A600BF3CF7 /* OnComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */; };
+		F7D9196823A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */; };
+		F7D9196923A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */; };
+		F7D9196A23A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */; };
+		F7D9196C23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
+		F7D9196D23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
+		F7D9196E23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
+		F7D9197023A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
+		F7D9197123A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
+		F7D9197223A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
 		F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
@@ -447,7 +466,7 @@
 		F75DCD931CD8F10D00B8941F /* iOSBlankyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSBlankyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F75DCD991CD8F10D00B8941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F75DCD9E1CD8F10D00B8941F /* iOSBlankyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSBlankyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBlankyUITests.swift; sourceTree = "<group>"; };
+		F75DCDA21CD8F10D00B8941F /* LaunchViewControllerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewControllerUITests.swift; sourceTree = "<group>"; };
 		F75DCDA41CD8F10D00B8941F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F761644422E8B5F4006F2D2A /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubTargetType.swift; sourceTree = "<group>"; };
@@ -492,8 +511,11 @@
 		F7A404571CD9031900A4D228 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
 		F7A404581CD9031900A4D228 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
 		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
+		F7A8552823A6EE26009362B0 /* LaunchViewControllerPageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewControllerPageObject.swift; sourceTree = "<group>"; };
 		F7A9DD9F22D664E200AEEDEB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F7AC968523A58A2F0037CCA2 /* ReposDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposDataSourceTests.swift; sourceTree = "<group>"; };
+		F7AC968D23A69EC50037CCA2 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
+		F7AC969323A6A9A00037CCA2 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		F7B99F8023A554A9004A4011 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		F7B99F8123A554A9004A4011 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
@@ -551,7 +573,6 @@
 		F7B9A06923A5792C004A4011 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		F7B9A06D23A57CD1004A4011 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		F7B9A07123A57F17004A4011 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
-		F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderMock.swift; sourceTree = "<group>"; };
 		F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubApiTest.swift; sourceTree = "<group>"; };
 		F7B9A07B23A581C7004A4011 /* RepoFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFakes.swift; sourceTree = "<group>"; };
 		F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
@@ -576,6 +597,12 @@
 		F7D3B9481E15D1FC00F2C3CB /* iOSViews.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOSViews.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/iOSViews/iOSViews.framework"; sourceTree = "<group>"; };
 		F7D575B323A2D22000D6B6BC /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		F7D575B723A2D3B800D6B6BC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		F7D9195B23A6C5C200BF3CF7 /* DataDestroyer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDestroyer.swift; sourceTree = "<group>"; };
+		F7D9195F23A6C68300BF3CF7 /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
+		F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnComplete.swift; sourceTree = "<group>"; };
+		F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderMocker.swift; sourceTree = "<group>"; };
+		F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppState.swift; sourceTree = "<group>"; };
+		F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
 		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
@@ -790,6 +817,7 @@
 				F76835A81F9E9BE400219B30 /* plugin */,
 				F712CDA522E3BD7B00272FF5 /* GitHubAPI.swift */,
 				F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */,
+				F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -798,6 +826,7 @@
 			isa = PBXGroup;
 			children = (
 				F76835C61F9ED11E00219B30 /* Repo.swift */,
+				F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */,
 			);
 			path = vo;
 			sourceTree = "<group>";
@@ -852,7 +881,6 @@
 		F75DCD961CD8F10D00B8941F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F7B9A07523A5805D004A4011 /* mocks */,
 				F7B9A03F23A5597D004A4011 /* extensions */,
 				F7B9A00523A5596C004A4011 /* Assets */,
 				F7B99FD923A5596B004A4011 /* ErrorForTesting.swift */,
@@ -872,8 +900,11 @@
 		F75DCDA11CD8F10D00B8941F /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				F75DCDA21CD8F10D00B8941F /* iOSBlankyUITests.swift */,
+				F7A8552723A6EE0B009362B0 /* page_object */,
+				F7AC969323A6A9A00037CCA2 /* SnapshotHelper.swift */,
+				F75DCDA21CD8F10D00B8941F /* LaunchViewControllerUITests.swift */,
 				F75DCDA41CD8F10D00B8941F /* Info.plist */,
+				F7AC968D23A69EC50037CCA2 /* UITest.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -913,6 +944,7 @@
 				F7338AAE1CD9755D009BBC0A /* api */,
 				F7DF7B1E22D686A200DBEF33 /* adapter */,
 				F76835D81F9ED3A100219B30 /* viewmodel */,
+				F7D9195B23A6C5C200BF3CF7 /* DataDestroyer.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -962,6 +994,7 @@
 				F714EB6023A3070E00E7AFB5 /* GitHubUsername.swift */,
 				F7B9A05123A55D7A004A4011 /* FcmTopicKeys.swift */,
 				F7B9A06923A5792C004A4011 /* Bundle.swift */,
+				F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -970,6 +1003,7 @@
 			isa = PBXGroup;
 			children = (
 				F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */,
+				F7D9195F23A6C68300BF3CF7 /* Dao.swift */,
 			);
 			path = dao;
 			sourceTree = "<group>";
@@ -986,6 +1020,14 @@
 				F7C0FF2722E50D43009E1203 /* DebugActivityLogger.swift */,
 			);
 			path = log;
+			sourceTree = "<group>";
+		};
+		F7A8552723A6EE0B009362B0 /* page_object */ = {
+			isa = PBXGroup;
+			children = (
+				F7A8552823A6EE26009362B0 /* LaunchViewControllerPageObject.swift */,
+			);
+			path = page_object;
 			sourceTree = "<group>";
 		};
 		F7AC968423A58A1A0037CCA2 /* datasource */ = {
@@ -1187,14 +1229,6 @@
 			path = util;
 			sourceTree = "<group>";
 		};
-		F7B9A07523A5805D004A4011 /* mocks */ = {
-			isa = PBXGroup;
-			children = (
-				F7B9A07623A58074004A4011 /* MoyaProviderMock.swift */,
-			);
-			path = mocks;
-			sourceTree = "<group>";
-		};
 		F7C0FF0D22E50237009E1203 /* error */ = {
 			isa = PBXGroup;
 			children = (
@@ -1267,6 +1301,7 @@
 				F7B99F8423A554A9004A4011 /* UIViewExtensions.swift */,
 				F7B99F8923A554AA004A4011 /* URLExtensions.swift */,
 				F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */,
+				F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1784,6 +1819,7 @@
 			files = (
 				F761644522E8B5F4006F2D2A /* SecureStorage.swift in Sources */,
 				F7B9A06A23A5792C004A4011 /* Bundle.swift in Sources */,
+				F7D9195C23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */,
 				F721AB5722E8A62B00F77F66 /* KeyValueStorage.swift in Sources */,
 				F7CC939822F0BB0100C7FF16 /* ThreadUtil.swift in Sources */,
 				F7B99FBA23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
@@ -1800,6 +1836,7 @@
 				F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */,
 				F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */,
 				F7B99FAE23A554AB004A4011 /* MoyaExtensions.swift in Sources */,
+				F7D9196C23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F75944CA23A1B43A009258D9 /* FileName.swift in Sources */,
 				F712CDA322E3BCBC00272FF5 /* Database.swift in Sources */,
 				F7B9A05623A56B58004A4011 /* AtomicCounter.swift in Sources */,
@@ -1815,6 +1852,7 @@
 				F70B16E723A53F73006D5A60 /* AutoMockable.generated.swift in Sources */,
 				F7B99F9F23A554AB004A4011 /* FileManagerExtensions.swift in Sources */,
 				F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */,
+				F7D9196023A6C68300BF3CF7 /* Dao.swift in Sources */,
 				F799D58422DF703100202FDB /* CrashReportingLogger.swift in Sources */,
 				F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */,
 				F76ACF4E22F7848B00B1A41D /* Swizzler.swift in Sources */,
@@ -1833,6 +1871,7 @@
 				F7C0FF1622E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */,
 				F7B9A04F23A55CBE004A4011 /* NotificationUtil.swift in Sources */,
+				F7D9196823A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
 				F70B16E123A53F73006D5A60 /* AutoLenses.generated.swift in Sources */,
 				F7C0FF2822E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
 				F714EB7123A435D500E7AFB5 /* SourceryProtocols.swift in Sources */,
@@ -1852,6 +1891,7 @@
 				F7B99FD223A55695004A4011 /* EventBusExtrasConverter.swift in Sources */,
 				F714EB5D23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
 				F7B99FAB23A554AB004A4011 /* DateExtensions.swift in Sources */,
+				F7D9196423A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
 				F7B99FA823A554AB004A4011 /* UIStackViewExtensions.swift in Sources */,
 				F714EB6D23A4356B00E7AFB5 /* Atomic.swift in Sources */,
 				F7D575B823A2D3B800D6B6BC /* Environment.swift in Sources */,
@@ -1872,6 +1912,7 @@
 				F714EB8323A4373E00E7AFB5 /* PendingTasks.swift in Sources */,
 				F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */,
 				F7C0FF1922E505F4009E1203 /* ConflictResponseError.swift in Sources */,
+				F7D9197023A6D5B200BF3CF7 /* DataExtensions.swift in Sources */,
 				F799D59A22DFC00600202FDB /* BuildFlavor.swift in Sources */,
 				F76835B91F9ED0BB00219B30 /* UserManager.swift in Sources */,
 			);
@@ -1889,9 +1930,11 @@
 				F785CB6F22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */,
 				F7C0FF1D22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7C0FF3222E660CC009E1203 /* MoyaAppendHeadersPlugin.swift in Sources */,
+				F7D9196923A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
 				F7C0FF2922E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
 				F7B9A07223A57F17004A4011 /* UnitTest.swift in Sources */,
 				F7B9A02523A5596C004A4011 /* AtomicCounterCollectionTests.swift in Sources */,
+				F7D9195D23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */,
 				F7C0FF3122E660C4009E1203 /* RepoModel.swift in Sources */,
 				F7B9A03223A5596C004A4011 /* ImagesTests.swift in Sources */,
 				F7CC939C22F0C2C700C7FF16 /* AppStartupUtil.swift in Sources */,
@@ -1902,6 +1945,7 @@
 				F7B9A05A23A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift in Sources */,
 				F7B99F9A23A554AB004A4011 /* DispatchQueueExtensions.swift in Sources */,
 				F7CC939922F0BB0100C7FF16 /* ThreadUtil.swift in Sources */,
+				F7D9197123A6D5B200BF3CF7 /* DataExtensions.swift in Sources */,
 				F7B9A02423A5596C004A4011 /* AtomicCounterTests.swift in Sources */,
 				F76765B522F78AD700ED2A11 /* AppDelegate.swift in Sources */,
 				F7B9A04923A5597E004A4011 /* UIBackgroundFetchResultExtensionsTests.swift in Sources */,
@@ -1923,8 +1967,8 @@
 				F7B99FBE23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,
 				F70B16F323A5400D006D5A60 /* Theme.swift in Sources */,
 				F7D575B523A2D22000D6B6BC /* Env.swift in Sources */,
+				F7D9196D23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */,
-				F7B9A07723A58074004A4011 /* MoyaProviderMock.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7B9A04B23A5597E004A4011 /* XCTestCaseExtension.swift in Sources */,
 				F76765B622F78AD700ED2A11 /* Colors.swift in Sources */,
@@ -1977,6 +2021,7 @@
 				F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
 				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
+				F7D9196523A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
 				F714EB5E23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
 				F7AC968723A58E360037CCA2 /* Model.xcdatamodeld in Sources */,
 				F7B9A02623A5596C004A4011 /* EventBusRegisterCounterTests.swift in Sources */,
@@ -1987,6 +2032,7 @@
 				F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F7B99FB223A554AB004A4011 /* URLExtensions.swift in Sources */,
 				F76765B722F78AD700ED2A11 /* Swizzler.swift in Sources */,
+				F7D9196123A6C68300BF3CF7 /* Dao.swift in Sources */,
 				F7096D0122E7AE31004389A5 /* RemoteConfig.swift in Sources */,
 				F7B99FAF23A554AB004A4011 /* MoyaExtensions.swift in Sources */,
 				F72043E622E4EE8D00DE7EA9 /* ReposViewModel.swift in Sources */,
@@ -2025,6 +2071,7 @@
 				F76765CD22F78AD800ED2A11 /* Constants.swift in Sources */,
 				F7B99F9523A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */,
 				F70B16F423A5400D006D5A60 /* Theme.swift in Sources */,
+				F7D9196E23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F76765C122F78AD800ED2A11 /* ResponseProcessor.swift in Sources */,
 				F76765A822F78AC000ED2A11 /* RepositoryDao.swift in Sources */,
 				F76765CC22F78AD800ED2A11 /* AppDelegate.swift in Sources */,
@@ -2038,7 +2085,7 @@
 				F7D575B623A2D22000D6B6BC /* Env.swift in Sources */,
 				F7B9A06223A56D3B004A4011 /* TestUtil.swift in Sources */,
 				F76765AF22F78AC000ED2A11 /* DevelopmentActivityLogger.swift in Sources */,
-				F75DCDA31CD8F10D00B8941F /* iOSBlankyUITests.swift in Sources */,
+				F75DCDA31CD8F10D00B8941F /* LaunchViewControllerUITests.swift in Sources */,
 				F767659722F78AB400ED2A11 /* PendingTasksFactory.swift in Sources */,
 				F7B99FB623A554AB004A4011 /* UIBackgroundFetchResultExtensions.swift in Sources */,
 				F70B16E923A53F73006D5A60 /* AutoMockable.generated.swift in Sources */,
@@ -2052,6 +2099,7 @@
 				F76765AC22F78AC000ED2A11 /* ErrorReportingActivityLogger.swift in Sources */,
 				F7B99FD823A556B7004A4011 /* FileDownloadedEventBusExtras.swift in Sources */,
 				F7B99FA723A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
+				F7AC969423A6A9A00037CCA2 /* SnapshotHelper.swift in Sources */,
 				F76765C222F78AD800ED2A11 /* JsonAdapter.swift in Sources */,
 				F7B9A05423A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
 				F714EB6323A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
@@ -2064,6 +2112,7 @@
 				F7B99FA423A554AB004A4011 /* UIViewExtensions.swift in Sources */,
 				F767659A22F78AB400ED2A11 /* EventBus.swift in Sources */,
 				F76765A522F78ABA00ED2A11 /* UnhandledHttpResponseError.swift in Sources */,
+				F7D9197223A6D5B200BF3CF7 /* DataExtensions.swift in Sources */,
 				F7B9A05023A55CBF004A4011 /* NotificationUtil.swift in Sources */,
 				F70B16E323A53F73006D5A60 /* AutoLenses.generated.swift in Sources */,
 				F714EB7323A435D500E7AFB5 /* SourceryProtocols.swift in Sources */,
@@ -2071,9 +2120,10 @@
 				F767659E22F78AB400ED2A11 /* RepositorySyncService.swift in Sources */,
 				F76765A422F78ABA00ED2A11 /* UnauthorizedError.swift in Sources */,
 				F76765BE22F78AD800ED2A11 /* MoyaAppendHeadersPlugin.swift in Sources */,
+				F7A8552923A6EE26009362B0 /* LaunchViewControllerPageObject.swift in Sources */,
+				F7D9196623A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
 				F7B99FC823A554AB004A4011 /* UIImageExtensions.swift in Sources */,
 				F76765A022F78ABA00ED2A11 /* ResponseServerError.swift in Sources */,
-				F7B9A07823A58074004A4011 /* MoyaProviderMock.swift in Sources */,
 				F70B170023A5400D006D5A60 /* LaunchViewController.swift in Sources */,
 				F76765A722F78AC000ED2A11 /* RepoModel.swift in Sources */,
 				F70B16FA23A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
@@ -2088,12 +2138,15 @@
 				F714EB5F23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
 				F7AC968823A58E370037CCA2 /* Model.xcdatamodeld in Sources */,
 				F714EB6F23A4356B00E7AFB5 /* Atomic.swift in Sources */,
+				F7D9196A23A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
 				F7B9A05E23A56CE6004A4011 /* FileFakes.swift in Sources */,
 				F7B9A06623A56F44004A4011 /* Strings.swift in Sources */,
 				F7B99F9E23A554AB004A4011 /* UIViewControllerExtensions.swift in Sources */,
 				F7B9A05B23A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift in Sources */,
 				F7B9A07D23A581C7004A4011 /* RepoFakes.swift in Sources */,
+				F7AC968E23A69EC50037CCA2 /* UITest.swift in Sources */,
 				F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */,
+				F7D9195E23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */,
 				F76765A622F78ABA00ED2A11 /* UserEnteredBadDataError.swift in Sources */,
 				F7B99FBF23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,
 				F76765B122F78AC000ED2A11 /* DebugActivityLogger.swift in Sources */,
@@ -2108,6 +2161,7 @@
 				F70B16E623A53F73006D5A60 /* AutoDependencyInjection.generated.swift in Sources */,
 				F767659D22F78AB400ED2A11 /* SecureStorage.swift in Sources */,
 				F714EB8523A4373E00E7AFB5 /* PendingTasks.swift in Sources */,
+				F7D9196223A6C68300BF3CF7 /* Dao.swift in Sources */,
 				F76765BD22F78AD800ED2A11 /* GitHubTargetType.swift in Sources */,
 				F76765B922F78AD800ED2A11 /* BuildFlavor.swift in Sources */,
 				F76765C022F78AD800ED2A11 /* GitHubAPI.swift in Sources */,

@@ -582,6 +582,59 @@ class PendingTasksMock: PendingTasks {
         runAllTasksCallsCount += 1
         return runAllTasksClosure.map { $0() } ?? runAllTasksReturnValue
     }
+
+    // MARK: - deleteAll
+
+    var deleteAllCallsCount = 0
+    var deleteAllCalled: Bool {
+        return deleteAllCallsCount > 0
+    }
+
+    var deleteAllClosure: (() -> Void)?
+
+    func deleteAll() {
+        mockCalled = true
+        deleteAllCallsCount += 1
+        deleteAllClosure?()
+    }
+}
+
+class ReposViewModelMock: ReposViewModel {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    var gitHubUsername: GitHubUsername?
+
+    // MARK: - observeRepos
+
+    var observeReposCallsCount = 0
+    var observeReposCalled: Bool {
+        return observeReposCallsCount > 0
+    }
+
+    var observeReposReturnValue: Observable<DataState<[Repo]>>!
+    var observeReposClosure: (() -> Observable<DataState<[Repo]>>)?
+
+    func observeRepos() -> Observable<DataState<[Repo]>> {
+        mockCalled = true
+        observeReposCallsCount += 1
+        return observeReposClosure.map { $0() } ?? observeReposReturnValue
+    }
+
+    // MARK: - observeGitHubUsername
+
+    var observeGitHubUsernameCallsCount = 0
+    var observeGitHubUsernameCalled: Bool {
+        return observeGitHubUsernameCallsCount > 0
+    }
+
+    var observeGitHubUsernameReturnValue: Observable<GitHubUsername>!
+    var observeGitHubUsernameClosure: (() -> Observable<GitHubUsername>)?
+
+    func observeGitHubUsername() -> Observable<GitHubUsername> {
+        mockCalled = true
+        observeGitHubUsernameCallsCount += 1
+        return observeGitHubUsernameClosure.map { $0() } ?? observeGitHubUsernameReturnValue
+    }
 }
 
 class RepositorySyncServiceMock: RepositorySyncService {

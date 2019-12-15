@@ -45,6 +45,12 @@ class MoyaProviderMocker<Service: TargetType> {
     private let queue: Queue = Queue()
     private let jsonAdapter: JsonAdapter = DI.shared.jsonAdapter
 
+    func queueResponse(_ statusCode: Int, data: String) {
+        let data = data.data(using: .utf8)!
+
+        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: data, error: nil))
+    }
+
     func queueResponse<DATA: Encodable>(_ statusCode: Int, data: DATA) {
         queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: jsonAdapter.toJson(data), error: nil))
     }

@@ -8,6 +8,7 @@ protocol KeyValueStorage {
     func set(_ value: String?, forKey key: String)
     // Does not emit when value is nil
     func observeString(forKey key: String) -> Observable<String>
+    func deleteAll()
 }
 
 // sourcery: InjectRegister = "KeyValueStorage"
@@ -42,5 +43,9 @@ class UserDefaultsKeyValueStorage: KeyValueStorage {
             }.map { (value) -> String in
                 value!
             }
+    }
+
+    func deleteAll() {
+        userDefaults.deleteAll()
     }
 }

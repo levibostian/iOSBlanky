@@ -16,10 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var startupUtil: StartupUtil!
     fileprivate var environment: Environment!
     fileprivate var backgroundJobRunner: BackgroundJobRunner!
+    fileprivate var dataDestroyer: DataDestroyer!
     var themeManager: ThemeManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
+
         FirebaseApp.configure() // Do first so crashlytics starts up to record errors.
 
         logger = DI.shared.activityLogger
@@ -33,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let eventBus = DI.shared.eventBus
         eventBusRegister = EventBusRegisterCounter(eventBus: eventBus)
         eventBusRegister.listener = self
+        dataDestroyer = DI.shared.dataDestroyer
 
         // I don't like having onError all over my code for RxSwift. Errors *should* always be caught and sent through onSuccess. So, catch all onError() calls here and record them to fix later.
         Hooks.defaultErrorHandler = { callback, error in
@@ -69,12 +72,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Cannot startup app with an error in the startup tasks")
             }
 
-            self.goToMainPartOfApp()
+            let uiTesting = CommandLine.arguments.contains("--uitesting")
 
-            // Need to start wendy when app starts up.
-            Wendy.shared.runTasks(filter: nil)
+            func afterStartupTasks() {
+                self.goToMainPartOfApp()
 
-            self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
+                // Need to start wendy when app starts up.
+                Wendy.shared.runTasks(filter: nil)
+
+                self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
+            }
+
+            if uiTesting {
+                self.dataDestroyer.destroyAll {
+                    SwapperView.defaultConfig.transitionAnimationDuration = 0.001 // Set animation duration low, but not zero so that animations still run but they run very fast.
+
+                    if let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"] {
+                        let jsonAdapter = DI.shared.jsonAdapter
+                        let launchArguments: LaunchAppState = jsonAdapter.fromJson(launchStateString.data())
+
+                        let moyaMockProvider = MoyaProviderMocker<GitHubService>()
+
+                        launchArguments.networkQueue.forEach { queueItem in
+                            moyaMockProvider.queueResponse(queueItem.code, data: queueItem.response)
+                        }
+                        DI.shared.override(.gitHubMoyaProvider, value: moyaMockProvider.moyaProvider, forType: GitHubMoyaProvider.self)
+
+                        if let launchUserState = launchArguments.userState {
+                            let userManager = DI.shared.userManager
+
+                            userManager.userId = launchUserState.id
+                        }
+                    }
+
+                    afterStartupTasks()
+                }
+            } else {
+                afterStartupTasks()
+            }
         }
 
         return true

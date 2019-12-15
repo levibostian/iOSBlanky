@@ -20,6 +20,16 @@ enum Dependency: CaseIterable {
     {% endfor %}
 }
 
+{# When an InjectCustom exists, we don't want it to be responsible for returning an override. This function exists for all injectors to get overriden property before calling the base #}
+{% macro overrideGetterProperty class %}
+private var _{{ class|lowerFirstLetter }}: {{ class }} {    
+    if let overridenDep = self.overrides[.{{ class|lowerFirstLetter }}] {
+        return overridenDep as! {{ class }}
+    }
+    return self.{{ class|lowerFirstLetter }}
+}
+{% endmacro %}
+
 class DI {
     {# Singleton DI graph #}
     static var shared: DI = DI()
@@ -49,7 +59,7 @@ class DI {
     func inject<T>(_ dep: Dependency) -> T {                            
         switch dep {
             {% for dep in types.all where dep|annotated:"InjectRegister" %}
-            case .{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: return self.{{ dep.annotations["InjectRegister"]|lowerFirstLetter }} as! T 
+            case .{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: return self._{{ dep.annotations["InjectRegister"]|lowerFirstLetter }} as! T 
             {% endfor %}                
         }
     }
@@ -58,34 +68,38 @@ class DI {
     Use the property accessors below to inject pre-typed dependencies. 
     */
 
-    {% for dep in types.classes where dep|annotated:"InjectRegister" %}{% if not dep|annotated:"InjectCustom" %}
-    {% if dep|annotated:"InjectSingleton" %}
-    // {{ dep.annotations["InjectRegister"] }} (singleton)
+    {# below, types.class used to be used but typealiases would not be included. if things break, need to fix that. #}
+    {% for dep in types.all where dep|annotated:"InjectRegister" %}
+    {% set class %}{{ dep.annotations["InjectRegister"] }}{% endset %}
+    
+    {% if dep|annotated:"InjectCustom" %}
+    // {{ class }} (custom. property getter provided via extension)
+    {% call overrideGetterProperty class %}
+    {% elif dep|annotated:"InjectSingleton" %}    
+    // {{ class }} (singleton)
+    {% call overrideGetterProperty class %}
     {# Use a DispatchQueue to make singleton thread safe #}
-    private let _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_queue = DispatchQueue(label: "DI_get_{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_queue")
-    private var _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_shared: {{ dep.annotations["InjectRegister"] }}?
-    var {{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: {{ dep.annotations["InjectRegister"] }} {
-        return _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_queue.sync {
-            if let overridenDep = self.overrides[.{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}] {
-                return overridenDep as! {{ dep.annotations["InjectRegister"] }}
+    private let _{{ class|lowerFirstLetter }}_queue = DispatchQueue(label: "DI_get_{{ class|lowerFirstLetter }}_queue")
+    private var _{{ class|lowerFirstLetter }}_shared: {{ class }}?
+    var {{ class|lowerFirstLetter }}: {{ class }} {
+        return _{{ class|lowerFirstLetter }}_queue.sync {
+            if let overridenDep = self.overrides[.{{ class|lowerFirstLetter }}] {
+                return overridenDep as! {{ class }}
             }
-            let res = _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_shared ?? _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}()
-            _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}_shared = res
+            let res = _{{ class|lowerFirstLetter }}_shared ?? _get_{{ class|lowerFirstLetter }}()
+            _{{ class|lowerFirstLetter }}_shared = res
             return res
         }
     }
-    private func _{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}() -> {{ dep.annotations["InjectRegister"] }} {
-        return {{ dep.name }}({% for initializer in dep.initializers %}{% if not initializer.isConvenienceInitializer %}{% for param in initializer.parameters %}{{ param.name }}: self.{{ param.typeName|lowerFirstLetter }}{% if not forloop.last%}, {% endif %}{% endfor %}{% endif %}{% endfor %})
+    private func _get_{{ class|lowerFirstLetter }}() -> {{ class }} {
+        return {{ dep.name }}({% for initializer in dep.initializers %}{% if not initializer.isConvenienceInitializer %}{% for param in initializer.parameters %}{{ param.name }}: self._{{ param.typeName|lowerFirstLetter }}{% if not forloop.last%}, {% endif %}{% endfor %}{% endif %}{% endfor %})
     }
     {% else %}
-    // {{ dep.annotations["InjectRegister"] }}
-    var {{ dep.annotations["InjectRegister"]|lowerFirstLetter }}: {{ dep.annotations["InjectRegister"] }} {    
-        if let overridenDep = self.overrides[.{{ dep.annotations["InjectRegister"]|lowerFirstLetter }}] {
-            return overridenDep as! {{ dep.annotations["InjectRegister"] }}
-        }
-        return {{ dep.name}}({% for initializer in dep.initializers %}{% if not initializer.isConvenienceInitializer %}{% for param in initializer.parameters %}{{ param.name }}: self.{{ param.typeName|lowerFirstLetter }}{% if not forloop.last%}, {% endif %}{% endfor %}{% endif %}{% endfor %})
+    // {{ class }}
+    {% call overrideGetterProperty class %}
+    var {{ class|lowerFirstLetter }}: {{ class }} {    
+        return {{ dep.name}}({% for initializer in dep.initializers %}{% if not initializer.isConvenienceInitializer %}{% for param in initializer.parameters %}{{ param.name }}: self._{{ param.typeName|lowerFirstLetter }}{% if not forloop.last%}, {% endif %}{% endfor %}{% endif %}{% endfor %})
     }
-    {% endif %}
     {% endif %}
     {% endfor %} 
 }

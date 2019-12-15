@@ -6,11 +6,15 @@ class RepoModel: NSManagedObject {
     @NSManaged var repoDescription: String?
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<RepoModel> {
-        return NSFetchRequest<RepoModel>(entityName: "RepoModel")
+        return NSFetchRequest<RepoModel>(entityName: name)
     }
 }
 
 extension RepoModel {
+    static var name: String {
+        return "RepoModel"
+    }
+
     class func insertFrom(_ repo: Repo, context: NSManagedObjectContext) -> RepoModel {
         let model = RepoModel(context: context)
 

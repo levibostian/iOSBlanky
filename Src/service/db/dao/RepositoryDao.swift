@@ -5,8 +5,11 @@ import RxSwift
 import UIKit
 
 // sourcery: InjectRegister = "RepositoryDao"
-class RepositoryDao {
-    private let coreDataManager: CoreDataManager
+class RepositoryDao: Dao {
+    internal let coreDataManager: CoreDataManager
+    var modelName: String {
+        return RepoModel.name
+    }
 
     init(coreDataManager: CoreDataManager) {
         self.coreDataManager = coreDataManager

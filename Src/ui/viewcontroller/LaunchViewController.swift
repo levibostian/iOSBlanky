@@ -6,6 +6,13 @@ import UIKit
 class LaunchViewController: UIViewController {
     fileprivate var didSetupConstraints = false
 
+    enum AccessibilityId: String {
+        case usernameTextField
+        case goButton
+        case stateOfDataLabel
+        case fetchingDataStatusLabel
+    }
+
     internal let themeManager = DI.shared.themeManager
 
     let usernameTextField: UITextField = {
@@ -16,24 +23,28 @@ class LaunchViewController: UIViewController {
         view.autocorrectionType = .no
         view.autocapitalizationType = .none
         view.borderStyle = .roundedRect
+        view.accessibilityIdentifier = AccessibilityId.usernameTextField.rawValue
         return view
     }()
 
     let goButton: UIButton = {
         let view = UIButton()
         view.setTitle(Strings.howManyReposButtonText.localized, for: .normal)
+        view.accessibilityIdentifier = AccessibilityId.goButton.rawValue
         return view
     }()
 
     lazy var stateOfDataLabel: UILabel = {
         let view = UILabel()
         view.font = view.font.withSize(17)
+        view.accessibilityIdentifier = AccessibilityId.stateOfDataLabel.rawValue
         return view
     }()
 
     let fetchingDataStatusLabel: UILabel = {
         let view = UILabel()
         view.font = view.font.withSize(17)
+        view.accessibilityIdentifier = AccessibilityId.fetchingDataStatusLabel.rawValue
         return view
     }()
 
@@ -127,6 +138,8 @@ class LaunchViewController: UIViewController {
     }
 
     @objc func howManyReposButtonPressed(_ sender: UIButton) {
+        doneEditing()
+
         reposViewModel.gitHubUsername = usernameTextField.text!
     }
 }
