@@ -5,7 +5,7 @@ import Foundation
 class Database {
     let repositoryDao: RepositoryDao
 
-    init(repositoryDao: RepositoryDao) {
-        self.repositoryDao = repositoryDao
+    init(coreDataManager: CoreDataManager) {
+        self.repositoryDao = RepositoryDao(coreDataManager: coreDataManager)
     }
 }

@@ -463,6 +463,30 @@ class EventBusEventListenerMock: EventBusEventListener {
     }
 }
 
+class GitHubAPIMock: GitHubAPI {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - getUserRepos
+
+    var getUserReposUsernameCallsCount = 0
+    var getUserReposUsernameCalled: Bool {
+        return getUserReposUsernameCallsCount > 0
+    }
+
+    var getUserReposUsernameReceivedUsername: String?
+    var getUserReposUsernameReceivedInvocations: [String] = []
+    var getUserReposUsernameReturnValue: Single<Result<[Repo], Error>>!
+    var getUserReposUsernameClosure: ((String) -> Single<Result<[Repo], Error>>)?
+
+    func getUserRepos(username: String) -> Single<Result<[Repo], Error>> {
+        mockCalled = true
+        getUserReposUsernameCallsCount += 1
+        getUserReposUsernameReceivedUsername = username
+        getUserReposUsernameReceivedInvocations.append(username)
+        return getUserReposUsernameClosure.map { $0(username) } ?? getUserReposUsernameReturnValue
+    }
+}
+
 class NotificationCenterManagerMock: NotificationCenterManager {
     var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
 

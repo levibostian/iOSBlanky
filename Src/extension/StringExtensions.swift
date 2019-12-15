@@ -16,7 +16,7 @@ extension String {
     }
 
     var abcLetters: String {
-        return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return "abcdefghijklmnopqrstuvwxyz"
     }
 
     // Credits: https://stackoverflow.com/a/26845710/1486374

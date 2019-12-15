@@ -6,6 +6,8 @@ import UIKit
 struct Theme {
     let name: String
 
+    let textColor: UIColor
+    let buttonColor: UIColor
     let viewControllerBackgroundColor: UIColor
     let navigationBarTextColor: UIColor
     let navigationBarItemColor: UIColor // color of bar items
@@ -33,14 +35,17 @@ class AppThemeManager: ThemeManager {
     init(keyValueStorage: KeyValueStorage) {
         self.keyValueStorage = keyValueStorage
 
-        self.defaultTheme = Theme(name: "light",
-                                  viewControllerBackgroundColor: UIColor.white,
+        self.defaultTheme = Theme(name: "default",
+                                  textColor: Colors.textColor.color,
+                                  buttonColor: Colors.buttonColor.color,
+                                  viewControllerBackgroundColor: Colors.backgroundColor.color,
                                   navigationBarTextColor: UIColor.white,
                                   navigationBarItemColor: UIColor.white,
-                                  navigationBarColor: UIColor.darkGray,
-                                  statusBarStyle: .lightContent,
+                                  navigationBarColor: Colors.navigationBarColor.color,
+                                  statusBarStyle: .default,
                                   emptyViewStyle: EmptyViewConfig.light,
                                   pleaseHoldViewStyle: PleaseHoldViewConfig.light)
+
         self.themes = [
             defaultTheme
         ]
@@ -68,6 +73,9 @@ class AppThemeManager: ThemeManager {
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.navigationBarItemColor
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: theme.navigationBarTextColor]
+        UILabel.appearance().textColor = theme.textColor
+        UIButton.appearance().setTitleColor(theme.buttonColor, for: .normal)
+        UILabel.appearance(whenContainedInInstancesOf: [UIButton.self]).textColor = theme.buttonColor
 
         EmptyViewConfig.shared = theme.emptyViewStyle.config
         PleaseHoldViewConfig.shared = theme.pleaseHoldViewStyle.config

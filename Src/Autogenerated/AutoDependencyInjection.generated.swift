@@ -173,7 +173,7 @@ class DI {
     }
 
     private func _coreDataManager() -> CoreDataManager {
-        return CoreDataManager(threadUtil: threadUtil)
+        return CoreDataManager()
     }
 
     // Database
@@ -181,7 +181,7 @@ class DI {
         if let overridenDep = self.overrides[.database] {
             return overridenDep as! Database
         }
-        return Database(repositoryDao: repositoryDao)
+        return Database(coreDataManager: coreDataManager)
     }
 
     // RemoteConfigProvider

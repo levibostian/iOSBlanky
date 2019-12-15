@@ -22,20 +22,17 @@ class LaunchViewController: UIViewController {
     let goButton: UIButton = {
         let view = UIButton()
         view.setTitle(Strings.howManyReposButtonText.localized, for: .normal)
-        view.setTitleColor(UIColor.black, for: .normal)
         return view
     }()
 
-    let stateOfDataLabel: UILabel = {
+    lazy var stateOfDataLabel: UILabel = {
         let view = UILabel()
-        view.textColor = UIColor.darkText
         view.font = view.font.withSize(17)
         return view
     }()
 
     let fetchingDataStatusLabel: UILabel = {
         let view = UILabel()
-        view.textColor = UIColor.darkText
         view.font = view.font.withSize(17)
         return view
     }()
@@ -54,8 +51,6 @@ class LaunchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.white
 
         rootView.addArrangedSubviews([
             usernameTextField,

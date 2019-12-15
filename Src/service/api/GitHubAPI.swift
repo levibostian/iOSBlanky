@@ -2,7 +2,7 @@ import Foundation
 import Moya
 import RxSwift
 
-protocol GitHubAPI {
+protocol GitHubAPI: AutoMockable {
     func getUserRepos(username: String) -> Single<Result<[Repo], Error>>
 }
 

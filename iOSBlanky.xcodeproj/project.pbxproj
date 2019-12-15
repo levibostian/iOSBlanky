@@ -137,7 +137,7 @@
 		F76765B022F78AC000ED2A11 /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
 		F76765B122F78AC000ED2A11 /* DebugActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2722E50D43009E1203 /* DebugActivityLogger.swift */; };
 		F76765B522F78AD700ED2A11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
-		F76765B622F78AD700ED2A11 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* UIColor.swift */; };
+		F76765B622F78AD700ED2A11 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* Colors.swift */; };
 		F76765B722F78AD700ED2A11 /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4D22F7848B00B1A41D /* Swizzler.swift */; };
 		F76765B822F78AD800ED2A11 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F76765B922F78AD800ED2A11 /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
@@ -159,8 +159,8 @@
 		F76835B91F9ED0BB00219B30 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835B71F9ED0BB00219B30 /* UserManager.swift */; };
 		F76835C71F9ED11E00219B30 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C61F9ED11E00219B30 /* Repo.swift */; };
 		F76835DA1F9ED3C200219B30 /* ReposViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835D91F9ED3C200219B30 /* ReposViewModel.swift */; };
-		F76ACF4922F7841B00B1A41D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* UIColor.swift */; };
-		F76ACF4A22F7841B00B1A41D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* UIColor.swift */; };
+		F76ACF4922F7841B00B1A41D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* Colors.swift */; };
+		F76ACF4A22F7841B00B1A41D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* Colors.swift */; };
 		F76ACF4E22F7848B00B1A41D /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4D22F7848B00B1A41D /* Swizzler.swift */; };
 		F76ACF4F22F7848B00B1A41D /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4D22F7848B00B1A41D /* Swizzler.swift */; };
 		F76EF43523A1BB10005F933C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */; };
@@ -190,6 +190,11 @@
 		F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
 		F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
 		F79BE39E22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
+		F7AC968623A58A2F0037CCA2 /* ReposDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC968523A58A2F0037CCA2 /* ReposDataSourceTests.swift */; };
+		F7AC968723A58E360037CCA2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
+		F7AC968823A58E370037CCA2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
+		F7AC968923A5B83E0037CCA2 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76835B21F9ECFBF00219B30 /* Color.xcassets */; };
+		F7AC968A23A5B83F0037CCA2 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F76835B21F9ECFBF00219B30 /* Color.xcassets */; };
 		F7B99F9323A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */; };
 		F7B99F9423A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */; };
 		F7B99F9523A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */; };
@@ -452,7 +457,7 @@
 		F76835B71F9ED0BB00219B30 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		F76835C61F9ED11E00219B30 /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		F76835D91F9ED3C200219B30 /* ReposViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposViewModel.swift; sourceTree = "<group>"; };
-		F76ACF4822F7841B00B1A41D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		F76ACF4822F7841B00B1A41D /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		F76ACF4B22F7844C00B1A41D /* Keys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Keys.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76ACF4D22F7848B00B1A41D /* Swizzler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swizzler.swift; sourceTree = "<group>"; };
 		F76EF43423A1BB0F005F933C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -488,6 +493,7 @@
 		F7A404581CD9031900A4D228 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RealmSwift.framework"; sourceTree = "<group>"; };
 		F7A404591CD9031900A4D228 /* Spring.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spring.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Spring.framework"; sourceTree = "<group>"; };
 		F7A9DD9F22D664E200AEEDEB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F7AC968523A58A2F0037CCA2 /* ReposDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposDataSourceTests.swift; sourceTree = "<group>"; };
 		F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		F7B99F8023A554A9004A4011 /* UIControlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
 		F7B99F8123A554A9004A4011 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
@@ -916,7 +922,7 @@
 			children = (
 				F75DCD891CD8F10D00B8941F /* Assets.xcassets */,
 				F76835B21F9ECFBF00219B30 /* Color.xcassets */,
-				F76ACF4822F7841B00B1A41D /* UIColor.swift */,
+				F76ACF4822F7841B00B1A41D /* Colors.swift */,
 				F7B9A06323A56F44004A4011 /* Strings.swift */,
 				F7B9A06D23A57CD1004A4011 /* Images.swift */,
 			);
@@ -982,6 +988,14 @@
 			path = log;
 			sourceTree = "<group>";
 		};
+		F7AC968423A58A1A0037CCA2 /* datasource */ = {
+			isa = PBXGroup;
+			children = (
+				F7AC968523A58A2F0037CCA2 /* ReposDataSourceTests.swift */,
+			);
+			path = datasource;
+			sourceTree = "<group>";
+		};
 		F7B99FCF23A5567F004A4011 /* eventbus */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,6 +1040,7 @@
 		F7B99FE523A5596C004A4011 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				F7AC968423A58A1A0037CCA2 /* datasource */,
 				F7B99FE623A5596C004A4011 /* vo */,
 				F7B99FE923A5596C004A4011 /* repository */,
 				F7B99FEE23A5596C004A4011 /* util */,
@@ -1416,6 +1431,7 @@
 				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F7B9A06023A56D09004A4011 /* file.txt in Resources */,
+				F7AC968923A5B83E0037CCA2 /* Color.xcassets in Resources */,
 				F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */,
 				F76EF43623A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
@@ -1427,6 +1443,7 @@
 			files = (
 				F7B9A06123A56D09004A4011 /* file.txt in Resources */,
 				F7B9A06823A57728004A4011 /* Localizable.strings in Resources */,
+				F7AC968A23A5B83F0037CCA2 /* Color.xcassets in Resources */,
 				F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */,
 				F76EF43723A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
@@ -1842,7 +1859,7 @@
 				F76835B81F9ED0BB00219B30 /* UserCredsManager.swift in Sources */,
 				F7C0FF1322E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7B99FBD23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,
-				F76ACF4922F7841B00B1A41D /* UIColor.swift in Sources */,
+				F76ACF4922F7841B00B1A41D /* Colors.swift in Sources */,
 				F7B99F9923A554AB004A4011 /* DispatchQueueExtensions.swift in Sources */,
 				F70B16F523A5400D006D5A60 /* BaseNavigationController.swift in Sources */,
 				F7B99FC923A554AB004A4011 /* TimeIntervalExtensions.swift in Sources */,
@@ -1910,7 +1927,7 @@
 				F7B9A07723A58074004A4011 /* MoyaProviderMock.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7B9A04B23A5597E004A4011 /* XCTestCaseExtension.swift in Sources */,
-				F76765B622F78AD700ED2A11 /* UIColor.swift in Sources */,
+				F76765B622F78AD700ED2A11 /* Colors.swift in Sources */,
 				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F7B9A06523A56F44004A4011 /* Strings.swift in Sources */,
 				F7B9A02D23A5596C004A4011 /* NotificationCenterEventBusTests.swift in Sources */,
@@ -1936,6 +1953,7 @@
 				F7B99FA023A554AB004A4011 /* FileManagerExtensions.swift in Sources */,
 				F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */,
 				F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */,
+				F7AC968623A58A2F0037CCA2 /* ReposDataSourceTests.swift in Sources */,
 				F7B99FC723A554AB004A4011 /* UIImageExtensions.swift in Sources */,
 				F714EB7723A4363000E7AFB5 /* BackgroundJobRunner.swift in Sources */,
 				F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */,
@@ -1960,6 +1978,7 @@
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
 				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
 				F714EB5E23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
+				F7AC968723A58E360037CCA2 /* Model.xcdatamodeld in Sources */,
 				F7B9A02623A5596C004A4011 /* EventBusRegisterCounterTests.swift in Sources */,
 				F714EB6E23A4356B00E7AFB5 /* Atomic.swift in Sources */,
 				F7D575B923A2D3B800D6B6BC /* Environment.swift in Sources */,
@@ -2028,7 +2047,7 @@
 				F7B99FA123A554AB004A4011 /* FileManagerExtensions.swift in Sources */,
 				F76765CE22F78AD800ED2A11 /* AppStartupUtil.swift in Sources */,
 				F76765A922F78AC000ED2A11 /* CoreDataManager.swift in Sources */,
-				F76ACF4A22F7841B00B1A41D /* UIColor.swift in Sources */,
+				F76ACF4A22F7841B00B1A41D /* Colors.swift in Sources */,
 				F76765B822F78AD800ED2A11 /* DataState.swift in Sources */,
 				F76765AC22F78AC000ED2A11 /* ErrorReportingActivityLogger.swift in Sources */,
 				F7B99FD823A556B7004A4011 /* FileDownloadedEventBusExtras.swift in Sources */,
@@ -2067,6 +2086,7 @@
 				F7B99FAD23A554AB004A4011 /* DateExtensions.swift in Sources */,
 				F7B99FAA23A554AB004A4011 /* UIStackViewExtensions.swift in Sources */,
 				F714EB5F23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
+				F7AC968823A58E370037CCA2 /* Model.xcdatamodeld in Sources */,
 				F714EB6F23A4356B00E7AFB5 /* Atomic.swift in Sources */,
 				F7B9A05E23A56CE6004A4011 /* FileFakes.swift in Sources */,
 				F7B9A06623A56F44004A4011 /* Strings.swift in Sources */,

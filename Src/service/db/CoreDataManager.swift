@@ -1,19 +1,51 @@
 import CoreData
 import Foundation
 
-// Ideas from: https://gist.github.com/kharrison/0d19af0729ae324b8243a738844f8245
+enum CoreDataManagerStorageType {
+    case inMemory
+    case sqlite
+
+    var type: String {
+        switch self {
+        case .inMemory: return NSInMemoryStoreType
+        case .sqlite: return NSSQLiteStoreType
+        }
+    }
+}
+
 // sourcery: InjectRegister = "CoreDataManager"
 // sourcery: InjectSingleton
 class CoreDataManager {
+    public static var shared: CoreDataManager = CoreDataManager()
+
     let persistentContainerQueue = OperationQueue() // make a queue for performing write operations to avoid conflicts with multiple writes at the same time from different contexts.
     let nameOfModelFile = "Model" // The name of the .xcdatamodeld file you want to use.
-    private let threadUtil: ThreadUtil
+    private let threadUtil: ThreadUtil = AppThreadUtil()
 
     // Note: Must call `loadStore()` to initialize. Do not forget to do that.
-    init(threadUtil: ThreadUtil) {
-        self.threadUtil = threadUtil
-
+    init() {
         persistentContainerQueue.maxConcurrentOperationCount = 1
+
+        if let storeURL = self.storeURL {
+            let description = storeDescription(with: storeURL)
+            persistentContainer.persistentStoreDescriptions = [description]
+        }
+    }
+
+    static func initTesting() -> CoreDataManager {
+        let manager = CoreDataManager()
+
+        if let storeURL = manager.storeURL {
+            let description = manager.storeDescription(with: storeURL)
+
+            description.shouldAddStoreAsynchronously = false
+            description.type = CoreDataManagerStorageType.inMemory.type
+            manager.persistentContainer.persistentStoreDescriptions = [description]
+
+            manager.loadStore(completionHandler: nil)
+        }
+
+        return manager
     }
 
     // Perform read operations on UI thread
@@ -89,27 +121,29 @@ class CoreDataManager {
     public private(set) var isStoreLoaded = false
 
     // Note: Meant to be called from UI thread as completionHandler will be called to Ui thread.
-    func loadStore(completionHandler: @escaping (Error?) -> Void) {
-        if let storeURL = self.storeURL {
-            let description = storeDescription(with: storeURL)
-            persistentContainer.persistentStoreDescriptions = [description]
-        }
-
+    func loadStore(completionHandler: ((Error?) -> Void)?) {
         persistentContainer.loadPersistentStores { _, error in
             if error == nil {
                 self.isStoreLoaded = true
                 self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
                 self.persistentContainer.viewContext.shouldDeleteInaccessibleFaults = true
+            } else {
+                if completionHandler == nil {
+                    fatalError("Error: \(error!)")
+                }
             }
 
             DispatchQueue.main.async {
-                completionHandler(error)
+                completionHandler?(error)
             }
         }
     }
 
     private lazy var persistentContainer: NSPersistentContainer = {
-        NSPersistentContainer(name: nameOfModelFile)
+        let bundle = Bundle(for: CoreDataManager.self)
+        let mom = NSManagedObjectModel.mergedModel(from: [bundle])!
+
+        return NSPersistentContainer(name: nameOfModelFile, managedObjectModel: mom)
     }()
 
     private func storeDescription(with url: URL) -> NSPersistentStoreDescription {
@@ -118,6 +152,7 @@ class CoreDataManager {
         description.shouldInferMappingModelAutomatically = true
         description.shouldAddStoreAsynchronously = true
         description.isReadOnly = false
+        description.type = CoreDataManagerStorageType.sqlite.type
         return description
     }
 }
