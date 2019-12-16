@@ -8,6 +8,8 @@ def get_env(name)
   return value 
 end 
 
+UI = FastlaneCore::UI unless Fastlane.const_defined?("UI")
+
 env = {
   :bundle_id => get_env("APP_BUNDLE_ID"),
   :admin_email => get_env("ADMIN_EMAIL"),
@@ -26,6 +28,15 @@ platform :ios do
   before_all do |lane, options|
     setup_travis
   end
+
+  # Requires `brew install imagemagick` for framing to work
+  desc "Take screenshots for the store"
+  lane :take_screenshots do |values|
+    capture_ios_screenshots(
+      skip_open_summary: true
+    )    
+    frame_screenshots()
+  end 
   
   desc "Downloads dsym files from iTunes Connect (from processed builds by Apple) and uploads them to Crashlytics for reports."  
   lane :refresh_dsyms do |values| 
@@ -56,27 +67,62 @@ platform :ios do
   end
 
   lane :deploy do |values|
-    raise 'Not on CI' unless ENV["CI"]
+    UI.user_error!('Not on CI') unless ENV["CI"]
 
     generate_icons()
 
-    changelog = File.read("./release_notes.txt")
-    latest_demo = File.read('./latest_demo.txt')
-    description = File.read("./metadata/en-US/description.txt")
-    versionOfApp = get_version_number(target: env[:xcode_scheme])
+    changelog = File.read("./release_notes.txt")    
+    description = File.read("./metadata/en-US/description.txt")    
     buildVersion = Time.now.to_i.to_s
     
     sync_code_signing(type: "appstore")
 
     set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleVersion", value: buildVersion) # Set bundle version to epoch time to assert it's always unique.
-
-    publicity_message = "This update is *not* available to the public. The update was uploaded to the TestFlight app and is only available for beta testing. You can download the update with the TestFlight app on your phone, now."
+    
     if ENV["TRAVIS_TAG"].end_with?("-beta")
       beta_build_release(changelog, description)
+
+      publicity_message = "This update is *not* available to the public. The update was uploaded to the TestFlight app and is only available for beta testing. You can download the update with the TestFlight app on your phone, now."
+      notify_app_update(buildVersion, publicity_message)
     else
-      prod_build_release()
-      publicity_message = "This update was submitted to the Apple App Store so that it can be availble to the public. However, the app must be approved by Apple for it to be available to the public. This approval process takes between 1 to 4 days."
-    end 
+      take_screenshots()
+      prod_build_upload()
+    end     
+  end 
+
+  desc "Meant to be called from a local machine. Not from a CI server"
+  lane :submit_prod_release do |values|
+    UI.user_error!('Does not run on CI') if ENV["CI"]
+
+    appVersion = values[:app_version]
+    UI.user_error!("Forgot to pass in app_version") unless appVersion
+    UI.message("Submitting app. Name: #{env[:app_name]}, version: #{appVersion}. Correct? [Hit Enter for Yes]")    
+    gets
+    UI.message("You checked the metadata and screenshots for the release, correct? [Hit Enter for Yes]")    
+    gets 
+
+    buildVersion = app_store_build_number(
+      live: false,
+      version: appVersion
+    )   
+
+    upload_to_app_store(
+      build_number: buildVersion,
+      force true, # Skip the HTML report file verification
+      submit_for_review: true,
+      automatic_release: true,
+      skip_metadata: true,
+      skip_screenshots: true,
+      skip_binary_upload: true
+    )
+
+    publicity_message = "This update was submitted to the Apple App Store so that it can be availble to the public. However, the app must be approved by Apple for it to be available to the public. This approval process takes between 1 to 4 days."
+    notify_app_update(appVersion, buildVersion, publicity_message, latest_demo)
+  end 
+
+  def notify_app_update(buildVersion, publicity_message)
+    latest_demo = File.read('./latest_demo.txt')
+    versionOfApp = get_version_number(target: env[:xcode_scheme])
 
     notification_message_body = [      
       "#{env[:app_name]} v#{versionOfApp}, build: #{buildVersion} ready for download.",
@@ -118,8 +164,8 @@ platform :ios do
       skip_waiting_for_build_processing: false) # I have decided to not skip waiting for build process because with testflight, skipping will result in changelog and such not being updated and sending app to external testers.
   end
 
-  desc "Build and upload production app to the App Store"
-  def prod_build_release
+  desc "Build and upload production app to the App Store. Note: This does *not* submit for review."
+  def prod_build_upload
     build_ios_app(
       scheme: env[:xcode_scheme],
       configuration: 'Release',

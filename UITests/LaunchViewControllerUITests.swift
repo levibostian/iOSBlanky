@@ -55,4 +55,3 @@ class LaunchViewControllerUITests: UITest {
         waitForElementToAppear(element: viewController.userHasNoRepos)
     }
 }
-

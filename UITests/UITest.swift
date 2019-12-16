@@ -13,8 +13,6 @@ class UITest: XCTestCase {
 
         app = XCUIApplication()
         app.launchArguments.append("--uitesting")
-
-        setupSnapshot(app)
     }
 
     override class func tearDown() {
@@ -38,10 +36,6 @@ class UITest: XCTestCase {
         app.launch()
 
         waitForAfterLaunch()
-    }
-
-    func screenshot(_ label: String) {
-        snapshot(label)
     }
 }
 

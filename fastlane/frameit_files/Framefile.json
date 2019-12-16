@@ -1,0 +1,48 @@
+{
+    "device_frame_version": "latest",
+    "default": {
+      "background": "./background.jpg",
+      "show_complete_frame": true,
+      "frame": "WHITE", // Valid values are BLACK, WHITE, GOLD and ROSE_GOLD`
+      "keyword": {
+        "fonts": [
+          {
+            "font": "./fonts/CourierPrime-Regular.ttf",
+            "supported": ["en-US"]
+          } 
+        ],
+        "color": "#545454"
+      },
+      "title": {
+        "fonts": [
+          {
+            "font": "./fonts/CourierPrime-Bold.ttf",
+            "supported": ["en-US"]
+          } 
+        ],
+        "color": "#545454"
+      },
+      "padding": 50
+    },    
+    "data": [
+      {
+        "filter": "type",
+        "keyword": {          
+          "text": "Find repos for a given user"
+        },
+        "title": {
+          "text": "Type username"
+        }
+      },
+      {
+        "filter": "repos",
+        "keyword": {
+          "color": "#feb909",
+          "text": "Pretty easy, huh?"
+        },
+        "title": {
+            "text": "Find repos!"
+        }
+      }
+    ]
+  }

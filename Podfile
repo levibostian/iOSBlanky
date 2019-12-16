@@ -55,3 +55,8 @@ target "#{name_of_project}UITests" do
     testingDependencies()
 end
 
+target "Screenshots" do
+    commonDepencencies()
+    testingDependencies()
+end
+

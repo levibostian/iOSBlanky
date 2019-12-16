@@ -8,7 +8,7 @@ devices([
 languages([
   "en-US"
 ])
-scheme("UITests")
+scheme("Screenshots")
 output_directory("./fastlane/screenshots")
 clear_previous_screenshots(true)
 dark_mode(false)

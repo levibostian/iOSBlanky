@@ -4,11 +4,14 @@
 # In general, you can use the options available
 # fastlane scan --help
 
+require 'dotenv'
+Dotenv.load("../.env")
+
 skip_slack(true)
-configuration("Debug")
 output_types("html,junit")
 output_directory("reports")
 open_report(false)
 code_coverage(true)
+reset_simulator(true)
 
 device("iPhone 11")

@@ -13,6 +13,9 @@ before_install:
 install:  
   - bundle install
   - pod install 
+  - brew update 
+  - brew install imagemagick  # for fastlane frameit 
+  - brew install librsvg graphicsmagick # for fastlane generating app icons
 env:
   global:
     # Below are secret environment variables you need to set. 
@@ -21,21 +24,24 @@ env:
     # MATCH_PASSWORD= password to decrypt secrets made by Fastlane match
     # FASTLANE_PASSWORD= password to the Apple ID account used to login for fastlane.
     # DANGER_GITHUB_API_TOKEN= personal github oauth token for Danger bot. https://danger.systems/guides/getting_started.html#setting-up-an-access-token    
-    #### IAM account. At this time, only SNS publishing to topic notifying about the app updates is needed. 
+    #### IAM account. SNS topic sending, S3 bucket uploading. 
     # AWS_IAM_ACCESS_KEY=12345
     # AWS_IAM_ACCESS_SECRET=1234
+    # AWS_S3_BUCKET_NAME_TEST_RESULTS=name-of-bucket
+    # AWS_S3_BUCKET_PATH_TEST_RESULTS=test_results
     # AWS_SNS_APP_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:app-deployed-notifier
+    # AWS_SNS_DEV_TOPIC=arn:aws:sns:us-east-1:38383839494:app-developers-notifier    
     AWS_REGION=us-east-1
 
 jobs:
   include:
   - stage: commit
     script:
-      - bundle exec fastlane scan
+      - ruby scripts/tests.rb
   - stage: pr
-    script:       
-      - bundle exec fastlane scan
-      - bundle exec danger --fail-on-errors=true 
+    script:
+      - ruby scripts/tests.rb 
+      - bundle exec danger --fail-on-errors=true
   - stage: deploy
     script: rm .env; cp secrets/production/.env .env; ./set_environment.rb; bundle exec fastlane deploy
   - stage: cron

@@ -1,17 +1,9 @@
-//
-//  LaunchViewControllerPageObject.swift
-//  iOSBlankyUITests
-//
-//  Created by Levi Bostian on 12/15/19.
-//  Copyright © 2019 Curiosity IO. All rights reserved.
-//
-
 import Foundation
 import XCTest
 
 class LaunchViewControllerPageObject {
     let app: XCUIApplication
-    
+
     typealias AId = LaunchViewController.AccessibilityId
 
     var usernameTextField: XCUIElement {

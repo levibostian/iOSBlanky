@@ -64,7 +64,7 @@ metadata_path "./fastlane/metadata"
 screenshots_path "./fastlane/screenshots/"
 
 force true # Skip the HTML report file verification
-submit_for_review true 
+submit_for_review false 
 automatic_release true
 price_tier 0 # price 
 overwrite_screenshots true

@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if uiTesting {
                 self.dataDestroyer.destroyAll {
                     SwapperView.defaultConfig.transitionAnimationDuration = 0.001 // Set animation duration low, but not zero so that animations still run but they run very fast.
+                    UIView.setAnimationsEnabled(false)
 
                     if let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"] {
                         let jsonAdapter = DI.shared.jsonAdapter

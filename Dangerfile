@@ -55,13 +55,25 @@ if ENV["CI"]
   swiftlint.config_file = '.swiftlint.yml'
   swiftlint.max_num_violations = 0
 
-  junit.parse "reports/report.junit"
+  junit.parse "reports/unit_tests/report.junit"
   junit.show_skipped_tests = true
   if junit.failures.empty?
-    message("#{junit.passes.length} tests passed!")
+    message("UNIT #{junit.passes.length} tests passed!")
   else 
+    fail "UNIT tests failed."
     junit.report
   end
+
+  junit.parse "reports/ui_tests/report.junit"
+  junit.show_skipped_tests = true
+  if junit.failures.empty?
+    message("UI #{junit.passes.length} tests passed!")
+  else 
+    fail "UI tests failed."
+    junit.report
+  end
+
+  warn "📷 Make sure to view the taken screenshots! 📸"
 
   if github.branch_for_base == "master"
     if !(github.pr_title + github.pr_body).include?("#non-release")
