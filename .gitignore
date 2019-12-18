@@ -1,3 +1,9 @@
+Src/Assets/Color.xcassets/
+
+secrets_cici.tar
+_secrets
+Src/GoogleService-Info.plist
+
 # Manually added
 GoogleService-*.plist
 .env

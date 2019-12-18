@@ -16,6 +16,8 @@ install:
   - brew update 
   - brew install imagemagick  # for fastlane frameit 
   - brew install librsvg graphicsmagick # for fastlane generating app icons
+before_script:
+  - ./set_environment.rb development
 env:
   global:
     # Below are secret environment variables you need to set. 
@@ -43,10 +45,10 @@ jobs:
       - ruby scripts/tests.rb 
       - bundle exec danger --fail-on-errors=true
   - stage: deploy
-    script: rm .env; cp secrets/production/.env .env; ./set_environment.rb; bundle exec fastlane deploy
+    script: ./set_environment.rb production; bundle exec fastlane deploy
   - stage: cron
     script: 
-      - rm .env; cp secrets/production/.env .env; ./set_environment.rb; bundle exec fastlane refresh_dsyms;
+      - ./set_environment.rb production; bundle exec fastlane refresh_dsyms;
 
 stages:
   - name: pr

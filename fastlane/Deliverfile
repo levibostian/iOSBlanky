@@ -54,7 +54,7 @@ app ENV["APPLE_APP_ID"]
 languages(['en-US'])
 
 # must be exactly 1024x1024px
-app_icon "./fastlane/icons/#{ENV["APP_ICON_FILE_NAME"]}"
+app_icon "./fastlane/icons/icon.jpg"
 
 release_notes({
   'en-US' => File.open(Dir.pwd + "/fastlane/release_notes.txt", "rb").read

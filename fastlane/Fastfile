@@ -13,11 +13,9 @@ UI = FastlaneCore::UI unless Fastlane.const_defined?("UI")
 env = {
   :bundle_id => get_env("APP_BUNDLE_ID"),
   :admin_email => get_env("ADMIN_EMAIL"),
-  :google_services_file_name => get_env("GOOGLE_SERVICES_FILE_NAME"),
   :app_name => get_env("APP_NAME"),
   :testflight_beta_feedback_email => get_env("TESTFLIGHT_BETA_FEEDBACK_EMAIL"),
   :xcode_scheme => get_env("XCODE_SCHEME"),
-  :app_icon_file_name => get_env("APP_ICON_FILE_NAME"),
   :app_icon_badge => get_env("APP_ICON_BADGE")
 }
 
@@ -46,7 +44,7 @@ platform :ios do
       app_identifier: values[:app_id] || env[:bundle_id]
     )
     upload_symbols_to_crashlytics(
-      gsp_path: "GoogleServices/#{env[:google_services_file_name]}" 
+      gsp_path: "Src/GoogleService-Info.plist"
     )
     clean_build_artifacts
   end
@@ -181,7 +179,7 @@ platform :ios do
   # You must: `brew install graphicsmagick` to install the GraphicsMagick library as required by `appicon` action
   # You must `brew install librsvg` to install RSVG as required by `add_badge` action
   lane :generate_icons do    
-    app_icon_path = "./fastlane/icons/#{env[:app_icon_file_name]}"
+    app_icon_path = "./fastlane/icons/icon.jpg"
 
     appicon(appicon_image_file: app_icon_path,
       appicon_devices: [:ipad, :iphone, :ios_marketing],

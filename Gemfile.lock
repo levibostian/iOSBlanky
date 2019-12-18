@@ -898,6 +898,8 @@ GEM
       fastimage (>= 1.6)
       fastlane (>= 2.0)
       mini_magick (~> 4.9.5)
+    cici (0.1.0)
+      colorize (~> 0.8, >= 0.8.1)
     claide (1.0.3)
     claide-plugins (0.9.2)
       cork
@@ -1143,6 +1145,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cici (~> 0.1.0)
   danger (~> 6)
   danger-ios_version_change (~> 0.1.6)
   danger-junit (~> 1.0)
