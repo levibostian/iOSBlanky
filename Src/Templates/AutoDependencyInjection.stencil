@@ -3,7 +3,7 @@
 // swiftlint:disable force_cast
 
 // File generated from Sourcery-DI project: https://github.com/levibostian/Sourcery-DI
-// Template version 0.1.0
+// Template version 0.1.1
 
 import Foundation
 #if os(iOS) || os(tvOS) || os(watchOS)

@@ -36,7 +36,7 @@ def commonDepencencies
     pod 'PleaseHold', '~> 0.2'
     pod 'Swapper', '~> 0.1'
     pod 'IQKeyboardManagerSwift', '~> 6.4.0'
-    pod 'Wendy', :git => "https://github.com/levibostian/wendy-ios", :commit => "b7cbdc1c1a" # '~> 0.2.0-alpha'
+    pod 'Wendy', '~> 0.3.0'
     pod 'SnapKit', '~> 5.0.0'
     pod 'Teller', '~> 0.5.0'
 end 

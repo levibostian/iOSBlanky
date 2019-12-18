@@ -20,7 +20,6 @@ class WendyPendingTasks: PendingTasks {
     }
 
     func deleteAll() {
-        // do after https://github.com/levibostian/Wendy-iOS/issues/19
-//        Wendy.
+        Wendy.shared.clear()
     }
 }
