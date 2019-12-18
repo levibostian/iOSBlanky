@@ -3,7 +3,6 @@ default:
   secrets:
     - ".env"
     - "Src/GoogleService-Info.plist"
-    - "Src/Assets/Color.xcassets/"
 
 sets:
   production:
