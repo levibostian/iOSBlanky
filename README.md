@@ -148,7 +148,8 @@ Configure:
 
 Configure:
 * We are assuming you have already done the instructions for setting up Travis. 
-* Edit the `fastlane/metadata/` directory of files for your app. 
+* Open the `fastlane/Deliverfile` file and edit the static variables at the top. These values are specific to your company and will not change between app environments so, we define them once in this file, here. It's a good idea to go through the whole file because values such as cost, categories, and other information is located in this file and important to change. 
+* Open the file `fastlane/Appfile` and edit the variables at the top for your apple team information. 
 
 After you create your app ID in your developer account online, you will now want to run `bundle exec fastlane match` and `bundle exec fastlane match --development` on your local machine in order to get your certificates and profiles generated. 
 

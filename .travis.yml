@@ -32,6 +32,11 @@ env:
     # AWS_S3_BUCKET_NAME_TEST_RESULTS=name-of-bucket
     # AWS_S3_BUCKET_PATH_TEST_RESULTS=test_results
     # AWS_SNS_APP_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:app-deployed-notifier
+    # DEVELOPER_EMAIL=you@example.com
+    # DEVELOPER_FIRST_NAME=First
+    # DEVELOPER_LAST_NAME=First
+    # DEVELOPER_PHONE_NUMBER=+1 3333333333
+    # DEVELOPER_FIRST_NAME=First
     AWS_REGION=us-east-1
 
 jobs:

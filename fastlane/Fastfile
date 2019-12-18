@@ -12,7 +12,7 @@ UI = FastlaneCore::UI unless Fastlane.const_defined?("UI")
 
 env = {
   :bundle_id => get_env("APP_BUNDLE_ID"),
-  :admin_email => get_env("ADMIN_EMAIL"),
+  :developer_email => get_env("DEVELOPER_EMAIL"),
   :app_name => get_env("APP_NAME"),
   :testflight_beta_feedback_email => get_env("TESTFLIGHT_BETA_FEEDBACK_EMAIL"),
   :app_icon_badge => get_env("APP_ICON_BADGE")
@@ -128,7 +128,7 @@ platform :ios do
       "Link to demo and notes for the latest release:",
       latest_demo,
       "\n",
-      "(Note: this is an automated message. Please email #{env[:admin_email]} if you have questions)"
+      "(Note: this is an automated message. Please email #{env[:developer_email]} if you have questions)"
     ].join("\n") + "\n"
 
     aws_sns_topic(

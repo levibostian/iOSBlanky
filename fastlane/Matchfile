@@ -10,7 +10,7 @@ end
 
 env = {
   :match_git_repo => get_env("MATCH_GIT_REPO"),
-  :admin_email => get_env("ADMIN_EMAIL")
+  :developer_email => get_env("DEVELOPER_EMAIL")
 }
 
 # This file contains is the default arguments for `sync_code_signing` (aka: `match`) action. 
@@ -23,7 +23,7 @@ env = {
 storage_mode "git"
 git_url env[:match_git_repo]
 git_full_name "Fastlane bot"
-git_user_email env[:admin_email]
+git_user_email env[:developer_email]
 git_branch "master" # branch in repo where data is stored. 
 readonly ENV["CI"]
 # Renew the provisioning profiles if the device count on the developer portal has changed. Ignored for profile type 'appstore'

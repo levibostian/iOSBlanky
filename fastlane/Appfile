@@ -3,6 +3,12 @@
 require 'dotenv'
 $env_vars = Dotenv.parse("../.env")
 
+# -------------- edit variables here ---------------
+apple_developer_team_id = "12345"
+apple_developer_team_name = "Team name"
+apple_developer_team_email = "Team name"
+# --------------------------------------------------
+
 def get_env(name)
   value = $env_vars[name]
   raise "Forgot to define #{name} in .env" unless value 
@@ -11,18 +17,15 @@ def get_env(name)
 end 
 
 env = {
-  :apple_email => get_env("APPLE_EMAIL"),
-  :apple_team_name => get_env("APPLE_TEAM_NAME"),
-  :apple_team_id => get_env("APPLE_TEAM_ID"),
   :app_bundle_id => get_env("APP_BUNDLE_ID")
 }
 
 app_identifier env[:app_bundle_id]
 
-apple_id env[:apple_email]
+apple_id apple_developer_team_email
 
-team_name env[:apple_team_name]
-team_id env[:apple_team_id]
+team_name apple_developer_team_name
+team_id apple_developer_team_id
 
-itc_team_name env[:apple_team_name]
-itc_team_id env[:apple_team_id]
+itc_team_name apple_developer_team_name
+itc_team_id apple_developer_team_id

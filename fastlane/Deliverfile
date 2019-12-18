@@ -5,27 +5,48 @@
 require 'dotenv'
 Dotenv.load("../.env")
 
-# -------------- Edit variables here ------------------
-company_contact_first_name = "First"
-company_contact_last_name = "Last"
+def get_env(name)
+  value = ENV[name]
+  raise "Forgot to define #{name} in enviornment" unless value 
+
+  return value 
+end 
+
+env = {
+  :developer_email => get_env("DEVELOPER_EMAIL"),
+  :developer_first_name => get_env("DEVELOPER_FIRST_NAME"),
+  :developer_last_name => get_env("DEVELOPER_LAST_NAME"),
+  :developer_phone_number => get_env("DEVELOPER_PHONE_NUMBER"),
+  :app_name => get_env("APP_NAME"),
+  :app_id => get_env("APPLE_APP_ID")
+}
+
 company_name = "Company name"
-company_address_line1 = "123 Sesame St" # can add line2 and line3
-company_city_name = "City"
-company_state = "Iowa"
-company_country = "United States"
-company_postal_code = "43221"
-company_email_address = "you@company.com"
-company_phone_number = "+1 3333333333"
 
-app_developer_first_name = "First"
-app_developer_last_name = "Last"
-app_developer_phone_number = "+1 3333333333"
-
-demo_user_account_username = "demo@you.com"
-demo_user_account_password = "password"
-demo_notes = "Login with email and password at the login screen."
-
-privacy_policy_url = "https://you.com/privacy/index.html"
+name({
+  'en-US' => env[:app_name]
+})
+subtitle({
+  'en-US' => "Description added under app name. Max of 30 characters."
+})
+description({
+  'en-US' => "description for app store here."
+})
+keywords({
+  'en-US' => "word,word2,word3"
+})
+promotional_text({
+  'en-US' => "Short, 170 character limit text that shows above app description. The promotional text may include product’s news, the oncoming new features and contents, promotional activities or other details about app."
+})
+support_url({
+  'en-US' => "https://you.com/contact/index.html`"
+})
+marketing_url({
+  'en-US' => "https://you.com/features/index.html"
+})
+privacy_url({
+  'en-US' => "https://you.com/privacy/index.html"
+})
 
 # See: https://docs.fastlane.tools/actions/deliver/#available-categories for options
 primary_category "MZGenre.Games"
@@ -47,9 +68,10 @@ submission_information({
 
 # Check out the fastlane/rating_config.json file and fill it out. 
 # See: https://docs.fastlane.tools/actions/deliver/#available-age-rating-groups for options 
-# -----------------------------------------------------
 
-app ENV["APPLE_APP_ID"]
+# -------------- Done editing variables ------------------
+
+app env[:app_id]
 
 languages(['en-US'])
 
@@ -60,7 +82,6 @@ release_notes({
   'en-US' => File.open(Dir.pwd + "/fastlane/release_notes.txt", "rb").read
 })
 
-metadata_path "./fastlane/metadata"
 screenshots_path "./fastlane/screenshots/"
 
 force true # Skip the HTML report file verification
@@ -70,27 +91,27 @@ price_tier 0 # price
 overwrite_screenshots true
 
 trade_representative_contact_information(
-  first_name: company_contact_first_name,
-  last_name: company_contact_last_name,
+  first_name: "First",
+  last_name: "Last",
   trade_name: company_name,
-  address_line1: company_address_line1,
-  city_name: company_city_name,
-  state: company_state,
-  country: company_country,
-  postal_code: company_postal_code,
-  phone_number: company_phone_number,
-  email_address: company_email_address,
+  address_line1: "123 Sesame St", # can add line2 and line3,
+  city_name: "City",
+  state: "Iowa",
+  country: "United States",
+  postal_code: "43221",
+  phone_number: "+1 3333333333",
+  email_address: "you@company.com",
   is_displayed_on_app_store: false
 )
 
 app_review_information(
-  first_name: app_developer_first_name,
-  last_name: app_developer_last_name,
-  phone_number: app_developer_phone_number,
-  email_address: ENV["ADMIN_EMAIL"],
-  demo_user: demo_user_account_username,
-  demo_password: demo_user_account_password,
-  notes: demo_notes
+  first_name: env[:developer_first_name],
+  last_name: env[:developer_last_name],
+  phone_number: env[:developer_phone_number],
+  email_address: env[:developer_email],
+  demo_user: "demo@you.com",
+  demo_password: "password",
+  notes: "Login with email and password at the login screen."
 )
 
 app_rating_config_path './fastlane/rating_config.json'
@@ -99,6 +120,3 @@ platform 'ios'
 
 copyright "#{Time.now.year} #{company_name}"
 
-privacy_url({
-  'en-US' => privacy_policy_url
-})
