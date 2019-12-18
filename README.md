@@ -24,6 +24,7 @@ iOSBlanky comes equipped with the following goals:
 - Use a CI server to run lint, tests on each commit of the code.
 - Full deployment of the app with CI server.
   - Fully automated deploy including pushing metadata and taking new screenshots for the store (thanks fastlane!). 
+- Offline-first functionality through [Teller](https://github.com/levibostian/teller-ios/) and [Wendy](https://github.com/levibostian/wendy-ios/)
 
 # Getting started
 
@@ -75,6 +76,9 @@ Go ahead and explore the source code! No need to include _all_ of the details he
 
 This project uses a list of various services to receive push notifications, run a CI server, and more. To keep the code base simple, [keep the environments close](https://12factor.net/dev-prod-parity), and avoid runtime complexity/bugs, all of these services are configured with environment variables all defined with a `.env` file.
 
+*Note: Anytime you edit the `.env` file, you need to run the script `./set_environment.rb` to make those changes go into effect.*
+*Note: This project relies on the CLI tool, [cici](https://github.com/levibostian/cici/) for helping with the environments. You may want to read up on the README of the project to understand how it's used in the `./set_environment.rb` script.*
+
 Now, let's go into each of the `.env` variables, enabling the various services as we go on.
 
 - [Firebase](https://firebase.google.com/docs/) - Used for analytics, error reporting, remote configuration, dynamic links. 
@@ -89,16 +93,12 @@ Now, here are some configuration instructions for how to get up and running fast
 
 #### RemoteConfig
 
-RemoteConfig has already been added to this project. The default values .plist file has been added as well. All you need to do is...
-
-When you want to create a new key/value remote config pair, you need to:
-1. Check out the `FirebaseRemoteConfigDefaults.plist` and `RemoteConfig.swift` files to add the new key/value pair. 
-2. Add the key/value pair to the Firebase Dashboard for your project. 
+RemoteConfig has already been added to this project. It is also configured with [Teller](https://github.com/levibostian/teller-ios/) to periodically sync data in the background to keep it up-to-date. 
 
 #### Messaging
 
-To send and recieve push notifications in your app, FCM requires that you register an APN key with Firebase from your Apple Developer Account. This is a key that does not expire.
-* See [this section](https://firebase.google.com/docs/cloud-messaging/ios/certs#create_the_authentication_key) in the Firebase docs on how to create a new APN key. 
+To send and receive push notifications in your app, FCM requires that you register an APN key with Firebase from your Apple Developer Account. This is a key that does not expire.
+* See [this section](https://firebase.google.com/docs/cloud-messaging/ios/certs#create_the_authentication_key) in the Firebase docs on how to create a new APN key. *Note: Create a APN key, not a certificate. Keys can be used by multiple environments, debug/release config, and don't expire.*
 * Once you have that key created, you will need to see [this section](https://firebase.google.com/docs/cloud-messaging/ios/client#upload_your_apns_authentication_key) in the Firebase docs on how to upload this new APN key to Firebase. 
 
 Once that is setup, I recommend reading through the `AppDelegate.swift` file as it contains listeners for many FCM tasks you may want to handle. 
@@ -114,7 +114,7 @@ Most of the code to handle DynamicLinks is already setup. However, you will need
 
 Configure:
 * Create a [Travis](https://travis-ci.com/) account, and enable your GitHub repo for your API project in your Travis profile page.
-* In the `.travis.yml` file, you will see some secret environment variables you need to define in the travis project. 
+* In the `.travis.yml` file, you will see some *secret* environment variables you need to define in the travis project. 
 * Then, go into your travis project settings and create a cronjob, daily, on the master branch. This will enable some fastlane tasks to run daily for up-keep. 
 
 I have setup the CI server workflow to work as follows:
@@ -132,6 +132,12 @@ When the `master` branch is ready for a release:
 - Make a new git tag off of `master`. Beta releases have the git tag form: `0.2.1-beta` where production have form `0.2.1`. 
 - Push the new git tag to GitHub via `git push --tags`. 
 
+Deployments are done using Fastlane. Beta releases are sent to TestFlight for testers of your app to use. Production apps are a little more complex to work with. Here are the steps to work with them:
+1. Travis will run to build the app, upload it to Apple's App Store for processing, upload metadata, and then it will be done. 
+2. You need to check your email. Wait until you get notified about the app being done processing. 
+3. Login to your Apple Developer account and view the meta data of the app. Since the metadata is uploaded and screenshots are generated on the CI server before upload, it's good to have someone view the results to make sure it all looks good. 
+3. Run `bundle exec fastlane submit_prod_release` to submit the latest build to Apple. 
+
 - [Danger](http://danger.systems/ruby/) - Bot that looks over pull requests and makes sure you do not forget to complete certain tasks.
 
 Configure:   
@@ -142,9 +148,27 @@ Configure:
 
 Configure:
 * We are assuming you have already done the instructions for setting up Travis. 
-* Edit the `fastlane/Deliverfile` values for your app. Also, edit the `fastlane/metadata/` directory of files for your app. 
+* Edit the `fastlane/metadata/` directory of files for your app. 
 
 After you create your app ID in your developer account online, you will now want to run `bundle exec fastlane match` and `bundle exec fastlane match --development` on your local machine in order to get your certificates and profiles generated. 
+
+- [AWS](https://aws.amazon.com/)
+
+Next, we will use some AWS services.
+
+- [Create an AWS account](https://aws.amazon.com/).
+- Open up [AWS IAM to create a new user](https://console.aws.amazon.com/iam/home?region=us-east-1#/users$new?step=details). Name it something like `travis-ci` (as that's where this info will be used) that includes the permissions needed for this project. Check `Programmatic access` checkbox. Click next. For attaching permissions, skip that for now. Each service below will ask you to add some. You will get an access key and a password generated for you. Save this information! You cannot recover it. I usually use a password manager like Lastpass to save this information in it.
+
+* [AWS SNS](https://aws.amazon.com/sns/) - Send notifications to a group of email. It's used in this project to easily send emails to your internal team about releases. 
+
+- [Create a new topic](https://console.aws.amazon.com/sns/v3/home?region=us-east-1#/topics), and then [add subscribers to the topic](https://console.aws.amazon.com/sns/v3/home?region=us-east-1#/subscriptions) (people who will receive emails). The Travis setup in this file will tell you what topics are needed to notify who. 
+- Make sure your IAM user has permissions to send messages to this SNS topic. 
+
+* [AWS S3](https://s3.console.aws.amazon.com/s3/home?region=us-east-1#) - Store static files. Used to store test results from CI server. 
+
+- Create a new bucket. Set the permissions of the bucket for static website hosting. 
+- Make sure your IAM user has access to this bucket. 
+- Go into the Travis setup to learn about what you need to do to setup your CI server for uploading. 
 
 # Development
 
@@ -162,8 +186,8 @@ Developer tools you need:
 bundle install 
 ./hooks/autohook.sh install
 pod install 
-bundle exec fastlane match appstore
 bundle exec fastlane match development # Can be: appstore, adhoc, enterprise or development
+bundle exec fastlane match appstore
 ```
 
 Now, open up your workspace file in XCode. 
