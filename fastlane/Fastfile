@@ -15,7 +15,6 @@ env = {
   :admin_email => get_env("ADMIN_EMAIL"),
   :app_name => get_env("APP_NAME"),
   :testflight_beta_feedback_email => get_env("TESTFLIGHT_BETA_FEEDBACK_EMAIL"),
-  :xcode_scheme => get_env("XCODE_SCHEME"),
   :app_icon_badge => get_env("APP_ICON_BADGE")
 }
 
@@ -120,7 +119,7 @@ platform :ios do
 
   def notify_app_update(buildVersion, publicity_message)
     latest_demo = File.read('./latest_demo.txt')
-    versionOfApp = get_version_number(target: env[:xcode_scheme])
+    versionOfApp = get_version_number(target: "App")
 
     notification_message_body = [      
       "#{env[:app_name]} v#{versionOfApp}, build: #{buildVersion} ready for download.",
@@ -145,7 +144,7 @@ platform :ios do
   desc "Build and upload beta app to TestFlight"
   def beta_build_release(changelog, description)
     build_ios_app(
-      scheme: env[:xcode_scheme],
+      scheme: "App",
       configuration: 'Release',
       export_method: 'app-store',
       output_name: "Prod.ipa",
@@ -165,7 +164,7 @@ platform :ios do
   desc "Build and upload production app to the App Store. Note: This does *not* submit for review."
   def prod_build_upload
     build_ios_app(
-      scheme: env[:xcode_scheme],
+      scheme: "App",
       configuration: 'Release',
       export_method: 'app-store',
       output_name: "Prod.ipa",

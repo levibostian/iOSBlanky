@@ -3,37 +3,27 @@
 
 # iOSBlanky
 
-Clone the repo, edit some configurations, and get off to building your next awesome iOS app!
-
-This project is _very_ opinionated because, well, it's designed for the apps that [I](https://github.com/levibostian/) build.
+Boilerplate project for iOS apps. The template that [I](https://github.com/levibostian/) use for the apps that I build.
 
 Nodejs developer? I have [a boilerplate project for you!](https://github.com/levibostian/expressjsblanky)
 Android developer? I have [a boilerplate project for you!](https://github.com/levibostian/androidblanky)
 
-# What is iOSBlanky?
+# What are the goals of iOSBlanky?
 
-iOSBlanky is an iOS app. It's a simple iOS app that includes a collection of libraries, configurations, and architecture decisions for all of the apps that I build. So whenever I want to build a new iOS app, instead of creating a blank XCode project and spending a bunch of time configuring it to include all my libraries, configurations, and architecture decisions in it that I want, I simply clone this repo, do some editing to the project, and off to building my app!
+iOSBlanky has been modified over years of building iOS. Through experience, you are guaranteed to find many annoyances and bugs. After each encounter, some engineering work is done to help remove that annoyance and prevent that bug from happening again.
 
-# Why use iOSBlanky?
+iOSBlanky comes equipped with the following goals:
 
-You know the feeling when you go to begin a new project. The day you begin a project is spent on just setting up your project, configuring it, and getting your environment all setup. It takes hours to days to complete!
-
-iOSBlanky works to avoid that. By having a blank iOS app already created, you are ready to jump right into developing your new app. iOSBlanky works to get you to building your app within minutes instead of hours or days.
-
-# What are some cool things about iOSBlanky?
-
-iOSBlanky has been modified over years of building iOS apps. Through experience, anyone is guaranteed to find many annoyances and bugs while building apps. As I build more and more apps, when I encounter a new bug or annoyance I have with building iOS apps, I spend some engineering time to create a solution to the problem and then I put it in this repo.
-
-iOSBlanky comes equipped with the following features:
-
-- Swift. Yeah, swift is pretty cool. 
-- Build and deploy a development, beta, and production app. This allows you to perform internal and external beta testing of your app to make sure everything works great.
-- Setup with dependency injection and mocking to allow you to unit test easily. Also, dependency graph tested via unit test for missing registrations. 
-- (Coming soon!) ~~When creating integration tests, it can be necessary to insert fake data into your database and then run a HTTP request against your code to test it. iOSBlanky is setup to insert fake data into your database super easily.~~
-- Setup with Travis CI to build, lint, test, and deploy your apps.
-- Fastlane setup for quick and easy local development as well as app deployment.
-- Unit, integration, and UI testing setup.
-- CoreData setup to quickly jump into database initialization. 
+- Get up and running building an app as fast as possible. Pre-configure this project so you don't have to. Install set of dependencies and configure them assuming they will be used. 
+  - Make some assumptions about what this app will probably use such as push notifications, dynamic links, Core Data, etc. If you don't need something, just delete that code. 
+- Latest version of Swift and XCode. 
+- Support for older versions of iOS so people can enjoy using their older hardware, for longer. 
+- Full configuration of the application through environment variables as defined [in the 12factor app](https://12factor.net/config).
+- Unit, integration, and UI testing.
+- Easily create mocks and work with sample data in tests.
+- Use a CI server to run lint, tests on each commit of the code.
+- Full deployment of the app with CI server.
+  - Fully automated deploy including pushing metadata and taking new screenshots for the store (thanks fastlane!). 
 
 # Getting started
 
@@ -49,21 +39,18 @@ git config user.name "First Last"
 git add .; git commit -m "Initial commit. Created project from levibostian/iOSBlanky boilerplate.";
 pod install
 bundle install
+cp .env.example .env
 ```
 
 * Open `iOSBlanky.xcworkspace` in XCode.
-* Open project settings and (1) change the team the app belongs to, (2) change target name (found in the right panel of XCode), (3) change bundle identifier. Quit XCode. 
-* Open `Podfile` in a text editor. Edit the Podfile's "target" to the name of the new target name you set above ^^^. Run `pod install` again. Then, remove the old workspace file: `rm iOSBlanky.xcworkspace`. Also, delete the LICENSE file if you're writing closed source: `rm LICENSE`
-* Open `.swiftlint.yml` file and edit `iOSBlanky` in `Sources` to name of your source directory.
-* Open *new* XCode workspace file in XCode.
+* Open project settings and (1) change the team the app belongs to, (2) change target name (found in the right panel of XCode). Quit XCode. 
+* Edit `.env` with the new target name you just set as well as all of the other values such as bundle identifier and app name. 
+* Run `pod install` again which will create new workspace and project files. Then, remove the old workspace file: `rm iOSBlanky.xcworkspace`.
+* Run command: `./set_environment.rb`. This will rename the app, set bundle identifier, and a few other things. 
+* Delete the LICENSE file if you're writing closed source: `rm LICENSE`
 * Open project settings > General, scroll to bottom to view the list of all cocoapods frameworks you have installed in app. Delete `Pods_iOSBlanky.framework`. Quit XCode. 
-* In finder, rename the `iOSBlanky` source code directory to `NameOfYourApp`. Repeat for `iOSBlankyTests` and `iOSBlankyUITests`.
-* Open XCode workspace file in XCode. Along left side where you view all of the files in your project, click on the `iOSBlanky` group folder. Open the right panel of XCode and you will see a folder icon. Click this and choose the newly renamed folder you edited in the step above ^^^. Repeat this for the `iOSBlankyTests` and `iOSBlankyUITests` groups as well. Then, rename the group names in the left side panel.
-* Open project settings > General in XCode again. Scroll to bottom to view the list of all cocoapods frameworks installed. Remove `Pods_NameOfYourApp.framework`, then add it back. 
-* Target > General in XCode. The middle where you usually enter your bundle identifier, it will have a button asking you to locate your Info.plist file. Choose `NameOfYourApp/Info.plist`. 
-* Target > Build settings in XCode. Look for "Product Bundle Identifier" and "Product Name". Change these to the values you want for identifier and name of app.
-* Top left corner by the Play and Stop button. You see the schemas with name `iOSBlanky`. Click on it and go to *Manage schemas*. You can now click on `iOSBlanky` and rename it to `NameOfYourApp`. 
-* Hold down option key on keyboard and click on the Play button. You can now select in the list what build version you want to run. I start with debug/dev. Go ahead and try to run on a device now. 
+* Open project settings > General in XCode again. Scroll to bottom to view the list of all cocoapods frameworks installed. Remove `Pods_NameOfYourApp.framework`, then add it back. (There was a bug I encountered once. Not sure if this fixes it)
+* Time to try and run your app! Compile it and see if it builds. 
 
 Done! Well, with getting your app project renamed and built. Now comes configuration of all the various tools. 
 
@@ -76,49 +63,27 @@ Enjoy!
 
 # What is included in iOSBlanky?
 
-### Language:
+Go ahead and explore the source code! No need to include _all_ of the details here, but here is a gist of the major components of this project:
 
-- [Swift](https://swift.org/)
-
-### Database: 
-
-- [CoreData](https://developer.apple.com/documentation/coredata)
-
-### Libraries:
-
-All libraries installed via [Cocoapods](https://cocoapods.org/). 
-
-- [SwiftLint](https://github.com/realm/SwiftLint/) - Linting tool for Swift to catch potential issues in your source code.
-- [Moya](https://github.com/Moya/moya) - Easy to use networking library for HTTP requests. 
-- [RxSwift/RxCocoa](https://github.com/ReactiveX/RxSwift/) - ReactiveX library for easy asynchronous programming. 
-- [Swinject](https://github.com/Swinject/Swinject) - Dependency injection framework to create a dependency graph easy.
-- [Firebase Analytics](https://firebase.google.com/docs/analytics) - Capture analytics to make future decisions based on user trends. 
-- [Firebase RemoteConfig](https://firebase.google.com/docs/remote-config) - Dynamically change values and code in your live production app at runtime.
-- [Firebase Messaging](https://firebase.google.com/docs/cloud-messaging) - Receive push notifications. 
-- [Firebase DynamicLinks](https://firebase.google.com/docs/dynamic-links/) - Open up your app when user touches a certain URL on their device that's registered to your app. 
-- [Firebase Performance](https://firebase.google.com/docs/perf-mon) - Track the performance of your app for issues such as network quality and UI hangs. 
-- [Crashlytics](https://firebase.google.com/docs/crashlytics) - Error reporting to capture bugs that happen. 
-- [Kingfisher](https://github.com/onevcat/Kingfisher) - Easily populate UIImageView with an image URL. 
-- [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess/) - Quick and easy keychain management. 
-- [DZNEmptyDataSet](https://github.com/dzenbot/DZNEmptyDataSet) - Show empty view when UITableView empty. 
-- [IQKeyboardManagerSwift](https://github.com/hackiftekhar/IQKeyboardManager) - Adds default behavior for the keyboard in your app. 
-- [Wendy](https://github.com/levibostian/wendy-ios/) - Build offline first iOS mobile apps. Remove loading screens, perform tasks instantly. 
-- [SnapKit](https://github.com/SnapKit/snapkit/) - Create views and layouts of your app screens using code with ease. 
-- [Teller](https://github.com/levibostian/teller-ios) - iOS library that manages your app's cached data with ease.
-- [WoodPecker](https://github.com/appwoodpecker/woodpecker-ios) - Handy tool for development to view files, network requests/responses, and more from the development device. 
-- [Cocoapods-keys](https://github.com/orta/cocoapods-keys) - Store client side secrets in a secure (well, [more secure](https://github.com/orta/cocoapods-keys#security) anyway) way. 
+- Project uses Swift as the programming language and XCode as the editor.
+- Firebase setup for push notifications and some other services such as dynamic links, analytics, crash reporting. 
+- XCTest framework used for unit, integration and UI tests. On the CI server, tests are executed with Fastlane scan.
+- Core Data used as the database to store user data. 
+- Travis CI setup as the CI server to build, test, and deploy app. 
 
 # Services 
 
+This project uses a list of various services to receive push notifications, run a CI server, and more. To keep the code base simple, [keep the environments close](https://12factor.net/dev-prod-parity), and avoid runtime complexity/bugs, all of these services are configured with environment variables all defined with a `.env` file.
+
+Now, let's go into each of the `.env` variables, enabling the various services as we go on.
+
 - [Firebase](https://firebase.google.com/docs/) - Used for analytics, error reporting, remote configuration, dynamic links. 
 
-This project is mostly setup already for Firebase. It's setup for a dev, beta, and production environment. Follow the directions below to finish setup. 
+This project is mostly setup already for Firebase. Follow the directions below to finish setup. 
 
 Configure:
-* Create a new Firebase project for this app. 
-* Create 3 separate iOS apps inside of this 1 new Firebase project. Create 1 app for the development version of the app, 1 for beta, and 1 for production. 
-* You will now have 3 separate `GoogleService-Info.plist` files you can download from the Firebase website. Download the files into `GoogleServices/`. Name them (1) `GoogleService-dev.plist` for the development version, (2) `GoogleService-beta.plist` for the beta version, (3) `GoogleService-prod.plist` for the prod version. 
-* Optionally: Delete the entry in the `.gitignore` file to ignore the Google Services files. 
+* Create a new Firebase project for this app.
+* Create separate Firebase projects for each app environment, or, create 1 project and add separate apps in the 1 target for each environment. Either way, follow the directions for [here for the tool cici](https://github.com/levibostian/cici/) for how to store the `GoogleService-Info.plist` file that Firebase gives you. 
 
 Now, here are some configuration instructions for how to get up and running fast with each of the added Firebase services. *Note: If a Firebase service is not listed below, it's already configured for you!*
 

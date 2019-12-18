@@ -31,7 +31,9 @@ enum Dependency: CaseIterable {
     case gitHubMoyaProvider
     case moyaResponseProcessor
     case eventBus
+    case remoteConfigDataSource
     case reposDataSource
+    case remoteConfigRepository
     case reposRepository
     case repositoryDao
     case jsonAdapter
@@ -85,7 +87,9 @@ class DI {
         case .gitHubMoyaProvider: return _gitHubMoyaProvider as! T
         case .moyaResponseProcessor: return _moyaResponseProcessor as! T
         case .eventBus: return _eventBus as! T
+        case .remoteConfigDataSource: return _remoteConfigDataSource as! T
         case .reposDataSource: return _reposDataSource as! T
+        case .remoteConfigRepository: return _remoteConfigRepository as! T
         case .reposRepository: return _reposRepository as! T
         case .repositoryDao: return _repositoryDao as! T
         case .jsonAdapter: return _jsonAdapter as! T
@@ -276,7 +280,7 @@ class DI {
     }
 
     var remoteConfigProvider: RemoteConfigProvider {
-        return FirebaseRemoteConfig(logger: _activityLogger)
+        return FirebaseRemoteConfig(logger: _activityLogger, environment: _environment)
     }
 
     // SecureStorage
@@ -323,6 +327,18 @@ class DI {
         return NotificationCenterEventBus(notificationCenter: _notificationCenterManager, activityLogger: _activityLogger)
     }
 
+    // RemoteConfigDataSource
+    private var _remoteConfigDataSource: RemoteConfigDataSource {
+        if let overridenDep = self.overrides[.remoteConfigDataSource] {
+            return overridenDep as! RemoteConfigDataSource
+        }
+        return remoteConfigDataSource
+    }
+
+    var remoteConfigDataSource: RemoteConfigDataSource {
+        return RemoteConfigDataSource(remoteConfigProvider: _remoteConfigProvider)
+    }
+
     // ReposDataSource
     private var _reposDataSource: ReposDataSource {
         if let overridenDep = self.overrides[.reposDataSource] {
@@ -333,6 +349,14 @@ class DI {
 
     var reposDataSource: ReposDataSource {
         return ReposDataSource(githubApi: _gitHubAPI, db: _database)
+    }
+
+    // RemoteConfigRepository (custom. property getter provided via extension)
+    private var _remoteConfigRepository: RemoteConfigRepository {
+        if let overridenDep = self.overrides[.remoteConfigRepository] {
+            return overridenDep as! RemoteConfigRepository
+        }
+        return remoteConfigRepository
     }
 
     // ReposRepository (custom. property getter provided via extension)
@@ -376,7 +400,7 @@ class DI {
     }
 
     var repositorySyncService: RepositorySyncService {
-        return TellerRepositorySyncService(reposRepository: _reposRepository, logger: _activityLogger)
+        return TellerRepositorySyncService(remoteConfigRepository: _remoteConfigRepository, logger: _activityLogger)
     }
 
     // UserCredsManager

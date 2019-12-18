@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: environment.isDevelopment)
 
         Messaging.messaging().delegate = self
-        remoteConfig.fetch()
+        remoteConfig.activate()
 
         let iqKeyboardManager = IQKeyboardManager.shared
         iqKeyboardManager.shouldResignOnTouchOutside = true

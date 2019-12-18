@@ -32,7 +32,6 @@ env:
     # AWS_S3_BUCKET_NAME_TEST_RESULTS=name-of-bucket
     # AWS_S3_BUCKET_PATH_TEST_RESULTS=test_results
     # AWS_SNS_APP_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:app-deployed-notifier
-    # AWS_SNS_DEV_TOPIC=arn:aws:sns:us-east-1:38383839494:app-developers-notifier    
     AWS_REGION=us-east-1
 
 jobs:

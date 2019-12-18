@@ -36,28 +36,10 @@ extension GitHubMoyaProvider {}
 
 extension DI {
     var gitHubMoyaProvider: GitHubMoyaProvider {
-        let productionPlugins: [PluginType] = [
+        let plugins: [PluginType] = [
             MoyaAppendHeadersPlugin(userCredsManager: self.inject(.userCredsManager)),
             HttpLoggerMoyaPlugin(logger: self.inject(.activityLogger))
         ]
-
-        var plugins: [PluginType] = []
-        plugins.append(contentsOf: productionPlugins)
-
-        let networkActivityPlugin: NetworkActivityPlugin = NetworkActivityPlugin(networkActivityClosure: { change, _ in
-            switch change {
-            case .began:
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = true
-                }
-            case .ended:
-                DispatchQueue.main.async {
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            }
-        })
-
-        plugins.append(networkActivityPlugin)
 
         return MoyaProvider<GitHubService>(plugins: plugins)
     }

@@ -599,6 +599,46 @@ class PendingTasksMock: PendingTasks {
     }
 }
 
+class RemoteConfigProviderMock: RemoteConfigProvider {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    var someRemoteConfig: String?
+
+    // MARK: - fetch
+
+    var fetchOnCompleteCallsCount = 0
+    var fetchOnCompleteCalled: Bool {
+        return fetchOnCompleteCallsCount > 0
+    }
+
+    var fetchOnCompleteReceivedOnComplete: ((Result<Void, Error>) -> Void)?
+    var fetchOnCompleteReceivedInvocations: [(Result<Void, Error>) -> Void] = []
+    var fetchOnCompleteClosure: ((@escaping (Result<Void, Error>) -> Void) -> Void)?
+
+    func fetch(onComplete: @escaping (Result<Void, Error>) -> Void) {
+        mockCalled = true
+        fetchOnCompleteCallsCount += 1
+        fetchOnCompleteReceivedOnComplete = onComplete
+        fetchOnCompleteReceivedInvocations.append(onComplete)
+        fetchOnCompleteClosure?(onComplete)
+    }
+
+    // MARK: - activate
+
+    var activateCallsCount = 0
+    var activateCalled: Bool {
+        return activateCallsCount > 0
+    }
+
+    var activateClosure: (() -> Void)?
+
+    func activate() {
+        mockCalled = true
+        activateCallsCount += 1
+        activateClosure?()
+    }
+}
+
 class ReposViewModelMock: ReposViewModel {
     var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
 
@@ -657,24 +697,5 @@ class RepositorySyncServiceMock: RepositorySyncService {
         syncAllOnCompleteReceivedOnComplete = onComplete
         syncAllOnCompleteReceivedInvocations.append(onComplete)
         syncAllOnCompleteClosure?(onComplete)
-    }
-
-    // MARK: - syncRepos
-
-    var syncReposForceOnCompleteCallsCount = 0
-    var syncReposForceOnCompleteCalled: Bool {
-        return syncReposForceOnCompleteCallsCount > 0
-    }
-
-    var syncReposForceOnCompleteReceivedArguments: (force: Bool, onComplete: (RefreshResult) -> Void)?
-    var syncReposForceOnCompleteReceivedInvocations: [(force: Bool, onComplete: (RefreshResult) -> Void)] = []
-    var syncReposForceOnCompleteClosure: ((Bool, @escaping (RefreshResult) -> Void) -> Void)?
-
-    func syncRepos(force: Bool, onComplete: @escaping (RefreshResult) -> Void) {
-        mockCalled = true
-        syncReposForceOnCompleteCallsCount += 1
-        syncReposForceOnCompleteReceivedArguments = (force: force, onComplete: onComplete)
-        syncReposForceOnCompleteReceivedInvocations.append((force: force, onComplete: onComplete))
-        syncReposForceOnCompleteClosure?(force, onComplete)
     }
 }

@@ -79,8 +79,6 @@
 		F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C61F9ED11E00219B30 /* Repo.swift */; };
 		F72043F622E4F35400DE7EA9 /* GitHubTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */; };
 		F72043F722E4F3CB00DE7EA9 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
-		F721AB4D22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
-		F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
 		F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
 		F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
 		F721AB5722E8A62B00F77F66 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */; };
@@ -109,6 +107,11 @@
 		F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F727FB3122E2805200E56E2C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727FB3022E2805200E56E2C /* CoreDataManager.swift */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
+		F74A9E2723AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
+		F74A9E2823AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
+		F74A9E2923AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
+		F74A9E2A23AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
+		F74A9E3123AADA1200F56F7C /* RxSwiftExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */; };
 		F74AF30222F0D1100089BADC /* RxCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74AF30122F0D1100089BADC /* RxCoreData.framework */; };
 		F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */; };
 		F75944CA23A1B43A009258D9 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
@@ -240,12 +243,10 @@
 		F7A8555123A6F073009362B0 /* FileDownloadedEventBusExtras.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FD523A556B7004A4011 /* FileDownloadedEventBusExtras.swift */; };
 		F7A8555223A6F073009362B0 /* EventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2E22E51689009E1203 /* EventBus.swift */; };
 		F7A8555323A6F073009362B0 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */; };
-		F7A8555423A6F073009362B0 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
 		F7A8555523A6F073009362B0 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */; };
 		F7A8555623A6F073009362B0 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761644422E8B5F4006F2D2A /* SecureStorage.swift */; };
 		F7A8555723A6F073009362B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
 		F7A8555823A6F073009362B0 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
-		F7A8555923A6F074009362B0 /* FirebaseRemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */; };
 		F7A8555A23A6F07B009362B0 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
 		F7A8555B23A6F07B009362B0 /* NoInternetConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */; };
 		F7A8555C23A6F07B009362B0 /* ConflictResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */; };
@@ -564,13 +565,14 @@
 		F714EB8223A4373E00E7AFB5 /* PendingTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTasks.swift; sourceTree = "<group>"; };
 		F714EB8623A4380100E7AFB5 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		F71D087322E24FDE000B1577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FirebaseRemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		F721AB5222E7DEEA00F77F66 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F747DF7C1F9E962900647449 /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigDataSource.swift; sourceTree = "<group>"; };
+		F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftExtensionTests.swift; sourceTree = "<group>"; };
 		F74AF30122F0D1100089BADC /* RxCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -916,6 +918,7 @@
 			isa = PBXGroup;
 			children = (
 				F714EB5C23A303BE00E7AFB5 /* ReposDataSource.swift */,
+				F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */,
 			);
 			path = datasource;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				F7B9A04323A5597D004A4011 /* UIBackgroundFetchResultExtensionsTests.swift */,
 				F7B9A04423A5597D004A4011 /* EventBusMockExtensions.swift */,
 				F7B9A04523A5597D004A4011 /* XCTestCaseExtension.swift */,
+				F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1406,7 +1410,6 @@
 				F7B99FCF23A5567F004A4011 /* eventbus */,
 				F7C0FF2E22E51689009E1203 /* EventBus.swift */,
 				F7096CFF22E7AE31004389A5 /* RemoteConfig.swift */,
-				F721AB4C22E7B01800F77F66 /* FirebaseRemoteConfigDefaults.plist */,
 				F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */,
 				F761644422E8B5F4006F2D2A /* SecureStorage.swift */,
 				F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */,
@@ -1625,7 +1628,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */,
-				F721AB4D22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F71D087222E24FDE000B1577 /* Localizable.strings in Resources */,
 				F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */,
 				F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */,
@@ -1640,7 +1642,6 @@
 			files = (
 				F7B9A06723A57727004A4011 /* Localizable.strings in Resources */,
 				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
-				F721AB4E22E7B01900F77F66 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F7B9A06023A56D09004A4011 /* file.txt in Resources */,
 				F7AC968923A5B83E0037CCA2 /* Color.xcassets in Resources */,
 				F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */,
@@ -1657,7 +1658,6 @@
 				F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */,
 				F76EF43723A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 				F7254EBF23A7BDDA0027F12E /* file.txt in Resources */,
-				F7A8555923A6F074009362B0 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1665,7 +1665,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7A8555423A6F073009362B0 /* FirebaseRemoteConfigDefaults.plist in Resources */,
 				F7254EBA23A7BD350027F12E /* Color.xcassets in Resources */,
 				F7254EB923A7BD350027F12E /* Assets.xcassets in Resources */,
 				F7A8559823A6F0B7009362B0 /* Localizable.strings in Resources */,
@@ -2171,6 +2170,7 @@
 				F7B99F9C23A554AB004A4011 /* UIViewControllerExtensions.swift in Sources */,
 				F76835B81F9ED0BB00219B30 /* UserCredsManager.swift in Sources */,
 				F7C0FF1322E50296009E1203 /* ResponseProcessor.swift in Sources */,
+				F74A9E2723AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */,
 				F7B99FBD23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,
 				F76ACF4922F7841B00B1A41D /* Colors.swift in Sources */,
 				F7B99F9923A554AB004A4011 /* DispatchQueueExtensions.swift in Sources */,
@@ -2272,9 +2272,11 @@
 				F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */,
 				F7AC968623A58A2F0037CCA2 /* ReposDataSourceTests.swift in Sources */,
 				F7B99FC723A554AB004A4011 /* UIImageExtensions.swift in Sources */,
+				F74A9E2823AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */,
 				F714EB7723A4363000E7AFB5 /* BackgroundJobRunner.swift in Sources */,
 				F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */,
 				F721AB5822E8A62B00F77F66 /* KeyValueStorage.swift in Sources */,
+				F74A9E3123AADA1200F56F7C /* RxSwiftExtensionTests.swift in Sources */,
 				F712CD9C22E3B3A700272FF5 /* CoreDataManager.swift in Sources */,
 				F714EB7223A435D500E7AFB5 /* SourceryProtocols.swift in Sources */,
 				F7B9A03323A5596C004A4011 /* TestUtil.swift in Sources */,
@@ -2393,6 +2395,7 @@
 				F714EB7323A435D500E7AFB5 /* SourceryProtocols.swift in Sources */,
 				F767659822F78AB400ED2A11 /* UserCredsManager.swift in Sources */,
 				F767659E22F78AB400ED2A11 /* RepositorySyncService.swift in Sources */,
+				F74A9E2923AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */,
 				F76765A422F78ABA00ED2A11 /* UnauthorizedError.swift in Sources */,
 				F76765BE22F78AD800ED2A11 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F7A8552923A6EE26009362B0 /* LaunchViewControllerPageObject.swift in Sources */,
@@ -2517,6 +2520,7 @@
 				F7A8558123A6F0A8009362B0 /* DispatchQueueExtensions.swift in Sources */,
 				F7A8553923A6EFF1009362B0 /* SnapshotHelper.swift in Sources */,
 				F7A8554C23A6F066009362B0 /* PendingTasksFactory.swift in Sources */,
+				F74A9E2A23AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */,
 				F7A8555623A6F073009362B0 /* SecureStorage.swift in Sources */,
 				F7A8554523A6F058009362B0 /* BackgroundJobRunner.swift in Sources */,
 				F7A8556B23A6F08C009362B0 /* DevelopmentActivityLogger.swift in Sources */,

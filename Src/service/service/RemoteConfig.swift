@@ -1,33 +1,50 @@
 import Firebase
 import Foundation
 
-protocol RemoteConfigProvider {
-    var someRemoteConfigValue: String { get }
-    func fetch()
+protocol RemoteConfigProvider: AutoMockable {
+    var someRemoteConfig: String? { get }
+
+    func fetch(onComplete: @escaping (Result<Void, Error>) -> Void)
+    func activate()
 }
 
+/**
+ Firebase remote config have a fetch and activate type of workflow. There are many strategies to follow with when you call fetch and when you call activate: https://firebase.google.com/docs/remote-config/loading
+
+ When you call activate, globally, all of the values will change which may cause issues with your UI and behavior. You want to call activate when the user is not heavily involved with the UI of the app. The strategy we are following in this app is to use a Teller Repository to periodically call fetch in the background when the app is not open. Then, when the app launches, we will call activate to make the changes that were fetched in the background, make them active.
+ */
 // sourcery: InjectRegister = "RemoteConfigProvider"
 class FirebaseRemoteConfig: RemoteConfigProvider {
     fileprivate let remoteConfig = RemoteConfig.remoteConfig()
     fileprivate let logger: ActivityLogger
 
-    init(logger: ActivityLogger) {
+    init(logger: ActivityLogger, environment: Environment) {
         self.logger = logger
-        remoteConfig.setDefaults(fromPlist: "FirebaseRemoteConfigDefaults")
+
+        if environment.isDevelopment {
+            let settings = RemoteConfigSettings()
+            settings.minimumFetchInterval = 0
+            remoteConfig.configSettings = settings
+        }
     }
 
-    var someRemoteConfigValue: String {
-        return remoteConfig["some_remote_config_value"].stringValue!
+    func activate() {
+        remoteConfig.activate()
     }
 
-    // You usually want to call this during the launch of your application.
-    func fetch() {
+    func fetch(onComplete: @escaping (Result<Void, Error>) -> Void) {
         remoteConfig.fetch { status, error in
             if status == .success {
-                self.remoteConfig.activate()
+                onComplete(Result.success(Void()))
             } else if let error = error {
-                self.logger.errorOccurred(error)
+                onComplete(Result.failure(error))
             }
         }
+    }
+}
+
+extension FirebaseRemoteConfig {
+    var someRemoteConfig: String? {
+        return remoteConfig["some_remote_config_value"].stringValue
     }
 }

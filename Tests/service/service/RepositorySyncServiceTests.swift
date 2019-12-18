@@ -1,35 +1,55 @@
 import Foundation
 @testable import iOSBlanky
+import RxSwift
 import Teller
 import XCTest
 
 /**
  Tests cannot be written until we can mock DriveRepository.
  */
-class RepositorySyncServiceTests: XCTestCase {
+class RepositorySyncServiceTests: UnitTest {
     var repositorySyncService: RepositorySyncService!
 
-    var reposRepositoryMock: ReposRepository!
     var loggerMock: ActivityLoggerMock!
+    var remoteConfigRepositoryMock: RepositoryMock<RemoteConfigDataSource>!
 
     override func setUp() {
-        reposRepositoryMock = RepositoryMock(dataSource: DI.shared.reposDataSource)
+        remoteConfigRepositoryMock = RepositoryMock(dataSource: DI.shared.remoteConfigDataSource)
         loggerMock = ActivityLoggerMock()
 
-        repositorySyncService = TellerRepositorySyncService(reposRepository: reposRepositoryMock, logger: loggerMock)
+        repositorySyncService = TellerRepositorySyncService(remoteConfigRepository: remoteConfigRepositoryMock, logger: loggerMock)
     }
 
-    override func tearDown() {
-        TestUtil.tearDown()
+    func test_syncAll_expectRunAllJobsWithoutForcing() {
+        let expectNoForcing = expectation(description: "Expect refresh to be called without forcing")
 
-        super.tearDown()
+        remoteConfigRepositoryMock.refreshClosure = { force in
+            XCTAssertFalse(force)
+
+            expectNoForcing.fulfill()
+
+            return Single.never()
+        }
+
+        repositorySyncService.syncAll { _ in }
+
+        waitForExpectations()
     }
 
-    func test_syncAll_expectRunAllJobsWithoutForcing() {}
+    func test_syncAll_givenRepositoriesComplete_expectCompleteWithResult() {
+        let expectToComplete = expectation(description: "Expect sync to complete")
+        let expect = [RefreshResult.skipped(reason: .dataNotTooOld)]
 
-    func test_syncAll_givenRepositoriesComplete_expectCompleteWithResult() {}
+        remoteConfigRepositoryMock.refreshClosure = { force in
+            Single.just(expect[0])
+        }
 
-    func test_syncDriveUpdate_givenForce_expectValueGetsPassedToRepository() {}
+        repositorySyncService.syncAll { actual in
+            XCTAssertEqual(expect, actual)
 
-    func test_syncDriveUpdate_givenRepositoryComplete_expectCompleteWithResult() {}
+            expectToComplete.fulfill()
+        }
+
+        waitForExpectations()
+    }
 }
