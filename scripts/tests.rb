@@ -6,9 +6,9 @@ ci = Trent.new(:local => true)
 ci.config_github(ENV['DANGER_GITHUB_API_TOKEN'])
 
 def upload_results(dirname, test_type, test_results_local_path, index_html_file)
-  remote_results_path = "/#{ENV['TRAVIS_REPO_SLUG']}/#{ENV['TRAVIS_BUILD_NUMBER']}/#{ENV['TRAVIS_JOB_NUMBER']}/#{dirname}"
+  remote_results_path = "/#{ENV["AWS_S3_BUCKET_PATH_TEST_RESULTS"]}/#{ENV['TRAVIS_REPO_SLUG']}/#{ENV['TRAVIS_BUILD_NUMBER']}/#{ENV['TRAVIS_JOB_NUMBER']}/#{dirname}"
 
-  ci.sh("curl -o- https://raw.githubusercontent.com/levibostian/ci-bootstrap/master/aws/s3-upload.sh | AWS_ACCESS_KEY_ID=#{ENV["AWS_IAM_ACCESS_KEY"]} AWS_SECRET_ACCESS_KEY=#{ENV["AWS_IAM_ACCESS_SECRET"]} BUCKET_NAME=#{ENV["AWS_S3_BUCKET_NAME_TEST_RESULTS"]} BUCKET_PATH=#{ENV["AWS_S3_BUCKET_PATH_TEST_RESULTS"]} UPLOAD_PATH=#{test_results_local_path} REGION=#{ENV["AWS_REGION"]} bash")
+  ci.sh("curl -o- https://raw.githubusercontent.com/levibostian/ci-bootstrap/master/aws/s3-upload.sh | AWS_ACCESS_KEY_ID=#{ENV["AWS_IAM_ACCESS_KEY"]} AWS_SECRET_ACCESS_KEY=#{ENV["AWS_IAM_ACCESS_SECRET"]} BUCKET_NAME=#{ENV["AWS_S3_BUCKET_NAME_TEST_RESULTS"]} BUCKET_PATH=#{remote_results_path} UPLOAD_PATH=#{test_results_local_path} REGION=#{ENV["AWS_REGION"]} bash")
 
   s3_website_host_url = "http://#{ENV["AWS_S3_BUCKET_NAME_TEST_RESULTS"]}.s3-website-#{ENV["AWS_REGION"]}.amazonaws.com"
   tests_results_url = "#{s3_website_host_url}#{remote_results_path}/#{index_html_file}"

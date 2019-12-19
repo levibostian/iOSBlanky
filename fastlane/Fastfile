@@ -3,7 +3,7 @@ Dotenv.load("../.env")
 
 def get_env(name)
   value = ENV[name]
-  raise "Forgot to define #{name} in .env" unless value 
+  raise "Forgot to define #{name} in environment variables" unless value 
 
   return value 
 end 
@@ -29,9 +29,10 @@ platform :ios do
   # Requires `brew install imagemagick` for framing to work
   desc "Take screenshots for the store"
   lane :take_screenshots do |values|
-    capture_ios_screenshots(
-      skip_open_summary: true
-    )    
+    # No need to capture screenshots. They will be generated during the testing phase that happens before the deployment. 
+    # capture_ios_screenshots(
+    #   skip_open_summary: true
+    # )    
     frame_screenshots()
   end 
   
@@ -79,11 +80,28 @@ platform :ios do
     if ENV["TRAVIS_TAG"].end_with?("-beta")
       beta_build_release(changelog, description)
 
-      publicity_message = "This update is *not* available to the public. The update was uploaded to the TestFlight app and is only available for beta testing. You can download the update with the TestFlight app on your phone, now."
+      publicity_message = "This update of the app is *not* available to the public. The update was uploaded to the TestFlight app and is only available for beta testing. You can download this new update with the TestFlight app right now."
       notify_app_update(buildVersion, publicity_message)
     else
       take_screenshots()
       prod_build_upload()
+
+      notification_message_body = [      
+        "#{env[:app_name]}, build: #{buildVersion} uploaded to App Store, but not released yet",        
+        "\n",
+        "You need to login to Apple Developer Account and view the metadata of this release to make sure that generated screenshots and metadata lok good.",        
+        "\n",
+        "(Note: this is an automated message)"
+      ].join("\n") + "\n"
+
+      aws_sns_topic(
+        access_key: ENV["AWS_IAM_ACCESS_KEY"],
+        secret_access_key: ENV["AWS_IAM_ACCESS_SECRET"],
+        region: ENV["AWS_REGION"],
+        topic_arn: ENV["AWS_SNS_DEVELOPER_UPDATE_TOPIC"],
+        subject: "**Check metadata** for #{env[:app_name]} app update",
+        message: notification_message_body
+      )
     end     
   end 
 
@@ -156,7 +174,6 @@ platform :ios do
       beta_app_feedback_email: env[:testflight_beta_feedback_email],
       distribute_external: false,
       ipa: './build/Prod.ipa',
-      app_platform: 'ios',
       wait_for_uploaded_build: true,
       skip_waiting_for_build_processing: false) # I have decided to not skip waiting for build process because with testflight, skipping will result in changelog and such not being updated and sending app to external testers.
   end

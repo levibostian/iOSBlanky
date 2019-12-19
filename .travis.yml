@@ -32,11 +32,13 @@ env:
     # AWS_S3_BUCKET_NAME_TEST_RESULTS=name-of-bucket
     # AWS_S3_BUCKET_PATH_TEST_RESULTS=test_results
     # AWS_SNS_APP_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:app-deployed-notifier
+    # AWS_SNS_DEVELOPER_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:developer-notifier
     # DEVELOPER_EMAIL=you@example.com
     # DEVELOPER_FIRST_NAME=First
     # DEVELOPER_LAST_NAME=First
     # DEVELOPER_PHONE_NUMBER=+1 3333333333
     # DEVELOPER_FIRST_NAME=First
+    TESTFLIGHT_BETA_FEEDBACK_EMAIL=you@example.com 
     AWS_REGION=us-east-1
 
 jobs:
@@ -49,10 +51,14 @@ jobs:
       - ruby scripts/tests.rb 
       - bundle exec danger --fail-on-errors=true
   - stage: deploy
-    script: ./set_environment.rb production; bundle exec fastlane deploy
+    script:
+      - ./set_environment.rb
+      - ruby scripts/tests.rb
+      - bundle exec fastlane deploy
   - stage: cron
-    script: 
-      - ./set_environment.rb production; bundle exec fastlane refresh_dsyms;
+    script:
+      - ./set_environment.rb production
+      - bundle exec fastlane refresh_dsyms
 
 stages:
   - name: pr

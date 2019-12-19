@@ -6,20 +6,17 @@ Dotenv.load('.env')
 
 ci = Trent.new(:local => true)
 
-env_options = ["development", "production"]
+env_options = [:development, :beta, :production]
 envs = Hash.new 
-envs[env_options[0]] = { :cici_args => "" }
-envs[env_options[1]] = { :cici_args => "--set production" }
+envs[:development] = { :cici_args => "" }
+envs[:beta] = { :cici_args => "--set beta" }
+envs[:production] = { :cici_args => "--set production" }
 
 help = lambda { 
   puts "Usage: set_environment.rb [env]"
   puts "  env - Options: #{env_options.join(", ")}"
   exit 1
-}
-
-if ARGV.empty?
-  help.call
-end 
+} 
 
 case ARGV[0]
 when env_options[0]
@@ -27,7 +24,12 @@ when env_options[0]
 when env_options[1]
   env = envs[env_options[1]]
 else 
-  help.call
+  if !ENV["TRAVIS_TAG"].nil?
+    env = ENV["TRAVIS_TAG"].end_with?("-beta") ? :beta : :production
+    env = envs[env]
+  else 
+    help.call
+  end 
 end 
 
 ci.sh("cici decrypt #{env[:cici_args]} --verbose")
