@@ -38,7 +38,7 @@ def commonDepencencies
     pod 'IQKeyboardManagerSwift', '~> 6.4.0'
     pod 'Wendy', '~> 0.3.0'
     pod 'SnapKit', '~> 5.0.0'
-    pod 'Teller', '~> 0.5.0'
+    pod 'Teller', '~> 0.5.1'
 end 
 
 target name_of_project do
