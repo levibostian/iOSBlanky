@@ -119,7 +119,6 @@ PODS:
   - nanopb/encode (0.3.901)
   - PleaseHold (0.2.0)
   - Protobuf (3.9.0)
-  - Require (2.0.0)
   - RxBlocking (5.0.1):
     - RxSwift (~> 5)
   - RxCocoa (5.0.0):
@@ -140,8 +139,7 @@ PODS:
   - SwiftLint (0.34.0)
   - Teller (0.5.0):
     - RxSwift (~> 5.0)
-  - Wendy (0.3.0):
-    - Require (~> 2.0.0)
+  - Wendy (0.4.0)
 
 DEPENDENCIES:
   - Crashlytics (~> 3.13.4)
@@ -167,7 +165,7 @@ DEPENDENCIES:
   - SwiftFormat/CLI
   - SwiftLint
   - Teller (~> 0.5.0)
-  - Wendy (~> 0.3.0)
+  - Wendy (~> 0.4.0)
 
 SPEC REPOS:
   trunk:
@@ -196,7 +194,6 @@ SPEC REPOS:
     - nanopb
     - PleaseHold
     - Protobuf
-    - Require
     - RxBlocking
     - RxCocoa
     - RxCoreData
@@ -237,7 +234,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   PleaseHold: 022c1191ee68720b2c36550355c48aa5c6356c08
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
-  Require: f93abc18dda985f665465cf027cea7166455fb28
   RxBlocking: c5e090f42d046df8b0e7752742510f349963710f
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
@@ -250,8 +246,8 @@ SPEC CHECKSUMS:
   SwiftFormat: d0e2118da5bfccc0158f0b8eff80c476c5acd984
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   Teller: c5fcfd9d4b502db58352952510bfe35452ee4d1b
-  Wendy: ec0dca93fa6280e1ae2dead8da6551ad8a74d76b
+  Wendy: b9baaa6ef12e8e5e407ae2e1e721009e2875ea1a
 
-PODFILE CHECKSUM: 498d3e3e6b8eaeffe2318b0438810ac215a44cb8
+PODFILE CHECKSUM: 347fc28259928e2c35179c72730f4eb05c85e5a6
 
 COCOAPODS: 1.8.4

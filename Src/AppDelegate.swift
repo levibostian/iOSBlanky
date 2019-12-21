@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.goToMainPartOfApp()
 
                 // Need to start wendy when app starts up.
-                Wendy.shared.runTasks(filter: nil)
+                Wendy.shared.runTasks(filter: nil, onComplete: nil)
 
                 self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
             }
