@@ -27,6 +27,7 @@ enum Dependency: CaseIterable {
     case dataDestroyer
     case database
     case remoteConfigProvider
+    case gitHubRequestRunner
     case secureStorage
     case gitHubMoyaProvider
     case moyaResponseProcessor
@@ -83,6 +84,7 @@ class DI {
         case .dataDestroyer: return _dataDestroyer as! T
         case .database: return _database as! T
         case .remoteConfigProvider: return _remoteConfigProvider as! T
+        case .gitHubRequestRunner: return _gitHubRequestRunner as! T
         case .secureStorage: return _secureStorage as! T
         case .gitHubMoyaProvider: return _gitHubMoyaProvider as! T
         case .moyaResponseProcessor: return _moyaResponseProcessor as! T
@@ -151,7 +153,7 @@ class DI {
     }
 
     var gitHubAPI: GitHubAPI {
-        return AppGitHubApi(gitHubMoyaProvider: _gitHubMoyaProvider, jsonAdapter: _jsonAdapter, responseProcessor: _moyaResponseProcessor)
+        return AppGitHubApi(requestRunner: _gitHubRequestRunner, jsonAdapter: _jsonAdapter, activityLogger: _activityLogger, eventBus: _eventBus)
     }
 
     // NotificationCenterManager
@@ -283,6 +285,14 @@ class DI {
         return FirebaseRemoteConfig(logger: _activityLogger, environment: _environment)
     }
 
+    // GitHubRequestRunner (custom. property getter provided via extension)
+    private var _gitHubRequestRunner: GitHubRequestRunner {
+        if let overridenDep = self.overrides[.gitHubRequestRunner] {
+            return overridenDep as! GitHubRequestRunner
+        }
+        return gitHubRequestRunner
+    }
+
     // SecureStorage
     private var _secureStorage: SecureStorage {
         if let overridenDep = self.overrides[.secureStorage] {
@@ -312,7 +322,7 @@ class DI {
     }
 
     var moyaResponseProcessor: MoyaResponseProcessor {
-        return MoyaResponseProcessor(jsonAdapter: _jsonAdapter, activityLogger: _activityLogger, eventBus: _eventBus)
+        return MoyaResponseProcessor(jsonAdapter: _jsonAdapter)
     }
 
     // EventBus

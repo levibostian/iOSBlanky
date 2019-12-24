@@ -7,8 +7,12 @@ enum Strings: String, CaseIterable {
     case noInternetConnectionErrorMessage
     case networkConnectionIssueErrorMessage
     case uncaughtNetworkErrorMessage
+    case developerNetworkErrorMessage
     case error500ResponseCode
     case error401ResponseCode
+    case userHasNoGithubRepos
+    case cannotPerformRequestUntilErrorsFixed
+    case cannotPerformHttpRequestPendingTasksFailed
 }
 
 extension Strings {
