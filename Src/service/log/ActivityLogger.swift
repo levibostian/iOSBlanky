@@ -6,7 +6,7 @@ import Foundation
 protocol ActivityLogger: AutoMockable {
     func setUserId(id: String?)
     // meant for analytics purposes
-    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String)
+    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String)
     // meant for debugging purposes only.
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String)
     func httpRequestEvent(method: String, url: String, reqBody: String?)
@@ -16,7 +16,7 @@ protocol ActivityLogger: AutoMockable {
 }
 
 extension ActivityLogger {
-    func appEventOccurred(_ event: String, extras: [String: Any]?, file: StaticString = #file) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, file: StaticString = #file) {
         appEventOccurred(event, extras: extras, from: "\(file)".pathToFileName())
     }
 
@@ -29,6 +29,7 @@ enum ActivityEvent {
     case userLoggedIn
     case userLoggedOut
     case userSearchedReposForGitHubUser
+    case errorOccurred
 }
 
 extension ActivityEvent {
@@ -37,6 +38,7 @@ extension ActivityEvent {
         case .userLoggedIn: return "User_logged_in"
         case .userLoggedOut: return "User_logged_out"
         case .userSearchedReposForGitHubUser: return "User_searched_repos_for_github_user"
+        case .errorOccurred: return "Error_occurred"
         }
     }
 }
@@ -57,16 +59,12 @@ class AppActivityLogger: ActivityLogger {
         loggers.forEach { $0.setUserId(id: id) }
     }
 
-    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String) {
-        let eventName = Util.makeEventNameAppropriate(event)
-
-        loggers.forEach { $0.appEventOccurred(eventName, extras: extras, from: file) }
+    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
+        loggers.forEach { $0.appEventOccurred(event, extras: extras, from: file) }
     }
 
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {
-        let eventName = Util.makeEventNameAppropriate(event)
-
-        loggers.forEach { $0.breadcrumb(eventName, extras: extras, from: file) }
+        loggers.forEach { $0.breadcrumb(event, extras: extras, from: file) }
     }
 
     func httpRequestEvent(method: String, url: String, reqBody: String?) {
@@ -83,24 +81,5 @@ class AppActivityLogger: ActivityLogger {
 
     func errorOccurred(_ error: Error) {
         loggers.forEach { $0.errorOccurred(error) }
-    }
-
-    class Util {
-        // Only allow letters, numbers, or underscores
-        class func makeEventNameAppropriate(_ name: String) -> String {
-            let okayChars = Set("abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
-            let replacementChar = "_"
-
-            var returnName = name
-            name.forEach { character in
-                let characterString = String(character)
-
-                if !okayChars.contains(character) {
-                    returnName = returnName.replacingOccurrences(of: characterString, with: replacementChar)
-                }
-            }
-
-            return returnName
-        }
     }
 }

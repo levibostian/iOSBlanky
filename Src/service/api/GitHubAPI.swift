@@ -3,37 +3,73 @@ import Moya
 import RxSwift
 
 protocol GitHubAPI: AutoMockable {
-    func getUserRepos(username: String) -> Single<Result<[Repo], Error>>
+    func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], HttpRequestError>>
 }
 
+/**
+ Responsibilities:
+ 1. Log to logger if errors
+ 2. Call eventbus if needed
+ 3. Catch extra errors beyond basics such as 500 status code that Request Runner catches for you
+
+ This is the default functionality of the GitHub API. Do it all here.
+ */
 // sourcery: InjectRegister = "GitHubAPI"
 class AppGitHubApi: GitHubAPI {
-    fileprivate let moyaProvider: GitHubMoyaProvider
     fileprivate let jsonAdapter: JsonAdapter
-    fileprivate let responseProcessor: MoyaResponseProcessor
+    fileprivate let requestRunner: GitHubRequestRunner
+    fileprivate let activityLogger: ActivityLogger
+    fileprivate let eventBus: EventBus
 
-    init(gitHubMoyaProvider: GitHubMoyaProvider, jsonAdapter: JsonAdapter, responseProcessor: MoyaResponseProcessor) {
-        self.moyaProvider = gitHubMoyaProvider
+    init(requestRunner: GitHubRequestRunner, jsonAdapter: JsonAdapter, activityLogger: ActivityLogger, eventBus: EventBus) {
+        self.requestRunner = requestRunner
         self.jsonAdapter = jsonAdapter
-        self.responseProcessor = responseProcessor
+        self.activityLogger = activityLogger
+        self.eventBus = eventBus
     }
 
-    func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], Error>> {
-        return moyaProvider.rx.request(GitHubService.getUserRepos(username: username))
-            .map { (response) -> ProcessedResponse in
-                self.responseProcessor.process(response, extraResponseHandling: { (statusCode) -> Error? in
-                    if statusCode == 404 {
-                        return ResposApiError.usernameDoesNotExist(username: username)
+    func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], HttpRequestError>> {
+        return request(.getUserRepos(username: username),
+                       preRunPendingTask: .getUserRepos,
+                       successHandler: { (processedResponse) -> [Repo] in
+                           self.jsonAdapter.fromJsonArray(processedResponse.data)
+                       }, extraErrorHandling: { (response) -> HttpRequestError? in
+                           if response.statusCode == 404 {
+                               return HttpRequestError(fault: .user, message: Strings.userHasNoGithubRepos.localized, underlyingError: nil)
+                           }
+                           return nil
+        })
+    }
+
+    fileprivate func request<T: Any>(_ target: GitHubService, preRunPendingTask: PendingTaskCollectionId, successHandler: @escaping (ProcessedResponse) -> T, extraErrorHandling: @escaping (ProcessedResponse) -> HttpRequestError?) -> Single<Result<T, HttpRequestError>> {
+        return requestRunner.request(target, preRunPendingTask: preRunPendingTask, extraResponseHandling: { processedResponse -> HttpRequestError? in
+            switch processedResponse.statusCode {
+            case 401:
+                self.eventBus.post(.logout, extras: nil)
+                // No need to give a message for error as the eventbus post should restart the app and ask for a login.
+                return HttpRequestError(fault: .network, message: "", underlyingError: nil)
+            default: return extraErrorHandling(processedResponse)
+            }
+        })
+            .map { (result) -> Result<ProcessedResponse, HttpRequestError> in
+                switch result {
+                case .failure(let requestError):
+                    switch requestError.fault {
+                    case .developer:
+                        self.activityLogger.errorOccurred(requestError)
+                    default: break
                     }
-                    return nil
-                })
-            }.map { (processedResponse) -> Result<[Repo], Error> in
-                if let error = processedResponse.error {
-                    return Result.failure(error)
+                default: break
                 }
-                return Result.success(self.jsonAdapter.fromJsonArray(processedResponse.response!.data))
-            }.catchError { (error) -> Single<Result<[Repo], Error>> in
-                Single.just(Result.failure(self.responseProcessor.process(error).error!))
+
+                return result
+            }.map { (result) -> Result<T, HttpRequestError> in
+                switch result {
+                case .success(let processedResponse):
+                    return Result.success(successHandler(processedResponse))
+                case .failure(let requestError):
+                    return Result.failure(requestError)
+                }
             }
     }
 }

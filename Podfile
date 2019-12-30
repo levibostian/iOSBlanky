@@ -18,7 +18,7 @@ def testingDependencies
 end 
 
 def commonDepencencies    
-    pod 'Moya/RxSwift', '~> 14.0.0-beta.6'
+    pod 'Moya', '~> 14.0.0-beta.6'
     pod 'RxCocoa', '~> 5.0.0'
     pod "RxCoreData", "~> 1.0.0"
 
@@ -36,9 +36,9 @@ def commonDepencencies
     pod 'PleaseHold', '~> 0.2'
     pod 'Swapper', '~> 0.1'
     pod 'IQKeyboardManagerSwift', '~> 6.4.0'
-    pod 'Wendy', '~> 0.3.0'
+    pod 'Wendy', '~> 0.5.0'
     pod 'SnapKit', '~> 5.0.0'
-    pod 'Teller', '~> 0.5.0'
+    pod 'Teller', '~> 0.6.0'
 end 
 
 target name_of_project do

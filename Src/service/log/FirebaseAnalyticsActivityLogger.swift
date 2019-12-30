@@ -6,8 +6,10 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         Analytics.setUserID(id)
     }
 
-    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String) {
-        Analytics.logEvent(event, parameters: extras)
+    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
+        let eventName = Util.makeEventNameAppropriate(event.description)
+
+        Analytics.logEvent(eventName, parameters: extras)
     }
 
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {
@@ -27,6 +29,26 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
     }
 
     func errorOccurred(_ error: Error) {
-        // No need to log this to analytics.
+        // Logged event so we can send a notification to people who have encountered an issue when we have new updates for them.
+        appEventOccurred(.errorOccurred, extras: nil)
+    }
+
+    class Util {
+        // Only allow letters, numbers, or underscores
+        class func makeEventNameAppropriate(_ name: String) -> String {
+            let okayChars = Set("abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
+            let replacementChar = "_"
+
+            var returnName = name
+            name.forEach { character in
+                let characterString = String(character)
+
+                if !okayChars.contains(character) {
+                    returnName = returnName.replacingOccurrences(of: characterString, with: replacementChar)
+                }
+            }
+
+            return returnName
+        }
     }
 }

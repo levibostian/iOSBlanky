@@ -26,6 +26,7 @@ class RemoteConfigDataSource: RepositoryDataSource {
     typealias Cache = Void
     typealias Requirements = RemoteConfigDataSourceRequirements
     typealias FetchResult = Void
+    typealias FetchError = Error
 
     fileprivate let remoteConfigProvider: RemoteConfigProvider
 
@@ -36,7 +37,7 @@ class RemoteConfigDataSource: RepositoryDataSource {
     // 12 hours is the default time that Firebase remote config fetches new data.
     var maxAgeOfCache: Period = Period(unit: 12, component: .hour)
 
-    func fetchFreshCache(requirements: RemoteConfigDataSourceRequirements) -> Single<FetchResponse<Void>> {
+    func fetchFreshCache(requirements: RemoteConfigDataSourceRequirements) -> Single<FetchResponse<Void, FetchError>> {
         return Single.create { (observer) -> Disposable in
             self.remoteConfigProvider.fetch { result in
                 observer(.success(result))

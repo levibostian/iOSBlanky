@@ -40,6 +40,7 @@ class ReposDataSource: RepositoryDataSource {
     typealias Cache = [Repo]
     typealias Requirements = ReposDataSourceRequirements
     typealias FetchResult = [Repo]
+    typealias FetchError = HttpRequestError
 
     fileprivate let githubApi: GitHubAPI
     fileprivate let db: Database
@@ -51,7 +52,7 @@ class ReposDataSource: RepositoryDataSource {
 
     var maxAgeOfCache: Period = Period(unit: 3, component: .day)
 
-    func fetchFreshCache(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo]>> {
+    func fetchFreshCache(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo], FetchError>> {
         return githubApi.getUserRepos(username: requirements.githubUsername)
     }
 
