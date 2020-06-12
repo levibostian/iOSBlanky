@@ -5,6 +5,10 @@ class MoyaProviderMocker<Service: TargetType> {
     class Queue {
         private var queue: [QueueResponse] = []
 
+        var count: Int {
+            return queue.count
+        }
+
         func pop() -> QueueResponse {
             return queue.remove(at: 0)
         }
@@ -42,7 +46,7 @@ class MoyaProviderMocker<Service: TargetType> {
         return MoyaProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
     }
 
-    private let queue: Queue = Queue()
+    let queue: Queue = Queue()
     private let jsonAdapter: JsonAdapter = DI.shared.jsonAdapter
 
     func queueResponse(_ statusCode: Int, data: String) {

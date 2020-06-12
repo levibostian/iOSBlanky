@@ -39,11 +39,11 @@ class ActivityLoggerMock: ActivityLogger {
         return appEventOccurredExtrasFromCallsCount > 0
     }
 
-    var appEventOccurredExtrasFromReceivedArguments: (event: String, extras: [String: Any]?, file: String)?
-    var appEventOccurredExtrasFromReceivedInvocations: [(event: String, extras: [String: Any]?, file: String)] = []
-    var appEventOccurredExtrasFromClosure: ((String, [String: Any]?, String) -> Void)?
+    var appEventOccurredExtrasFromReceivedArguments: (event: ActivityEvent, extras: [String: Any]?, file: String)?
+    var appEventOccurredExtrasFromReceivedInvocations: [(event: ActivityEvent, extras: [String: Any]?, file: String)] = []
+    var appEventOccurredExtrasFromClosure: ((ActivityEvent, [String: Any]?, String) -> Void)?
 
-    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
         mockCalled = true
         appEventOccurredExtrasFromCallsCount += 1
         appEventOccurredExtrasFromReceivedArguments = (event: event, extras: extras, file: file)
@@ -252,11 +252,11 @@ class DebugActivityLoggerMock: DebugActivityLogger {
         return appEventOccurredExtrasFromCallsCount > 0
     }
 
-    var appEventOccurredExtrasFromReceivedArguments: (event: String, extras: [String: Any]?, file: String)?
-    var appEventOccurredExtrasFromReceivedInvocations: [(event: String, extras: [String: Any]?, file: String)] = []
-    var appEventOccurredExtrasFromClosure: ((String, [String: Any]?, String) -> Void)?
+    var appEventOccurredExtrasFromReceivedArguments: (event: ActivityEvent, extras: [String: Any]?, file: String)?
+    var appEventOccurredExtrasFromReceivedInvocations: [(event: ActivityEvent, extras: [String: Any]?, file: String)] = []
+    var appEventOccurredExtrasFromClosure: ((ActivityEvent, [String: Any]?, String) -> Void)?
 
-    func appEventOccurred(_ event: String, extras: [String: Any]?, from file: String) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
         mockCalled = true
         appEventOccurredExtrasFromCallsCount += 1
         appEventOccurredExtrasFromReceivedArguments = (event: event, extras: extras, file: file)
@@ -473,12 +473,12 @@ class GitHubAPIMock: GitHubAPI {
         return getUserReposUsernameCallsCount > 0
     }
 
-    var getUserReposUsernameReceivedUsername: String?
-    var getUserReposUsernameReceivedInvocations: [String] = []
-    var getUserReposUsernameReturnValue: Single<Result<[Repo], Error>>!
-    var getUserReposUsernameClosure: ((String) -> Single<Result<[Repo], Error>>)?
+    var getUserReposUsernameReceivedUsername: GitHubUsername?
+    var getUserReposUsernameReceivedInvocations: [GitHubUsername] = []
+    var getUserReposUsernameReturnValue: Single<Result<[Repo], HttpRequestError>>!
+    var getUserReposUsernameClosure: ((GitHubUsername) -> Single<Result<[Repo], HttpRequestError>>)?
 
-    func getUserRepos(username: String) -> Single<Result<[Repo], Error>> {
+    func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], HttpRequestError>> {
         mockCalled = true
         getUserReposUsernameCallsCount += 1
         getUserReposUsernameReceivedUsername = username
@@ -596,6 +596,26 @@ class PendingTasksMock: PendingTasks {
         mockCalled = true
         deleteAllCallsCount += 1
         deleteAllClosure?()
+    }
+
+    // MARK: - runCollectionTasks
+
+    var runCollectionTasksForCallsCount = 0
+    var runCollectionTasksForCalled: Bool {
+        return runCollectionTasksForCallsCount > 0
+    }
+
+    var runCollectionTasksForReceivedCollectionId: PendingTaskCollectionId?
+    var runCollectionTasksForReceivedInvocations: [PendingTaskCollectionId] = []
+    var runCollectionTasksForReturnValue: Single<RunCollectionTasksResult>!
+    var runCollectionTasksForClosure: ((PendingTaskCollectionId) -> Single<RunCollectionTasksResult>)?
+
+    func runCollectionTasks(for collectionId: PendingTaskCollectionId) -> Single<RunCollectionTasksResult> {
+        mockCalled = true
+        runCollectionTasksForCallsCount += 1
+        runCollectionTasksForReceivedCollectionId = collectionId
+        runCollectionTasksForReceivedInvocations.append(collectionId)
+        return runCollectionTasksForClosure.map { $0(collectionId) } ?? runCollectionTasksForReturnValue
     }
 }
 

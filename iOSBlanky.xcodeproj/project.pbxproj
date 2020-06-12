@@ -106,6 +106,14 @@
 		F7254EC923A7BE4F0027F12E /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00823A5596C004A4011 /* TestUtil.swift */; };
 		F727FB2F22E27A1D00E56E2C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F727FB2D22E27A1D00E56E2C /* Model.xcdatamodeld */; };
 		F727FB3122E2805200E56E2C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F727FB3022E2805200E56E2C /* CoreDataManager.swift */; };
+		F736689A23B165640090E858 /* PendingTaskCollectionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689923B165640090E858 /* PendingTaskCollectionId.swift */; };
+		F736689B23B165640090E858 /* PendingTaskCollectionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689923B165640090E858 /* PendingTaskCollectionId.swift */; };
+		F736689C23B165640090E858 /* PendingTaskCollectionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689923B165640090E858 /* PendingTaskCollectionId.swift */; };
+		F736689D23B165640090E858 /* PendingTaskCollectionId.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689923B165640090E858 /* PendingTaskCollectionId.swift */; };
+		F736689F23B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
+		F73668A023B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
+		F73668A123B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
+		F73668A223B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
 		F74A9E2723AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
 		F74A9E2823AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
@@ -113,6 +121,11 @@
 		F74A9E2A23AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */; };
 		F74A9E3123AADA1200F56F7C /* RxSwiftExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */; };
 		F74AF30222F0D1100089BADC /* RxCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74AF30122F0D1100089BADC /* RxCoreData.framework */; };
+		F74D1CA523B15720001768BD /* HttpRequestRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D1CA423B15720001768BD /* HttpRequestRunnerTests.swift */; };
+		F74D1CA723B158DB001768BD /* ResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D1CA623B158DB001768BD /* ResultExtensions.swift */; };
+		F74D1CA823B158DB001768BD /* ResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D1CA623B158DB001768BD /* ResultExtensions.swift */; };
+		F74D1CA923B158DB001768BD /* ResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D1CA623B158DB001768BD /* ResultExtensions.swift */; };
+		F74D1CAB23B15A54001768BD /* ResponseProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74D1CAA23B15A54001768BD /* ResponseProcessorTests.swift */; };
 		F751BAE71F9E6CCF0048BB3D /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */; };
 		F75944CA23A1B43A009258D9 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
 		F75944CB23A1B43A009258D9 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
@@ -143,10 +156,7 @@
 		F767659D22F78AB400ED2A11 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761644422E8B5F4006F2D2A /* SecureStorage.swift */; };
 		F767659E22F78AB400ED2A11 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
 		F767659F22F78AB400ED2A11 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
-		F76765A022F78ABA00ED2A11 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
-		F76765A122F78ABA00ED2A11 /* NoInternetConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */; };
 		F76765A222F78ABA00ED2A11 /* ConflictResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */; };
-		F76765A322F78ABA00ED2A11 /* NetworkConnectionIssueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1B22E507E3009E1203 /* NetworkConnectionIssueError.swift */; };
 		F76765A422F78ABA00ED2A11 /* UnauthorizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1E22E50847009E1203 /* UnauthorizedError.swift */; };
 		F76765A522F78ABA00ED2A11 /* UnhandledHttpResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2122E5086C009E1203 /* UnhandledHttpResponseError.swift */; };
 		F76765A622F78ABA00ED2A11 /* UserEnteredBadDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2422E50888009E1203 /* UserEnteredBadDataError.swift */; };
@@ -215,6 +225,10 @@
 		F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
 		F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
 		F79BE39E22F11329008EB064 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
+		F7A228D423B10A77009E31A2 /* HttpRequestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A228D323B10A77009E31A2 /* HttpRequestRunner.swift */; };
+		F7A228D523B10A77009E31A2 /* HttpRequestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A228D323B10A77009E31A2 /* HttpRequestRunner.swift */; };
+		F7A228D623B10A77009E31A2 /* HttpRequestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A228D323B10A77009E31A2 /* HttpRequestRunner.swift */; };
+		F7A228D723B10A77009E31A2 /* HttpRequestRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A228D323B10A77009E31A2 /* HttpRequestRunner.swift */; };
 		F7A8552923A6EE26009362B0 /* LaunchViewControllerPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8552823A6EE26009362B0 /* LaunchViewControllerPageObject.swift */; };
 		F7A8553923A6EFF1009362B0 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A8553823A6EFF1009362B0 /* SnapshotHelper.swift */; };
 		F7A8553A23A6F015009362B0 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7AC968D23A69EC50037CCA2 /* UITest.swift */; };
@@ -247,10 +261,7 @@
 		F7A8555623A6F073009362B0 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761644422E8B5F4006F2D2A /* SecureStorage.swift */; };
 		F7A8555723A6F073009362B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
 		F7A8555823A6F073009362B0 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F79BE39C22F11329008EB064 /* FileStorage.swift */; };
-		F7A8555A23A6F07B009362B0 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
-		F7A8555B23A6F07B009362B0 /* NoInternetConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */; };
 		F7A8555C23A6F07B009362B0 /* ConflictResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */; };
-		F7A8555D23A6F07B009362B0 /* NetworkConnectionIssueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1B22E507E3009E1203 /* NetworkConnectionIssueError.swift */; };
 		F7A8555E23A6F07B009362B0 /* UnauthorizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1E22E50847009E1203 /* UnauthorizedError.swift */; };
 		F7A8555F23A6F07B009362B0 /* UnhandledHttpResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2122E5086C009E1203 /* UnhandledHttpResponseError.swift */; };
 		F7A8556023A6F07B009362B0 /* UserEnteredBadDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2422E50888009E1203 /* UserEnteredBadDataError.swift */; };
@@ -392,7 +403,7 @@
 		F7B9A02523A5596C004A4011 /* AtomicCounterCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FF123A5596C004A4011 /* AtomicCounterCollectionTests.swift */; };
 		F7B9A02623A5596C004A4011 /* EventBusRegisterCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FF223A5596C004A4011 /* EventBusRegisterCounterTests.swift */; };
 		F7B9A02723A5596C004A4011 /* BackgroundJobRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FF423A5596C004A4011 /* BackgroundJobRunnerTests.swift */; };
-		F7B9A02B23A5596C004A4011 /* ActivityLoggerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FFC23A5596C004A4011 /* ActivityLoggerTest.swift */; };
+		F7B9A02B23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FFC23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift */; };
 		F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00023A5596C004A4011 /* EventBusExtrasConverterTests.swift */; };
 		F7B9A02D23A5596C004A4011 /* NotificationCenterEventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00123A5596C004A4011 /* NotificationCenterEventBusTests.swift */; };
 		F7B9A02E23A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00223A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift */; };
@@ -437,17 +448,15 @@
 		F7B9A07423A57FC1004A4011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F75DCD891CD8F10D00B8941F /* Assets.xcassets */; };
 		F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */; };
 		F7B9A07C23A581C7004A4011 /* RepoFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A07B23A581C7004A4011 /* RepoFakes.swift */; };
+		F7BE477623AEDA2900353E1E /* HttpRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BE477523AEDA2900353E1E /* HttpRequestError.swift */; };
+		F7BE477723AEDA2900353E1E /* HttpRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BE477523AEDA2900353E1E /* HttpRequestError.swift */; };
+		F7BE477823AEDA2900353E1E /* HttpRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BE477523AEDA2900353E1E /* HttpRequestError.swift */; };
+		F7BE477923AEDA2900353E1E /* HttpRequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7BE477523AEDA2900353E1E /* HttpRequestError.swift */; };
 		F7C0FF0C22E4FDB8009E1203 /* RepoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */; };
-		F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
-		F7C0FF1122E50257009E1203 /* ResponseServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */; };
 		F7C0FF1322E50296009E1203 /* ResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */; };
 		F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */; };
-		F7C0FF1622E505BB009E1203 /* NoInternetConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */; };
-		F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */; };
 		F7C0FF1922E505F4009E1203 /* ConflictResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */; };
 		F7C0FF1A22E505F4009E1203 /* ConflictResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */; };
-		F7C0FF1C22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1B22E507E3009E1203 /* NetworkConnectionIssueError.swift */; };
-		F7C0FF1D22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1B22E507E3009E1203 /* NetworkConnectionIssueError.swift */; };
 		F7C0FF1F22E50847009E1203 /* UnauthorizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1E22E50847009E1203 /* UnauthorizedError.swift */; };
 		F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1E22E50847009E1203 /* UnauthorizedError.swift */; };
 		F7C0FF2222E5086C009E1203 /* UnhandledHttpResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2122E5086C009E1203 /* UnhandledHttpResponseError.swift */; };
@@ -495,9 +504,13 @@
 		F7D9197123A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7D9197223A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
+		F7E654C923B19DE500C9728D /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */; };
+		F7E654CA23B19DE600C9728D /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */; };
+		F7E654CB23B19DE600C9728D /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
 		F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
 		F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */; };
+		F7F17B3223B172ED00D68E71 /* WendyExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F17B3123B172ED00D68E71 /* WendyExtensionsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -569,11 +582,16 @@
 		F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		F736689923B165640090E858 /* PendingTaskCollectionId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTaskCollectionId.swift; sourceTree = "<group>"; };
+		F736689E23B16B9D0090E858 /* WendyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WendyExtensions.swift; sourceTree = "<group>"; };
 		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F747DF7C1F9E962900647449 /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74A9E2623AA9B4500F56F7C /* RemoteConfigDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigDataSource.swift; sourceTree = "<group>"; };
 		F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftExtensionTests.swift; sourceTree = "<group>"; };
 		F74AF30122F0D1100089BADC /* RxCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F74D1CA423B15720001768BD /* HttpRequestRunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestRunnerTests.swift; sourceTree = "<group>"; };
+		F74D1CA623B158DB001768BD /* ResultExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtensions.swift; sourceTree = "<group>"; };
+		F74D1CAA23B15A54001768BD /* ResponseProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessorTests.swift; sourceTree = "<group>"; };
 		F751BAEB1F9E6CCF0048BB3D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F751BAEC1F9E6CCF0048BB3D /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F751BAED1F9E6CCF0048BB3D /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -627,6 +645,7 @@
 		F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentActivityLogger.swift; sourceTree = "<group>"; };
 		F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsActivityLogger.swift; sourceTree = "<group>"; };
 		F79BE39C22F11329008EB064 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		F7A228D323B10A77009E31A2 /* HttpRequestRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestRunner.swift; sourceTree = "<group>"; };
 		F7A404511CD9031900A4D228 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Alamofire.framework"; sourceTree = "<group>"; };
 		F7A404521CD9031900A4D228 /* AlamofireNetworkActivityIndicator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireNetworkActivityIndicator.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireNetworkActivityIndicator.framework"; sourceTree = "<group>"; };
 		F7A404531CD9031900A4D228 /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireObjectMapper.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/AlamofireObjectMapper.framework"; sourceTree = "<group>"; };
@@ -675,7 +694,7 @@
 		F7B99FF123A5596C004A4011 /* AtomicCounterCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomicCounterCollectionTests.swift; sourceTree = "<group>"; };
 		F7B99FF223A5596C004A4011 /* EventBusRegisterCounterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegisterCounterTests.swift; sourceTree = "<group>"; };
 		F7B99FF423A5596C004A4011 /* BackgroundJobRunnerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundJobRunnerTests.swift; sourceTree = "<group>"; };
-		F7B99FFC23A5596C004A4011 /* ActivityLoggerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLoggerTest.swift; sourceTree = "<group>"; };
+		F7B99FFC23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsActivityLoggerTests.swift; sourceTree = "<group>"; };
 		F7B9A00023A5596C004A4011 /* EventBusExtrasConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusExtrasConverterTests.swift; sourceTree = "<group>"; };
 		F7B9A00123A5596C004A4011 /* NotificationCenterEventBusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterEventBusTests.swift; sourceTree = "<group>"; };
 		F7B9A00223A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterEventBusIntegrationTests.swift; sourceTree = "<group>"; };
@@ -703,12 +722,10 @@
 		F7B9A07123A57F17004A4011 /* UnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTest.swift; sourceTree = "<group>"; };
 		F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubApiTest.swift; sourceTree = "<group>"; };
 		F7B9A07B23A581C7004A4011 /* RepoFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoFakes.swift; sourceTree = "<group>"; };
+		F7BE477523AEDA2900353E1E /* HttpRequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestError.swift; sourceTree = "<group>"; };
 		F7C0FF0B22E4FDB8009E1203 /* RepoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoModel.swift; sourceTree = "<group>"; };
-		F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseServerError.swift; sourceTree = "<group>"; };
 		F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessor.swift; sourceTree = "<group>"; };
-		F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetConnectionError.swift; sourceTree = "<group>"; };
 		F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConflictResponseError.swift; sourceTree = "<group>"; };
-		F7C0FF1B22E507E3009E1203 /* NetworkConnectionIssueError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionIssueError.swift; sourceTree = "<group>"; };
 		F7C0FF1E22E50847009E1203 /* UnauthorizedError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthorizedError.swift; sourceTree = "<group>"; };
 		F7C0FF2122E5086C009E1203 /* UnhandledHttpResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnhandledHttpResponseError.swift; sourceTree = "<group>"; };
 		F7C0FF2422E50888009E1203 /* UserEnteredBadDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEnteredBadDataError.swift; sourceTree = "<group>"; };
@@ -732,12 +749,14 @@
 		F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppState.swift; sourceTree = "<group>"; };
 		F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
+		F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTaskForTests.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
 		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
 		F7EEDB211E953FEE0084D97E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
 		F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLogger.swift; sourceTree = "<group>"; };
 		F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorReportingActivityLogger.swift; sourceTree = "<group>"; };
 		F7F0A44A1F9E7AD40083244D /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F17B3123B172ED00D68E71 /* WendyExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WendyExtensionsTests.swift; sourceTree = "<group>"; };
 		F88AFB7245B5486D980BEBDF /* Pods_iOSBlanky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSBlanky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF3F0F4EFFDF2BE4DAA4F0B5 /* Pods_Screenshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Screenshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -959,6 +978,7 @@
 				F712CDA522E3BD7B00272FF5 /* GitHubAPI.swift */,
 				F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */,
 				F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */,
+				F7A228D323B10A77009E31A2 /* HttpRequestRunner.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1137,6 +1157,7 @@
 				F7B9A05123A55D7A004A4011 /* FcmTopicKeys.swift */,
 				F7B9A06923A5792C004A4011 /* Bundle.swift */,
 				F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */,
+				F736689923B165640090E858 /* PendingTaskCollectionId.swift */,
 			);
 			path = type;
 			sourceTree = "<group>";
@@ -1284,6 +1305,7 @@
 		F7B99FF523A5596C004A4011 /* pending tasks */ = {
 			isa = PBXGroup;
 			children = (
+				F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */,
 			);
 			path = "pending tasks";
 			sourceTree = "<group>";
@@ -1299,6 +1321,8 @@
 			isa = PBXGroup;
 			children = (
 				F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */,
+				F74D1CA423B15720001768BD /* HttpRequestRunnerTests.swift */,
+				F74D1CAA23B15A54001768BD /* ResponseProcessorTests.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -1306,7 +1330,7 @@
 		F7B99FFB23A5596C004A4011 /* log */ = {
 			isa = PBXGroup;
 			children = (
-				F7B99FFC23A5596C004A4011 /* ActivityLoggerTest.swift */,
+				F7B99FFC23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift */,
 			);
 			path = log;
 			sourceTree = "<group>";
@@ -1370,6 +1394,8 @@
 				F7B9A04423A5597D004A4011 /* EventBusMockExtensions.swift */,
 				F7B9A04523A5597D004A4011 /* XCTestCaseExtension.swift */,
 				F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */,
+				F74D1CA623B158DB001768BD /* ResultExtensions.swift */,
+				F7F17B3123B172ED00D68E71 /* WendyExtensionsTests.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1386,6 +1412,7 @@
 			isa = PBXGroup;
 			children = (
 				F7C0FF0E22E5023C009E1203 /* network */,
+				F7BE477523AEDA2900353E1E /* HttpRequestError.swift */,
 			);
 			path = error;
 			sourceTree = "<group>";
@@ -1393,10 +1420,7 @@
 		F7C0FF0E22E5023C009E1203 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				F7C0FF0F22E5024D009E1203 /* ResponseServerError.swift */,
-				F7C0FF1522E505BB009E1203 /* NoInternetConnectionError.swift */,
 				F7C0FF1822E505F4009E1203 /* ConflictResponseError.swift */,
-				F7C0FF1B22E507E3009E1203 /* NetworkConnectionIssueError.swift */,
 				F7C0FF1E22E50847009E1203 /* UnauthorizedError.swift */,
 				F7C0FF2122E5086C009E1203 /* UnhandledHttpResponseError.swift */,
 				F7C0FF2422E50888009E1203 /* UserEnteredBadDataError.swift */,
@@ -1454,6 +1478,7 @@
 				F7B99F8923A554AA004A4011 /* URLExtensions.swift */,
 				F7B99F7F23A554A9004A4011 /* UserDefaultsExtensions.swift */,
 				F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */,
+				F736689E23B16B9D0090E858 /* WendyExtensions.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -1692,8 +1717,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
@@ -1718,8 +1742,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
@@ -1794,8 +1817,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
@@ -1820,8 +1842,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
@@ -1892,8 +1913,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
@@ -1916,8 +1936,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
@@ -1950,8 +1969,7 @@
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/PleaseHold/PleaseHold.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Require/Require.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCoreData/RxCoreData.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
@@ -1976,8 +1994,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PleaseHold.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Require.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCoreData.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
@@ -2099,8 +2116,6 @@
 				F7B99FC323A554AB004A4011 /* CollectionExtensions.swift in Sources */,
 				F7C0FF2522E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,
 				F714EB8723A4380100E7AFB5 /* Aliases.swift in Sources */,
-				F7C0FF1022E5024D009E1203 /* ResponseServerError.swift in Sources */,
-				F7C0FF1C22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7B99F9323A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */,
 				F7C0FF2222E5086C009E1203 /* UnhandledHttpResponseError.swift in Sources */,
 				F70B16F223A5400D006D5A60 /* Theme.swift in Sources */,
@@ -2134,13 +2149,13 @@
 				F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F7B9A05223A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
 				F785CC7A22D696FE00389076 /* DataState.swift in Sources */,
+				F7A228D423B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */,
 				F714EB6123A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
 				F70B16FB23A5400D006D5A60 /* ThemableViewController.swift in Sources */,
 				F75DCD831CD8F10D00B8941F /* AppDelegate.swift in Sources */,
 				F714EB7623A4363000E7AFB5 /* BackgroundJobRunner.swift in Sources */,
 				F7B99FA223A554AB004A4011 /* UIViewExtensions.swift in Sources */,
-				F7C0FF1622E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F79BE39D22F11329008EB064 /* FileStorage.swift in Sources */,
 				F7B9A04F23A55CBE004A4011 /* NotificationUtil.swift in Sources */,
 				F7D9196823A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
@@ -2152,6 +2167,7 @@
 				F7096D0022E7AE31004389A5 /* RemoteConfig.swift in Sources */,
 				F7B99FC623A554AB004A4011 /* UIImageExtensions.swift in Sources */,
 				F785CB6B22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */,
+				F736689A23B165640090E858 /* PendingTaskCollectionId.swift in Sources */,
 				F70B16FE23A5400D006D5A60 /* LaunchViewController.swift in Sources */,
 				F7C0FF1F22E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F7B9A06E23A57CD1004A4011 /* Images.swift in Sources */,
@@ -2162,8 +2178,10 @@
 				F7B99FC023A554AB004A4011 /* RxSwiftExtensions.swift in Sources */,
 				F7B99FD223A55695004A4011 /* EventBusExtrasConverter.swift in Sources */,
 				F714EB5D23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
+				F7BE477623AEDA2900353E1E /* HttpRequestError.swift in Sources */,
 				F7B99FAB23A554AB004A4011 /* DateExtensions.swift in Sources */,
 				F7D9196423A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
+				F736689F23B16B9D0090E858 /* WendyExtensions.swift in Sources */,
 				F7B99FA823A554AB004A4011 /* UIStackViewExtensions.swift in Sources */,
 				F714EB6D23A4356B00E7AFB5 /* Atomic.swift in Sources */,
 				F7D575B823A2D3B800D6B6BC /* Environment.swift in Sources */,
@@ -2201,11 +2219,11 @@
 				F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */,
 				F70B16E823A53F73006D5A60 /* AutoMockable.generated.swift in Sources */,
 				F785CB6F22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */,
-				F7C0FF1D22E507E3009E1203 /* NetworkConnectionIssueError.swift in Sources */,
 				F7C0FF3222E660CC009E1203 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F7D9196923A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
 				F7C0FF2922E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
 				F7B9A07223A57F17004A4011 /* UnitTest.swift in Sources */,
+				F7E654C923B19DE500C9728D /* PendingTaskForTests.swift in Sources */,
 				F7B9A02523A5596C004A4011 /* AtomicCounterCollectionTests.swift in Sources */,
 				F7D9195D23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */,
 				F7C0FF3122E660C4009E1203 /* RepoModel.swift in Sources */,
@@ -2243,8 +2261,10 @@
 				F7D9196D23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
+				F73668A023B16B9D0090E858 /* WendyExtensions.swift in Sources */,
 				F7B9A04B23A5597E004A4011 /* XCTestCaseExtension.swift in Sources */,
 				F76765B622F78AD700ED2A11 /* Colors.swift in Sources */,
+				F74D1CAB23B15A54001768BD /* ResponseProcessorTests.swift in Sources */,
 				F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F7B9A06523A56F44004A4011 /* Strings.swift in Sources */,
 				F7B9A02D23A5596C004A4011 /* NotificationCenterEventBusTests.swift in Sources */,
@@ -2258,15 +2278,15 @@
 				F7B99FA323A554AB004A4011 /* UIViewExtensions.swift in Sources */,
 				F7B9A02F23A5596C004A4011 /* RepositorySyncServiceTests.swift in Sources */,
 				F7B99FA623A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
-				F7B9A02B23A5596C004A4011 /* ActivityLoggerTest.swift in Sources */,
+				F7B9A02B23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift in Sources */,
 				F7C0FF2322E5086C009E1203 /* UnhandledHttpResponseError.swift in Sources */,
 				F7C0FF3322E660D1009E1203 /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F714EB6223A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
 				F7B99FCD23A554AB004A4011 /* UIBarButtonItemExtensions.swift in Sources */,
-				F7C0FF1122E50257009E1203 /* ResponseServerError.swift in Sources */,
 				F7B99FC423A554AB004A4011 /* CollectionExtensions.swift in Sources */,
 				F79BE39E22F11329008EB064 /* FileStorage.swift in Sources */,
 				F70B16F923A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
+				F7F17B3223B172ED00D68E71 /* WendyExtensionsTests.swift in Sources */,
 				F7B99FA023A554AB004A4011 /* FileManagerExtensions.swift in Sources */,
 				F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */,
 				F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */,
@@ -2282,6 +2302,7 @@
 				F7B9A03323A5596C004A4011 /* TestUtil.swift in Sources */,
 				F7B9A03423A5596C004A4011 /* ThemeFake.swift in Sources */,
 				F75968F922E225500076253B /* DiTests.swift in Sources */,
+				F74D1CA523B15720001768BD /* HttpRequestRunnerTests.swift in Sources */,
 				F7B9A04723A5597E004A4011 /* TestDateExtensions.swift in Sources */,
 				F7B9A02323A5596C004A4011 /* AtomicTests.swift in Sources */,
 				F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */,
@@ -2301,10 +2322,10 @@
 				F7AC968723A58E360037CCA2 /* Model.xcdatamodeld in Sources */,
 				F7B9A02623A5596C004A4011 /* EventBusRegisterCounterTests.swift in Sources */,
 				F714EB6E23A4356B00E7AFB5 /* Atomic.swift in Sources */,
+				F736689B23B165640090E858 /* PendingTaskCollectionId.swift in Sources */,
 				F7D575B923A2D3B800D6B6BC /* Environment.swift in Sources */,
 				F761644622E8B5F4006F2D2A /* SecureStorage.swift in Sources */,
 				F7B99F9423A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */,
-				F7C0FF1722E505BB009E1203 /* NoInternetConnectionError.swift in Sources */,
 				F7B99FB223A554AB004A4011 /* URLExtensions.swift in Sources */,
 				F76765B722F78AD700ED2A11 /* Swizzler.swift in Sources */,
 				F7D9196123A6C68300BF3CF7 /* Dao.swift in Sources */,
@@ -2321,8 +2342,11 @@
 				F714EB8423A4373E00E7AFB5 /* PendingTasks.swift in Sources */,
 				F7B9A01723A5596C004A4011 /* NotificationUtilTests.swift in Sources */,
 				F72043F622E4F35400DE7EA9 /* GitHubTargetType.swift in Sources */,
+				F7BE477723AEDA2900353E1E /* HttpRequestError.swift in Sources */,
+				F74D1CA723B158DB001768BD /* ResultExtensions.swift in Sources */,
 				F7B9A01523A5596C004A4011 /* ErrorForTesting.swift in Sources */,
 				F7B9A04A23A5597E004A4011 /* EventBusMockExtensions.swift in Sources */,
+				F7A228D523B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F712CDA722E3BD7B00272FF5 /* GitHubAPI.swift in Sources */,
 				F7B9A07C23A581C7004A4011 /* RepoFakes.swift in Sources */,
 				F7C0FF3522E66122009E1203 /* UserManager.swift in Sources */,
@@ -2336,17 +2360,17 @@
 			files = (
 				F76765A222F78ABA00ED2A11 /* ConflictResponseError.swift in Sources */,
 				F767659F22F78AB400ED2A11 /* FileStorage.swift in Sources */,
+				F73668A123B16B9D0090E858 /* WendyExtensions.swift in Sources */,
 				F714EB8923A4380100E7AFB5 /* Aliases.swift in Sources */,
 				F7B99FBC23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
 				F7B99FCE23A554AB004A4011 /* UIBarButtonItemExtensions.swift in Sources */,
 				F7B99FC523A554AB004A4011 /* CollectionExtensions.swift in Sources */,
-				F76765A122F78ABA00ED2A11 /* NoInternetConnectionError.swift in Sources */,
 				F767659B22F78AB400ED2A11 /* RemoteConfig.swift in Sources */,
 				F7254EC223A7BDDA0027F12E /* FileFakes.swift in Sources */,
-				F76765A322F78ABA00ED2A11 /* NetworkConnectionIssueError.swift in Sources */,
 				F76765CD22F78AD800ED2A11 /* Constants.swift in Sources */,
 				F7B99F9523A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */,
 				F70B16F423A5400D006D5A60 /* Theme.swift in Sources */,
+				F7E654CA23B19DE600C9728D /* PendingTaskForTests.swift in Sources */,
 				F7D9196E23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F76765C122F78AD800ED2A11 /* ResponseProcessor.swift in Sources */,
 				F76765A822F78AC000ED2A11 /* RepositoryDao.swift in Sources */,
@@ -2361,6 +2385,7 @@
 				F7D575B623A2D22000D6B6BC /* Env.swift in Sources */,
 				F7B9A06223A56D3B004A4011 /* TestUtil.swift in Sources */,
 				F7254EC023A7BDDA0027F12E /* ThemeFake.swift in Sources */,
+				F736689C23B165640090E858 /* PendingTaskCollectionId.swift in Sources */,
 				F76765AF22F78AC000ED2A11 /* DevelopmentActivityLogger.swift in Sources */,
 				F75DCDA31CD8F10D00B8941F /* LaunchViewControllerUITests.swift in Sources */,
 				F767659722F78AB400ED2A11 /* PendingTasksFactory.swift in Sources */,
@@ -2380,6 +2405,7 @@
 				F76765C222F78AD800ED2A11 /* JsonAdapter.swift in Sources */,
 				F7B9A05423A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
 				F714EB6323A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
+				F7A228D623B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F76ACF4F22F7848B00B1A41D /* Swizzler.swift in Sources */,
 				F7B9A06C23A5792C004A4011 /* Bundle.swift in Sources */,
 				F767659622F78AB400ED2A11 /* ThreadUtil.swift in Sources */,
@@ -2401,7 +2427,6 @@
 				F7A8552923A6EE26009362B0 /* LaunchViewControllerPageObject.swift in Sources */,
 				F7D9196623A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
 				F7B99FC823A554AB004A4011 /* UIImageExtensions.swift in Sources */,
-				F76765A022F78ABA00ED2A11 /* ResponseServerError.swift in Sources */,
 				F70B170023A5400D006D5A60 /* LaunchViewController.swift in Sources */,
 				F76765A722F78AC000ED2A11 /* RepoModel.swift in Sources */,
 				F70B16FA23A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
@@ -2411,6 +2436,7 @@
 				F7B99FC223A554AB004A4011 /* RxSwiftExtensions.swift in Sources */,
 				F7B99FD423A55696004A4011 /* EventBusExtrasConverter.swift in Sources */,
 				F767659C22F78AB400ED2A11 /* KeyValueStorage.swift in Sources */,
+				F7BE477823AEDA2900353E1E /* HttpRequestError.swift in Sources */,
 				F7B99FAD23A554AB004A4011 /* DateExtensions.swift in Sources */,
 				F7B99FAA23A554AB004A4011 /* UIStackViewExtensions.swift in Sources */,
 				F7254EC123A7BDDA0027F12E /* FileDownloadedEventBusExtrasFake.swift in Sources */,
@@ -2420,6 +2446,7 @@
 				F7D9196A23A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
 				F7B9A06623A56F44004A4011 /* Strings.swift in Sources */,
 				F7B99F9E23A554AB004A4011 /* UIViewControllerExtensions.swift in Sources */,
+				F74D1CA823B158DB001768BD /* ResultExtensions.swift in Sources */,
 				F7AC968E23A69EC50037CCA2 /* UITest.swift in Sources */,
 				F7D575BA23A2D3B800D6B6BC /* Environment.swift in Sources */,
 				F7D9195E23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */,
@@ -2464,6 +2491,7 @@
 				F7A8554E23A6F06B009362B0 /* UserCredsManager.swift in Sources */,
 				F7A8558723A6F0A8009362B0 /* TimeIntervalExtensions.swift in Sources */,
 				F7A8556D23A6F08C009362B0 /* DebugActivityLogger.swift in Sources */,
+				F74D1CA923B158DB001768BD /* ResultExtensions.swift in Sources */,
 				F7A8554723A6F062009362B0 /* ThreadUtil.swift in Sources */,
 				F7A8558823A6F0A8009362B0 /* UIBackgroundFetchResultExtensions.swift in Sources */,
 				F7A8556723A6F08C009362B0 /* ActivityLogger.swift in Sources */,
@@ -2480,8 +2508,8 @@
 				F7A8557823A6F09D009362B0 /* GitHubAPI.swift in Sources */,
 				F7254EB823A7BD310027F12E /* Aliases.swift in Sources */,
 				F7A8558223A6F0A8009362B0 /* FileManagerExtensions.swift in Sources */,
+				F7BE477923AEDA2900353E1E /* HttpRequestError.swift in Sources */,
 				F7A8556223A6F084009362B0 /* RepositoryDao.swift in Sources */,
-				F7A8555B23A6F07B009362B0 /* NoInternetConnectionError.swift in Sources */,
 				F7A8559023A6F0A8009362B0 /* URLExtensions.swift in Sources */,
 				F7254EB423A7BD070027F12E /* AppStartupUtil.swift in Sources */,
 				F7A8556923A6F08C009362B0 /* CrashReportingLogger.swift in Sources */,
@@ -2489,7 +2517,6 @@
 				F7A8553A23A6F015009362B0 /* UITest.swift in Sources */,
 				F7A8553E23A6F039009362B0 /* AutoMockable.generated.swift in Sources */,
 				F7A8558023A6F0A8009362B0 /* DictionaryExtensions.swift in Sources */,
-				F7A8555A23A6F07B009362B0 /* ResponseServerError.swift in Sources */,
 				F7254EC623A7BDDB0027F12E /* FileDownloadedEventBusExtrasFake.swift in Sources */,
 				F7A8559123A6F0A8009362B0 /* UserDefaultsExtensions.swift in Sources */,
 				F7A8558523A6F0A8009362B0 /* RxSwiftExtensions.swift in Sources */,
@@ -2512,15 +2539,18 @@
 				F7A8557A23A6F09D009362B0 /* MoyaProviderMocker.swift in Sources */,
 				F7A8558A23A6F0A8009362B0 /* UIControlExtensions.swift in Sources */,
 				F7A8558B23A6F0A8009362B0 /* UIImageExtensions.swift in Sources */,
+				F7A228D723B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F7A8558E23A6F0A8009362B0 /* UIViewControllerExtensions.swift in Sources */,
 				F7A8553B23A6F021009362B0 /* LaunchViewControllerPageObject.swift in Sources */,
 				F7254EBB23A7BD350027F12E /* Colors.swift in Sources */,
 				F7254EBD23A7BD350027F12E /* Images.swift in Sources */,
 				F7254EC523A7BDDB0027F12E /* ThemeFake.swift in Sources */,
 				F7A8558123A6F0A8009362B0 /* DispatchQueueExtensions.swift in Sources */,
+				F736689D23B165640090E858 /* PendingTaskCollectionId.swift in Sources */,
 				F7A8553923A6EFF1009362B0 /* SnapshotHelper.swift in Sources */,
 				F7A8554C23A6F066009362B0 /* PendingTasksFactory.swift in Sources */,
 				F74A9E2A23AA9B4500F56F7C /* RemoteConfigDataSource.swift in Sources */,
+				F73668A223B16B9D0090E858 /* WendyExtensions.swift in Sources */,
 				F7A8555623A6F073009362B0 /* SecureStorage.swift in Sources */,
 				F7A8554523A6F058009362B0 /* BackgroundJobRunner.swift in Sources */,
 				F7A8556B23A6F08C009362B0 /* DevelopmentActivityLogger.swift in Sources */,
@@ -2528,7 +2558,6 @@
 				F7A8553F23A6F03E009362B0 /* NotificationUtil.swift in Sources */,
 				F7A8556623A6F087009362B0 /* Model.xcdatamodeld in Sources */,
 				F7A8558D23A6F0A8009362B0 /* UITableViewExtensions.swift in Sources */,
-				F7A8555D23A6F07B009362B0 /* NetworkConnectionIssueError.swift in Sources */,
 				F7A8559723A6F0B4009362B0 /* Constants.swift in Sources */,
 				F7A8558F23A6F0A8009362B0 /* UIViewExtensions.swift in Sources */,
 				F7A8557723A6F09D009362B0 /* GitHubTargetType.swift in Sources */,
@@ -2543,6 +2572,7 @@
 				F7A8557E23A6F0A8009362B0 /* CollectionExtensions.swift in Sources */,
 				F7A8558423A6F0A8009362B0 /* MoyaExtensions.swift in Sources */,
 				F7A8557423A6F08F009362B0 /* OnComplete.swift in Sources */,
+				F7E654CB23B19DE600C9728D /* PendingTaskForTests.swift in Sources */,
 				F7A8556F23A6F08F009362B0 /* BuildFlavor.swift in Sources */,
 				F7A8556123A6F084009362B0 /* RepoModel.swift in Sources */,
 				F7A8554123A6F043009362B0 /* BaseNavigationController.swift in Sources */,

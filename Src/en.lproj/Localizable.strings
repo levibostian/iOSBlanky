@@ -6,3 +6,7 @@
 "uncaughtNetworkErrorMessage" = "Sorry! There was an error. The team has been notified. Please, try again later.";
 "error500ResponseCode" = "Sorry! Our system is currently not working. Come back in a few minutes and try again.";
 "error401ResponseCode" = "Sorry! You must login to your account, and try again.";
+"developerNetworkErrorMessage" = "Sorry! There was an error. The team has been notified. Please, try again later.";
+"userHasNoGithubRepos" = "User has no GitHub repos";
+"cannotPerformRequestUntilErrorsFixed" = "Fix error: %@, then try again.";
+"cannotPerformHttpRequestPendingTasksFailed" = "Sorry! You can't do that right now. Try again later.";

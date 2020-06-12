@@ -56,7 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let numberMinutesMinimumToRunBackgroundFetches: Double = 60
         UIApplication.shared.setMinimumBackgroundFetchInterval(numberMinutesMinimumToRunBackgroundFetches * 60) // * 60 as function wants value in seconds
 
-        Wendy.setup(tasksFactory: AppPendingTasksFactory(), debug: environment.isDevelopment)
+        Wendy.setup(tasksFactory: AppPendingTasksFactory(), collections: [
+            PendingTaskCollectionId.getUserRepos.rawValue: [
+            ]
+        ], debug: environment.isDevelopment)
 
         Messaging.messaging().delegate = self
         remoteConfig.activate()
@@ -78,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.goToMainPartOfApp()
 
                 // Need to start wendy when app starts up.
-                Wendy.shared.runTasks(filter: nil)
+                Wendy.shared.runTasks(filter: nil, onComplete: nil)
 
                 self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
             }
@@ -90,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                     if let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"] {
                         let jsonAdapter = DI.shared.jsonAdapter
-                        let launchArguments: LaunchAppState = jsonAdapter.fromJson(launchStateString.data())
+                        let launchArguments: LaunchAppState = jsonAdapter.fromJson(launchStateString.data!)
 
                         let moyaMockProvider = MoyaProviderMocker<GitHubService>()
 
