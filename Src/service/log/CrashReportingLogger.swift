@@ -1,4 +1,4 @@
-import Crashlytics
+import FirebaseCrashlytics
 import Foundation
 
 protocol CrashReportingLogger {
@@ -11,18 +11,19 @@ protocol CrashReportingLogger {
 // https://firebase.google.com/docs/crashlytics/customize-crash-reports?platform=ios
 class CrashlyticsCrashReportingLogger: CrashReportingLogger {
     func log(key: String, value: String?) {
-        Crashlytics.sharedInstance().setObjectValue(value, forKey: key)
+        Crashlytics.crashlytics().setCustomValue(value ?? "(none)", forKey: key)
     }
 
     func identifyUser(userId: String?) {
-        Crashlytics.sharedInstance().setUserIdentifier(userId)
+        // To logout the user, set to blank string. Resource: https://firebase.google.com/docs/crashlytics/customize-crash-reports?platform=ios#set_user_identifiers
+        Crashlytics.crashlytics().setUserID(userId ?? "")
     }
 
     func nonFatalError(_ error: Error) {
-        Crashlytics.sharedInstance().recordError(error)
+        Crashlytics.crashlytics().record(error: error)
     }
 
     func log(_ message: String) {
-        CLSLogv(message, getVaList([]))
+        Crashlytics.crashlytics().log(message)
     }
 }

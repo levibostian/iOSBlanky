@@ -3,12 +3,12 @@ import Foundation
 extension String {
     // /Users/foo/FileName.png -> FileName.png
     func pathToFileName() -> FileName {
-        return String(split(separator: "/").last!)
+        String(split(separator: "/").last!)
     }
 
     // Credits: https://stackoverflow.com/a/26306372/1486374
     func capitalizingFirstLetter() -> String {
-        return prefix(1).uppercased() + lowercased().dropFirst()
+        prefix(1).uppercased() + lowercased().dropFirst()
     }
 
     mutating func capitalizeFirstLetter() {
@@ -16,15 +16,15 @@ extension String {
     }
 
     var abcLetters: String {
-        return "abcdefghijklmnopqrstuvwxyz"
+        "abcdefghijklmnopqrstuvwxyz"
     }
 
     // Credits: https://stackoverflow.com/a/26845710/1486374
     func randomName(length: Int) -> String {
-        return String((0..<length).map { _ in abcLetters.randomElement()! }).capitalizingFirstLetter()
+        String((0..<length).map { _ in abcLetters.randomElement()! }).capitalizingFirstLetter()
     }
 
     var data: Data? {
-        return data(using: .utf8)
+        data(using: .utf8)
     }
 }

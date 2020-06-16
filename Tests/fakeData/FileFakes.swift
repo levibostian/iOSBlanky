@@ -11,6 +11,6 @@ enum FileFakes {
     }
 
     var url: URL {
-        return URL(fileURLWithPath: path, isDirectory: false)
+        URL(fileURLWithPath: path, isDirectory: false)
     }
 }

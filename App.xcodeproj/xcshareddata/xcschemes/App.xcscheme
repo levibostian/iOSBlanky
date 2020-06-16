@@ -88,11 +88,20 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F75DCD7E1CD8F10D00B8941F"
+            BuildableName = "App.app"
+            BlueprintName = "App"
+            ReferencedContainer = "container:App.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F75DCD7E1CD8F10D00B8941F"
             BuildableName = "iOSBlanky.app"
             BlueprintName = "iOSBlanky"
             ReferencedContainer = "container:iOSBlanky.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

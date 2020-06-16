@@ -10,12 +10,12 @@ struct FileDownloadedEventBusExtras: EventBusExtrasConverter {
     }
 
     func toExtras() -> EventBusExtras {
-        return [
-            Keys.fileId.rawValue: self.fileId
+        [
+            Keys.fileId.rawValue: fileId
         ]
     }
 
     static func fromExtras(_ extras: EventBusExtras) -> FileDownloadedEventBusExtras {
-        return FileDownloadedEventBusExtras(fileId: extras[Keys.fileId.rawValue] as! String) // swiftlint:disable:this force_cast
+        FileDownloadedEventBusExtras(fileId: extras[Keys.fileId.rawValue] as! String) // swiftlint:disable:this force_cast
     }
 }

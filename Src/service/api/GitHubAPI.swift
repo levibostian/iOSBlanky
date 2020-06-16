@@ -29,20 +29,20 @@ class AppGitHubApi: GitHubAPI {
     }
 
     func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], HttpRequestError>> {
-        return request(.getUserRepos(username: username),
-                       preRunPendingTask: .getUserRepos,
-                       successHandler: { (processedResponse) -> [Repo] in
-                           self.jsonAdapter.fromJsonArray(processedResponse.data)
-                       }, extraErrorHandling: { (response) -> HttpRequestError? in
-                           if response.statusCode == 404 {
-                               return HttpRequestError(fault: .user, message: Strings.userHasNoGithubRepos.localized, underlyingError: nil)
-                           }
-                           return nil
+        request(.getUserRepos(username: username),
+                preRunPendingTask: .getUserRepos,
+                successHandler: { (processedResponse) -> [Repo] in
+                    self.jsonAdapter.fromJsonArray(processedResponse.data)
+                }, extraErrorHandling: { (response) -> HttpRequestError? in
+                    if response.statusCode == 404 {
+                        return HttpRequestError(fault: .user, message: Strings.userHasNoGithubRepos.localized, underlyingError: nil)
+                    }
+                    return nil
         })
     }
 
     fileprivate func request<T: Any>(_ target: GitHubService, preRunPendingTask: PendingTaskCollectionId, successHandler: @escaping (ProcessedResponse) -> T, extraErrorHandling: @escaping (ProcessedResponse) -> HttpRequestError?) -> Single<Result<T, HttpRequestError>> {
-        return requestRunner.request(target, preRunPendingTask: preRunPendingTask, extraResponseHandling: { processedResponse -> HttpRequestError? in
+        requestRunner.request(target, preRunPendingTask: preRunPendingTask, extraResponseHandling: { processedResponse -> HttpRequestError? in
             switch processedResponse.statusCode {
             case 401:
                 self.eventBus.post(.logout, extras: nil)

@@ -15,16 +15,16 @@ typealias RunCollectionTasksResult = PendingTasksRunnerResult
 // sourcery: InjectRegister = "PendingTasks"
 class WendyPendingTasks: PendingTasks {
     func addDownloadNewFilesPendingTask() -> Double {
-        return 0
+        0
 //         return Wendy.shared.addTask(DownloadDriveFilesPendingTask())
     }
 
     func runAllTasks() -> UIBackgroundFetchResult {
-        return Wendy.shared.performBackgroundFetch().backgroundFetchResult
+        Wendy.shared.performBackgroundFetch().backgroundFetchResult
     }
 
     func runCollectionTasks(for collectionId: PendingTaskCollectionId) -> Single<RunCollectionTasksResult> {
-        return Single.create { (observer) -> Disposable in
+        Single.create { (observer) -> Disposable in
             Wendy.shared.runTasks(filter: RunAllTasksFilter.collection(id: collectionId.rawValue)) { result in
                 observer(.success(result))
             }

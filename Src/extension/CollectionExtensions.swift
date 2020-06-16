@@ -3,7 +3,7 @@ import Foundation
 extension Collection {
     // Thanks, https://stackoverflow.com/a/30593673/1486374
     subscript(safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
+        indices.contains(index) ? self[index] : nil
     }
 }
 

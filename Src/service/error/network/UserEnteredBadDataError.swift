@@ -11,6 +11,6 @@ class UserEnteredBadDataError: LocalizedError {
     }
 
     var errorDescription: String? {
-        return message
+        message
     }
 }

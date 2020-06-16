@@ -17,10 +17,10 @@ struct HttpRequestError: Swift.Error {
 
 extension HttpRequestError: LocalizedError {
     var errorDescription: String? {
-        return localizedDescription
+        localizedDescription
     }
 
     var localizedDescription: String {
-        return message
+        message
     }
 }

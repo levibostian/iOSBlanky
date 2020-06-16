@@ -21,18 +21,18 @@ class SwiftJsonAdpter: JsonAdapter {
     }
 
     func fromJson<T: Decodable>(_ json: Data) -> T {
-        return try! decoder.decode(T.self, from: json)
+        try! decoder.decode(T.self, from: json)
     }
 
     func fromJsonArray<T: Decodable>(_ json: Data) -> [T] {
-        return try! decoder.decode([T].self, from: json)
+        try! decoder.decode([T].self, from: json)
     }
 
     func toJson<T: Encodable>(_ obj: T) -> Data {
-        return try! encoder.encode(obj)
+        try! encoder.encode(obj)
     }
 
     func toJsonArray<T: Encodable>(_ obj: [T]) -> Data {
-        return try! encoder.encode(obj)
+        try! encoder.encode(obj)
     }
 }

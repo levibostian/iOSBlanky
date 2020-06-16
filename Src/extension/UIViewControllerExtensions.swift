@@ -3,7 +3,7 @@ import UIKit
 
 extension UIViewController {
     var appDelegate: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+        UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
     }
 
     func getErrorAlert(title: String?, message: String?) -> UIAlertController {

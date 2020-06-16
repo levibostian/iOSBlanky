@@ -4,7 +4,7 @@ import Teller
 
 protocol ReposViewModel: AutoMockable {
     var gitHubUsername: GitHubUsername? { get set }
-    func observeRepos() -> Observable<DataState<[Repo]>>
+    func observeRepos() -> Observable<CacheState<[Repo]>>
     func observeGitHubUsername() -> Observable<GitHubUsername>
 }
 
@@ -17,7 +17,7 @@ class AppReposViewModel: ReposViewModel {
 
     var gitHubUsername: GitHubUsername? {
         get {
-            return keyValueStorage.string(forKey: githubUsernameUserDefaultsKey)
+            keyValueStorage.string(forKey: githubUsernameUserDefaultsKey)
         }
         set {
             keyValueStorage.set(newValue, forKey: githubUsernameUserDefaultsKey)
@@ -37,12 +37,12 @@ class AppReposViewModel: ReposViewModel {
         }
     }
 
-    func observeRepos() -> Observable<DataState<[Repo]>> {
-        return reposRepository.observe()
+    func observeRepos() -> Observable<CacheState<[Repo]>> {
+        reposRepository.observe()
             .observeOn(MainScheduler.instance)
     }
 
     func observeGitHubUsername() -> Observable<GitHubUsername> {
-        return keyValueStorage.observeString(forKey: githubUsernameUserDefaultsKey)
+        keyValueStorage.observeString(forKey: githubUsernameUserDefaultsKey)
     }
 }

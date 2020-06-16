@@ -17,7 +17,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var setUserIdIdCallsCount = 0
     var setUserIdIdCalled: Bool {
-        return setUserIdIdCallsCount > 0
+        setUserIdIdCallsCount > 0
     }
 
     var setUserIdIdReceivedId: String?
@@ -36,7 +36,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var appEventOccurredExtrasFromCallsCount = 0
     var appEventOccurredExtrasFromCalled: Bool {
-        return appEventOccurredExtrasFromCallsCount > 0
+        appEventOccurredExtrasFromCallsCount > 0
     }
 
     var appEventOccurredExtrasFromReceivedArguments: (event: ActivityEvent, extras: [String: Any]?, file: String)?
@@ -55,7 +55,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var breadcrumbExtrasFromCallsCount = 0
     var breadcrumbExtrasFromCalled: Bool {
-        return breadcrumbExtrasFromCallsCount > 0
+        breadcrumbExtrasFromCallsCount > 0
     }
 
     var breadcrumbExtrasFromReceivedArguments: (event: String, extras: [String: Any]?, file: String)?
@@ -74,7 +74,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var httpRequestEventMethodUrlReqBodyCallsCount = 0
     var httpRequestEventMethodUrlReqBodyCalled: Bool {
-        return httpRequestEventMethodUrlReqBodyCallsCount > 0
+        httpRequestEventMethodUrlReqBodyCallsCount > 0
     }
 
     var httpRequestEventMethodUrlReqBodyReceivedArguments: (method: String, url: String, reqBody: String?)?
@@ -93,7 +93,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount = 0
     var httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCalled: Bool {
-        return httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
+        httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
     }
 
     var httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyReceivedArguments: (method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)?
@@ -112,7 +112,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount = 0
     var httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCalled: Bool {
-        return httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
+        httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
     }
 
     var httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyReceivedArguments: (method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)?
@@ -131,7 +131,7 @@ class ActivityLoggerMock: ActivityLogger {
 
     var errorOccurredCallsCount = 0
     var errorOccurredCalled: Bool {
-        return errorOccurredCallsCount > 0
+        errorOccurredCallsCount > 0
     }
 
     var errorOccurredReceivedError: Error?
@@ -154,7 +154,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var identifyUserIdCallsCount = 0
     var identifyUserIdCalled: Bool {
-        return identifyUserIdCallsCount > 0
+        identifyUserIdCallsCount > 0
     }
 
     var identifyUserIdReceivedId: String?
@@ -173,7 +173,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var logAppEventExtrasCallsCount = 0
     var logAppEventExtrasCalled: Bool {
-        return logAppEventExtrasCallsCount > 0
+        logAppEventExtrasCallsCount > 0
     }
 
     var logAppEventExtrasReceivedArguments: (message: String, extras: [String: Any]?)?
@@ -192,7 +192,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var logDebugExtrasCallsCount = 0
     var logDebugExtrasCalled: Bool {
-        return logDebugExtrasCallsCount > 0
+        logDebugExtrasCallsCount > 0
     }
 
     var logDebugExtrasReceivedArguments: (message: String, extras: [String: Any]?)?
@@ -211,7 +211,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var logErrorCallsCount = 0
     var logErrorCalled: Bool {
-        return logErrorCallsCount > 0
+        logErrorCallsCount > 0
     }
 
     var logErrorReceivedError: Error?
@@ -230,7 +230,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var setUserIdIdCallsCount = 0
     var setUserIdIdCalled: Bool {
-        return setUserIdIdCallsCount > 0
+        setUserIdIdCallsCount > 0
     }
 
     var setUserIdIdReceivedId: String?
@@ -249,7 +249,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var appEventOccurredExtrasFromCallsCount = 0
     var appEventOccurredExtrasFromCalled: Bool {
-        return appEventOccurredExtrasFromCallsCount > 0
+        appEventOccurredExtrasFromCallsCount > 0
     }
 
     var appEventOccurredExtrasFromReceivedArguments: (event: ActivityEvent, extras: [String: Any]?, file: String)?
@@ -268,7 +268,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var breadcrumbExtrasFromCallsCount = 0
     var breadcrumbExtrasFromCalled: Bool {
-        return breadcrumbExtrasFromCallsCount > 0
+        breadcrumbExtrasFromCallsCount > 0
     }
 
     var breadcrumbExtrasFromReceivedArguments: (event: String, extras: [String: Any]?, file: String)?
@@ -287,7 +287,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var httpRequestEventMethodUrlReqBodyCallsCount = 0
     var httpRequestEventMethodUrlReqBodyCalled: Bool {
-        return httpRequestEventMethodUrlReqBodyCallsCount > 0
+        httpRequestEventMethodUrlReqBodyCallsCount > 0
     }
 
     var httpRequestEventMethodUrlReqBodyReceivedArguments: (method: String, url: String, reqBody: String?)?
@@ -306,7 +306,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount = 0
     var httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCalled: Bool {
-        return httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
+        httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
     }
 
     var httpSuccessEventMethodUrlCodeReqHeadersResHeadersResBodyReceivedArguments: (method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)?
@@ -325,7 +325,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount = 0
     var httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCalled: Bool {
-        return httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
+        httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyCallsCount > 0
     }
 
     var httpFailEventMethodUrlCodeReqHeadersResHeadersResBodyReceivedArguments: (method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?)?
@@ -344,7 +344,7 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     var errorOccurredCallsCount = 0
     var errorOccurredCalled: Bool {
-        return errorOccurredCallsCount > 0
+        errorOccurredCallsCount > 0
     }
 
     var errorOccurredReceivedError: Error?
@@ -367,7 +367,7 @@ class EventBusMock: EventBus {
 
     var postExtrasCallsCount = 0
     var postExtrasCalled: Bool {
-        return postExtrasCallsCount > 0
+        postExtrasCallsCount > 0
     }
 
     var postExtrasReceivedArguments: (event: EventBusEvent, extras: EventBusExtras?)?
@@ -386,7 +386,7 @@ class EventBusMock: EventBus {
 
     var registerEventCallsCount = 0
     var registerEventCalled: Bool {
-        return registerEventCallsCount > 0
+        registerEventCallsCount > 0
     }
 
     var registerEventReceivedArguments: (listener: EventBusEventListener, event: EventBusEvent)?
@@ -405,7 +405,7 @@ class EventBusMock: EventBus {
 
     var unregisterEventCallsCount = 0
     var unregisterEventCalled: Bool {
-        return unregisterEventCallsCount > 0
+        unregisterEventCallsCount > 0
     }
 
     var unregisterEventReceivedArguments: (listener: EventBusEventListener, event: EventBusEvent)?
@@ -424,7 +424,7 @@ class EventBusMock: EventBus {
 
     var unregisterAllCallsCount = 0
     var unregisterAllCalled: Bool {
-        return unregisterAllCallsCount > 0
+        unregisterAllCallsCount > 0
     }
 
     var unregisterAllReceivedListener: EventBusEventListener?
@@ -447,7 +447,7 @@ class EventBusEventListenerMock: EventBusEventListener {
 
     var eventBusEventExtrasCallsCount = 0
     var eventBusEventExtrasCalled: Bool {
-        return eventBusEventExtrasCallsCount > 0
+        eventBusEventExtrasCallsCount > 0
     }
 
     var eventBusEventExtrasReceivedArguments: (event: EventBusEvent, extras: EventBusExtras?)?
@@ -470,7 +470,7 @@ class GitHubAPIMock: GitHubAPI {
 
     var getUserReposUsernameCallsCount = 0
     var getUserReposUsernameCalled: Bool {
-        return getUserReposUsernameCallsCount > 0
+        getUserReposUsernameCallsCount > 0
     }
 
     var getUserReposUsernameReceivedUsername: GitHubUsername?
@@ -494,7 +494,7 @@ class NotificationCenterManagerMock: NotificationCenterManager {
 
     var postExtrasCallsCount = 0
     var postExtrasCalled: Bool {
-        return postExtrasCallsCount > 0
+        postExtrasCallsCount > 0
     }
 
     var postExtrasReceivedArguments: (event: String, extras: [AnyHashable: Any]?)?
@@ -513,7 +513,7 @@ class NotificationCenterManagerMock: NotificationCenterManager {
 
     var addObserverSelectorNameCallsCount = 0
     var addObserverSelectorNameCalled: Bool {
-        return addObserverSelectorNameCallsCount > 0
+        addObserverSelectorNameCallsCount > 0
     }
 
     var addObserverSelectorNameReceivedArguments: (observer: Any, selector: Selector, name: String)?
@@ -532,7 +532,7 @@ class NotificationCenterManagerMock: NotificationCenterManager {
 
     var removeObserverNameCallsCount = 0
     var removeObserverNameCalled: Bool {
-        return removeObserverNameCallsCount > 0
+        removeObserverNameCallsCount > 0
     }
 
     var removeObserverNameReceivedArguments: (observer: Any, name: String)?
@@ -555,7 +555,7 @@ class PendingTasksMock: PendingTasks {
 
     var addDownloadNewFilesPendingTaskCallsCount = 0
     var addDownloadNewFilesPendingTaskCalled: Bool {
-        return addDownloadNewFilesPendingTaskCallsCount > 0
+        addDownloadNewFilesPendingTaskCallsCount > 0
     }
 
     var addDownloadNewFilesPendingTaskReturnValue: Double!
@@ -571,7 +571,7 @@ class PendingTasksMock: PendingTasks {
 
     var runAllTasksCallsCount = 0
     var runAllTasksCalled: Bool {
-        return runAllTasksCallsCount > 0
+        runAllTasksCallsCount > 0
     }
 
     var runAllTasksReturnValue: UIBackgroundFetchResult!
@@ -587,7 +587,7 @@ class PendingTasksMock: PendingTasks {
 
     var deleteAllCallsCount = 0
     var deleteAllCalled: Bool {
-        return deleteAllCallsCount > 0
+        deleteAllCallsCount > 0
     }
 
     var deleteAllClosure: (() -> Void)?
@@ -602,7 +602,7 @@ class PendingTasksMock: PendingTasks {
 
     var runCollectionTasksForCallsCount = 0
     var runCollectionTasksForCalled: Bool {
-        return runCollectionTasksForCallsCount > 0
+        runCollectionTasksForCallsCount > 0
     }
 
     var runCollectionTasksForReceivedCollectionId: PendingTaskCollectionId?
@@ -628,7 +628,7 @@ class RemoteConfigProviderMock: RemoteConfigProvider {
 
     var fetchOnCompleteCallsCount = 0
     var fetchOnCompleteCalled: Bool {
-        return fetchOnCompleteCallsCount > 0
+        fetchOnCompleteCallsCount > 0
     }
 
     var fetchOnCompleteReceivedOnComplete: ((Result<Void, Error>) -> Void)?
@@ -647,7 +647,7 @@ class RemoteConfigProviderMock: RemoteConfigProvider {
 
     var activateCallsCount = 0
     var activateCalled: Bool {
-        return activateCallsCount > 0
+        activateCallsCount > 0
     }
 
     var activateClosure: (() -> Void)?
@@ -668,13 +668,13 @@ class ReposViewModelMock: ReposViewModel {
 
     var observeReposCallsCount = 0
     var observeReposCalled: Bool {
-        return observeReposCallsCount > 0
+        observeReposCallsCount > 0
     }
 
-    var observeReposReturnValue: Observable<DataState<[Repo]>>!
-    var observeReposClosure: (() -> Observable<DataState<[Repo]>>)?
+    var observeReposReturnValue: Observable<CacheState<[Repo]>>!
+    var observeReposClosure: (() -> Observable<CacheState<[Repo]>>)?
 
-    func observeRepos() -> Observable<DataState<[Repo]>> {
+    func observeRepos() -> Observable<CacheState<[Repo]>> {
         mockCalled = true
         observeReposCallsCount += 1
         return observeReposClosure.map { $0() } ?? observeReposReturnValue
@@ -684,7 +684,7 @@ class ReposViewModelMock: ReposViewModel {
 
     var observeGitHubUsernameCallsCount = 0
     var observeGitHubUsernameCalled: Bool {
-        return observeGitHubUsernameCallsCount > 0
+        observeGitHubUsernameCallsCount > 0
     }
 
     var observeGitHubUsernameReturnValue: Observable<GitHubUsername>!
@@ -704,7 +704,7 @@ class RepositorySyncServiceMock: RepositorySyncService {
 
     var syncAllOnCompleteCallsCount = 0
     var syncAllOnCompleteCalled: Bool {
-        return syncAllOnCompleteCallsCount > 0
+        syncAllOnCompleteCallsCount > 0
     }
 
     var syncAllOnCompleteReceivedOnComplete: (([RefreshResult]) -> Void)?

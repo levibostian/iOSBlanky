@@ -74,7 +74,7 @@ class FileMangerFileStorage: FileStorage {
     }
 
     func getTempFileUrl() -> URL {
-        return getFileUrl(fileName: UUID().uuidString, inSearchPath: .cachesDirectory, appendedDirectory: nil)
+        getFileUrl(fileName: UUID().uuidString, inSearchPath: .cachesDirectory, appendedDirectory: nil)
     }
 
     func copy(from: URL, to: URL) throws {
@@ -86,6 +86,6 @@ class FileMangerFileStorage: FileStorage {
     }
 
     func doesFileExist(at: URL) -> Bool {
-        return at.doesFileExist
+        at.doesFileExist
     }
 }

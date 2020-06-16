@@ -6,7 +6,7 @@ enum GitHubService {
 }
 
 extension GitHubService: TargetType {
-    var baseURL: URL { return URL(string: Constants.apiEndpoint)! }
+    var baseURL: URL { URL(string: Constants.apiEndpoint)! }
 
     var path: String {
         switch self {
@@ -44,7 +44,7 @@ extension GitHubService: TargetType {
     }
 
     var headers: [String: String]? {
-        return nil
+        nil
     }
 
     var task: Task {

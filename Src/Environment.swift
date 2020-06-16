@@ -7,6 +7,6 @@ protocol Environment {
 // sourcery: InjectRegister = "Environment"
 class AppEnvironment: Environment {
     var isDevelopment: Bool {
-        return Env.development == "true"
+        Env.development == "true"
     }
 }

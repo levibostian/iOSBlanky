@@ -6,11 +6,11 @@ class MoyaProviderMocker<Service: TargetType> {
         private var queue: [QueueResponse] = []
 
         var count: Int {
-            return queue.count
+            queue.count
         }
 
         func pop() -> QueueResponse {
-            return queue.remove(at: 0)
+            queue.remove(at: 0)
         }
 
         func append(_ item: QueueResponse) {

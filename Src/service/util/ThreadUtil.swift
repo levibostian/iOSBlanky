@@ -11,11 +11,11 @@ protocol ThreadUtil {
 // sourcery: InjectRegister = "ThreadUtil"
 class AppThreadUtil: ThreadUtil {
     var isMain: Bool {
-        return Thread.isMainThread
+        Thread.isMainThread
     }
 
     var isBackground: Bool {
-        return !isMain
+        !isMain
     }
 
     func assertMain() {

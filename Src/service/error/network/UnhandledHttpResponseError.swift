@@ -11,10 +11,10 @@ class UnhandledHttpResponseError: LocalizedError {
     }
 
     var localizedDescription: String {
-        return message
+        message
     }
 
     var errorDescription: String? {
-        return localizedDescription
+        localizedDescription
     }
 }

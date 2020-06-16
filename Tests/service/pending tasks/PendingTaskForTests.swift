@@ -20,6 +20,6 @@ class PendingTaskForTests: PendingTask {
     }
 
     func isReadyToRun() -> Bool {
-        return true
+        true
     }
 }

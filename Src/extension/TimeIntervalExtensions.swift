@@ -3,19 +3,19 @@ import Foundation
 // From: https://stackoverflow.com/a/44910195/1486374
 extension TimeInterval {
     private var milliseconds: Int {
-        return Int(truncatingRemainder(dividingBy: 1) * 1000)
+        Int(truncatingRemainder(dividingBy: 1) * 1000)
     }
 
     private var seconds: Int {
-        return Int(self) % 60
+        Int(self) % 60
     }
 
     private var minutes: Int {
-        return (Int(self) / 60) % 60
+        (Int(self) / 60) % 60
     }
 
     private var hours: Int {
-        return Int(self) / 3600
+        Int(self) / 3600
     }
 
     var humanReadable: String {
@@ -29,6 +29,6 @@ extension TimeInterval {
     }
 
     var ignoreMillis: TimeInterval {
-        return rounded(.down)
+        rounded(.down)
     }
 }

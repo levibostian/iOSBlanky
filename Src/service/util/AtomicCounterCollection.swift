@@ -20,7 +20,7 @@ class AtomicCounterCollection<DataType: Hashable> {
     }
 
     func increment(for data: DataType) -> Int {
-        return atomic.set { (currentCollection) -> [DataType: Int]? in
+        atomic.set { (currentCollection) -> [DataType: Int]? in
             let currentIncrementValue = currentCollection![data]
             var newValue = currentCollection!
 
@@ -36,7 +36,7 @@ class AtomicCounterCollection<DataType: Hashable> {
     }
 
     func decrement(for data: DataType) -> Int {
-        return atomic.set { (currentCollection) -> [DataType: Int]? in
+        atomic.set { (currentCollection) -> [DataType: Int]? in
             let currentIncrementValue = currentCollection![data]
             var newValue = currentCollection!
 

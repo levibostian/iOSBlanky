@@ -10,7 +10,7 @@ class Database {
         self.repositoryDao = RepositoryDao(coreDataManager: coreDataManager)
 
         self.daos = [
-            self.repositoryDao
+            repositoryDao
         ]
     }
 

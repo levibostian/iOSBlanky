@@ -4,6 +4,6 @@ import Foundation
 // sourcery: InjectCustom
 extension DI {
     var bundle: Bundle {
-        return Bundle(for: AppDelegate.self)
+        Bundle(for: AppDelegate.self)
     }
 }

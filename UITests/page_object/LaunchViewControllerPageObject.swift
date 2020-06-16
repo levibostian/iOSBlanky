@@ -7,27 +7,27 @@ class LaunchViewControllerPageObject {
     typealias AId = LaunchViewController.AccessibilityId
 
     var usernameTextField: XCUIElement {
-        return app.textFields[AId.usernameTextField.rawValue]
+        app.textFields[AId.usernameTextField.rawValue]
     }
 
     var goButton: XCUIElement {
-        return app.buttons[AId.goButton.rawValue]
+        app.buttons[AId.goButton.rawValue]
     }
 
     var stateOfDataLabel: XCUIElement! {
-        return app.staticTexts[AId.stateOfDataLabel.rawValue]
+        app.staticTexts[AId.stateOfDataLabel.rawValue]
     }
 
     var fetchingDataStatusLabel: XCUIElement! {
-        return app.staticTexts[AId.fetchingDataStatusLabel.rawValue]
+        app.staticTexts[AId.fetchingDataStatusLabel.rawValue]
     }
 
     var userHasNoRepos: XCUIElement! {
-        return app.staticTexts["User does not have any repos."]
+        app.staticTexts["User does not have any repos."]
     }
 
     func numberReposLabel(_ numRepos: Int) -> XCUIElement {
-        return app.staticTexts["Num of repos for user: \(numRepos)"]
+        app.staticTexts["Num of repos for user: \(numRepos)"]
     }
 
     init(app: XCUIApplication) {

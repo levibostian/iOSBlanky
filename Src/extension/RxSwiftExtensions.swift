@@ -11,7 +11,7 @@ extension CompositeDisposable {
 
 extension Single where Element == [RefreshResult] {
     static func concat(_ syncs: [Single<RefreshResult>]) -> Single<[RefreshResult]> {
-        return Single<[RefreshResult]>.create { (observer) -> Disposable in
+        Single<[RefreshResult]>.create { (observer) -> Disposable in
             var disposeBag = CompositeDisposable()
 
             func helper(_ syncs: [Single<RefreshResult>], results: [RefreshResult]) {

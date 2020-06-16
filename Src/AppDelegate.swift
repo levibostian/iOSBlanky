@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     fileprivate func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
-        return BaseNavigationController(rootViewController: rootViewController)
+        BaseNavigationController(rootViewController: rootViewController)
     }
 
     private func showViewController(_ viewController: UIViewController, animate: Bool = true) {

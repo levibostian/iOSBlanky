@@ -23,8 +23,8 @@ class MoyaResponseProcessor {
     }
 
     func process(_ responseError: MoyaError) -> HttpRequestError {
-            // I am only checking if the moyaError is of type MoyaError.underlying because the other type of MoyaErrors I want to propigate to the RxSwift onError case.
-            // MoyaError.statusCode is where someone calls one of the Response.filter() functions to filter status code ranges. By default, I do not do any of that so, I need to let that error continue down the pipeline for others to catch.
+        // I am only checking if the moyaError is of type MoyaError.underlying because the other type of MoyaErrors I want to propigate to the RxSwift onError case.
+        // MoyaError.statusCode is where someone calls one of the Response.filter() functions to filter status code ranges. By default, I do not do any of that so, I need to let that error continue down the pipeline for others to catch.
         // Other MoyaErrors are mapping issues. These get thrown when someone calls one of the Response.map() functions and it fails. Again, I do not call any of these by default so I need to let those continue.
         switch responseError {
         case MoyaError.underlying(let error, _):

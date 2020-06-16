@@ -12,18 +12,18 @@ struct Lens<Whole, Part> {
 }
 
 func * <A, B, C>(lhs: Lens<A, B>, rhs: Lens<B, C>) -> Lens<A, C> {
-    return Lens<A, C>(get: { a in rhs.get(lhs.get(a)) },
-                      set: { c, a in lhs.set(rhs.set(c, lhs.get(a)), a) })
+    Lens<A, C>(get: { a in rhs.get(lhs.get(a)) },
+               set: { c, a in lhs.set(rhs.set(c, lhs.get(a)), a) })
 }
 
 func *~ <A, B>(lhs: Lens<A, B>, rhs: B) -> (A) -> A {
-    return { a in lhs.set(rhs, a) }
+    { a in lhs.set(rhs, a) }
 }
 
 func |> <A, B>(x: A, f: (A) -> B) -> B {
-    return f(x)
+    f(x)
 }
 
 func |> <A, B, C>(f: @escaping (A) -> B, g: @escaping (B) -> C) -> (A) -> C {
-    return { g(f($0)) }
+    { g(f($0)) }
 }

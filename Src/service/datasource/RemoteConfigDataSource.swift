@@ -2,14 +2,14 @@ import Foundation
 import RxSwift
 import Teller
 
-typealias RemoteConfigRepository = Repository<RemoteConfigDataSource>
+typealias RemoteConfigRepository = TellerRepository<RemoteConfigDataSource>
 // sourcery: InjectRegister = "RemoteConfigRepository"
 // sourcery: InjectCustom
 extension RemoteConfigRepository {}
 
 extension DI {
     var remoteConfigRepository: RemoteConfigRepository {
-        let repository: RemoteConfigRepository = Repository(dataSource: inject(.remoteConfigDataSource))
+        let repository: RemoteConfigRepository = TellerRepository(dataSource: inject(.remoteConfigDataSource))
         repository.requirements = RemoteConfigDataSource.Requirements()
         return repository
     }
@@ -17,7 +17,7 @@ extension DI {
 
 class RemoteConfigDataSourceRequirements: RepositoryRequirements {
     var tag: RepositoryRequirements.Tag {
-        return "Remote config values"
+        "Remote config values"
     }
 }
 
@@ -38,7 +38,7 @@ class RemoteConfigDataSource: RepositoryDataSource {
     var maxAgeOfCache: Period = Period(unit: 12, component: .hour)
 
     func fetchFreshCache(requirements: RemoteConfigDataSourceRequirements) -> Single<FetchResponse<Void, FetchError>> {
-        return Single.create { (observer) -> Disposable in
+        Single.create { (observer) -> Disposable in
             self.remoteConfigProvider.fetch { result in
                 observer(.success(result))
             }
@@ -49,10 +49,10 @@ class RemoteConfigDataSource: RepositoryDataSource {
     func saveCache(_ fetchedData: Void, requirements: RemoteConfigDataSourceRequirements) throws {}
 
     func observeCache(requirements: RemoteConfigDataSourceRequirements) -> Observable<Void> {
-        return Observable.never()
+        Observable.never()
     }
 
     func isCacheEmpty(_ cache: Void, requirements: RemoteConfigDataSourceRequirements) -> Bool {
-        return false
+        false
     }
 }

@@ -61,6 +61,6 @@ extension GitHubRequestRunner {}
 
 extension DI {
     var gitHubRequestRunner: GitHubRequestRunner {
-        return HttpRequestRunner(responseProcessor: inject(.moyaResponseProcessor), provider: inject(.gitHubMoyaProvider), pendingTasks: inject(.pendingTasks))
+        HttpRequestRunner(responseProcessor: inject(.moyaResponseProcessor), provider: inject(.gitHubMoyaProvider), pendingTasks: inject(.pendingTasks))
     }
 }

@@ -11,7 +11,7 @@ class UserManager {
 
     var userId: Int? {
         get {
-            return keyValueStore.integer(forKey: userIdKey)
+            keyValueStore.integer(forKey: userIdKey)
         }
         set {
             keyValueStore.set(newValue, forKey: userIdKey)
@@ -19,6 +19,6 @@ class UserManager {
     }
 
     func isUserLoggedIn() -> Bool {
-        return userId != 0
+        userId != 0
     }
 }

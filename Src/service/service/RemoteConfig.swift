@@ -45,6 +45,6 @@ class FirebaseRemoteConfig: RemoteConfigProvider {
 
 extension FirebaseRemoteConfig {
     var someRemoteConfig: String? {
-        return remoteConfig["some_remote_config_value"].stringValue
+        remoteConfig["some_remote_config_value"].stringValue
     }
 }

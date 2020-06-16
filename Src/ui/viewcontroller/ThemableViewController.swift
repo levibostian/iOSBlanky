@@ -12,7 +12,7 @@ protocol ThemableViewController: UIViewController {
 
 extension ThemableViewController {
     var currentTheme: Theme {
-        return appDelegate.themeManager.currentTheme
+        appDelegate.themeManager.currentTheme
     }
 
     func applyTheme() {

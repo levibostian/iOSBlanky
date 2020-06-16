@@ -3,7 +3,7 @@ import Wendy
 
 extension PendingTasksRunnerResult {
     var requestError: HttpRequestError? {
-        guard let firstFailure = self.firstFailedResult else {
+        guard let firstFailure = firstFailedResult else {
             return nil
         }
 

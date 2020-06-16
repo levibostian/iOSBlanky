@@ -140,7 +140,6 @@
 		F7602FD922E224DB00FDB5F3 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A622DFD15D00202FDB /* ConsoleLogger.swift */; };
 		F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */; };
 		F7602FDB22E224DB00FDB5F3 /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
-		F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F7602FDE22E224E000FDB5F3 /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
 		F7602FE022E224E700FDB5F3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D3B8D01E149B5F00F2C3CB /* Constants.swift */; };
 		F761644522E8B5F4006F2D2A /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F761644422E8B5F4006F2D2A /* SecureStorage.swift */; };
@@ -173,7 +172,6 @@
 		F76765B522F78AD700ED2A11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75DCD821CD8F10D00B8941F /* AppDelegate.swift */; };
 		F76765B622F78AD700ED2A11 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4822F7841B00B1A41D /* Colors.swift */; };
 		F76765B722F78AD700ED2A11 /* Swizzler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76ACF4D22F7848B00B1A41D /* Swizzler.swift */; };
-		F76765B822F78AD800ED2A11 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F76765B922F78AD800ED2A11 /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
 		F76765BC22F78AD800ED2A11 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C61F9ED11E00219B30 /* Repo.swift */; };
 		F76765BD22F78AD800ED2A11 /* GitHubTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */; };
@@ -208,7 +206,6 @@
 		F785CB6E22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
 		F785CB6F22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
 		F785CC7622D692C500389076 /* Teller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F785CC7522D692C500389076 /* Teller.framework */; };
-		F785CC7A22D696FE00389076 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */; };
 		F799D58422DF703100202FDB /* CrashReportingLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D58322DF703100202FDB /* CrashReportingLogger.swift */; };
 		F799D58922DF71DB00202FDB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F799D58822DF71DB00202FDB /* SnapKit.framework */; };
@@ -277,7 +274,6 @@
 		F7A8556B23A6F08C009362B0 /* DevelopmentActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5A822DFD20D00202FDB /* DevelopmentActivityLogger.swift */; };
 		F7A8556C23A6F08C009362B0 /* FirebaseAnalyticsActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D5AA22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift */; };
 		F7A8556D23A6F08C009362B0 /* DebugActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF2722E50D43009E1203 /* DebugActivityLogger.swift */; };
-		F7A8556E23A6F08F009362B0 /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CC7922D696FE00389076 /* DataState.swift */; };
 		F7A8556F23A6F08F009362B0 /* BuildFlavor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F799D59922DFC00600202FDB /* BuildFlavor.swift */; };
 		F7A8557023A6F08F009362B0 /* FileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75944C923A1B43A009258D9 /* FileName.swift */; };
 		F7A8557123A6F08F009362B0 /* GitHubUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = F714EB6023A3070E00E7AFB5 /* GitHubUsername.swift */; };
@@ -635,7 +631,6 @@
 		F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTasksFactory.swift; sourceTree = "<group>"; };
 		F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySyncService.swift; sourceTree = "<group>"; };
 		F785CC7522D692C500389076 /* Teller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Teller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F785CC7922D696FE00389076 /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
 		F7906E6D1FA4CF6600638B2C /* RepositoryDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDao.swift; sourceTree = "<group>"; };
 		F799D58322DF703100202FDB /* CrashReportingLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashReportingLogger.swift; sourceTree = "<group>"; };
 		F799D58822DF71DB00202FDB /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1162,7 +1157,6 @@
 		F785CC7822D696E400389076 /* type */ = {
 			isa = PBXGroup;
 			children = (
-				F785CC7922D696FE00389076 /* DataState.swift */,
 				F799D59922DFC00600202FDB /* BuildFlavor.swift */,
 				F75944C923A1B43A009258D9 /* FileName.swift */,
 				F714EB6023A3070E00E7AFB5 /* GitHubUsername.swift */,
@@ -2117,7 +2111,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8\nexport PATH=~/.rbenv/shims:$PATH\n\n# Type a script or drag a script file from your workspace to insert its path.\n./dot_env_ios.rb\n";
+			shellScript = "export LANG=en_US.UTF-8\nexport LANGUAGE=en_US.UTF-8\nexport LC_ALL=en_US.UTF-8\nexport PATH=~/.rbenv/shims:$PATH\n\n# Type a script or drag a script file from your workspace to insert its path.\n./dot_env_ios.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2168,7 +2162,6 @@
 				F7B99FA523A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
 				F799D5AB22DFD3A500202FDB /* FirebaseAnalyticsActivityLogger.swift in Sources */,
 				F7B9A05223A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
-				F785CC7A22D696FE00389076 /* DataState.swift in Sources */,
 				F7A228D423B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F7906E6E1FA4CF6600638B2C /* RepositoryDao.swift in Sources */,
 				F714EB6123A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
@@ -2336,7 +2329,6 @@
 				F712CDA422E3BCBC00272FF5 /* Database.swift in Sources */,
 				F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
-				F7602FDD22E224E000FDB5F3 /* DataState.swift in Sources */,
 				F7D9196523A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
 				F714EB5E23A303BE00E7AFB5 /* ReposDataSource.swift in Sources */,
 				F7AC968723A58E360037CCA2 /* Model.xcdatamodeld in Sources */,
@@ -2418,7 +2410,6 @@
 				F7254EC323A7BDDA0027F12E /* RepoFakes.swift in Sources */,
 				F76765A922F78AC000ED2A11 /* CoreDataManager.swift in Sources */,
 				F76ACF4A22F7841B00B1A41D /* Colors.swift in Sources */,
-				F76765B822F78AD800ED2A11 /* DataState.swift in Sources */,
 				F76765AC22F78AC000ED2A11 /* ErrorReportingActivityLogger.swift in Sources */,
 				F7B99FD823A556B7004A4011 /* FileDownloadedEventBusExtras.swift in Sources */,
 				F7B99FA723A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
@@ -2540,7 +2531,6 @@
 				F7254EC623A7BDDB0027F12E /* FileDownloadedEventBusExtrasFake.swift in Sources */,
 				F7A8559123A6F0A8009362B0 /* UserDefaultsExtensions.swift in Sources */,
 				F7A8558523A6F0A8009362B0 /* RxSwiftExtensions.swift in Sources */,
-				F7A8556E23A6F08F009362B0 /* DataState.swift in Sources */,
 				F7254EB723A7BD310027F12E /* Swizzler.swift in Sources */,
 				F7254EBC23A7BD350027F12E /* Strings.swift in Sources */,
 				F7A8555023A6F073009362B0 /* EventBusExtrasConverter.swift in Sources */,

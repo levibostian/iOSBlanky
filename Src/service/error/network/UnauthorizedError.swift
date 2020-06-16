@@ -7,7 +7,7 @@ class UnauthorizedError: LocalizedError {
     private let message: String
 
     var errorDescription: String? {
-        return message
+        message
     }
 
     init(message: String) {

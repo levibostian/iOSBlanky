@@ -9,7 +9,7 @@ protocol SecureStorage {
 // sourcery: InjectRegister = "SecureStorage"
 class KeychainAccessSecureStorage: SecureStorage {
     private var keychain: Keychain? {
-        guard let loggedInUserId = self.userManager.userId else {
+        guard let loggedInUserId = userManager.userId else {
             return nil
         }
 
@@ -23,7 +23,7 @@ class KeychainAccessSecureStorage: SecureStorage {
     }
 
     func getString(_ key: String) -> String? {
-        return try! keychain?.get(key)
+        try! keychain?.get(key)
     }
 
     func set(_ value: String?, key: String) {

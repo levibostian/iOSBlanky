@@ -8,7 +8,7 @@ import UIKit
 class RepositoryDao: Dao {
     internal let coreDataManager: CoreDataManager
     var modelName: String {
-        return RepoModel.name
+        RepoModel.name
     }
 
     init(coreDataManager: CoreDataManager) {

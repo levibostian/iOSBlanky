@@ -2,21 +2,21 @@ import Foundation
 import RxSwift
 import Teller
 
-typealias ReposRepository = Repository<ReposDataSource>
+typealias ReposRepository = TellerRepository<ReposDataSource>
 // sourcery: InjectRegister = "ReposRepository"
 // sourcery: InjectCustom
 extension ReposRepository {}
 
 extension DI {
     var reposRepository: ReposRepository {
-        return Repository(dataSource: inject(.reposDataSource))
+        TellerRepository(dataSource: inject(.reposDataSource))
     }
 }
 
 class ReposDataSourceRequirements: RepositoryRequirements {
     let githubUsername: String
     var tag: RepositoryRequirements.Tag {
-        return "Repos for GitHub username: \(githubUsername)"
+        "Repos for GitHub username: \(githubUsername)"
     }
 
     init(githubUsername: String) {
@@ -53,7 +53,7 @@ class ReposDataSource: RepositoryDataSource {
     var maxAgeOfCache: Period = Period(unit: 3, component: .day)
 
     func fetchFreshCache(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo], FetchError>> {
-        return githubApi.getUserRepos(username: requirements.githubUsername)
+        githubApi.getUserRepos(username: requirements.githubUsername)
     }
 
     func saveCache(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) throws {
@@ -61,10 +61,10 @@ class ReposDataSource: RepositoryDataSource {
     }
 
     func observeCache(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
-        return db.repositoryDao.observeRepos(forUsername: requirements.githubUsername)
+        db.repositoryDao.observeRepos(forUsername: requirements.githubUsername)
     }
 
     func isCacheEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {
-        return cache.isEmpty
+        cache.isEmpty
     }
 }

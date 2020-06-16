@@ -29,7 +29,7 @@ class UserDefaultsKeyValueStorage: KeyValueStorage {
     }
 
     func string(forKey key: String) -> String? {
-        return userDefaults.string(forKey: key)
+        userDefaults.string(forKey: key)
     }
 
     func set(_ value: String?, forKey key: String) {
@@ -37,7 +37,7 @@ class UserDefaultsKeyValueStorage: KeyValueStorage {
     }
 
     func observeString(forKey key: String) -> Observable<String> {
-        return userDefaults.rx.observe(String.self, key)
+        userDefaults.rx.observe(String.self, key)
             .filter { (value) -> Bool in
                 value != nil
             }.map { (value) -> String in

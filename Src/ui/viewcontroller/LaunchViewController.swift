@@ -90,24 +90,20 @@ class LaunchViewController: UIViewController {
             }).disposed(by: disposeBag)
 
         reposViewModel.observeRepos()
-            .subscribe(onNext: { (dataState: DataState<[Repo]>) in
-                switch dataState.state() {
-                case .none: break
+            .subscribe(onNext: { (dataState: CacheState<[Repo]>) in
+                switch dataState.state {
                 case .noCache:
                     self.stateOfDataLabel.text = "User does not have any repos."
-                case .cache(let cache, _, _, _, _, _):
+                case .cache(let cache, _):
                     if let repos = cache {
                         self.stateOfDataLabel.text = "Num of repos for user: \(String(repos.count))"
                     } else {
                         self.stateOfDataLabel.text = "User does not have any repos."
                     }
                 }
-
-                switch dataState.fetchingState() {
-                case .fetching(let fetching, _, _, _):
-                    if fetching {
-                        self.stateOfDataLabel.text = "Loading repos for user..."
-                    }
+                
+                if dataState.isRefreshing {
+                    self.stateOfDataLabel.text = "Loading repos for user..."
                 }
             }).disposed(by: disposeBag)
 
@@ -146,14 +142,14 @@ class LaunchViewController: UIViewController {
 
 extension LaunchViewController: ThemableViewController {
     var navigationBarTitle: String? {
-        return "Repos"
+        "Repos"
     }
 
     var navigationBarBackButtonText: String? {
-        return nil
+        nil
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return currentTheme.statusBarStyle
+        currentTheme.statusBarStyle
     }
 }

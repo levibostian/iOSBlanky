@@ -5,7 +5,7 @@ enum ErrorForTesting: Error, LocalizedError, Equatable {
     case bar
 
     var errorDescription: String? {
-        return localizedDescription
+        localizedDescription
     }
 
     var localizedDescription: String {

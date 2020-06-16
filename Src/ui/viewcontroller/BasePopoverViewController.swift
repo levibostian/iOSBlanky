@@ -16,7 +16,7 @@ class BasePopoverViewController: UIViewController {
 
     // override in child instances to specify size.
     func getPreferredContentSize() -> CGSize {
-        return CGSize(width: 200, height: 200)
+        CGSize(width: 200, height: 200)
     }
 
     func dismiss(_ sender: AnyObject) {

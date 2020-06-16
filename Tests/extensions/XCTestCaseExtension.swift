@@ -19,6 +19,6 @@ extension XCTestCase {
     }
 
     var bundle: Bundle {
-        return Bundle(for: TestUtil.self)
+        Bundle(for: TestUtil.self)
     }
 }

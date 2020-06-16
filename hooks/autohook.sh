@@ -65,7 +65,7 @@ main() {
             hook_exit_code=0
             scriptname=$(basename $script)
             
-            eval $script # &> /dev/null
+            eval $script 
             script_exit_code=$?
             if [[ $script_exit_code != 0 ]]
             then

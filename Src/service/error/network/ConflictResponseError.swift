@@ -28,10 +28,10 @@ struct ConflictResponseError: Codable {
 
 extension ConflictResponseError: LocalizedError {
     var errorDescription: String? {
-        return localizedDescription
+        localizedDescription
     }
 
     var localizedDescription: String {
-        return message
+        message
     }
 }

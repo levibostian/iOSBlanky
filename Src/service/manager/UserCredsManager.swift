@@ -14,11 +14,11 @@ class UserCredsManager {
     }
 
     func areUserCredsAvailable() -> Bool {
-        return authToken != nil
+        authToken != nil
     }
 
     var authToken: String? {
-        get { return secureStorage.getString(userAuthTokenKey) }
+        get { secureStorage.getString(userAuthTokenKey) }
         set { secureStorage.set(newValue, key: userAuthTokenKey) }
     }
 }
