@@ -1,5 +1,5 @@
 path: "_secrets"
-default:
+default: # default is testing (aka staging) environment
   secrets:
     - ".env"
     - "Src/GoogleService-Info.plist"

@@ -2,21 +2,11 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+# be able to generate Environment swift file
+gem "dotenv-ios", "~> 0.1.2"
+gem "dotenv"
 
-gem "trent", "~> 0.5.0"
-gem 'fastlane'
+# Don't add fastlane to this file. We want to try and keep fastlane to only needing to be installed on the CI server as it needs updating often (if you install newest version on CI server always, it works better), it's used for running tests/building/deploy app on CI server so no need for it locally. If you need to use it locally, install it globally by using `gem install fastlane`
+
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')
 eval_gemfile(plugins_path) if File.exist?(plugins_path)
-
-gem "danger-ios_version_change", "~> 0.1.6"
-gem "danger", "~> 6"
-gem "danger-swiftformat", "~> 0.5.0"
-gem "danger-swiftlint", "~> 0.22.0"
-gem "dotenv", "~> 2.7"
-
-gem "danger-junit", "~> 1.0"
-
-gem "dotenv-ios", "~> 0.1.1"
-
-gem "cici", "~> 0.1.0"

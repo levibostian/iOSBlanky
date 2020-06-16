@@ -1,31 +1,17 @@
+require 'dotenv'
+Dotenv.load("../.env")
+
 # Values that are used across *all* fastlane actions. Mostly dealing with account information
 
-require 'dotenv'
-$env_vars = Dotenv.parse("../.env")
+app_identifier ENV["APP_BUNDLE_ID"] # get from .env file 
 
-# -------------- edit variables here ---------------
-apple_developer_team_id = "12345"
-apple_developer_team_name = "Team name"
-apple_developer_team_email = "Team name"
-# --------------------------------------------------
+apple_id ENV["FASTLANE_USERNAME"]
 
-def get_env(name)
-  value = $env_vars[name]
-  raise "Forgot to define #{name} in .env" unless value 
+# You can uncomment the lines below and add your own
+# team selection in case you're in multiple teams
+team_id ENV["APPLE_DEVELOPER_ACCOUNT_TEAM_ID"]
+team_name ENV["APPLE_DEVELOPER_ACCOUNT_TEAM_NAME"]
 
-  return value 
-end 
-
-env = {
-  :app_bundle_id => get_env("APP_BUNDLE_ID")
-}
-
-app_identifier env[:app_bundle_id]
-
-apple_id apple_developer_team_email
-
-team_name apple_developer_team_name
-team_id apple_developer_team_id
-
-itc_team_name apple_developer_team_name
-itc_team_id apple_developer_team_id
+# To select a team for App Store Connect use
+itc_team_name ENV["APP_STORE_CONNECT_TEAM_NAME"]
+itc_team_id ENV["APP_STORE_CONNECT_TEAM_ID"]

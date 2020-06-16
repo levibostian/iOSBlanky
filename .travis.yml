@@ -1,71 +1,71 @@
-os: osx
-osx_image: xcode11.2
+osx_image: xcode11.5
 language: swift
 
-cache:
-  bundler: true 
-  cocoapods: true
-  
+# https://github.com/aevea/commitsar/issues/230
+git:
+  depth: false
+
+cache: cocoapods
+podfile: Podfile
 before_install:
   - gem install cocoapods
-  - pod --version
-  - pod repo update
-install:  
-  - bundle install
-  - pod install 
-  - brew update 
-  - brew install imagemagick  # for fastlane frameit 
-  - brew install librsvg graphicsmagick # for fastlane generating app icons
+  - gem install fastlane # needed for testing, building, deploying, cron. All so we install it now. 
+  - gem install cici 
+  - travis_retry bundle install # we have a script or two that's written in ruby we need during building    
+  - travis_retry pod install   
+  - nvm install lts/* # Nodejs lang. used for conventional commits and semantic-release stuff
+  - curl -sL https://firebase.tools | bash # firebase CLI for dev app testing
+  
 before_script:
-  - ./set_environment.rb development
+  - ./set_environment.sh 
+
 env:
   global:
+    - FOO=123
     # Below are secret environment variables you need to set. 
     # Note: You need to escape all of the special characters. Add a `\` character before each. 
     # 
+    # MATCH_GIT_REPO="git@github.com/owner/repo.git" - github repo to store the match repo information
     # MATCH_PASSWORD= password to decrypt secrets made by Fastlane match
+    # FASTLANE_USER= email address to the Apple ID account to use to login to fastlane. This is also your apple email address. 
     # FASTLANE_PASSWORD= password to the Apple ID account used to login for fastlane.
-    # DANGER_GITHUB_API_TOKEN= personal github oauth token for Danger bot. https://danger.systems/guides/getting_started.html#setting-up-an-access-token    
-    #### IAM account. SNS topic sending, S3 bucket uploading. 
-    # AWS_IAM_ACCESS_KEY=12345
-    # AWS_IAM_ACCESS_SECRET=1234
-    # AWS_S3_BUCKET_NAME_TEST_RESULTS=name-of-bucket
-    # AWS_S3_BUCKET_PATH_TEST_RESULTS=test_results
-    # AWS_SNS_APP_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:app-deployed-notifier
-    # AWS_SNS_DEVELOPER_UPDATE_TOPIC=arn:aws:sns:us-east-1:38383839494:developer-notifier
-    # DEVELOPER_EMAIL=you@example.com
-    # DEVELOPER_FIRST_NAME=First
-    # DEVELOPER_LAST_NAME=First
-    # DEVELOPER_PHONE_NUMBER=+1 3333333333
-    # DEVELOPER_FIRST_NAME=First
-    TESTFLIGHT_BETA_FEEDBACK_EMAIL=you@example.com 
-    AWS_REGION=us-east-1
+    # GITHUB_TOKEN= personal access token where github username has push access to the repo to make comments and releases. 
+    # FIREBASE_DISTRIBUTION_APP_ID= firebase app id for app you want to use for firebase app distribution. 
+    # FIREBASE_TOKEN="123" - token to login to Firebase account that is added to Firebase project. https://firebase.google.com/docs/cli#cli-ci-systems
+    # APPLE_DEVELOPER_ACCOUNT_TEAM_ID="12345" - team that the app belongs to. Get from Apple Developer Center for account FASTLANE_USER logged in as. 
+    # APPLE_DEVELOPER_ACCOUNT_TEAM_NAME="Team name" - team that the app belongs to. Get from Apple Developer Center for account FASTLANE_USER logged in as. 
+    # APP_STORE_CONNECT_TEAM_NAME="Team name" - team name found in App Store Connect. https://stackoverflow.com/a/46415415/1486374
+    # APP_STORE_CONNECT_TEAM_ID="12345" - team id found in App Store Connect. https://stackoverflow.com/a/46415415/1486374
 
 jobs:
-  include:
-  - stage: commit
+  fast_finish: true
+  include:    
+  - stage: tests
     script:
-      - ruby scripts/tests.rb
+      - npm i @commitlint/travis-cli && npx commitlint-travis
+      - fastlane unit_test
+      # - fastlane ui_test
   - stage: pr
     script:
-      - ruby scripts/tests.rb 
-      - bundle exec danger --fail-on-errors=true
+      - ./set_environment.sh 
+      - fastlane qa_deploy
   - stage: deploy
-    script:
-      - ./set_environment.rb
-      - ruby scripts/tests.rb
-      - bundle exec fastlane deploy
+    script: 
+      # Use nvm to install and use the Node LTS version (nvm is installed on all Travis images)
+      - ./set_environment.sh production       
+      - npm i @semantic-release/git @semantic-release/github @semantic-release/changelog @semantic-release/exec 
+      - npx semantic-release
   - stage: cron
     script:
-      - ./set_environment.rb production
-      - bundle exec fastlane refresh_dsyms
+      - ./set_environment.sh production 
+      - fastlane refresh_dsyms
 
 stages:
+  - name: tests
+    if: type IN (push, pull_request) AND tag IS blank
   - name: pr
-    if: type IN (pull_request)
-  - name: commit
-    if: type IN (push) AND tag IS blank
+    if: type IN (pull_request) 
   - name: deploy
-    if: tag IS present  
+    if: type IN (push) AND branch IN (master, beta, alpha)
   - name: cron
     if: type IN (cron)

@@ -1,22 +1,7 @@
 require 'dotenv'
 Dotenv.load("../.env")
 
-def get_env(name)
-  value = ENV[name]
-  raise "Forgot to define #{name} in environment variables" unless value 
-
-  return value 
-end 
-
 UI = FastlaneCore::UI unless Fastlane.const_defined?("UI")
-
-env = {
-  :bundle_id => get_env("APP_BUNDLE_ID"),
-  :developer_email => get_env("DEVELOPER_EMAIL"),
-  :app_name => get_env("APP_NAME"),
-  :testflight_beta_feedback_email => get_env("TESTFLIGHT_BETA_FEEDBACK_EMAIL"),
-  :app_icon_badge => get_env("APP_ICON_BADGE")
-}
 
 default_platform :ios
 
@@ -26,27 +11,66 @@ platform :ios do
     setup_travis
   end
 
+  desc "Run unit/integration tests"
+  lane :unit_test do |values|
+    scan(
+      scheme: "Tests"
+    )
+  end 
+
+  desc "Run UI tests"
+  lane :ui_test do |values|
+    # We are running UI test on actual hardware via Firebase test lab. We could run them
+    # on a simulator on the CI but that's not as reliable to do. Tests can be flaky. Running
+    # on actual hardware *should hopefully* fix some of those issues. 
+    # 
+    # Details from: https://github.com/fastlane/fastlane-plugin-firebase_test_lab#actions
+
+    # NOTE: This has not been configured! This has not been tested or finished. It' just from the readme of the plugin. 
+    scan(
+      scheme: 'UITests',                  # XCTest scheme
+      clean: true,                        # Recommended: This would ensure the build would not include unnecessary files
+      skip_detect_devices: true,          # Required
+      build_for_testing: true,            # Required
+      sdk: 'iphoneos',                    # Required
+      should_zip_build_products: true     # Must be true to set the correct format for Firebase Test Lab
+    )
+    firebase_test_lab_ios_xctest(
+      gcp_project: 'your-google-project', # Your Google Cloud project name
+      devices: [                          # Device(s) to run tests on
+        {
+          ios_model_id: 'iphonex',        # Device model ID, see gcloud command above
+          ios_version_id: '11.2',         # iOS version ID, see gcloud command above
+          locale: 'en_US',                # Optional: default to en_US if not set
+          orientation: 'portrait'         # Optional: default to portrait if not set
+        }
+      ]
+    )
+  end 
+
+  # At this time, screenshots are meant to be created on a local machine and the screenshots then uploaded to App Store Connect manually. 
+  # This is because (1) if there are errors creating the screenshots, you can fix it on your machine. (2) We manually edit the metadata on 
+  # App Store Connect so do this for screenshots, too. 
+  # 
   # Requires `brew install imagemagick` for framing to work
   desc "Take screenshots for the store"
   lane :take_screenshots do |values|
-    # No need to capture screenshots. They will be generated during the testing phase that happens before the deployment. 
-    # capture_ios_screenshots(
-    #   skip_open_summary: true
-    # )    
+    capture_ios_screenshots(
+      skip_open_summary: false
+    ) 
     frame_screenshots()
   end 
-  
+
   desc "Downloads dsym files from iTunes Connect (from processed builds by Apple) and uploads them to Crashlytics for reports."  
-  lane :refresh_dsyms do |values| 
+  lane :refresh_dsyms do |values|
+    # get all builds for latest version. This is flexible as it's always "latest" and it gets all builds which means it could get testflight
     download_dsyms(
-      min_version: values[:min_version],
-      version: values[:version] || "latest",
-      app_identifier: values[:app_id] || env[:bundle_id]
+      version: "latest"
     )
+
     upload_symbols_to_crashlytics(
       gsp_path: "Src/GoogleService-Info.plist"
     )
-    clean_build_artifacts
   end
 
   desc "From a .env file, change the app's properties. It's easier to do in fastlane, so that's why we're doing it here."
@@ -54,162 +78,106 @@ platform :ios do
     info_plist_location = "Src/Info.plist"
   
     update_app_identifier(
-      app_identifier: env[:bundle_id],
+      app_identifier: ENV["APP_BUNDLE_ID"],
       plist_path: info_plist_location
     )  
 
     update_info_plist(      
       plist_path: info_plist_location,
-      display_name: env[:app_name]
+      display_name: ENV["APP_NAME"]
     )
   end
 
+  # Note: At this time, this is only meant to be run during pull requests. Make a PR draft if you need. 
+  desc "Deploy a QA (testing) build for QA."
+  lane :qa_deploy do |values| 
+    sync_code_signing()
+
+    # Update version string and build to identify this build in Firebase. 
+    commit = last_git_commit    
+    short_hash = commit[:abbreviated_commit_hash]
+
+    app_build_number = short_hash
+    app_version = git_branch
+
+    set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleVersion", value: app_build_number)
+    set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleShortVersionString", value: app_version)    
+
+    build_ios_app(
+      scheme: "App",
+      configuration: 'Release',
+      export_method: 'app-store',
+      export_options: {
+        provisioningProfiles: { 
+          ENV["APP_BUNDLE_ID"] => "match AppStore #{ENV["APP_BUNDLE_ID"]}"
+        }
+      }
+    )
+
+    upload_symbols_to_crashlytics(
+      gsp_path: "Src/GoogleService-Info.plist"
+    )
+
+    firebase_app_distribution(
+      app: ENV["FIREBASE_DISTRIBUTION_APP_ID"],
+      debug: true,
+      groups: "qa_team" # decided to use hard coded groups. can change later. 
+    )    
+
+    pull_request_comment = [
+      "App build ready for testing!",
+      "",
+      "version: #{app_version}, build number: #{app_build_number}"
+    ].join("\n") + "\n"
+
+    result = github_api(
+      api_token: ENV["GITHUB_TOKEN"],
+      http_method: "POST",
+      path: "/repos/#{ENV["TRAVIS_REPO_SLUG"]}o/issues/#{ENV["TRAVIS_PULL_REQUEST"]}/comments"
+      body: { body: pull_request_comment },
+      error_handlers: {
+        '*' => proc do |result|
+          UI.error("ERROR! Code: #{result[:status]}, body: #{result[:body]}")
+        end
+      }
+    )
+  end
+
+  # When we deploy, we only send to TestFlight for public beta testing. 
+  # When we want to push to the App Store, we will login to App Store Connect, expire the TestFlight build and submit that same build the the App Store. 
   lane :deploy do |values|
-    UI.user_error!('Not on CI') unless ENV["CI"]
+    app_version = values[:new_version]
 
-    generate_icons()
-
-    changelog = File.read("./release_notes.txt")    
-    description = File.read("./metadata/en-US/description.txt")    
-    buildVersion = Time.now.to_i.to_s
+    set_environment()
     
     sync_code_signing(type: "appstore")
 
-    set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleVersion", value: buildVersion) # Set bundle version to epoch time to assert it's always unique.
-    
-    if ENV["TRAVIS_TAG"].end_with?("-beta")
-      beta_build_release(changelog, description)
+    # Set bundle version to epoch time to assert it's always unique.
+    set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleVersion", value: Time.now.to_i.to_s) 
+    set_info_plist_value(path: "./Src/Info.plist", key: "CFBundleShortVersionString", value: app_version)
 
-      publicity_message = "This update of the app is *not* available to the public. The update was uploaded to the TestFlight app and is only available for beta testing. You can download this new update with the TestFlight app right now."
-      notify_app_update(buildVersion, publicity_message)
-    else
-      take_screenshots()
-      prod_build_upload()
+    build_ios_app(
+      scheme: "App",
+      configuration: 'Release',
+      export_method: 'app-store',
+      export_options: {
+        provisioningProfiles: { 
+          ENV["APP_BUNDLE_ID"] => "match AppStore #{ENV["APP_BUNDLE_ID"]}"
+        }
+      }
+    )
 
-      notification_message_body = [      
-        "#{env[:app_name]}, build: #{buildVersion} uploaded to App Store, but not released yet",        
-        "\n",
-        "You need to login to Apple Developer Account and view the metadata of this release to make sure that generated screenshots and metadata lok good.",        
-        "\n",
-        "(Note: this is an automated message)"
-      ].join("\n") + "\n"
-
-      aws_sns_topic(
-        access_key: ENV["AWS_IAM_ACCESS_KEY"],
-        secret_access_key: ENV["AWS_IAM_ACCESS_SECRET"],
-        region: ENV["AWS_REGION"],
-        topic_arn: ENV["AWS_SNS_DEVELOPER_UPDATE_TOPIC"],
-        subject: "**Check metadata** for #{env[:app_name]} app update",
-        message: notification_message_body
-      )
-    end     
-  end 
-
-  desc "Meant to be called from a local machine. Not from a CI server"
-  lane :submit_prod_release do |values|
-    UI.user_error!('Does not run on CI') if ENV["CI"]
-
-    appVersion = values[:app_version]
-    UI.user_error!("Forgot to pass in app_version") unless appVersion
-    UI.message("Submitting app. Name: #{env[:app_name]}, version: #{appVersion}. Correct? [Hit Enter for Yes]")    
-    gets
-    UI.message("You checked the metadata and screenshots for the release, correct? [Hit Enter for Yes]")    
-    gets 
-
-    buildVersion = app_store_build_number(
-      live: false,
-      version: appVersion
-    )   
-
+    # Only upload builds to testflight and appstore. We will deploy manaually, if we wish. 
+    testflight(
+      skip_submission: true,
+      skip_waiting_for_build_processing: true
+    )
     upload_to_app_store(
-      build_number: buildVersion,
-      force true, # Skip the HTML report file verification
-      submit_for_review: true,
-      automatic_release: true,
       skip_metadata: true,
       skip_screenshots: true,
-      skip_binary_upload: true
-    )
-
-    publicity_message = "This update was submitted to the Apple App Store so that it can be availble to the public. However, the app must be approved by Apple for it to be available to the public. This approval process takes between 1 to 4 days."
-    notify_app_update(appVersion, buildVersion, publicity_message, latest_demo)
-  end 
-
-  def notify_app_update(buildVersion, publicity_message)
-    latest_demo = File.read('./latest_demo.txt')
-    versionOfApp = get_version_number(target: "App")
-
-    notification_message_body = [      
-      "#{env[:app_name]} v#{versionOfApp}, build: #{buildVersion} ready for download.",
-      "#{publicity_message}",
-      "\n",
-      "Link to demo and notes for the latest release:",
-      latest_demo,
-      "\n",
-      "(Note: this is an automated message. Please email #{env[:developer_email]} if you have questions)"
-    ].join("\n") + "\n"
-
-    aws_sns_topic(
-      access_key: ENV["AWS_IAM_ACCESS_KEY"],
-      secret_access_key: ENV["AWS_IAM_ACCESS_SECRET"],
-      region: ENV["AWS_REGION"],
-      topic_arn: ENV["AWS_SNS_APP_UPDATE_TOPIC"],
-      subject: "#{env[:app_name]} v#{versionOfApp} app update",
-      message: notification_message_body
+      force: true,
+      submit_for_review: false
     )
   end 
 
-  desc "Build and upload beta app to TestFlight"
-  def beta_build_release(changelog, description)
-    build_ios_app(
-      scheme: "App",
-      configuration: 'Release',
-      export_method: 'app-store',
-      output_name: "Prod.ipa",
-      output_directory: 'build')
-
-    testflight(
-      changelog: changelog,
-      beta_app_description: description,
-      beta_app_feedback_email: env[:testflight_beta_feedback_email],
-      distribute_external: false,
-      ipa: './build/Prod.ipa',
-      wait_for_uploaded_build: true,
-      skip_waiting_for_build_processing: false) # I have decided to not skip waiting for build process because with testflight, skipping will result in changelog and such not being updated and sending app to external testers.
-  end
-
-  desc "Build and upload production app to the App Store. Note: This does *not* submit for review."
-  def prod_build_upload
-    build_ios_app(
-      scheme: "App",
-      configuration: 'Release',
-      export_method: 'app-store',
-      output_name: "Prod.ipa",
-      output_directory: 'build')
-    
-    upload_to_app_store(
-      ipa: './build/Prod.ipa',
-      precheck_default_rule_level: :error) 
-  end
-
-  # You must: `brew install graphicsmagick` to install the GraphicsMagick library as required by `appicon` action
-  # You must `brew install librsvg` to install RSVG as required by `add_badge` action
-  lane :generate_icons do    
-    app_icon_path = "./fastlane/icons/icon.jpg"
-
-    appicon(appicon_image_file: app_icon_path,
-      appicon_devices: [:ipad, :iphone, :ios_marketing],
-      appicon_path: "Src/Assets/Assets.xcassets",
-      appicon_name: "AppIcon.appiconset")
-
-    badge = env[:app_icon_badge]
-    if badge != "no"
-      add_badge(
-        glob: "/**/AppIcon.appiconset/*.{png,PNG}",
-        dark: false, # add a dark badge instead of white one.
-        alpha: badge == "alpha", # uses "alpha" text instead of "beta"
-        badge_gravity: "SouthEast" # where to position the badge 
-      )
-    end
-  end
 end

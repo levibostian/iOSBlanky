@@ -1,8 +1,4 @@
-require 'dotenv/load'
-
-name_of_project = ENV["APP_TARGET_NAME"]
-
-project "#{name_of_project}.xcodeproj"
+project "App.xcodeproj"
 platform :ios, '11.0'
 use_frameworks!
 inhibit_all_warnings!
@@ -18,8 +14,8 @@ def testingDependencies
 end 
 
 def commonDepencencies    
-    pod 'Moya', '~> 14.0.0-beta.6'
-    pod 'RxCocoa', '~> 5.0.0'
+    pod 'Moya', '~> 14.0.0'
+    pod 'RxCocoa', '~> 5'
     pod "RxCoreData", "~> 1.0.0"
 
     pod 'Firebase/Analytics'
@@ -27,30 +23,29 @@ def commonDepencencies
     pod 'Firebase/Messaging'
     pod 'Firebase/DynamicLinks'
     pod 'Firebase/Performance'
-    pod 'Fabric', '~> 1.10.2'
-    pod 'Crashlytics', '~> 3.13.4'
+    pod 'Firebase/Crashlytics'
 
-    pod 'Kingfisher', '~> 5.7.0'
-    pod 'KeychainAccess', '~> 3.2.0'
+    pod 'Kingfisher', '~> 5'
+    pod 'KeychainAccess', '~> 4'
     pod 'Empty', '~> 0.1'
     pod 'PleaseHold', '~> 0.2'
     pod 'Swapper', '~> 0.1'
-    pod 'IQKeyboardManagerSwift', '~> 6.4.0'
+    pod 'IQKeyboardManagerSwift', '~> 6'
     pod 'Wendy', '~> 0.5.0'
     pod 'SnapKit', '~> 5.0.0'
-    pod 'Teller', '~> 0.6.0'
+    pod 'Teller', '~> 0.8.0'
 end 
 
-target name_of_project do
+target "App" do
     commonDepencencies()
 end
 
-target "#{name_of_project}Tests" do
+target "AppTests" do
     commonDepencencies()
     testingDependencies()
 end
 
-target "#{name_of_project}UITests" do
+target "AppUITests" do
     commonDepencencies()
     testingDependencies()
 end
