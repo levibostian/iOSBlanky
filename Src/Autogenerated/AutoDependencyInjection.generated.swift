@@ -29,6 +29,7 @@ enum Dependency: CaseIterable {
     case remoteConfigProvider
     case gitHubRequestRunner
     case secureStorage
+    case gitHubMoyaProvider
     case moyaResponseProcessor
     case eventBus
     case remoteConfigDataSource
@@ -85,6 +86,7 @@ class DI {
         case .remoteConfigProvider: return _remoteConfigProvider as! T
         case .gitHubRequestRunner: return _gitHubRequestRunner as! T
         case .secureStorage: return _secureStorage as! T
+        case .gitHubMoyaProvider: return _gitHubMoyaProvider as! T
         case .moyaResponseProcessor: return _moyaResponseProcessor as! T
         case .eventBus: return _eventBus as! T
         case .remoteConfigDataSource: return _remoteConfigDataSource as! T
@@ -301,6 +303,14 @@ class DI {
 
     var secureStorage: SecureStorage {
         KeychainAccessSecureStorage(userManager: _userManager)
+    }
+
+    // GitHubMoyaProvider (custom. property getter provided via extension)
+    private var _gitHubMoyaProvider: GitHubMoyaProvider {
+        if let overridenDep = overrides[.gitHubMoyaProvider] {
+            return overridenDep as! GitHubMoyaProvider
+        }
+        return gitHubMoyaProvider
     }
 
     // MoyaResponseProcessor

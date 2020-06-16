@@ -29,7 +29,7 @@ class FirebaseRemoteConfig: RemoteConfigProvider {
     }
 
     func activate() {
-        remoteConfig.activate()
+        remoteConfig.activateFetched()
     }
 
     func fetch(onComplete: @escaping (Result<Void, Error>) -> Void) {

@@ -36,6 +36,24 @@ typealias Disposable = RxSwift.Disposable
 typealias Single = RxSwift.Single
 typealias Observable = RxSwift.Observable
 
+import Moya
+
+typealias GitHubMoyaProvider = MoyaProvider<GitHubService>
+// sourcery: InjectRegister = "GitHubMoyaProvider"
+// sourcery: InjectCustom
+extension GitHubMoyaProvider {}
+
+extension DI {
+    var gitHubMoyaProvider: GitHubMoyaProvider {
+        let plugins: [PluginType] = [
+            MoyaAppendHeadersPlugin(userCredsManager: self.inject(.userCredsManager)),
+            HttpLoggerMoyaPlugin(logger: self.inject(.activityLogger))
+        ]
+
+        return MoyaProvider<GitHubService>(plugins: plugins)
+    }
+}
+
 // sourcery: InjectRegister = "UserDefaults"
 // sourcery: InjectCustom
 extension UserDefaults {}

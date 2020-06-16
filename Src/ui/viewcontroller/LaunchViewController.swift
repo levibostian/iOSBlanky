@@ -101,7 +101,7 @@ class LaunchViewController: UIViewController {
                         self.stateOfDataLabel.text = "User does not have any repos."
                     }
                 }
-                
+
                 if dataState.isRefreshing {
                     self.stateOfDataLabel.text = "Loading repos for user..."
                 }

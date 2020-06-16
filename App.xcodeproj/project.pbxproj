@@ -78,8 +78,6 @@
 		F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C61F9ED11E00219B30 /* Repo.swift */; };
 		F72043F622E4F35400DE7EA9 /* GitHubTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */; };
 		F72043F722E4F3CB00DE7EA9 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
-		F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
-		F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F721AB5222E7DEEA00F77F66 /* Settings.bundle */; };
 		F721AB5722E8A62B00F77F66 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */; };
 		F721AB5822E8A62B00F77F66 /* KeyValueStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */; };
 		F7254EB423A7BD070027F12E /* AppStartupUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC939A22F0C2C700C7FF16 /* AppStartupUtil.swift */; };
@@ -580,7 +578,6 @@
 		F714EB8223A4373E00E7AFB5 /* PendingTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTasks.swift; sourceTree = "<group>"; };
 		F714EB8623A4380100E7AFB5 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		F71D087322E24FDE000B1577 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F721AB5222E7DEEA00F77F66 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F721AB5622E8A62B00F77F66 /* KeyValueStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorage.swift; sourceTree = "<group>"; };
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -1040,7 +1037,6 @@
 				F7D3B8D01E149B5F00F2C3CB /* Constants.swift */,
 				F71D087422E24FDE000B1577 /* Localizable.strings */,
 				F76835B11F9ECF9A00219B30 /* Assets */,
-				F721AB5222E7DEEA00F77F66 /* Settings.bundle */,
 				F7CC939A22F0C2C700C7FF16 /* AppStartupUtil.swift */,
 				F76ACF4D22F7848B00B1A41D /* Swizzler.swift */,
 				F714EB8623A4380100E7AFB5 /* Aliases.swift */,
@@ -1661,7 +1657,6 @@
 				F75DCD8D1CD8F10D00B8941F /* LaunchScreen.storyboard in Resources */,
 				F71D087222E24FDE000B1577 /* Localizable.strings in Resources */,
 				F76835B31F9ECFBF00219B30 /* Color.xcassets in Resources */,
-				F721AB5322E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F75DCD8A1CD8F10D00B8941F /* Assets.xcassets in Resources */,
 				F76EF43523A1BB10005F933C /* GoogleService-Info.plist in Resources */,
 			);
@@ -1672,7 +1667,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7B9A06723A57727004A4011 /* Localizable.strings in Resources */,
-				F721AB5422E7DEEA00F77F66 /* Settings.bundle in Resources */,
 				F7B9A06023A56D09004A4011 /* file.txt in Resources */,
 				F7AC968923A5B83E0037CCA2 /* Color.xcassets in Resources */,
 				F7B9A07323A57FC1004A4011 /* Assets.xcassets in Resources */,
@@ -2070,6 +2064,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Crashlytics (make sure last phase)";
@@ -2079,7 +2074,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		F7B674F81CD8F2BC007C42FC /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
