@@ -19,6 +19,9 @@ before_install:
 before_script:
   - ./set_environment.sh 
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash) # upload test coverage 
+
 env:
   global:
     - FOO=123
@@ -36,6 +39,7 @@ env:
     # APPLE_DEVELOPER_ACCOUNT_TEAM_NAME="Team name" - team that the app belongs to. Get from Apple Developer Center for account FASTLANE_USER logged in as. 
     # APP_STORE_CONNECT_TEAM_NAME="Team name" - team name found in App Store Connect. https://stackoverflow.com/a/46415415/1486374
     # APP_STORE_CONNECT_TEAM_ID="12345" - team id found in App Store Connect. https://stackoverflow.com/a/46415415/1486374
+    # CODECOV_TOKEN - codecov.io token for repository. Used for test coverage. Make sure code coverage is enabled in XCode https://github.com/codecov/example-swift#produce-coverage-reports
 
 jobs:
   fast_finish: true
