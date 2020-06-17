@@ -3,6 +3,7 @@ import UIKit
 
 enum Images: String, CaseIterable {
     case more
+    case imagePlaceholder
 }
 
 extension Images {

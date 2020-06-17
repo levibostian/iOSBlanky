@@ -141,6 +141,8 @@ class LaunchViewController: UIViewController {
 }
 
 extension LaunchViewController: ThemableViewController {
+    var viewController: UIViewController { self }
+
     var navigationBarTitle: String? {
         "Repos"
     }
@@ -149,7 +151,5 @@ extension LaunchViewController: ThemableViewController {
         nil
     }
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        currentTheme.statusBarStyle
-    }
+    func customThemeChanges() {}
 }

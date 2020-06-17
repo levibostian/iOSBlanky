@@ -1,21 +1,22 @@
 import Foundation
 import UIKit
 
-protocol ThemableViewController: UIViewController {
+protocol ThemableViewController {
     var navigationBarTitle: String? { get }
     var navigationBarBackButtonText: String? { get }
     var themeManager: ThemeManager { get }
+    var viewController: UIViewController { get }
 
-    // Note: Must set "View controller-based status bar appearance" to YES in Info.plist to work
-    var preferredStatusBarStyle: UIStatusBarStyle { get }
+    // optional override this function to make changes to the ViewController looks.
+    func customThemeChanges()
 }
 
 extension ThemableViewController {
-    var currentTheme: Theme {
-        appDelegate.themeManager.currentTheme
+    var currentTheme: Theme? {
+        viewController.appDelegate?.themeManager.currentTheme
     }
 
     func applyTheme() {
-        appDelegate.themeManager.applyTheme(to: self)
+        viewController.appDelegate?.themeManager.applyTheme(to: self)
     }
 }

@@ -7,6 +7,7 @@ import Wendy
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
     fileprivate var remoteConfig: RemoteConfigProvider!
     fileprivate var userManager: UserManager!
@@ -20,13 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var themeManager: ThemeManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // We must allow running a host app for unit tests so that we can test keychains in our unit tests. So to prevent the appdelegate from running any code, return early and have tests run assuming appdelegate code did not run.
+        // See: https://github.com/kishikawakatsumi/KeychainAccess/issues/399
+        if CommandLine.arguments.contains("--unit-testing") {
+            return true
+        }
+
         window = UIWindow(frame: UIScreen.main.bounds)
 
         FirebaseApp.configure() // Do first so crashlytics starts up to record errors.
-
         logger = DI.shared.activityLogger
-        remoteConfig = DI.shared.remoteConfigProvider
-        userManager = DI.shared.userManager
         repositorySyncService = DI.shared.repositorySyncService
         startupUtil = DI.shared.startupUtil
         themeManager = DI.shared.themeManager
@@ -55,20 +59,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // setup background fetch
         let numberMinutesMinimumToRunBackgroundFetches: Double = 60
         UIApplication.shared.setMinimumBackgroundFetchInterval(numberMinutesMinimumToRunBackgroundFetches * 60) // * 60 as function wants value in seconds
-
-        Wendy.setup(tasksFactory: AppPendingTasksFactory(), collections: [
-            PendingTaskCollectionId.getUserRepos.rawValue: [
-            ]
-        ], debug: environment.isDevelopment)
+        Wendy.setup(tasksFactory: AppPendingTasksFactory(), collections: [:], debug: environment.isDevelopment)
 
         Messaging.messaging().delegate = self
-        remoteConfig.activate()
 
         let iqKeyboardManager = IQKeyboardManager.shared
         iqKeyboardManager.shouldResignOnTouchOutside = true
         iqKeyboardManager.enableAutoToolbar = false
         iqKeyboardManager.enable = true
 
+        appStartup()
+
+        return true
+    }
+
+    fileprivate func appStartup() {
         startupUtil.runStartupTasks { error in
             if let error = error {
                 self.logger.errorOccurred(error)
@@ -77,52 +82,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let uiTesting = CommandLine.arguments.contains("--uitesting")
 
-            func afterStartupTasks() {
-                self.goToMainPartOfApp()
-
-                // Need to start wendy when app starts up.
-                Wendy.shared.runTasks(filter: nil, onComplete: nil)
-
-                self.registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
-            }
-
             if uiTesting {
                 self.dataDestroyer.destroyAll {
-                    SwapperView.defaultConfig.transitionAnimationDuration = 0.001 // Set animation duration low, but not zero so that animations still run but they run very fast.
                     UIView.setAnimationsEnabled(false)
 
-                    if let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"] {
-                        let jsonAdapter = DI.shared.jsonAdapter
-                        let launchArguments: LaunchAppState = jsonAdapter.fromJson(launchStateString.data!)
-
+                    // Since we are doing data operations, perform them all on background.
+                    DispatchQueue.global(qos: .background).async {
                         let moyaMockProvider = MoyaProviderMocker<GitHubService>()
+                        let remoteConfigHelper = UIHelperRemoteConfig()
 
-                        launchArguments.networkQueue.forEach { queueItem in
-                            moyaMockProvider.queueResponse(queueItem.code, data: queueItem.response)
+                        let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"]!
+                        let jsonAdapter = DI.shared.jsonAdapter
+                        let launchArguments: LaunchAppState = try! jsonAdapter.fromJson(launchStateString.data!)
+                        let keyValueStorage = DI.shared.keyValueStorage
+
+                        launchArguments.extras.networkQueue.forEach { queueItem in
+                            if queueItem.isErrorType {
+                                moyaMockProvider.queueNetworkError(queueItem.responseError!.error)
+                            } else {
+                                moyaMockProvider.queueResponse(queueItem.code!, data: queueItem.response!)
+                            }
                         }
-                        DI.shared.override(.gitHubMoyaProvider, value: moyaMockProvider.moyaProvider, forType: GitHubMoyaProvider.self)
+
+                        launchArguments.extras.keyStorageStringValues.forEach { arg in
+                            let (key, value) = arg
+                            keyValueStorage.setString(value, forKey: key)
+                        }
+                        launchArguments.extras.keyStorageIntValues.forEach { arg in
+                            let (key, value) = arg
+                            keyValueStorage.setInt(value, forKey: key)
+                        }
+
+                        remoteConfigHelper.set(launchArguments.extras.remoteConfig)
 
                         if let launchUserState = launchArguments.userState {
                             let userManager = DI.shared.userManager
 
                             userManager.userId = launchUserState.id
                         }
-                    }
 
-                    afterStartupTasks()
+                        DI.shared.override(.gitHubMoyaProvider, value: moyaMockProvider.moyaProvider, forType: GitHubMoyaProvider.self)
+                        DI.shared.override(.remoteConfigProvider, value: remoteConfigHelper, forType: RemoteConfigProvider.self)
+
+                        DispatchQueue.main.async {
+                            self.afterStartupTasks()
+                        }
+                    }
                 }
             } else {
-                afterStartupTasks()
+                self.afterStartupTasks()
             }
         }
-
-        return true
     }
 
-    fileprivate func goToMainPartOfApp() {
-        let viewController = LaunchViewController()
+    func afterStartupTasks() {
+        // Activate previously fetched remote config, then kick off new refresh. Important to run in this order!
+        let remoteConfig: RemoteConfigProvider = DI.shared.inject(.remoteConfigProvider)
 
-        showViewController(getNavigationController(rootViewController: viewController))
+        remoteConfig.activate()
+        remoteConfig.fetch(onComplete: nil)
+
+        appCoordinator = AppCoordinator(window: window!)
+        appCoordinator?.start()
+
+        // Need to start wendy when app starts up.
+        Wendy.shared.runTasks(filter: nil, onComplete: nil)
+
+        registerForPushNotifications() // In case app launches and user has not been asked about push notifications yet.
     }
 
     fileprivate func getNavigationController(rootViewController: UIViewController) -> UINavigationController {
@@ -159,6 +185,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         unregisterEventListeners()
     }
+
+    fileprivate func logoutIfExistingUser(onComplete: @escaping OnComplete) {
+        let userManager: UserManager = DI.shared.inject(.userManager)
+
+        logger.breadcrumb("Attempting to logout if existing user", extras: [
+            "existing_user_logged_in": userManager.isLoggedIn
+        ])
+
+        if userManager.isLoggedIn { // Only logout if there is already someone logged in. See notes in README to learn more.
+            logger.appEventOccurred(.logout, extras: nil)
+            logger.setUserId(id: nil)
+
+            let dataDestroyer: DataDestroyer = DI.shared.inject(.dataDestroyer)
+
+            dataDestroyer.destroyAll {
+                onComplete()
+            }
+        } else {
+            onComplete()
+        }
+    }
 }
 
 // MARK: Firebase messaging
@@ -192,8 +239,8 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
                 self.logger.errorOccurred(error)
             }
 
-            self.logger.breadcrumb("FCM topic subscribed", extras: [
-                "topic": FcmTopicKeys.filesToDownload.value
+            self.logger.appEventOccurred(.pushNotificationTopicSubscribed, extras: [
+                .name: FcmTopicKeys.filesToDownload.value
             ])
         }
     }
@@ -202,27 +249,24 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {}
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        logger.breadcrumb("received data push notification", extras: [
+        logger.breadcrumb("received push notification", extras: [
             "raw": userInfo.description
         ])
 
         guard let dataNotification = NotificationUtil.parseDataNotification(from: userInfo) else {
+            logger.appEventOccurred(.pushNotificationReceived, extras: [
+                .type: "ui"
+            ])
+
             completionHandler(.noData)
             return
         }
 
-        if let notificationAction = NotificationUtil.getActionFrom(dataNotification: dataNotification) {
-            switch notificationAction {
-            case .updateDrive:
-                registerEventListeners()
+        logger.appEventOccurred(.pushNotificationReceived, extras: [
+            .type: "data"
+        ])
 
-                backgroundJobRunner.runPeriodicBackgroundJobs { result in
-                    self.unregisterEventListeners()
-
-                    completionHandler(result)
-                }
-            }
-        }
+        backgroundJobRunner.handleDataNotification(dataNotification, onComplete: completionHandler)
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {}
@@ -242,45 +286,66 @@ extension AppDelegate: MessagingDelegate, UNUserNotificationCenterDelegate {
 
 // MARK: Firebase Dynamic links
 
+/**
+ The code below contains code from [the official Firebase docs](https://firebase.google.com/docs/dynamic-links/ios/receive) to parse the Dynamic Link out of each function. Here is an example of a full Dynamic Link sent by the API: `https://XXX.page.link/?link=https%3A%2F%2Fapp.foo.com%2F%3F_token%3D123`. Firebase SDK does some nice things for us to parse this for us. It is then up to us to take the URL after `?link=`, parse that, then act on it. This Dynamic Link pattern is what the API always creates. So the code below works hard to get the app URL for us (`https://app.foo.com/?...`) and then pass that to a processor to help us act on it.
+ */
 extension AppDelegate {
-    // Used whn DynamicLinks are clicked on the device when your app is opened for the first time after installation on any version of iOS.
-    // Also, used when a link with your custom URL scheme is called: yourappname://foo
+    // This method is called when your app receives a link on iOS 8 and older, and when your app is opened for the first time after installation on any version of iOS. Also to handle links received through your app's custom URL scheme.
+    // If the Dynamic Link isn't found on your app's first launch (on any version of iOS), this method will be called with the FIRDynamicLink's url set to nil, indicating that the SDK failed to find a matching pending Dynamic Link.
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        if let firebaseDynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
-            handleFirebaseDynamicLink(firebaseDynamicLink)
-            return true
-        }
-
-        // Let others handle the dynamic link as well, here.
-
-        return false
-    }
-
-    // Used when DynamicLinks are clicked on the device and your app is already installed.
-    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { dynamiclink, error in
-            if let error = error {
-                self.logger.errorOccurred(error)
-            }
-            if let dynamicLink = dynamiclink {
-                self.handleFirebaseDynamicLink(dynamicLink)
-            }
+        var handled = false
+        if let firebaseDynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url)?.url {
+            handled = handleDeepLink(firebaseDynamicLink)
         }
 
         return handled
     }
 
-    fileprivate func handleFirebaseDynamicLink(_ firebaseDynamicLink: DynamicLink) {
-//        guard let dynamicLink = firebaseDynamicLink.url else {
-//            return
-//        }
+    // Handle links received as [Universal Links](https://developer.apple.com/library/ios/documentation/General/Conceptual/AppSearch/UniversalLinks.html) when the app is already installed (on iOS 9 and newer)
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        guard let deepLinkUrl = userActivity.webpageURL else { // Firebase Dynamic Links SDK uses the `webpageURL` so, it must be present to even continue.
+            return false
+        }
 
-//        if let authTokenAccessToken = dynamicLink.getQueryParamValue("auth_token_access_token") {
-//            // handle case where user wants to login. Send up accessToken to server to exchange it for an access token.
-//        } else {
-//            // more then likely, this dynamic link is a short URL that we need to expand in order to pick out the query parameters. So, do this hack to re-open the short link to expand it and re-open our app.
-//            UIApplication.shared.open(dynamicLink, options: [:], completionHandler: nil)
+        var handled = false
+
+        handled = DynamicLinks.dynamicLinks().handleUniversalLink(deepLinkUrl) { dynamiclink, error in
+            if let error = error {
+                self.logger.errorOccurred(error)
+            }
+            if let dynamicLink = dynamiclink?.url {
+                _ = self.handleDeepLink(dynamicLink)
+            }
+        }
+
+        /**
+         The following pieces of code below are commented out because [the official Firebase docs](https://firebase.google.com/docs/dynamic-links/ios/receive) does not include the below code so I believe it is not needed. However, if ever in the situation where this code would be useful, having it here easily available as potential solutions to the problem would be handy. So, the code sits here.
+         */
+
+        // Firebase dynamic links works with both URL schemes and iOS Universal Links. `handleUniversalLink()` may not catch every time your app launches from a deep link so, we may need to parse it ourselves manually.
+//        if !handled {
+//            handled = self.handleDeepLink(deepLinkUrl)
 //        }
+        // If false, iOS should open the URL in a browser. This dynamic link could be a Firebase short URL that we need to expand in order to pick out the query parameters. So, let's assume iOS will take care of that for us if we return false from this function but if not, do this hack to re-open the short link to expand it and re-open our app.
+        // UIApplication.shared.open(deepLink, options: [:], completionHandler: nil)
+        return handled
+    }
+
+    fileprivate func handleDeepLink(_ deepLink: URL) -> Bool {
+        logger.appEventOccurred(.openedDynamicLink, extras: nil)
+
+        guard let action = DynamicLinksProcessor.getActionFromDynamicLink(deepLink) else {
+            return false
+        }
+
+        switch action {
+        case .tokenExchange(let token):
+            logoutIfExistingUser {
+                self.appCoordinator?.startUserLogin(token: token)
+            }
+        }
+
+        return true
     }
 }
 
@@ -290,7 +355,7 @@ extension AppDelegate: EventBusEventListener {
     fileprivate func registerEventListeners() {
         logger.breadcrumb("registering event listeners", extras: nil)
 
-//        eventBusRegister.register(event: .logout)
+        eventBusRegister.register(event: .logout)
     }
 
     fileprivate func unregisterEventListeners() {
@@ -303,6 +368,10 @@ extension AppDelegate: EventBusEventListener {
         logger.breadcrumb("event bus event recieved. name: \(event.name)", extras: extras)
 
         switch event {
+        case .logout:
+            logoutIfExistingUser {
+                self.afterStartupTasks()
+            }
         default: break
         }
     }
@@ -320,4 +389,4 @@ extension AppDelegate {
             completionHandler(result)
         }
     }
-}
+} // swiftlint:disable:this file_length

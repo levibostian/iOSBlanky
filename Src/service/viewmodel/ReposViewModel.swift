@@ -17,10 +17,10 @@ class AppReposViewModel: ReposViewModel {
 
     var gitHubUsername: GitHubUsername? {
         get {
-            keyValueStorage.string(forKey: githubUsernameUserDefaultsKey)
+            keyValueStorage.string(forKey: .lastUsernameSearch)
         }
         set {
-            keyValueStorage.set(newValue, forKey: githubUsernameUserDefaultsKey)
+            keyValueStorage.setString(newValue, forKey: .lastUsernameSearch)
 
             if let newValue = newValue {
                 reposRepository.requirements = ReposDataSourceRequirements(githubUsername: newValue)
@@ -43,6 +43,6 @@ class AppReposViewModel: ReposViewModel {
     }
 
     func observeGitHubUsername() -> Observable<GitHubUsername> {
-        keyValueStorage.observeString(forKey: githubUsernameUserDefaultsKey)
+        keyValueStorage.observeString(forKey: .lastUsernameSearch)
     }
 }

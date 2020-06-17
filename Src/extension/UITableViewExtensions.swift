@@ -6,6 +6,10 @@ extension UITableView {
         dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! R // swiftlint:disable:this force_cast
     }
 
+    func dequeueHeaderFooterView<R: UITableViewHeaderFooterView>(withIdentifier identifier: String) -> R {
+        dequeueReusableHeaderFooterView(withIdentifier: identifier) as! R // swiftlint:disable:this force_cast
+    }
+
     func cell<R: UITableViewCell>(at: IndexPath) -> R? {
         cellForRow(at: at) as? R
     }

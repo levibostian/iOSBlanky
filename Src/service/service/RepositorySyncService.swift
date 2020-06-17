@@ -7,39 +7,50 @@ import Teller
  */
 protocol RepositorySyncService: AutoMockable {
     func syncAll(onComplete: @escaping ([RefreshResult]) -> Void) // no forcing to refresh.
+    func refreshRepos(onComplete: @escaping (RefreshResult) -> Void)
 }
 
 // sourcery: InjectRegister = "RepositorySyncService"
 class TellerRepositorySyncService: RepositorySyncService {
-    fileprivate let remoteConfigRepository: RemoteConfigRepository
+    fileprivate let reposRepository: ReposRepository
+    fileprivate let keyValueStorage: KeyValueStorage
     fileprivate let logger: ActivityLogger
 
     fileprivate let disposeBag = DisposeBag()
 
-    init(remoteConfigRepository: RemoteConfigRepository, logger: ActivityLogger) {
-        self.remoteConfigRepository = remoteConfigRepository
+    init(reposRepository: ReposRepository, keyValueStorage: KeyValueStorage, logger: ActivityLogger) {
+        self.reposRepository = reposRepository
+        self.keyValueStorage = keyValueStorage
         self.logger = logger
     }
 
     func syncAll(onComplete: @escaping ([RefreshResult]) -> Void) {
         logger.breadcrumb("begin syncAll", extras: nil)
 
-        syncRepos(force: false) { result in
+        refreshRepos { result in
             self.logger.breadcrumb("end syncAll", extras: nil)
-            onComplete(result)
+            onComplete([result])
         }
     }
 
-    func syncRepos(force: Bool, onComplete: @escaping ([RefreshResult]) -> Void) {
-        logger.breadcrumb("start reposRepository sync", extras: nil)
+    func refreshRepos(onComplete: @escaping (RefreshResult) -> Void) {
+        logger.breadcrumb("start repos sync", extras: nil)
 
-        Single.concat([
-            try! remoteConfigRepository.refresh(force: force)
-        ]).subscribe(onSuccess: { result in
-            self.logger.breadcrumb("done repos repository sync", extras: [
-                "result": result.description
-            ])
-            onComplete(result)
-        }).disposed(by: disposeBag)
+        guard let username = keyValueStorage.string(forKey: .lastUsernameSearch) else {
+            logger.breadcrumb("username has not been set. skipping", extras: nil)
+
+            onComplete(RefreshResult.skipped(reason: .cancelled))
+            return
+        }
+
+        reposRepository.requirements = ReposRepository.DataSource.Requirements(githubUsername: username)
+
+        try! reposRepository.refresh(force: false)
+            .subscribe(onSuccess: { result in
+                self.logger.breadcrumb("done repos sync for user", extras: [
+                    "result": result.description
+                ])
+                onComplete(result)
+            }).disposed(by: disposeBag)
     }
 }

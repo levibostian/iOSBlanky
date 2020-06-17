@@ -8,7 +8,7 @@ struct ProcessedResponse {
     let response: HTTPURLResponse?
 }
 
-/**
+/*
  Responsibitiles
  1. Detect common errors that all APIs could encounter such as network connection issues and 500 status code errors.
 
@@ -31,22 +31,22 @@ class MoyaResponseProcessor {
             if let urlError = error as? URLError {
                 switch urlError.code {
                 case URLError.Code.notConnectedToInternet:
-                    return HttpRequestError(fault: .network, message: Strings.noInternetConnectionErrorMessage.localized, underlyingError: nil)
+                    return HttpRequestError.getNoInternetConnection()
                 // These are errors that can happen when you have a slow network connection. Nothing needs to be fixed by the developer.
                 // Note: .cancelled is currently here because if a request is cancelled, it's probably because the user left the screen? So, they may not see the error message anyway. So, just return this generic "bad internet connection" error.
                 case URLError.Code.timedOut, URLError.Code.networkConnectionLost, URLError.Code.cancelled:
-                    return HttpRequestError(fault: .network, message: Strings.networkConnectionIssueErrorMessage.localized, underlyingError: nil)
+                    return HttpRequestError.getInternetConnectionIssue()
                 default:
                     // There was another network issue I am not aware of that happened.
-                    return HttpRequestError(fault: .developer, message: Strings.uncaughtNetworkErrorMessage.localized, underlyingError: nil)
+                    return HttpRequestError.developer(message: Strings.uncaughtNetworkErrorMessage.localized, underlyingError: urlError)
                 }
             } else {
                 // Another type of MoyaError. Because it's not network related, it's developer related.
-                return HttpRequestError(fault: .developer, message: Strings.developerNetworkErrorMessage.localized, underlyingError: nil)
+                return HttpRequestError.developer(message: Strings.developerErrorMessage.localized, underlyingError: error)
             }
         default:
             // Another type of MoyaError. Because it's not network related, it's developer related.
-            return HttpRequestError(fault: .developer, message: Strings.developerNetworkErrorMessage.localized, underlyingError: nil)
+            return HttpRequestError.developer(message: Strings.developerErrorMessage.localized, underlyingError: responseError)
         }
     }
 
@@ -55,18 +55,26 @@ class MoyaResponseProcessor {
 
         switch response.statusCode {
         case 500...600:
-            return Result.failure(HttpRequestError(fault: .developer, message: Strings.error500ResponseCode.localized, underlyingError: nil))
-        case 409: // Conflict. User needs to edit something.
-            let conflictError: ConflictResponseError = jsonAdapter.fromJson(response.data)
+            return Result.failure(HttpRequestError.developer(message: Strings.error500ResponseCode.localized, underlyingError: ServerDownError(statusCode: response.statusCode)))
+        case 429: // Rate limiting
+            let error: RateLimitingResponseError = try! jsonAdapter.fromJson(response.data)
 
-            return Result.failure(HttpRequestError(fault: .user, message: Strings.error500ResponseCode.localized, underlyingError: conflictError))
+            return Result.failure(HttpRequestError.user(message: error.localizedDescription, underlyingError: error))
+        case 422: // developer error because the app should have client side code which restricts the input for the user so a 422 should not happen.
+            let error: FieldsErrorResponse = try! jsonAdapter.fromJson(response.data)
+
+            return Result.failure(HttpRequestError.developer(message: error.message, underlyingError: error))
+        case 409: // Conflict. User needs to edit something.
+            let conflictError: ConflictResponseError = try! jsonAdapter.fromJson(response.data)
+
+            return Result.failure(HttpRequestError.user(message: Strings.error500ResponseCode.localized, underlyingError: conflictError))
         case 400..<500:
             if let handledError = extraResponseHandling(processedResponse) {
                 return Result.failure(handledError)
             } else {
                 let unhandledError = UnhandledHttpResponseError(message: "Http call, \(response.request?.httpMethod ?? "(none)") \(response.request?.url?.absoluteString ?? "(none)"), unsuccessful (code: \(response.statusCode)) and the app code does not handle this response case.")
 
-                return Result.failure(HttpRequestError(fault: .developer, message: Strings.uncaughtNetworkErrorMessage.localized, underlyingError: unhandledError))
+                return Result.failure(HttpRequestError.developer(message: Strings.uncaughtNetworkErrorMessage.localized, underlyingError: unhandledError))
             }
         default:
             return Result.success(processedResponse)

@@ -3,9 +3,12 @@ import UIKit
 
 enum Colors: String, CaseIterable {
     case backgroundColor
+    case tableViewCellBackgroundColor
     case textColor
     case buttonColor
     case navigationBarColor
+    case navigationBarTintColor
+    case pickerViewBackground
 }
 
 extension Colors {

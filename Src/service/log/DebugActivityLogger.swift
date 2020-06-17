@@ -12,8 +12,8 @@ extension DebugActivityLogger {
         identifyUser(id: id)
     }
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
-        logAppEvent("\(event.description) (from \(file))", extras: extras)
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
+        logAppEvent("\(event.rawValue) (from \(file))", extras: extras?.mapKeys { $0.rawValue })
     }
 
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {

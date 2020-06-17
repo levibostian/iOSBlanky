@@ -1,21 +1,21 @@
 import Moya
 
 struct MoyaAppendHeadersPlugin: PluginType {
-    fileprivate let userCredsManager: UserCredsManager
+    fileprivate let userManager: UserManager
 
-    init(userCredsManager: UserCredsManager) {
-        self.userCredsManager = userCredsManager
+    init(userManager: UserManager) {
+        self.userManager = userManager
     }
 
     func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
         var request = request
         if let urlString = request.url?.absoluteString, urlString.hasPrefix(Constants.apiEndpoint) {
-            if let authToken = userCredsManager.authToken {
+            if let authToken = userManager.authToken {
                 request.setValue(String(format: "Bearer %@", authToken), forHTTPHeaderField: "Authorization")
             }
         }
 
-        request.setValue("accept-version", forHTTPHeaderField: Constants.apiVersion)
+        request.setValue(Constants.apiVersion, forHTTPHeaderField: "accept-version")
 
         return request
     }

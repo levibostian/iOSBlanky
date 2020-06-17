@@ -17,32 +17,33 @@ enum Dependency: CaseIterable {
     case backgroundJobRunner
     case environment
     case gitHubAPI
+    case loginViewModel
     case notificationCenterManager
     case reposViewModel
     case startupUtil
     case themeManager
     case threadUtil
+    case userManager
+    case userRepository
     case coreDataManager
     case bundle
     case dataDestroyer
     case database
+    case fileStorage
     case remoteConfigProvider
     case gitHubRequestRunner
     case secureStorage
     case gitHubMoyaProvider
     case moyaResponseProcessor
     case eventBus
-    case remoteConfigDataSource
     case reposDataSource
     case repositoryDao
+    case stringReplaceUtil
     case jsonAdapter
-    case remoteConfigRepository
     case reposRepository
     case repositorySyncService
-    case userCredsManager
     case userDefaults
     case keyValueStorage
-    case userManager
     case pendingTasks
 }
 
@@ -74,32 +75,33 @@ class DI {
         case .backgroundJobRunner: return _backgroundJobRunner as! T
         case .environment: return _environment as! T
         case .gitHubAPI: return _gitHubAPI as! T
+        case .loginViewModel: return _loginViewModel as! T
         case .notificationCenterManager: return _notificationCenterManager as! T
         case .reposViewModel: return _reposViewModel as! T
         case .startupUtil: return _startupUtil as! T
         case .themeManager: return _themeManager as! T
         case .threadUtil: return _threadUtil as! T
+        case .userManager: return _userManager as! T
+        case .userRepository: return _userRepository as! T
         case .coreDataManager: return _coreDataManager as! T
         case .bundle: return _bundle as! T
         case .dataDestroyer: return _dataDestroyer as! T
         case .database: return _database as! T
+        case .fileStorage: return _fileStorage as! T
         case .remoteConfigProvider: return _remoteConfigProvider as! T
         case .gitHubRequestRunner: return _gitHubRequestRunner as! T
         case .secureStorage: return _secureStorage as! T
         case .gitHubMoyaProvider: return _gitHubMoyaProvider as! T
         case .moyaResponseProcessor: return _moyaResponseProcessor as! T
         case .eventBus: return _eventBus as! T
-        case .remoteConfigDataSource: return _remoteConfigDataSource as! T
         case .reposDataSource: return _reposDataSource as! T
         case .repositoryDao: return _repositoryDao as! T
+        case .stringReplaceUtil: return _stringReplaceUtil as! T
         case .jsonAdapter: return _jsonAdapter as! T
-        case .remoteConfigRepository: return _remoteConfigRepository as! T
         case .reposRepository: return _reposRepository as! T
         case .repositorySyncService: return _repositorySyncService as! T
-        case .userCredsManager: return _userCredsManager as! T
         case .userDefaults: return _userDefaults as! T
         case .keyValueStorage: return _keyValueStorage as! T
-        case .userManager: return _userManager as! T
         case .pendingTasks: return _pendingTasks as! T
         }
     }
@@ -141,7 +143,7 @@ class DI {
     }
 
     var environment: Environment {
-        AppEnvironment()
+        AppEnvironment(bundle: _bundle)
     }
 
     // GitHubAPI
@@ -154,6 +156,18 @@ class DI {
 
     var gitHubAPI: GitHubAPI {
         AppGitHubApi(requestRunner: _gitHubRequestRunner, jsonAdapter: _jsonAdapter, activityLogger: _activityLogger, eventBus: _eventBus)
+    }
+
+    // LoginViewModel
+    private var _loginViewModel: LoginViewModel {
+        if let overridenDep = overrides[.loginViewModel] {
+            return overridenDep as! LoginViewModel
+        }
+        return loginViewModel
+    }
+
+    var loginViewModel: LoginViewModel {
+        AppLoginViewModel(userManager: _userManager, dataDestroyer: _dataDestroyer, userRepository: _userRepository, bundle: _bundle, logger: _activityLogger)
     }
 
     // NotificationCenterManager
@@ -216,6 +230,30 @@ class DI {
         AppThreadUtil()
     }
 
+    // UserManager
+    private var _userManager: UserManager {
+        if let overridenDep = overrides[.userManager] {
+            return overridenDep as! UserManager
+        }
+        return userManager
+    }
+
+    var userManager: UserManager {
+        AppUserManager(storage: _keyValueStorage, secureStorage: _secureStorage)
+    }
+
+    // UserRepository
+    private var _userRepository: UserRepository {
+        if let overridenDep = overrides[.userRepository] {
+            return overridenDep as! UserRepository
+        }
+        return userRepository
+    }
+
+    var userRepository: UserRepository {
+        AppUserRepository(githubApi: _gitHubAPI, jsonAdapter: _jsonAdapter)
+    }
+
     // CoreDataManager (singleton)
     private var _coreDataManager: CoreDataManager {
         if let overridenDep = overrides[.coreDataManager] {
@@ -273,7 +311,32 @@ class DI {
         Database(coreDataManager: _coreDataManager)
     }
 
-    // RemoteConfigProvider
+    // FileStorage (singleton)
+    private var _fileStorage: FileStorage {
+        if let overridenDep = overrides[.fileStorage] {
+            return overridenDep as! FileStorage
+        }
+        return fileStorage
+    }
+
+    private let _fileStorage_queue = DispatchQueue(label: "DI_get_fileStorage_queue")
+    private var _fileStorage_shared: FileStorage?
+    var fileStorage: FileStorage {
+        _fileStorage_queue.sync {
+            if let overridenDep = self.overrides[.fileStorage] {
+                return overridenDep as! FileStorage
+            }
+            let res = _fileStorage_shared ?? _get_fileStorage()
+            _fileStorage_shared = res
+            return res
+        }
+    }
+
+    private func _get_fileStorage() -> FileStorage {
+        FileMangerFileStorage(bundle: _bundle)
+    }
+
+    // RemoteConfigProvider (singleton)
     private var _remoteConfigProvider: RemoteConfigProvider {
         if let overridenDep = overrides[.remoteConfigProvider] {
             return overridenDep as! RemoteConfigProvider
@@ -281,8 +344,21 @@ class DI {
         return remoteConfigProvider
     }
 
+    private let _remoteConfigProvider_queue = DispatchQueue(label: "DI_get_remoteConfigProvider_queue")
+    private var _remoteConfigProvider_shared: RemoteConfigProvider?
     var remoteConfigProvider: RemoteConfigProvider {
-        FirebaseRemoteConfig(logger: _activityLogger, environment: _environment)
+        _remoteConfigProvider_queue.sync {
+            if let overridenDep = self.overrides[.remoteConfigProvider] {
+                return overridenDep as! RemoteConfigProvider
+            }
+            let res = _remoteConfigProvider_shared ?? _get_remoteConfigProvider()
+            _remoteConfigProvider_shared = res
+            return res
+        }
+    }
+
+    private func _get_remoteConfigProvider() -> RemoteConfigProvider {
+        FirebaseRemoteConfig(logger: _activityLogger, environment: _environment, jsonAdapter: _jsonAdapter, stringReplaceUtil: _stringReplaceUtil, keyValueStorage: _keyValueStorage, fileStorage: _fileStorage)
     }
 
     // GitHubRequestRunner (custom. property getter provided via extension)
@@ -302,7 +378,7 @@ class DI {
     }
 
     var secureStorage: SecureStorage {
-        KeychainAccessSecureStorage(userManager: _userManager)
+        KeychainAccessSecureStorage()
     }
 
     // GitHubMoyaProvider (custom. property getter provided via extension)
@@ -337,18 +413,6 @@ class DI {
         NotificationCenterEventBus(notificationCenter: _notificationCenterManager, activityLogger: _activityLogger)
     }
 
-    // RemoteConfigDataSource
-    private var _remoteConfigDataSource: RemoteConfigDataSource {
-        if let overridenDep = overrides[.remoteConfigDataSource] {
-            return overridenDep as! RemoteConfigDataSource
-        }
-        return remoteConfigDataSource
-    }
-
-    var remoteConfigDataSource: RemoteConfigDataSource {
-        RemoteConfigDataSource(remoteConfigProvider: _remoteConfigProvider)
-    }
-
     // ReposDataSource
     private var _reposDataSource: ReposDataSource {
         if let overridenDep = overrides[.reposDataSource] {
@@ -373,6 +437,18 @@ class DI {
         RepositoryDao(coreDataManager: _coreDataManager)
     }
 
+    // StringReplaceUtil
+    private var _stringReplaceUtil: StringReplaceUtil {
+        if let overridenDep = overrides[.stringReplaceUtil] {
+            return overridenDep as! StringReplaceUtil
+        }
+        return stringReplaceUtil
+    }
+
+    var stringReplaceUtil: StringReplaceUtil {
+        StringReplaceUtil(environment: _environment)
+    }
+
     // JsonAdapter
     private var _jsonAdapter: JsonAdapter {
         if let overridenDep = overrides[.jsonAdapter] {
@@ -383,14 +459,6 @@ class DI {
 
     var jsonAdapter: JsonAdapter {
         SwiftJsonAdpter()
-    }
-
-    // RemoteConfigRepository (custom. property getter provided via extension)
-    private var _remoteConfigRepository: RemoteConfigRepository {
-        if let overridenDep = overrides[.remoteConfigRepository] {
-            return overridenDep as! RemoteConfigRepository
-        }
-        return remoteConfigRepository
     }
 
     // ReposRepository (custom. property getter provided via extension)
@@ -410,19 +478,7 @@ class DI {
     }
 
     var repositorySyncService: RepositorySyncService {
-        TellerRepositorySyncService(remoteConfigRepository: _remoteConfigRepository, logger: _activityLogger)
-    }
-
-    // UserCredsManager
-    private var _userCredsManager: UserCredsManager {
-        if let overridenDep = overrides[.userCredsManager] {
-            return overridenDep as! UserCredsManager
-        }
-        return userCredsManager
-    }
-
-    var userCredsManager: UserCredsManager {
-        UserCredsManager(userManager: _userManager, secureStorage: _secureStorage)
+        TellerRepositorySyncService(reposRepository: _reposRepository, keyValueStorage: _keyValueStorage, logger: _activityLogger)
     }
 
     // UserDefaults (custom. property getter provided via extension)
@@ -443,18 +499,6 @@ class DI {
 
     var keyValueStorage: KeyValueStorage {
         UserDefaultsKeyValueStorage(userDefaults: _userDefaults)
-    }
-
-    // UserManager
-    private var _userManager: UserManager {
-        if let overridenDep = overrides[.userManager] {
-            return overridenDep as! UserManager
-        }
-        return userManager
-    }
-
-    var userManager: UserManager {
-        UserManager(storage: _keyValueStorage)
     }
 
     // PendingTasks

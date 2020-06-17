@@ -2,6 +2,7 @@ import Foundation
 
 extension Collection {
     // Thanks, https://stackoverflow.com/a/30593673/1486374
+    // Use: collection[safe: index]
     subscript(safe index: Index) -> Element? {
         indices.contains(index) ? self[index] : nil
     }

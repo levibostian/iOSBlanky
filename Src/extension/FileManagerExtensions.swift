@@ -5,13 +5,21 @@ extension FileManager {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
     }
 
-    class func deleteAll(in searchDirectory: SearchPathDirectory) {
-        let directoryUrl = FileManager.default.urls(for: searchDirectory, in: .userDomainMask).first!
+    static var defaultSearchPath: SearchPathDirectory {
+        .documentDirectory
+    }
 
-        let fileUrls = try! FileManager.default.contentsOfDirectory(at: directoryUrl, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
+    func deleteAll(in searchPath: SearchPathDirectory) throws {
+        let directoryUrl = urls(for: searchPath, in: .userDomainMask).first!
+
+        guard directoryUrl.doesDirectoryExist else {
+            return
+        }
+
+        let fileUrls = try contentsOfDirectory(at: directoryUrl, includingPropertiesForKeys: nil, options: [.skipsHiddenFiles, .skipsSubdirectoryDescendants])
 
         for fileUrl in fileUrls {
-            try! FileManager.default.removeItem(at: fileUrl)
+            try removeItem(at: fileUrl)
         }
     }
 }

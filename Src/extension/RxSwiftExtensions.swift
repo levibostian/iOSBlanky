@@ -1,9 +1,25 @@
 import Foundation
 import RxSwift
 
+class RxSchedulers {
+    static var ui: MainScheduler {
+        MainScheduler.instance
+    }
+
+    static var background: ConcurrentDispatchQueueScheduler {
+        ConcurrentDispatchQueueScheduler(qos: .background)
+    }
+}
+
 extension CompositeDisposable {
     static func += (left: inout CompositeDisposable, right: Disposable) {
         _ = left.insert(right)
+    }
+}
+
+extension Disposable {
+    func disposed(by: inout CompositeDisposable) {
+        by += self
     }
 }
 

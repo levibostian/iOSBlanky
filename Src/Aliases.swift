@@ -46,7 +46,7 @@ extension GitHubMoyaProvider {}
 extension DI {
     var gitHubMoyaProvider: GitHubMoyaProvider {
         let plugins: [PluginType] = [
-            MoyaAppendHeadersPlugin(userCredsManager: self.inject(.userCredsManager)),
+            MoyaAppendHeadersPlugin(userManager: self.inject(.userManager)),
             HttpLoggerMoyaPlugin(logger: self.inject(.activityLogger))
         ]
 

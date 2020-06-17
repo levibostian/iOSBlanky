@@ -1,3 +1,4 @@
+import Alamofire
 import Foundation
 import Moya
 
@@ -33,7 +34,20 @@ class HttpLoggerMoyaPlugin: PluginType {
                 logger.httpFailEvent(method: method, url: url, code: response.statusCode, reqHeaders: reqHeaders, resHeaders: resHeaders, resBody: resBody)
             }
         case .failure(let error):
-            logger.errorOccurred(error)
+            var logError = true
+            if case .underlying(let underlyingError) = error {
+                if let underlyingError = underlyingError.0 as? AFError {
+                    switch underlyingError {
+                    case .explicitlyCancelled: // request was cancelled. No big deal. https://github.com/Alamofire/Alamofire/blob/262fc46a273c4e01483aee933a8230b4b253ef49/Source/Request.swift#L377
+                        logError = false
+                    default: break
+                    }
+                }
+            }
+
+            if logError {
+                logger.errorOccurred(error)
+            }
         }
     }
 }

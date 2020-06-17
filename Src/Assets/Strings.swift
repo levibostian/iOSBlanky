@@ -13,6 +13,12 @@ enum Strings: String, CaseIterable {
     case userHasNoGithubRepos
     case cannotPerformRequestUntilErrorsFixed
     case cannotPerformHttpRequestPendingTasksFailed
+    case developerErrorMessage // for when there is an error by the developer. error has been logged, but we need a human readable message shown to the user.
+    case loggingIntoAppTitle
+    case loggingIntoAppMessage
+    case retry
+    case cancel
+    case accept
 }
 
 extension Strings {

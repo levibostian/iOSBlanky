@@ -1,13 +1,17 @@
 import Foundation
 import RxSwift
 
-protocol KeyValueStorage {
-    func integer(forKey key: String) -> Int?
-    func set(_ value: Int?, forKey key: String)
-    func string(forKey key: String) -> String?
-    func set(_ value: String?, forKey key: String)
+protocol KeyValueStorage: AutoMockable {
+    func integer(forKey key: KeyValueStorageKey) -> Int?
+    func setInt(_ value: Int?, forKey key: KeyValueStorageKey)
+    func double(forKey key: KeyValueStorageKey) -> Double?
+    func setDouble(_ value: Double?, forKey key: KeyValueStorageKey)
+    func string(forKey key: KeyValueStorageKey) -> String?
+    func setString(_ value: String?, forKey key: KeyValueStorageKey)
+    func date(forKey key: KeyValueStorageKey) -> Date?
+    func setDate(_ value: Date?, forKey key: KeyValueStorageKey)
     // Does not emit when value is nil
-    func observeString(forKey key: String) -> Observable<String>
+    func observeString(forKey key: KeyValueStorageKey) -> Observable<String>
     func deleteAll()
 }
 
@@ -19,25 +23,47 @@ class UserDefaultsKeyValueStorage: KeyValueStorage {
         self.userDefaults = userDefaults
     }
 
-    func integer(forKey key: String) -> Int? {
-        let value = userDefaults.integer(forKey: key)
+    func integer(forKey key: KeyValueStorageKey) -> Int? {
+        let value = userDefaults.integer(forKey: key.rawValue)
         return value == 0 ? nil : value
     }
 
-    func set(_ value: Int?, forKey key: String) {
-        userDefaults.set(value, forKey: key)
+    func setInt(_ value: Int?, forKey key: KeyValueStorageKey) {
+        userDefaults.set(value, forKey: key.rawValue)
     }
 
-    func string(forKey key: String) -> String? {
-        userDefaults.string(forKey: key)
+    func double(forKey key: KeyValueStorageKey) -> Double? {
+        let value = userDefaults.double(forKey: key.rawValue)
+        return value == 0 ? nil : value
     }
 
-    func set(_ value: String?, forKey key: String) {
-        userDefaults.set(value, forKey: key)
+    func setDouble(_ value: Double?, forKey key: KeyValueStorageKey) {
+        userDefaults.set(value, forKey: key.rawValue)
     }
 
-    func observeString(forKey key: String) -> Observable<String> {
-        userDefaults.rx.observe(String.self, key)
+    func string(forKey key: KeyValueStorageKey) -> String? {
+        userDefaults.string(forKey: key.rawValue)
+    }
+
+    func setString(_ value: String?, forKey key: KeyValueStorageKey) {
+        userDefaults.set(value, forKey: key.rawValue)
+    }
+
+    func date(forKey key: KeyValueStorageKey) -> Date? {
+        let millis = userDefaults.double(forKey: key.rawValue)
+        guard millis > 0 else {
+            return nil
+        }
+
+        return Date(timeIntervalSince1970: millis)
+    }
+
+    func setDate(_ value: Date?, forKey key: KeyValueStorageKey) {
+        userDefaults.set(value?.timeIntervalSince1970, forKey: key.rawValue)
+    }
+
+    func observeString(forKey key: KeyValueStorageKey) -> Observable<String> {
+        userDefaults.rx.observe(String.self, key.rawValue)
             .filter { (value) -> Bool in
                 value != nil
             }.map { (value) -> String in

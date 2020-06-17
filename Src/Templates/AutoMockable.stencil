@@ -100,17 +100,24 @@ import AppKit
 {% endmacro %}
 
 {% macro mockNonOptionalVariable variable %}
+    var {% call underlyingMockedVariableName variable %}: {{ variable.typeName }}!
+    var {% call mockedVariableName variable %}Called = false 
+    var {% call mockedVariableName variable %}GetCalled = false 
+    var {% call mockedVariableName variable %}SetCalled = false 
     var {% call mockedVariableName variable %}: {{ variable.typeName }} {
         get { 
             self.mockCalled = true
+            {% call mockedVariableName variable %}Called = true
+            {% call mockedVariableName variable %}GetCalled = true
             return {% call underlyingMockedVariableName variable %} 
         }
         set(value) { 
             self.mockCalled = true
+            {% call mockedVariableName variable %}Called = true 
+            {% call mockedVariableName variable %}SetCalled = true
             {% call underlyingMockedVariableName variable %} = value 
         }
-    }
-    var {% call underlyingMockedVariableName variable %}: {{ variable.typeName }}!
+    }    
 {% endmacro %}
 
 {% macro underlyingMockedVariableName variable %}underlying{{ variable.name|upperFirstLetter }}{% endmacro %}

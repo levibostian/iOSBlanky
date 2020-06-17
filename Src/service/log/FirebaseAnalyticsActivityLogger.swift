@@ -6,10 +6,25 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         Analytics.setUserID(id)
     }
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
-        let eventName = Util.makeEventNameAppropriate(event.description)
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
+        var extras: [String: Any]? = extras?.mapKeys { key -> String in
+            key.firebaseName
+        }
 
-        Analytics.logEvent(eventName, parameters: extras)
+        if let average = average {
+            if extras == nil {
+                extras = [:]
+            }
+
+            // Docs for `AnalyticsParameterValue` say you can use a double that is represented as NSNumber.
+            extras![AnalyticsParameterValue] = average as NSNumber
+        }
+
+        Analytics.logEvent(event.firebaseName, parameters: extras)
+    }
+
+    func setUserProperty(_ key: UserPropertyKey, value: String) {
+        Analytics.setUserProperty(value, forName: key.firebaseName)
     }
 
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {
@@ -28,27 +43,39 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         // No need to log this to analytics.
     }
 
-    func errorOccurred(_ error: Error) {
-        // Logged event so we can send a notification to people who have encountered an issue when we have new updates for them.
-        appEventOccurred(.errorOccurred, extras: nil)
+    func errorOccurred(_ error: Error) {}
+}
+
+extension UserPropertyKey {
+    var firebaseName: String {
+        rawValue.camelCaseToSnakeCase().lowercased()
     }
+}
 
-    class Util {
-        // Only allow letters, numbers, or underscores
-        class func makeEventNameAppropriate(_ name: String) -> String {
-            let okayChars = Set("abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890")
-            let replacementChar = "_"
+extension ActivityEvent {
+    /**
+     Firebase comes with a set of event names that you should use in your app, if it fits your app. In this function we convert our app's custom events to these built-in event names if they exist inside of Firebase's collection.
 
-            var returnName = name
-            name.forEach { character in
-                let characterString = String(character)
+     https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Event
+     */
+    var firebaseName: String {
+        switch self {
+        case .login: return AnalyticsEventLogin
+        default: return rawValue.camelCaseToSnakeCase().lowercased()
+        }
+    }
+}
 
-                if !okayChars.contains(character) {
-                    returnName = returnName.replacingOccurrences(of: characterString, with: replacementChar)
-                }
-            }
+extension ActivityEventParamKey {
+    /**
+     Firebase comes with a set of event names that you should use in your app, if it fits your app. In this function we convert our app's custom events to these built-in event names if they exist inside of Firebase's collection.
 
-            return returnName
+     https://firebase.google.com/docs/reference/android/com/google/firebase/analytics/FirebaseAnalytics.Param
+     */
+    var firebaseName: String {
+        switch self {
+        case .method: return AnalyticsParameterMethod
+        default: return rawValue.camelCaseToSnakeCase().lowercased()
         }
     }
 }

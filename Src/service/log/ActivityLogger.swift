@@ -2,11 +2,16 @@ import Foundation
 
 /**
  No need to track screen because firebase does this automatically.
+
+ The functions here are meant to be common between many different types of loggers. This file is meant to be generic enough that all loggers can inherit so there are no specific functions meant for 1 specific logger, as much as we can help it.
  */
 protocol ActivityLogger: AutoMockable {
     func setUserId(id: String?)
-    // meant for analytics purposes
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String)
+    // meant for analytics purposes.
+    // Note: `average` is meant for firebase analytics only used to track averages. Therefore, it's only good for tracking time/scores/periods of time See: https://firebase.googleblog.com/2017/02/firebase-analytics-quick-tip-value.html
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String)
+    func setUserProperty(_ key: UserPropertyKey, value: String)
+
     // meant for debugging purposes only.
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String)
     func httpRequestEvent(method: String, url: String, reqBody: String?)
@@ -16,8 +21,8 @@ protocol ActivityLogger: AutoMockable {
 }
 
 extension ActivityLogger {
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, file: StaticString = #file) {
-        appEventOccurred(event, extras: extras, from: "\(file)".pathToFileName())
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double? = nil, file: StaticString = #file) {
+        appEventOccurred(event, extras: extras, average: average, from: "\(file)".pathToFileName())
     }
 
     func breadcrumb(_ event: String, extras: [String: Any]?, file: StaticString = #file) {
@@ -25,22 +30,32 @@ extension ActivityLogger {
     }
 }
 
-enum ActivityEvent {
-    case userLoggedIn
-    case userLoggedOut
-    case userSearchedReposForGitHubUser
-    case errorOccurred
+enum UserPropertyKey: String {
+    case highlightValue
 }
 
-extension ActivityEvent {
-    var description: String {
-        switch self {
-        case .userLoggedIn: return "User_logged_in"
-        case .userLoggedOut: return "User_logged_out"
-        case .userSearchedReposForGitHubUser: return "User_searched_repos_for_github_user"
-        case .errorOccurred: return "Error_occurred"
-        }
-    }
+// Firebase only allows a finite number of parameters to be used. So as long as we limit the number of parameters we use in the whole project, we should be ok.
+// These parameters are meant to be generic. Meant to be able to be used across many events.
+enum ActivityEventParamKey: String {
+    case method
+    case id
+    case name
+    case paidUser // (Bool) If user is a paying customer
+    case type
+}
+
+enum ActivityEvent: String {
+    case login
+    case logout
+    case didRepoSearch
+
+    // Developer related events that are important to make sure features are working.
+    case remoteConfigFetchSuccess
+    case remoteConfigFetchFail
+    case pushNotificationReceived // data or UI based. provide param
+    case pushNotificationTopicSubscribed
+    case performBackgroundSync
+    case openedDynamicLink
 }
 
 // sourcery: InjectRegister = "ActivityLogger"
@@ -48,19 +63,28 @@ class AppActivityLogger: ActivityLogger {
     private let loggers: [ActivityLogger]
 
     init(environment: Environment) {
-        self.loggers = [
+        var loggersToSet: [ActivityLogger] = [
             ErrorReportingActivityLogger(),
-            DevelopmentActivityLogger(environment: environment),
             FirebaseAnalyticsActivityLogger()
         ]
+
+        if environment.isDevelopment {
+            loggersToSet.append(DevelopmentActivityLogger())
+        }
+
+        self.loggers = loggersToSet
     }
 
     func setUserId(id: String?) {
         loggers.forEach { $0.setUserId(id: id) }
     }
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
-        loggers.forEach { $0.appEventOccurred(event, extras: extras, from: file) }
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
+        loggers.forEach { $0.appEventOccurred(event, extras: extras, average: average, from: file) }
+    }
+
+    func setUserProperty(_ key: UserPropertyKey, value: String) {
+        loggers.forEach { $0.setUserProperty(key, value: value) }
     }
 
     func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {

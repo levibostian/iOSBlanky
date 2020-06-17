@@ -10,3 +10,9 @@
 "userHasNoGithubRepos" = "User has no GitHub repos";
 "cannotPerformRequestUntilErrorsFixed" = "Fix error: %@, then try again.";
 "cannotPerformHttpRequestPendingTasksFailed" = "Sorry! You can't do that right now. Try again later.";
+"developerErrorMessage" = "Sorry! There was an error. The team has been notified. Please, try again later.";
+"loggingIntoAppTitle" = "Logging into app...";
+"loggingIntoAppMessage" = "This should only take a moment. Thanks for waiting 😃!";
+"retry" = "Retry";
+"cancel" = "Cancel";
+"accept" = "Accept";

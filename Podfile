@@ -25,6 +25,8 @@ def commonDepencencies
     pod 'Firebase/Performance'
     pod 'Firebase/Crashlytics'
 
+    pod 'Dwifft', '~> 0.9'
+    pod 'SwiftCoordinator'
     pod 'Kingfisher', '~> 5'
     pod 'KeychainAccess', '~> 4'
     pod 'Empty', '~> 0.1'

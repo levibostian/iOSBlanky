@@ -7,4 +7,8 @@ extension UIImage {
 
         self.init(data: data)
     }
+
+    func notTinted() -> UIImage {
+        withRenderingMode(.alwaysOriginal)
+    }
 }

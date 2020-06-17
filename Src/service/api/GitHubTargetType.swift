@@ -7,6 +7,7 @@ enum GitHubService {
 
 extension GitHubService: TargetType {
     var baseURL: URL { URL(string: Constants.apiEndpoint)! }
+    var jsonEncoder: JSONEncoder { SwiftJsonAdpter().encoder }
 
     var path: String {
         switch self {
@@ -48,6 +49,13 @@ extension GitHubService: TargetType {
     }
 
     var task: Task {
+        func jsonEncoding(_ data: Encodable) -> Task {
+            .requestCustomJSONEncodable(data, encoder: jsonEncoder)
+        }
+        func queryEncoding(_ params: [String: Any]) -> Task {
+            .requestParameters(parameters: params, encoding: URLEncoding.default)
+        }
+
         switch self {
         case .getUserRepos:
             return Task.requestPlain

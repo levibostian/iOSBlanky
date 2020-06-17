@@ -3,14 +3,14 @@ import Foundation
 /**
  A 403 HTTP response code.
  */
-class UserEnteredBadDataError: LocalizedError {
-    let message: String
+class UserEnteredBadDataError: Codable, LocalizedError {
+    let errorMessage: String
 
     init(message: String) {
-        self.message = message
+        self.errorMessage = message
     }
 
     var errorDescription: String? {
-        message
+        errorMessage
     }
 }

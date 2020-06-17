@@ -1,9 +1,29 @@
 import Foundation
+import SafariServices
 import UIKit
 
 extension UIViewController {
-    var appDelegate: AppDelegate {
-        UIApplication.shared.delegate as! AppDelegate // swiftlint:disable:this force_cast
+    var appDelegate: AppDelegate? {
+        // Must be optional because when running **unit** tests, you cannot cast successfully. `UIApplication.shared.delegate` will be equal to the unit test app delegate, but it can't cast as the app's app delegate
+        UIApplication.shared.delegate as? AppDelegate
+    }
+
+    func addChildViewController(_ childViewController: UIViewController, addView: ((UIView) -> Void)?) {
+        childViewController.willMove(toParent: self)
+
+        if let addView = addView {
+            addView(childViewController.view)
+        } else {
+            view.addSubview(childViewController.view)
+        }
+
+        addChild(childViewController)
+
+        childViewController.didMove(toParent: self)
+    }
+
+    func scroll(_ scrollView: UIScrollView, toView viewToScrollTo: UIView, animated: Bool) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: viewToScrollTo.y), animated: animated)
     }
 
     func getErrorAlert(title: String?, message: String?) -> UIAlertController {
@@ -24,6 +44,20 @@ extension UIViewController {
     func runOnMain(_ run: @escaping () -> Void) {
         DispatchQueue.main.asyncOrSyncIfMain(run)
     }
+
+    func getButton(withTitle title: String) -> UIButton? {
+        var foundButton: UIButton?
+
+        view.allSubviews.forEach { subview in
+            if let button = subview as? UIButton {
+                if button.title(for: .normal) == title {
+                    foundButton = button
+                }
+            }
+        }
+
+        return foundButton
+    }
 }
 
 extension UIViewController {
@@ -41,5 +75,15 @@ extension UIViewController {
         themeableViewController.themeManager.applyTheme(to: themeableViewController) // This must exist here, or some of the properties set on the VC will not set for the theme.
 
         swizzledViewWillAppear(animated) // call the original method
+    }
+}
+
+extension UIViewController {
+    func setUnitTesting() {
+        UIView.setAnimationsEnabled(false)
+    }
+
+    func setOrientation(_ orientation: UIInterfaceOrientation) {
+        UIDevice.current.setValue(orientation.rawValue, forKey: "orientation")
     }
 }

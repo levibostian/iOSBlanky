@@ -2,18 +2,14 @@ import Foundation
 
 // Meant to be used during development.
 class DevelopmentActivityLogger: DebugActivityLogger {
-    private let consoleLogger: ConsoleLogger
-
-    init(environment: Environment) {
-        self.consoleLogger = ConsoleLogger(environment: environment)
-    }
+    private let consoleLogger = ConsoleLogger()
 
     func identifyUser(id: String?) {
-        if let userId = id {
-            consoleLogger.d("User logged in. Id: \(userId)")
-        } else {
-            consoleLogger.d("User logged out.")
-        }
+        consoleLogger.d("[APP/USER_ID] \(id ?? "(null)")")
+    }
+
+    func setUserProperty(_ key: UserPropertyKey, value: String) {
+        consoleLogger.d("[APP/PROPERTY] \(key.rawValue): \(value)")
     }
 
     func logAppEvent(_ message: String, extras: [String: Any]?) {

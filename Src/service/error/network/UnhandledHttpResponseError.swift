@@ -10,7 +10,7 @@ class UnhandledHttpResponseError: LocalizedError {
         self.message = message
     }
 
-    var localizedDescription: String {
+    var localizedDescription: String? {
         message
     }
 

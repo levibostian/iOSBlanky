@@ -1,16 +1,39 @@
 import Foundation
 import Moya
 
+enum MoyaProviderMockerError: Error {
+    case queueEmpty
+}
+
+extension MoyaProviderMockerError: LocalizedError {
+    var errorDescription: String? {
+        localizedDescription
+    }
+
+    var localizedDescription: String {
+        switch self {
+        case .queueEmpty: return "Queue empty!"
+        }
+    }
+}
+
 class MoyaProviderMocker<Service: TargetType> {
     class Queue {
         private var queue: [QueueResponse] = []
 
-        var count: Int {
-            queue.count
-        }
-
         func pop() -> QueueResponse {
             queue.remove(at: 0)
+        }
+
+        func peek() -> QueueResponse? {
+            guard !queue.isEmpty else {
+                return nil
+            }
+            return queue[0]
+        }
+
+        var count: Int {
+            queue.count
         }
 
         func append(_ item: QueueResponse) {
@@ -20,6 +43,10 @@ class MoyaProviderMocker<Service: TargetType> {
 
     var moyaProvider: MoyaProvider<Service> {
         let sampleResponseClosure: () -> EndpointSampleResponse = {
+            guard self.queue.peek() != nil else {
+                return .networkError(MoyaProviderMockerError.queueEmpty as NSError)
+            }
+
             let nextQueueItem = self.queue.pop()
 
             let response: EndpointSampleResponse
@@ -35,6 +62,20 @@ class MoyaProviderMocker<Service: TargetType> {
             return response
         }
 
+        let stubClosure: (Service) -> StubBehavior = { target -> StubBehavior in
+            var delayInSeconds: TimeInterval = 0
+            if self.queue.peek() == nil {
+                delayInSeconds = 10.0
+
+                // infinite amount of time for local developing for breakpoints.
+                if DI.shared.environment.isDevelopment {
+                    delayInSeconds = 100000.0
+                }
+            }
+
+            return .delayed(seconds: delayInSeconds)
+        }
+
         let endpointClosure: (Service) -> Endpoint = { (target: Service) -> Endpoint in
             Endpoint(url: URL(target: target).absoluteString,
                      sampleResponseClosure: sampleResponseClosure,
@@ -43,7 +84,7 @@ class MoyaProviderMocker<Service: TargetType> {
                      httpHeaderFields: target.headers)
         }
 
-        return MoyaProvider(endpointClosure: endpointClosure, stubClosure: MoyaProvider.immediatelyStub)
+        return MoyaProvider(endpointClosure: endpointClosure, stubClosure: stubClosure)
     }
 
     let queue: Queue = Queue()
@@ -56,15 +97,15 @@ class MoyaProviderMocker<Service: TargetType> {
     }
 
     func queueResponse<DATA: Encodable>(_ statusCode: Int, data: DATA) {
-        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: jsonAdapter.toJson(data), error: nil))
+        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: try! jsonAdapter.toJson(data), error: nil))
     }
 
     func queueResponse<DATA: Encodable>(_ statusCode: Int, data: [DATA]) {
-        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: jsonAdapter.toJsonArray(data), error: nil))
+        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: try! jsonAdapter.toJson(data), error: nil))
     }
 
     func queueResponse(_ statusCode: Int, data: Data) {
-        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: jsonAdapter.toJson(data), error: nil))
+        queue.append(QueueResponse(type: .response, statusCode: statusCode, rawResponse: nil, data: try! jsonAdapter.toJson(data), error: nil))
     }
 
     func queueRawResponse(response: HTTPURLResponse, data: Data) {

@@ -34,21 +34,40 @@ class ActivityLoggerMock: ActivityLogger {
 
     // MARK: - appEventOccurred
 
-    var appEventOccurredExtrasFromCallsCount = 0
-    var appEventOccurredExtrasFromCalled: Bool {
-        appEventOccurredExtrasFromCallsCount > 0
+    var appEventOccurredExtrasAverageFromCallsCount = 0
+    var appEventOccurredExtrasAverageFromCalled: Bool {
+        appEventOccurredExtrasAverageFromCallsCount > 0
     }
 
-    var appEventOccurredExtrasFromReceivedArguments: (event: ActivityEvent, extras: [String: Any]?, file: String)?
-    var appEventOccurredExtrasFromReceivedInvocations: [(event: ActivityEvent, extras: [String: Any]?, file: String)] = []
-    var appEventOccurredExtrasFromClosure: ((ActivityEvent, [String: Any]?, String) -> Void)?
+    var appEventOccurredExtrasAverageFromReceivedArguments: (event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, file: String)?
+    var appEventOccurredExtrasAverageFromReceivedInvocations: [(event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, file: String)] = []
+    var appEventOccurredExtrasAverageFromClosure: ((ActivityEvent, [ActivityEventParamKey: Any]?, Double?, String) -> Void)?
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
         mockCalled = true
-        appEventOccurredExtrasFromCallsCount += 1
-        appEventOccurredExtrasFromReceivedArguments = (event: event, extras: extras, file: file)
-        appEventOccurredExtrasFromReceivedInvocations.append((event: event, extras: extras, file: file))
-        appEventOccurredExtrasFromClosure?(event, extras, file)
+        appEventOccurredExtrasAverageFromCallsCount += 1
+        appEventOccurredExtrasAverageFromReceivedArguments = (event: event, extras: extras, average: average, file: file)
+        appEventOccurredExtrasAverageFromReceivedInvocations.append((event: event, extras: extras, average: average, file: file))
+        appEventOccurredExtrasAverageFromClosure?(event, extras, average, file)
+    }
+
+    // MARK: - setUserProperty
+
+    var setUserPropertyValueCallsCount = 0
+    var setUserPropertyValueCalled: Bool {
+        setUserPropertyValueCallsCount > 0
+    }
+
+    var setUserPropertyValueReceivedArguments: (key: UserPropertyKey, value: String)?
+    var setUserPropertyValueReceivedInvocations: [(key: UserPropertyKey, value: String)] = []
+    var setUserPropertyValueClosure: ((UserPropertyKey, String) -> Void)?
+
+    func setUserProperty(_ key: UserPropertyKey, value: String) {
+        mockCalled = true
+        setUserPropertyValueCallsCount += 1
+        setUserPropertyValueReceivedArguments = (key: key, value: value)
+        setUserPropertyValueReceivedInvocations.append((key: key, value: value))
+        setUserPropertyValueClosure?(key, value)
     }
 
     // MARK: - breadcrumb
@@ -247,21 +266,40 @@ class DebugActivityLoggerMock: DebugActivityLogger {
 
     // MARK: - appEventOccurred
 
-    var appEventOccurredExtrasFromCallsCount = 0
-    var appEventOccurredExtrasFromCalled: Bool {
-        appEventOccurredExtrasFromCallsCount > 0
+    var appEventOccurredExtrasAverageFromCallsCount = 0
+    var appEventOccurredExtrasAverageFromCalled: Bool {
+        appEventOccurredExtrasAverageFromCallsCount > 0
     }
 
-    var appEventOccurredExtrasFromReceivedArguments: (event: ActivityEvent, extras: [String: Any]?, file: String)?
-    var appEventOccurredExtrasFromReceivedInvocations: [(event: ActivityEvent, extras: [String: Any]?, file: String)] = []
-    var appEventOccurredExtrasFromClosure: ((ActivityEvent, [String: Any]?, String) -> Void)?
+    var appEventOccurredExtrasAverageFromReceivedArguments: (event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, file: String)?
+    var appEventOccurredExtrasAverageFromReceivedInvocations: [(event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, file: String)] = []
+    var appEventOccurredExtrasAverageFromClosure: ((ActivityEvent, [ActivityEventParamKey: Any]?, Double?, String) -> Void)?
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [String: Any]?, from file: String) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
         mockCalled = true
-        appEventOccurredExtrasFromCallsCount += 1
-        appEventOccurredExtrasFromReceivedArguments = (event: event, extras: extras, file: file)
-        appEventOccurredExtrasFromReceivedInvocations.append((event: event, extras: extras, file: file))
-        appEventOccurredExtrasFromClosure?(event, extras, file)
+        appEventOccurredExtrasAverageFromCallsCount += 1
+        appEventOccurredExtrasAverageFromReceivedArguments = (event: event, extras: extras, average: average, file: file)
+        appEventOccurredExtrasAverageFromReceivedInvocations.append((event: event, extras: extras, average: average, file: file))
+        appEventOccurredExtrasAverageFromClosure?(event, extras, average, file)
+    }
+
+    // MARK: - setUserProperty
+
+    var setUserPropertyValueCallsCount = 0
+    var setUserPropertyValueCalled: Bool {
+        setUserPropertyValueCallsCount > 0
+    }
+
+    var setUserPropertyValueReceivedArguments: (key: UserPropertyKey, value: String)?
+    var setUserPropertyValueReceivedInvocations: [(key: UserPropertyKey, value: String)] = []
+    var setUserPropertyValueClosure: ((UserPropertyKey, String) -> Void)?
+
+    func setUserProperty(_ key: UserPropertyKey, value: String) {
+        mockCalled = true
+        setUserPropertyValueCallsCount += 1
+        setUserPropertyValueReceivedArguments = (key: key, value: value)
+        setUserPropertyValueReceivedInvocations.append((key: key, value: value))
+        setUserPropertyValueClosure?(key, value)
     }
 
     // MARK: - breadcrumb
@@ -463,8 +501,283 @@ class EventBusEventListenerMock: EventBusEventListener {
     }
 }
 
+class FileStorageMock: FileStorage {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - write
+
+    var writeTextFileNameInSearchPathAppendedDirectoryThrowableError: Error?
+    var writeTextFileNameInSearchPathAppendedDirectoryCallsCount = 0
+    var writeTextFileNameInSearchPathAppendedDirectoryCalled: Bool {
+        writeTextFileNameInSearchPathAppendedDirectoryCallsCount > 0
+    }
+
+    var writeTextFileNameInSearchPathAppendedDirectoryReceivedArguments: (text: String, fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)?
+    var writeTextFileNameInSearchPathAppendedDirectoryReceivedInvocations: [(text: String, fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)] = []
+    var writeTextFileNameInSearchPathAppendedDirectoryClosure: ((String, String, FileManager.SearchPathDirectory, String?) throws -> Void)?
+
+    func write(text: String, fileName: String, inSearchPath location: FileManager.SearchPathDirectory, appendedDirectory: String?) throws {
+        if let error = writeTextFileNameInSearchPathAppendedDirectoryThrowableError {
+            throw error
+        }
+        mockCalled = true
+        writeTextFileNameInSearchPathAppendedDirectoryCallsCount += 1
+        writeTextFileNameInSearchPathAppendedDirectoryReceivedArguments = (text: text, fileName: fileName, location: location, appendedDirectory: appendedDirectory)
+        writeTextFileNameInSearchPathAppendedDirectoryReceivedInvocations.append((text: text, fileName: fileName, location: location, appendedDirectory: appendedDirectory))
+        try writeTextFileNameInSearchPathAppendedDirectoryClosure?(text, fileName, location, appendedDirectory)
+    }
+
+    // MARK: - readString
+
+    var readStringFileNameInSearchPathAppendedDirectoryCallsCount = 0
+    var readStringFileNameInSearchPathAppendedDirectoryCalled: Bool {
+        readStringFileNameInSearchPathAppendedDirectoryCallsCount > 0
+    }
+
+    var readStringFileNameInSearchPathAppendedDirectoryReceivedArguments: (fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)?
+    var readStringFileNameInSearchPathAppendedDirectoryReceivedInvocations: [(fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)] = []
+    var readStringFileNameInSearchPathAppendedDirectoryReturnValue: String?
+    var readStringFileNameInSearchPathAppendedDirectoryClosure: ((String, FileManager.SearchPathDirectory, String?) -> String?)?
+
+    func readString(fileName: String, inSearchPath location: FileManager.SearchPathDirectory, appendedDirectory: String?) -> String? {
+        mockCalled = true
+        readStringFileNameInSearchPathAppendedDirectoryCallsCount += 1
+        readStringFileNameInSearchPathAppendedDirectoryReceivedArguments = (fileName: fileName, location: location, appendedDirectory: appendedDirectory)
+        readStringFileNameInSearchPathAppendedDirectoryReceivedInvocations.append((fileName: fileName, location: location, appendedDirectory: appendedDirectory))
+        return readStringFileNameInSearchPathAppendedDirectoryClosure.map { $0(fileName, location, appendedDirectory) } ?? readStringFileNameInSearchPathAppendedDirectoryReturnValue
+    }
+
+    // MARK: - readAsset
+
+    var readAssetAssetCallsCount = 0
+    var readAssetAssetCalled: Bool {
+        readAssetAssetCallsCount > 0
+    }
+
+    var readAssetAssetReceivedAsset: FileAsset?
+    var readAssetAssetReceivedInvocations: [FileAsset] = []
+    var readAssetAssetReturnValue: Data?
+    var readAssetAssetClosure: ((FileAsset) -> Data?)?
+
+    func readAsset(asset: FileAsset) -> Data? {
+        mockCalled = true
+        readAssetAssetCallsCount += 1
+        readAssetAssetReceivedAsset = asset
+        readAssetAssetReceivedInvocations.append(asset)
+        return readAssetAssetClosure.map { $0(asset) } ?? readAssetAssetReturnValue
+    }
+
+    // MARK: - write
+
+    var writeDataFileNameInSearchPathAppendedDirectoryThrowableError: Error?
+    var writeDataFileNameInSearchPathAppendedDirectoryCallsCount = 0
+    var writeDataFileNameInSearchPathAppendedDirectoryCalled: Bool {
+        writeDataFileNameInSearchPathAppendedDirectoryCallsCount > 0
+    }
+
+    var writeDataFileNameInSearchPathAppendedDirectoryReceivedArguments: (data: Data, fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)?
+    var writeDataFileNameInSearchPathAppendedDirectoryReceivedInvocations: [(data: Data, fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)] = []
+    var writeDataFileNameInSearchPathAppendedDirectoryClosure: ((Data, String, FileManager.SearchPathDirectory, String?) throws -> Void)?
+
+    func write(data: Data, fileName: String, inSearchPath location: FileManager.SearchPathDirectory, appendedDirectory: String?) throws {
+        if let error = writeDataFileNameInSearchPathAppendedDirectoryThrowableError {
+            throw error
+        }
+        mockCalled = true
+        writeDataFileNameInSearchPathAppendedDirectoryCallsCount += 1
+        writeDataFileNameInSearchPathAppendedDirectoryReceivedArguments = (data: data, fileName: fileName, location: location, appendedDirectory: appendedDirectory)
+        writeDataFileNameInSearchPathAppendedDirectoryReceivedInvocations.append((data: data, fileName: fileName, location: location, appendedDirectory: appendedDirectory))
+        try writeDataFileNameInSearchPathAppendedDirectoryClosure?(data, fileName, location, appendedDirectory)
+    }
+
+    // MARK: - readData
+
+    var readDataFileNameInSearchPathAppendedDirectoryCallsCount = 0
+    var readDataFileNameInSearchPathAppendedDirectoryCalled: Bool {
+        readDataFileNameInSearchPathAppendedDirectoryCallsCount > 0
+    }
+
+    var readDataFileNameInSearchPathAppendedDirectoryReceivedArguments: (fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)?
+    var readDataFileNameInSearchPathAppendedDirectoryReceivedInvocations: [(fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)] = []
+    var readDataFileNameInSearchPathAppendedDirectoryReturnValue: Data?
+    var readDataFileNameInSearchPathAppendedDirectoryClosure: ((String, FileManager.SearchPathDirectory, String?) -> Data?)?
+
+    func readData(fileName: String, inSearchPath location: FileManager.SearchPathDirectory, appendedDirectory: String?) -> Data? {
+        mockCalled = true
+        readDataFileNameInSearchPathAppendedDirectoryCallsCount += 1
+        readDataFileNameInSearchPathAppendedDirectoryReceivedArguments = (fileName: fileName, location: location, appendedDirectory: appendedDirectory)
+        readDataFileNameInSearchPathAppendedDirectoryReceivedInvocations.append((fileName: fileName, location: location, appendedDirectory: appendedDirectory))
+        return readDataFileNameInSearchPathAppendedDirectoryClosure.map { $0(fileName, location, appendedDirectory) } ?? readDataFileNameInSearchPathAppendedDirectoryReturnValue
+    }
+
+    // MARK: - getFileUrl
+
+    var getFileUrlFileNameInSearchPathAppendedDirectoryCallsCount = 0
+    var getFileUrlFileNameInSearchPathAppendedDirectoryCalled: Bool {
+        getFileUrlFileNameInSearchPathAppendedDirectoryCallsCount > 0
+    }
+
+    var getFileUrlFileNameInSearchPathAppendedDirectoryReceivedArguments: (fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)?
+    var getFileUrlFileNameInSearchPathAppendedDirectoryReceivedInvocations: [(fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)] = []
+    var getFileUrlFileNameInSearchPathAppendedDirectoryReturnValue: URL!
+    var getFileUrlFileNameInSearchPathAppendedDirectoryClosure: ((String, FileManager.SearchPathDirectory, String?) -> URL)?
+
+    func getFileUrl(fileName: String, inSearchPath location: FileManager.SearchPathDirectory, appendedDirectory: String?) -> URL {
+        mockCalled = true
+        getFileUrlFileNameInSearchPathAppendedDirectoryCallsCount += 1
+        getFileUrlFileNameInSearchPathAppendedDirectoryReceivedArguments = (fileName: fileName, location: location, appendedDirectory: appendedDirectory)
+        getFileUrlFileNameInSearchPathAppendedDirectoryReceivedInvocations.append((fileName: fileName, location: location, appendedDirectory: appendedDirectory))
+        return getFileUrlFileNameInSearchPathAppendedDirectoryClosure.map { $0(fileName, location, appendedDirectory) } ?? getFileUrlFileNameInSearchPathAppendedDirectoryReturnValue
+    }
+
+    // MARK: - getTempFileUrl
+
+    var getTempFileUrlCallsCount = 0
+    var getTempFileUrlCalled: Bool {
+        getTempFileUrlCallsCount > 0
+    }
+
+    var getTempFileUrlReturnValue: URL!
+    var getTempFileUrlClosure: (() -> URL)?
+
+    func getTempFileUrl() -> URL {
+        mockCalled = true
+        getTempFileUrlCallsCount += 1
+        return getTempFileUrlClosure.map { $0() } ?? getTempFileUrlReturnValue
+    }
+
+    // MARK: - copy
+
+    var copyFromToThrowableError: Error?
+    var copyFromToCallsCount = 0
+    var copyFromToCalled: Bool {
+        copyFromToCallsCount > 0
+    }
+
+    var copyFromToReceivedArguments: (from: URL, to: URL)?
+    var copyFromToReceivedInvocations: [(from: URL, to: URL)] = []
+    var copyFromToClosure: ((URL, URL) throws -> Void)?
+
+    func copy(from: URL, to: URL) throws {
+        if let error = copyFromToThrowableError {
+            throw error
+        }
+        mockCalled = true
+        copyFromToCallsCount += 1
+        copyFromToReceivedArguments = (from: from, to: to)
+        copyFromToReceivedInvocations.append((from: from, to: to))
+        try copyFromToClosure?(from, to)
+    }
+
+    // MARK: - delete
+
+    var deleteThrowableError: Error?
+    var deleteCallsCount = 0
+    var deleteCalled: Bool {
+        deleteCallsCount > 0
+    }
+
+    var deleteReceivedUrl: URL?
+    var deleteReceivedInvocations: [URL] = []
+    var deleteClosure: ((URL) throws -> Void)?
+
+    func delete(_ url: URL) throws {
+        if let error = deleteThrowableError {
+            throw error
+        }
+        mockCalled = true
+        deleteCallsCount += 1
+        deleteReceivedUrl = url
+        deleteReceivedInvocations.append(url)
+        try deleteClosure?(url)
+    }
+
+    // MARK: - doesFileExist
+
+    var doesFileExistAtCallsCount = 0
+    var doesFileExistAtCalled: Bool {
+        doesFileExistAtCallsCount > 0
+    }
+
+    var doesFileExistAtReceivedAt: URL?
+    var doesFileExistAtReceivedInvocations: [URL] = []
+    var doesFileExistAtReturnValue: Bool!
+    var doesFileExistAtClosure: ((URL) -> Bool)?
+
+    func doesFileExist(at: URL) -> Bool {
+        mockCalled = true
+        doesFileExistAtCallsCount += 1
+        doesFileExistAtReceivedAt = at
+        doesFileExistAtReceivedInvocations.append(at)
+        return doesFileExistAtClosure.map { $0(at) } ?? doesFileExistAtReturnValue
+    }
+
+    // MARK: - deleteAll
+
+    var deleteAllInSearchPathThrowableError: Error?
+    var deleteAllInSearchPathCallsCount = 0
+    var deleteAllInSearchPathCalled: Bool {
+        deleteAllInSearchPathCallsCount > 0
+    }
+
+    var deleteAllInSearchPathReceivedInSearchPath: FileManager.SearchPathDirectory?
+    var deleteAllInSearchPathReceivedInvocations: [FileManager.SearchPathDirectory] = []
+    var deleteAllInSearchPathClosure: ((FileManager.SearchPathDirectory) throws -> Void)?
+
+    func deleteAll(inSearchPath: FileManager.SearchPathDirectory) throws {
+        if let error = deleteAllInSearchPathThrowableError {
+            throw error
+        }
+        mockCalled = true
+        deleteAllInSearchPathCallsCount += 1
+        deleteAllInSearchPathReceivedInSearchPath = inSearchPath
+        deleteAllInSearchPathReceivedInvocations.append(inSearchPath)
+        try deleteAllInSearchPathClosure?(inSearchPath)
+    }
+
+    // MARK: - observeFile
+
+    var observeFileFileNameInSearchPathAppendedDirectoryCallsCount = 0
+    var observeFileFileNameInSearchPathAppendedDirectoryCalled: Bool {
+        observeFileFileNameInSearchPathAppendedDirectoryCallsCount > 0
+    }
+
+    var observeFileFileNameInSearchPathAppendedDirectoryReceivedArguments: (fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)?
+    var observeFileFileNameInSearchPathAppendedDirectoryReceivedInvocations: [(fileName: String, location: FileManager.SearchPathDirectory, appendedDirectory: String?)] = []
+    var observeFileFileNameInSearchPathAppendedDirectoryReturnValue: Observable<Optnal<Data>>!
+    var observeFileFileNameInSearchPathAppendedDirectoryClosure: ((String, FileManager.SearchPathDirectory, String?) -> Observable<Optnal<Data>>)?
+
+    func observeFile(fileName: String, inSearchPath location: FileManager.SearchPathDirectory, appendedDirectory: String?) -> Observable<Optnal<Data>> {
+        mockCalled = true
+        observeFileFileNameInSearchPathAppendedDirectoryCallsCount += 1
+        observeFileFileNameInSearchPathAppendedDirectoryReceivedArguments = (fileName: fileName, location: location, appendedDirectory: appendedDirectory)
+        observeFileFileNameInSearchPathAppendedDirectoryReceivedInvocations.append((fileName: fileName, location: location, appendedDirectory: appendedDirectory))
+        return observeFileFileNameInSearchPathAppendedDirectoryClosure.map { $0(fileName, location, appendedDirectory) } ?? observeFileFileNameInSearchPathAppendedDirectoryReturnValue
+    }
+}
+
 class GitHubAPIMock: GitHubAPI {
     var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - exchangeToken
+
+    var exchangeTokenTokenCallsCount = 0
+    var exchangeTokenTokenCalled: Bool {
+        exchangeTokenTokenCallsCount > 0
+    }
+
+    var exchangeTokenTokenReceivedToken: String?
+    var exchangeTokenTokenReceivedInvocations: [String] = []
+    var exchangeTokenTokenReturnValue: Single<Result<TokenExchangeResponseVo, HttpRequestError>>!
+    var exchangeTokenTokenClosure: ((String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>>)?
+
+    func exchangeToken(token: String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>> {
+        mockCalled = true
+        exchangeTokenTokenCallsCount += 1
+        exchangeTokenTokenReceivedToken = token
+        exchangeTokenTokenReceivedInvocations.append(token)
+        return exchangeTokenTokenClosure.map { $0(token) } ?? exchangeTokenTokenReturnValue
+    }
 
     // MARK: - getUserRepos
 
@@ -484,6 +797,244 @@ class GitHubAPIMock: GitHubAPI {
         getUserReposUsernameReceivedUsername = username
         getUserReposUsernameReceivedInvocations.append(username)
         return getUserReposUsernameClosure.map { $0(username) } ?? getUserReposUsernameReturnValue
+    }
+}
+
+class KeyValueStorageMock: KeyValueStorage {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - integer
+
+    var integerForKeyCallsCount = 0
+    var integerForKeyCalled: Bool {
+        integerForKeyCallsCount > 0
+    }
+
+    var integerForKeyReceivedKey: KeyValueStorageKey?
+    var integerForKeyReceivedInvocations: [KeyValueStorageKey] = []
+    var integerForKeyReturnValue: Int?
+    var integerForKeyClosure: ((KeyValueStorageKey) -> Int?)?
+
+    func integer(forKey key: KeyValueStorageKey) -> Int? {
+        mockCalled = true
+        integerForKeyCallsCount += 1
+        integerForKeyReceivedKey = key
+        integerForKeyReceivedInvocations.append(key)
+        return integerForKeyClosure.map { $0(key) } ?? integerForKeyReturnValue
+    }
+
+    // MARK: - setInt
+
+    var setIntForKeyCallsCount = 0
+    var setIntForKeyCalled: Bool {
+        setIntForKeyCallsCount > 0
+    }
+
+    var setIntForKeyReceivedArguments: (value: Int?, key: KeyValueStorageKey)?
+    var setIntForKeyReceivedInvocations: [(value: Int?, key: KeyValueStorageKey)] = []
+    var setIntForKeyClosure: ((Int?, KeyValueStorageKey) -> Void)?
+
+    func setInt(_ value: Int?, forKey key: KeyValueStorageKey) {
+        mockCalled = true
+        setIntForKeyCallsCount += 1
+        setIntForKeyReceivedArguments = (value: value, key: key)
+        setIntForKeyReceivedInvocations.append((value: value, key: key))
+        setIntForKeyClosure?(value, key)
+    }
+
+    // MARK: - double
+
+    var doubleForKeyCallsCount = 0
+    var doubleForKeyCalled: Bool {
+        doubleForKeyCallsCount > 0
+    }
+
+    var doubleForKeyReceivedKey: KeyValueStorageKey?
+    var doubleForKeyReceivedInvocations: [KeyValueStorageKey] = []
+    var doubleForKeyReturnValue: Double?
+    var doubleForKeyClosure: ((KeyValueStorageKey) -> Double?)?
+
+    func double(forKey key: KeyValueStorageKey) -> Double? {
+        mockCalled = true
+        doubleForKeyCallsCount += 1
+        doubleForKeyReceivedKey = key
+        doubleForKeyReceivedInvocations.append(key)
+        return doubleForKeyClosure.map { $0(key) } ?? doubleForKeyReturnValue
+    }
+
+    // MARK: - setDouble
+
+    var setDoubleForKeyCallsCount = 0
+    var setDoubleForKeyCalled: Bool {
+        setDoubleForKeyCallsCount > 0
+    }
+
+    var setDoubleForKeyReceivedArguments: (value: Double?, key: KeyValueStorageKey)?
+    var setDoubleForKeyReceivedInvocations: [(value: Double?, key: KeyValueStorageKey)] = []
+    var setDoubleForKeyClosure: ((Double?, KeyValueStorageKey) -> Void)?
+
+    func setDouble(_ value: Double?, forKey key: KeyValueStorageKey) {
+        mockCalled = true
+        setDoubleForKeyCallsCount += 1
+        setDoubleForKeyReceivedArguments = (value: value, key: key)
+        setDoubleForKeyReceivedInvocations.append((value: value, key: key))
+        setDoubleForKeyClosure?(value, key)
+    }
+
+    // MARK: - string
+
+    var stringForKeyCallsCount = 0
+    var stringForKeyCalled: Bool {
+        stringForKeyCallsCount > 0
+    }
+
+    var stringForKeyReceivedKey: KeyValueStorageKey?
+    var stringForKeyReceivedInvocations: [KeyValueStorageKey] = []
+    var stringForKeyReturnValue: String?
+    var stringForKeyClosure: ((KeyValueStorageKey) -> String?)?
+
+    func string(forKey key: KeyValueStorageKey) -> String? {
+        mockCalled = true
+        stringForKeyCallsCount += 1
+        stringForKeyReceivedKey = key
+        stringForKeyReceivedInvocations.append(key)
+        return stringForKeyClosure.map { $0(key) } ?? stringForKeyReturnValue
+    }
+
+    // MARK: - setString
+
+    var setStringForKeyCallsCount = 0
+    var setStringForKeyCalled: Bool {
+        setStringForKeyCallsCount > 0
+    }
+
+    var setStringForKeyReceivedArguments: (value: String?, key: KeyValueStorageKey)?
+    var setStringForKeyReceivedInvocations: [(value: String?, key: KeyValueStorageKey)] = []
+    var setStringForKeyClosure: ((String?, KeyValueStorageKey) -> Void)?
+
+    func setString(_ value: String?, forKey key: KeyValueStorageKey) {
+        mockCalled = true
+        setStringForKeyCallsCount += 1
+        setStringForKeyReceivedArguments = (value: value, key: key)
+        setStringForKeyReceivedInvocations.append((value: value, key: key))
+        setStringForKeyClosure?(value, key)
+    }
+
+    // MARK: - date
+
+    var dateForKeyCallsCount = 0
+    var dateForKeyCalled: Bool {
+        dateForKeyCallsCount > 0
+    }
+
+    var dateForKeyReceivedKey: KeyValueStorageKey?
+    var dateForKeyReceivedInvocations: [KeyValueStorageKey] = []
+    var dateForKeyReturnValue: Date?
+    var dateForKeyClosure: ((KeyValueStorageKey) -> Date?)?
+
+    func date(forKey key: KeyValueStorageKey) -> Date? {
+        mockCalled = true
+        dateForKeyCallsCount += 1
+        dateForKeyReceivedKey = key
+        dateForKeyReceivedInvocations.append(key)
+        return dateForKeyClosure.map { $0(key) } ?? dateForKeyReturnValue
+    }
+
+    // MARK: - setDate
+
+    var setDateForKeyCallsCount = 0
+    var setDateForKeyCalled: Bool {
+        setDateForKeyCallsCount > 0
+    }
+
+    var setDateForKeyReceivedArguments: (value: Date?, key: KeyValueStorageKey)?
+    var setDateForKeyReceivedInvocations: [(value: Date?, key: KeyValueStorageKey)] = []
+    var setDateForKeyClosure: ((Date?, KeyValueStorageKey) -> Void)?
+
+    func setDate(_ value: Date?, forKey key: KeyValueStorageKey) {
+        mockCalled = true
+        setDateForKeyCallsCount += 1
+        setDateForKeyReceivedArguments = (value: value, key: key)
+        setDateForKeyReceivedInvocations.append((value: value, key: key))
+        setDateForKeyClosure?(value, key)
+    }
+
+    // MARK: - observeString
+
+    var observeStringForKeyCallsCount = 0
+    var observeStringForKeyCalled: Bool {
+        observeStringForKeyCallsCount > 0
+    }
+
+    var observeStringForKeyReceivedKey: KeyValueStorageKey?
+    var observeStringForKeyReceivedInvocations: [KeyValueStorageKey] = []
+    var observeStringForKeyReturnValue: Observable<String>!
+    var observeStringForKeyClosure: ((KeyValueStorageKey) -> Observable<String>)?
+
+    func observeString(forKey key: KeyValueStorageKey) -> Observable<String> {
+        mockCalled = true
+        observeStringForKeyCallsCount += 1
+        observeStringForKeyReceivedKey = key
+        observeStringForKeyReceivedInvocations.append(key)
+        return observeStringForKeyClosure.map { $0(key) } ?? observeStringForKeyReturnValue
+    }
+
+    // MARK: - deleteAll
+
+    var deleteAllCallsCount = 0
+    var deleteAllCalled: Bool {
+        deleteAllCallsCount > 0
+    }
+
+    var deleteAllClosure: (() -> Void)?
+
+    func deleteAll() {
+        mockCalled = true
+        deleteAllCallsCount += 1
+        deleteAllClosure?()
+    }
+}
+
+class LoginViewControllerDelegateMock: LoginViewControllerDelegate {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - userLoggedInSuccessfully
+
+    var userLoggedInSuccessfullyCallsCount = 0
+    var userLoggedInSuccessfullyCalled: Bool {
+        userLoggedInSuccessfullyCallsCount > 0
+    }
+
+    var userLoggedInSuccessfullyClosure: (() -> Void)?
+
+    func userLoggedInSuccessfully() {
+        mockCalled = true
+        userLoggedInSuccessfullyCallsCount += 1
+        userLoggedInSuccessfullyClosure?()
+    }
+}
+
+class LoginViewModelMock: LoginViewModel {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - loginUser
+
+    var loginUserTokenCallsCount = 0
+    var loginUserTokenCalled: Bool {
+        loginUserTokenCallsCount > 0
+    }
+
+    var loginUserTokenReceivedToken: String?
+    var loginUserTokenReceivedInvocations: [String] = []
+    var loginUserTokenReturnValue: Single<Result<TokenExchangeResponseVo, HttpRequestError>>!
+    var loginUserTokenClosure: ((String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>>)?
+
+    func loginUser(token: String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>> {
+        mockCalled = true
+        loginUserTokenCallsCount += 1
+        loginUserTokenReceivedToken = token
+        loginUserTokenReceivedInvocations.append(token)
+        return loginUserTokenClosure.map { $0(token) } ?? loginUserTokenReturnValue
     }
 }
 
@@ -622,7 +1173,7 @@ class PendingTasksMock: PendingTasks {
 class RemoteConfigProviderMock: RemoteConfigProvider {
     var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
 
-    var someRemoteConfig: String?
+    var reposCta: CTA?
 
     // MARK: - fetch
 
@@ -632,10 +1183,10 @@ class RemoteConfigProviderMock: RemoteConfigProvider {
     }
 
     var fetchOnCompleteReceivedOnComplete: ((Result<Void, Error>) -> Void)?
-    var fetchOnCompleteReceivedInvocations: [(Result<Void, Error>) -> Void] = []
-    var fetchOnCompleteClosure: ((@escaping (Result<Void, Error>) -> Void) -> Void)?
+    var fetchOnCompleteReceivedInvocations: [((Result<Void, Error>) -> Void)?] = []
+    var fetchOnCompleteClosure: ((((Result<Void, Error>) -> Void)?) -> Void)?
 
-    func fetch(onComplete: @escaping (Result<Void, Error>) -> Void) {
+    func fetch(onComplete: ((Result<Void, Error>) -> Void)?) {
         mockCalled = true
         fetchOnCompleteCallsCount += 1
         fetchOnCompleteReceivedOnComplete = onComplete
@@ -717,5 +1268,88 @@ class RepositorySyncServiceMock: RepositorySyncService {
         syncAllOnCompleteReceivedOnComplete = onComplete
         syncAllOnCompleteReceivedInvocations.append(onComplete)
         syncAllOnCompleteClosure?(onComplete)
+    }
+
+    // MARK: - refreshRepos
+
+    var refreshReposOnCompleteCallsCount = 0
+    var refreshReposOnCompleteCalled: Bool {
+        refreshReposOnCompleteCallsCount > 0
+    }
+
+    var refreshReposOnCompleteReceivedOnComplete: ((RefreshResult) -> Void)?
+    var refreshReposOnCompleteReceivedInvocations: [(RefreshResult) -> Void] = []
+    var refreshReposOnCompleteClosure: ((@escaping (RefreshResult) -> Void) -> Void)?
+
+    func refreshRepos(onComplete: @escaping (RefreshResult) -> Void) {
+        mockCalled = true
+        refreshReposOnCompleteCallsCount += 1
+        refreshReposOnCompleteReceivedOnComplete = onComplete
+        refreshReposOnCompleteReceivedInvocations.append(onComplete)
+        refreshReposOnCompleteClosure?(onComplete)
+    }
+}
+
+class UserManagerMock: UserManager {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    var userId: Double?
+    var authToken: String?
+    var underlyingIsLoggedIn: Bool!
+    var isLoggedInCalled = false
+    var isLoggedInGetCalled = false
+    var isLoggedInSetCalled = false
+    var isLoggedIn: Bool {
+        get {
+            mockCalled = true
+            isLoggedInCalled = true
+            isLoggedInGetCalled = true
+            return underlyingIsLoggedIn
+        }
+        set(value) {
+            mockCalled = true
+            isLoggedInCalled = true
+            isLoggedInSetCalled = true
+            underlyingIsLoggedIn = value
+        }
+    }
+
+    // MARK: - logout
+
+    var logoutCallsCount = 0
+    var logoutCalled: Bool {
+        logoutCallsCount > 0
+    }
+
+    var logoutClosure: (() -> Void)?
+
+    func logout() {
+        mockCalled = true
+        logoutCallsCount += 1
+        logoutClosure?()
+    }
+}
+
+class UserRepositoryMock: UserRepository {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - exchangeToken
+
+    var exchangeTokenCallsCount = 0
+    var exchangeTokenCalled: Bool {
+        exchangeTokenCallsCount > 0
+    }
+
+    var exchangeTokenReceivedToken: String?
+    var exchangeTokenReceivedInvocations: [String] = []
+    var exchangeTokenReturnValue: Single<Result<TokenExchangeResponseVo, HttpRequestError>>!
+    var exchangeTokenClosure: ((String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>>)?
+
+    func exchangeToken(_ token: String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>> {
+        mockCalled = true
+        exchangeTokenCallsCount += 1
+        exchangeTokenReceivedToken = token
+        exchangeTokenReceivedInvocations.append(token)
+        return exchangeTokenClosure.map { $0(token) } ?? exchangeTokenReturnValue
     }
 }
