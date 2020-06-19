@@ -2,13 +2,13 @@ import Foundation
 import RxSwift
 import Teller
 
-typealias ReposRepository = TellerRepository<ReposDataSource>
-// sourcery: InjectRegister = "ReposRepository"
+typealias ReposTellerRepository = TellerRepository<ReposDataSource>
+// sourcery: InjectRegister = "ReposTellerRepository"
 // sourcery: InjectCustom
-extension ReposRepository {}
+extension ReposTellerRepository {}
 
 extension DI {
-    var reposRepository: ReposRepository {
+    var reposTellerRepository: ReposTellerRepository {
         TellerRepository(dataSource: inject(.reposDataSource))
     }
 }
@@ -42,26 +42,24 @@ class ReposDataSource: RepositoryDataSource {
     typealias FetchResult = [Repo]
     typealias FetchError = HttpRequestError
 
-    fileprivate let githubApi: GitHubAPI
-    fileprivate let db: Database
+    fileprivate let reposRepository: ReposRepository
 
-    init(githubApi: GitHubAPI, db: Database) {
-        self.githubApi = githubApi
-        self.db = db
+    init(reposRepository: ReposRepository) {
+        self.reposRepository = reposRepository
     }
 
     var maxAgeOfCache: Period = Period(unit: 3, component: .day)
 
     func fetchFreshCache(requirements: ReposDataSourceRequirements) -> Single<FetchResponse<[Repo], FetchError>> {
-        githubApi.getUserRepos(username: requirements.githubUsername)
+        reposRepository.getUserRepos(username: requirements.githubUsername)
     }
 
     func saveCache(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) throws {
-        db.repositoryDao.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
+        try reposRepository.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
     }
 
     func observeCache(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
-        db.repositoryDao.observeRepos(forUsername: requirements.githubUsername)
+        reposRepository.observeRepos(forUsername: requirements.githubUsername)
     }
 
     func isCacheEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {

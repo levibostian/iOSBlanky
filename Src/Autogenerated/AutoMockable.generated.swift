@@ -1210,6 +1210,73 @@ class RemoteConfigProviderMock: RemoteConfigProvider {
     }
 }
 
+class ReposRepositoryMock: ReposRepository {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    // MARK: - getUserRepos
+
+    var getUserReposUsernameCallsCount = 0
+    var getUserReposUsernameCalled: Bool {
+        getUserReposUsernameCallsCount > 0
+    }
+
+    var getUserReposUsernameReceivedUsername: String?
+    var getUserReposUsernameReceivedInvocations: [String] = []
+    var getUserReposUsernameReturnValue: Single<Result<[Repo], HttpRequestError>>!
+    var getUserReposUsernameClosure: ((String) -> Single<Result<[Repo], HttpRequestError>>)?
+
+    func getUserRepos(username: String) -> Single<Result<[Repo], HttpRequestError>> {
+        mockCalled = true
+        getUserReposUsernameCallsCount += 1
+        getUserReposUsernameReceivedUsername = username
+        getUserReposUsernameReceivedInvocations.append(username)
+        return getUserReposUsernameClosure.map { $0(username) } ?? getUserReposUsernameReturnValue
+    }
+
+    // MARK: - observeRepos
+
+    var observeReposForUsernameCallsCount = 0
+    var observeReposForUsernameCalled: Bool {
+        observeReposForUsernameCallsCount > 0
+    }
+
+    var observeReposForUsernameReceivedForUsername: String?
+    var observeReposForUsernameReceivedInvocations: [String] = []
+    var observeReposForUsernameReturnValue: Observable<[Repo]>!
+    var observeReposForUsernameClosure: ((String) -> Observable<[Repo]>)?
+
+    func observeRepos(forUsername: String) -> Observable<[Repo]> {
+        mockCalled = true
+        observeReposForUsernameCallsCount += 1
+        observeReposForUsernameReceivedForUsername = forUsername
+        observeReposForUsernameReceivedInvocations.append(forUsername)
+        return observeReposForUsernameClosure.map { $0(forUsername) } ?? observeReposForUsernameReturnValue
+    }
+
+    // MARK: - replaceRepos
+
+    var replaceReposForUsernameThrowableError: Error?
+    var replaceReposForUsernameCallsCount = 0
+    var replaceReposForUsernameCalled: Bool {
+        replaceReposForUsernameCallsCount > 0
+    }
+
+    var replaceReposForUsernameReceivedArguments: (repos: [Repo], forUsername: String)?
+    var replaceReposForUsernameReceivedInvocations: [(repos: [Repo], forUsername: String)] = []
+    var replaceReposForUsernameClosure: (([Repo], String) throws -> Void)?
+
+    func replaceRepos(_ repos: [Repo], forUsername: String) throws {
+        if let error = replaceReposForUsernameThrowableError {
+            throw error
+        }
+        mockCalled = true
+        replaceReposForUsernameCallsCount += 1
+        replaceReposForUsernameReceivedArguments = (repos: repos, forUsername: forUsername)
+        replaceReposForUsernameReceivedInvocations.append((repos: repos, forUsername: forUsername))
+        try replaceReposForUsernameClosure?(repos, forUsername)
+    }
+}
+
 class ReposViewModelMock: ReposViewModel {
     var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
 

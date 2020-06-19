@@ -12,13 +12,13 @@ protocol RepositorySyncService: AutoMockable {
 
 // sourcery: InjectRegister = "RepositorySyncService"
 class TellerRepositorySyncService: RepositorySyncService {
-    fileprivate let reposRepository: ReposRepository
+    fileprivate let reposRepository: ReposTellerRepository
     fileprivate let keyValueStorage: KeyValueStorage
     fileprivate let logger: ActivityLogger
 
     fileprivate let disposeBag = DisposeBag()
 
-    init(reposRepository: ReposRepository, keyValueStorage: KeyValueStorage, logger: ActivityLogger) {
+    init(reposRepository: ReposTellerRepository, keyValueStorage: KeyValueStorage, logger: ActivityLogger) {
         self.reposRepository = reposRepository
         self.keyValueStorage = keyValueStorage
         self.logger = logger
@@ -43,7 +43,7 @@ class TellerRepositorySyncService: RepositorySyncService {
             return
         }
 
-        reposRepository.requirements = ReposRepository.DataSource.Requirements(githubUsername: username)
+        reposRepository.requirements = ReposTellerRepository.DataSource.Requirements(githubUsername: username)
 
         try! reposRepository.refresh(force: false)
             .subscribe(onSuccess: { result in

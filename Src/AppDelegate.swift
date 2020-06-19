@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // setup background fetch
         let numberMinutesMinimumToRunBackgroundFetches: Double = 60
         UIApplication.shared.setMinimumBackgroundFetchInterval(numberMinutesMinimumToRunBackgroundFetches * 60) // * 60 as function wants value in seconds
-        Wendy.setup(tasksFactory: AppPendingTasksFactory(), collections: [:], debug: environment.isDevelopment)
+        Wendy.setup(tasksFactory: AppPendingTasksFactory(), collections: [PendingTaskCollectionId.foo.rawValue: []], debug: environment.isDevelopment)
 
         Messaging.messaging().delegate = self
 
@@ -90,39 +90,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     DispatchQueue.global(qos: .background).async {
                         let moyaMockProvider = MoyaProviderMocker<GitHubService>()
                         let remoteConfigHelper = UIHelperRemoteConfig()
-
-                        let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"]!
-                        let jsonAdapter = DI.shared.jsonAdapter
-                        let launchArguments: LaunchAppState = try! jsonAdapter.fromJson(launchStateString.data!)
-                        let keyValueStorage = DI.shared.keyValueStorage
-
-//                        launchArguments.extras.networkQueue.forEach { queueItem in
-//                            if queueItem.isErrorType {
-//                                moyaMockProvider.queueNetworkError(queueItem.responseError!.error)
-//                            } else {
-//                                moyaMockProvider.queueResponse(queueItem.code!, data: queueItem.response!)
-//                            }
-//                        }
-//
-//                        launchArguments.extras.keyStorageStringValues.forEach { arg in
-//                            let (key, value) = arg
-//                            keyValueStorage.setString(value, forKey: key)
-//                        }
-//                        launchArguments.extras.keyStorageIntValues.forEach { arg in
-//                            let (key, value) = arg
-//                            keyValueStorage.setInt(value, forKey: key)
-//                        }
-//
-//                        remoteConfigHelper.set(launchArguments.extras.remoteConfig)
-//
-//                        if let launchUserState = launchArguments.userState {
-//                            let userManager = DI.shared.userManager
-//
-//                            userManager.userId = launchUserState.id
-//                        }
-
                         DI.shared.override(.gitHubMoyaProvider, value: moyaMockProvider.moyaProvider, forType: GitHubMoyaProvider.self)
                         DI.shared.override(.remoteConfigProvider, value: remoteConfigHelper, forType: RemoteConfigProvider.self)
+
+                        let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"]!
+                        let jsonAdapter: JsonAdapter = DI.shared.inject(.jsonAdapter)
+                        let launchArguments: AppState = try! jsonAdapter.fromJson(launchStateString.data!)
+
+                        let appStateManager = AppStateManager(reposRepository: DI.shared.inject(.reposRepository),
+                                                              gitHubMoyaProvider: moyaMockProvider)
+                        appStateManager.set(appState: launchArguments)
 
                         DispatchQueue.main.async {
                             self.afterStartupTasks()
@@ -389,4 +366,4 @@ extension AppDelegate {
             completionHandler(result)
         }
     }
-} // swiftlint:disable:this file_length
+} 

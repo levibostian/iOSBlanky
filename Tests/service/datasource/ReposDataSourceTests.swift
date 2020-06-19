@@ -5,8 +5,7 @@ import XCTest
 class ReposDataSourceTests: UnitTest {
     var dataSource: ReposDataSource!
 
-    var githubApiMock: GitHubAPIMock!
-    var database: Database!
+    var reposRepositoryMock: ReposRepositoryMock!
 
     var disposeBag: DisposeBag!
 
@@ -15,39 +14,12 @@ class ReposDataSourceTests: UnitTest {
     override func setUp() {
         super.setUp()
 
-        githubApiMock = GitHubAPIMock()
-        database = Database(coreDataManager: CoreDataManager.initTesting())
+        reposRepositoryMock = ReposRepositoryMock()
 
         disposeBag = DisposeBag()
 
-        dataSource = ReposDataSource(githubApi: githubApiMock, db: database)
+        dataSource = ReposDataSource(reposRepository: reposRepositoryMock)
     }
 
-    func test_saveReposForUser_observeReposForUser_expectObserveWhatGotSaved() {
-        let githubUsername = "username_for_testing_here"
-        let requirements = ReposDataSource.Requirements(githubUsername: githubUsername)
-
-        let emptyCache = try! dataSource.observeCache(requirements: requirements)
-            .toBlocking()
-            .first()!
-
-        XCTAssertTrue(emptyCache.isEmpty)
-
-        let newCache = [
-            Repo.fake.repoForUser(username: githubUsername)
-        ]
-
-        try! dataSource.saveCache(newCache, requirements: requirements)
-
-        let expectNewCache = expectation(description: "Expect new cache")
-        dataSource.observeCache(requirements: requirements)
-            .filter { !$0.isEmpty }
-            .subscribe(onNext: { newCacheAfterSave in
-                XCTAssertEqual(newCache, newCacheAfterSave)
-
-                expectNewCache.fulfill()
-            }).disposed(by: disposeBag)
-
-        waitForExpectations()
-    }
+    // At this time, there is little to no logic in the datasource. It's just a wrapper around the repository. Therefore, we are not testing it.
 }

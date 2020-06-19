@@ -7,7 +7,7 @@ protocol GitHubAPI: AutoMockable {
     func getUserRepos(username: GitHubUsername) -> Single<Result<[Repo], HttpRequestError>>
 }
 
-/**
+/*
  Responsibilities:
  1. Log to logger if errors
  2. Call eventbus if needed

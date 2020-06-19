@@ -10,7 +10,7 @@ protocol ReposViewModel: AutoMockable {
 
 // sourcery: InjectRegister = "ReposViewModel"
 class AppReposViewModel: ReposViewModel {
-    private let reposRepository: ReposRepository
+    private let reposRepository: ReposTellerRepository
     private let keyValueStorage: KeyValueStorage
 
     private let githubUsernameUserDefaultsKey = "githubUsernameUserDefaultsKey"
@@ -28,7 +28,7 @@ class AppReposViewModel: ReposViewModel {
         }
     }
 
-    init(reposRepository: ReposRepository, keyValueStorage: KeyValueStorage) {
+    init(reposRepository: ReposTellerRepository, keyValueStorage: KeyValueStorage) {
         self.reposRepository = reposRepository
         self.keyValueStorage = keyValueStorage
 

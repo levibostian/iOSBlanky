@@ -29,14 +29,13 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F75DCD9D1CD8F10D00B8941F"
-               BuildableName = "iOSBlankyUITests.xctest"
-               BlueprintName = "iOSBlankyUITests"
-               ReferencedContainer = "container:iOSBlanky.xcodeproj">
+               BuildableName = "AppUITests.xctest"
+               BlueprintName = "AppUITests"
+               ReferencedContainer = "container:App.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -68,6 +67,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "F75DCD9D1CD8F10D00B8941F"
+            BuildableName = "iOSBlankyUITests.xctest"
+            BlueprintName = "iOSBlankyUITests"
+            ReferencedContainer = "container:iOSBlanky.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

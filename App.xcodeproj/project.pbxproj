@@ -107,6 +107,19 @@
 		F73668A023B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
 		F73668A123B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
 		F73668A223B16B9D0090E858 /* WendyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F736689E23B16B9D0090E858 /* WendyExtensions.swift */; };
+		F7464418249D3C4200AAD60E /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464417249D3C4200AAD60E /* ReposRepository.swift */; };
+		F7464419249D3C4200AAD60E /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464417249D3C4200AAD60E /* ReposRepository.swift */; };
+		F746441A249D3C4200AAD60E /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464417249D3C4200AAD60E /* ReposRepository.swift */; };
+		F746441B249D3C4200AAD60E /* ReposRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464417249D3C4200AAD60E /* ReposRepository.swift */; };
+		F746441D249D3DD900AAD60E /* ReposRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746441C249D3DD900AAD60E /* ReposRepositoryTests.swift */; };
+		F7464420249D3F9400AAD60E /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746441F249D3F9400AAD60E /* AppStateManager.swift */; };
+		F7464421249D3F9400AAD60E /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746441F249D3F9400AAD60E /* AppStateManager.swift */; };
+		F7464422249D3F9400AAD60E /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746441F249D3F9400AAD60E /* AppStateManager.swift */; };
+		F7464423249D3F9400AAD60E /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F746441F249D3F9400AAD60E /* AppStateManager.swift */; };
+		F7464425249D3FA800AAD60E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464424249D3FA800AAD60E /* AppState.swift */; };
+		F7464426249D3FA800AAD60E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464424249D3FA800AAD60E /* AppState.swift */; };
+		F7464427249D3FA800AAD60E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464424249D3FA800AAD60E /* AppState.swift */; };
+		F7464428249D3FA800AAD60E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7464424249D3FA800AAD60E /* AppState.swift */; };
 		F747DF791F9E962900647449 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F747DF7B1F9E962900647449 /* Alamofire.framework */; };
 		F74A9E3123AADA1200F56F7C /* RxSwiftExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */; };
 		F74AF30222F0D1100089BADC /* RxCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F74AF30122F0D1100089BADC /* RxCoreData.framework */; };
@@ -267,7 +280,6 @@
 		F7A8557323A6F08F009362B0 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A06923A5792C004A4011 /* Bundle.swift */; };
 		F7A8557423A6F08F009362B0 /* OnComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */; };
 		F7A8557523A6F095009362B0 /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835C61F9ED11E00219B30 /* Repo.swift */; };
-		F7A8557623A6F095009362B0 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
 		F7A8557723A6F09D009362B0 /* GitHubTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76835AD1F9ECED200219B30 /* GitHubTargetType.swift */; };
 		F7A8557823A6F09D009362B0 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F712CDA522E3BD7B00272FF5 /* GitHubAPI.swift */; };
 		F7A8557923A6F09D009362B0 /* ResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C0FF1222E50296009E1203 /* ResponseProcessor.swift */; };
@@ -631,9 +643,6 @@
 		F7D9196823A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */; };
 		F7D9196923A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */; };
 		F7D9196A23A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */; };
-		F7D9196C23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
-		F7D9196D23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
-		F7D9196E23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */; };
 		F7D9197023A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7D9197123A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7D9197223A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
@@ -759,6 +768,10 @@
 		F727FB2E22E27A1D00E56E2C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F727FB3022E2805200E56E2C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		F736689E23B16B9D0090E858 /* WendyExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WendyExtensions.swift; sourceTree = "<group>"; };
+		F7464417249D3C4200AAD60E /* ReposRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposRepository.swift; sourceTree = "<group>"; };
+		F746441C249D3DD900AAD60E /* ReposRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposRepositoryTests.swift; sourceTree = "<group>"; };
+		F746441F249D3F9400AAD60E /* AppStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateManager.swift; sourceTree = "<group>"; };
+		F7464424249D3FA800AAD60E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		F747DF7B1F9E962900647449 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F747DF7C1F9E962900647449 /* SwiftOverlays.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOverlays.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftExtensionTests.swift; sourceTree = "<group>"; };
@@ -968,7 +981,6 @@
 		F7D9195F23A6C68300BF3CF7 /* Dao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dao.swift; sourceTree = "<group>"; };
 		F7D9196323A6C7A600BF3CF7 /* OnComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnComplete.swift; sourceTree = "<group>"; };
 		F7D9196723A6CF1700BF3CF7 /* MoyaProviderMocker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaProviderMocker.swift; sourceTree = "<group>"; };
-		F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppState.swift; sourceTree = "<group>"; };
 		F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
@@ -1234,10 +1246,18 @@
 			children = (
 				F7C21F32249A98E30007F8CB /* responses */,
 				F76835C61F9ED11E00219B30 /* Repo.swift */,
-				F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */,
 				F7C21F38249A99060007F8CB /* LoggedInUserVo.swift */,
 			);
 			path = vo;
+			sourceTree = "<group>";
+		};
+		F746441E249D3F7B00AAD60E /* testingutils */ = {
+			isa = PBXGroup;
+			children = (
+				F746441F249D3F9400AAD60E /* AppStateManager.swift */,
+				F7464424249D3FA800AAD60E /* AppState.swift */,
+			);
+			path = testingutils;
 			sourceTree = "<group>";
 		};
 		F75DCD761CD8F10C00B8941F = {
@@ -1267,6 +1287,7 @@
 		F75DCD811CD8F10D00B8941F /* Src */ = {
 			isa = PBXGroup;
 			children = (
+				F746441E249D3F7B00AAD60E /* testingutils */,
 				F70B16DD23A53F73006D5A60 /* Autogenerated */,
 				F70B16EA23A5400D006D5A60 /* ui */,
 				F76835AC1F9ECDC700219B30 /* service */,
@@ -1399,6 +1420,7 @@
 			isa = PBXGroup;
 			children = (
 				F7C21F3D249A99790007F8CB /* UserRepository.swift */,
+				F7464417249D3C4200AAD60E /* ReposRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -1540,6 +1562,7 @@
 		F7B99FE923A5596C004A4011 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				F746441C249D3DD900AAD60E /* ReposRepositoryTests.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -2557,7 +2580,6 @@
 				F799D5A922DFD20D00202FDB /* DevelopmentActivityLogger.swift in Sources */,
 				F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */,
 				F7B99FAE23A554AB004A4011 /* MoyaExtensions.swift in Sources */,
-				F7D9196C23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F75944CA23A1B43A009258D9 /* FileName.swift in Sources */,
 				F712CDA322E3BCBC00272FF5 /* Database.swift in Sources */,
 				F7B9A05623A56B58004A4011 /* AtomicCounter.swift in Sources */,
@@ -2589,6 +2611,7 @@
 				F7C21EA4249A79210007F8CB /* FieldsErrorResponse.swift in Sources */,
 				F7C21EA9249A79360007F8CB /* RateLimitingResponseError.swift in Sources */,
 				F7B99FD623A556B7004A4011 /* FileDownloadedEventBusExtras.swift in Sources */,
+				F7464425249D3FA800AAD60E /* AppState.swift in Sources */,
 				F7B99FA523A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
 				F7FC430F24997B0500CF4B89 /* UIWindowExtensions.swift in Sources */,
 				F7C21EE3249A88970007F8CB /* ButtonsBag.swift in Sources */,
@@ -2629,6 +2652,7 @@
 				F7B99F9623A554AB004A4011 /* UIControlExtensions.swift in Sources */,
 				F7B99FB123A554AB004A4011 /* URLExtensions.swift in Sources */,
 				F7C21F24249A97CD0007F8CB /* PleaseHoldPresents.swift in Sources */,
+				F7464418249D3C4200AAD60E /* ReposRepository.swift in Sources */,
 				F7C0FF2F22E51689009E1203 /* EventBus.swift in Sources */,
 				F7C21F34249A98EC0007F8CB /* TokenExchangeResponseVo.swift in Sources */,
 				F7B99FC023A554AB004A4011 /* RxSwiftExtensions.swift in Sources */,
@@ -2639,6 +2663,7 @@
 				F7D9196423A6C7A600BF3CF7 /* OnComplete.swift in Sources */,
 				F736689F23B16B9D0090E858 /* WendyExtensions.swift in Sources */,
 				F7FC430024997A3600CF4B89 /* TellerExtensions.swift in Sources */,
+				F7464420249D3F9400AAD60E /* AppStateManager.swift in Sources */,
 				F7B99FA823A554AB004A4011 /* UIStackViewExtensions.swift in Sources */,
 				F714EB6D23A4356B00E7AFB5 /* Atomic.swift in Sources */,
 				F7D575B823A2D3B800D6B6BC /* Environment.swift in Sources */,
@@ -2718,6 +2743,7 @@
 				F7D9197123A6D5B200BF3CF7 /* DataExtensions.swift in Sources */,
 				F7B9A02423A5596C004A4011 /* AtomicCounterTests.swift in Sources */,
 				F76765B522F78AD700ED2A11 /* AppDelegate.swift in Sources */,
+				F7464426249D3FA800AAD60E /* AppState.swift in Sources */,
 				F7B9A04923A5597E004A4011 /* UIBackgroundFetchResultExtensionsTests.swift in Sources */,
 				F7FC430B24997AC400CF4B89 /* UITableViewHeaderFooterViewExtensions.swift in Sources */,
 				F7C21EC4249A80BF0007F8CB /* Optional.swift in Sources */,
@@ -2746,7 +2772,6 @@
 				F7B99FBE23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,
 				F70B16F323A5400D006D5A60 /* Theme.swift in Sources */,
 				F7D575B523A2D22000D6B6BC /* Env.swift in Sources */,
-				F7D9196D23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F7C21ECE249A816F0007F8CB /* AtomicBool.swift in Sources */,
 				F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */,
 				F7C21F75249AB9260007F8CB /* ExampleTableViewCellTests.swift in Sources */,
@@ -2772,6 +2797,7 @@
 				F7FC42EC249978AF00CF4B89 /* RemoteConfigDefaultValues.swift in Sources */,
 				F70B16E523A53F73006D5A60 /* AutoDependencyInjection.generated.swift in Sources */,
 				F7FC430624997A8A00CF4B89 /* UINavigationControllerExtensions.swift in Sources */,
+				F746441D249D3DD900AAD60E /* ReposRepositoryTests.swift in Sources */,
 				F7B99FA323A554AB004A4011 /* UIViewExtensions.swift in Sources */,
 				F7C21EBF249A80120007F8CB /* KeyValueStorageKeys.swift in Sources */,
 				F7B9A02F23A5596C004A4011 /* RepositorySyncServiceTests.swift in Sources */,
@@ -2803,6 +2829,7 @@
 				F712CD9C22E3B3A700272FF5 /* CoreDataManager.swift in Sources */,
 				F714EB7223A435D500E7AFB5 /* SourceryProtocols.swift in Sources */,
 				F7B9A03323A5596C004A4011 /* TestUtil.swift in Sources */,
+				F7464419249D3C4200AAD60E /* ReposRepository.swift in Sources */,
 				F7B9A03423A5596C004A4011 /* ThemeFake.swift in Sources */,
 				F7C21F51249AB0300007F8CB /* UserManagerIntegrationTests.swift in Sources */,
 				F75968F922E225500076253B /* DiTests.swift in Sources */,
@@ -2815,6 +2842,7 @@
 				F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */,
 				F7C21EEE249A88C20007F8CB /* PickerView.swift in Sources */,
 				F7B9A04823A5597E004A4011 /* DictionaryExtensionTests.swift in Sources */,
+				F7464421249D3F9400AAD60E /* AppStateManager.swift in Sources */,
 				F7B99FBB23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
 				F7B9A06B23A5792C004A4011 /* Bundle.swift in Sources */,
 				F7C21F56249AB3800007F8CB /* DynamicLinksProcessorTest.swift in Sources */,
@@ -2900,7 +2928,6 @@
 				F70B16F423A5400D006D5A60 /* Theme.swift in Sources */,
 				F7C21EF4249A88D60007F8CB /* RemoteImageView.swift in Sources */,
 				F7FC431124997B0500CF4B89 /* UIWindowExtensions.swift in Sources */,
-				F7D9196E23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F76765C122F78AD800ED2A11 /* ResponseProcessor.swift in Sources */,
 				F76765A822F78AC000ED2A11 /* RepositoryDao.swift in Sources */,
 				F76765CC22F78AD800ED2A11 /* AppDelegate.swift in Sources */,
@@ -2939,6 +2966,7 @@
 				F7B99FA723A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
 				F76765C222F78AD800ED2A11 /* JsonAdapter.swift in Sources */,
 				F7B9A05423A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
+				F7464427249D3FA800AAD60E /* AppState.swift in Sources */,
 				F714EB6323A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
 				F7A228D623B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F76ACF4F22F7848B00B1A41D /* Swizzler.swift in Sources */,
@@ -2947,6 +2975,7 @@
 				F70B16FD23A5400D006D5A60 /* ThemableViewController.swift in Sources */,
 				F76765C322F78AD800ED2A11 /* ReposViewModel.swift in Sources */,
 				F714EB7823A4363000E7AFB5 /* BackgroundJobRunner.swift in Sources */,
+				F746441A249D3C4200AAD60E /* ReposRepository.swift in Sources */,
 				F7B99FA423A554AB004A4011 /* UIViewExtensions.swift in Sources */,
 				F7C21EBB249A7AF50007F8CB /* DynamicLinksProcessor.swift in Sources */,
 				F772AD1F249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */,
@@ -3027,6 +3056,7 @@
 				F7D9196223A6C68300BF3CF7 /* Dao.swift in Sources */,
 				F7FC42F8249979ED00CF4B89 /* ProgressExtensions.swift in Sources */,
 				F76765BD22F78AD800ED2A11 /* GitHubTargetType.swift in Sources */,
+				F7464422249D3F9400AAD60E /* AppStateManager.swift in Sources */,
 				F7FC42FD24997A1300CF4B89 /* SetExtensions.swift in Sources */,
 				F76765C022F78AD800ED2A11 /* GitHubAPI.swift in Sources */,
 			);
@@ -3048,6 +3078,7 @@
 				F7A8555823A6F073009362B0 /* FileStorage.swift in Sources */,
 				F7A8557023A6F08F009362B0 /* FileName.swift in Sources */,
 				F7A8554923A6F062009362B0 /* AtomicCounterCollection.swift in Sources */,
+				F746441B249D3C4200AAD60E /* ReposRepository.swift in Sources */,
 				F7A8554423A6F047009362B0 /* LaunchViewController.swift in Sources */,
 				F7A8557323A6F08F009362B0 /* Bundle.swift in Sources */,
 				F7A8554B23A6F062009362B0 /* AtomicCounter.swift in Sources */,
@@ -3064,7 +3095,6 @@
 				F7A8558623A6F0A8009362B0 /* StringExtensions.swift in Sources */,
 				F7A8556823A6F08C009362B0 /* ErrorReportingActivityLogger.swift in Sources */,
 				F7A8559623A6F0B4009362B0 /* Env.swift in Sources */,
-				F7A8557623A6F095009362B0 /* LaunchAppState.swift in Sources */,
 				F7A8554023A6F043009362B0 /* Theme.swift in Sources */,
 				F7C21F09249A8BC50007F8CB /* AccessibilityIdentifiers.swift in Sources */,
 				F7C21EB1249A794A0007F8CB /* ServerDownError.swift in Sources */,
@@ -3092,6 +3122,7 @@
 				F7C21F6D249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */,
 				F7A8553A23A6F015009362B0 /* UITest.swift in Sources */,
 				F7FC430824997A8A00CF4B89 /* UINavigationControllerExtensions.swift in Sources */,
+				F7464428249D3FA800AAD60E /* AppState.swift in Sources */,
 				F7A8553E23A6F039009362B0 /* AutoMockable.generated.swift in Sources */,
 				F7FC431224997B0500CF4B89 /* UIWindowExtensions.swift in Sources */,
 				F7A8558023A6F0A8009362B0 /* DictionaryExtensions.swift in Sources */,
@@ -3112,6 +3143,7 @@
 				F7254EB623A7BD270027F12E /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F7A8556323A6F084009362B0 /* Dao.swift in Sources */,
 				F7A8559323A6F0B4009362B0 /* AppDelegate.swift in Sources */,
+				F7464423249D3F9400AAD60E /* AppStateManager.swift in Sources */,
 				F7C21F79249AB9A90007F8CB /* FavoriteRepoPendingTask.swift in Sources */,
 				F7C21F7D249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */,
 				F7C21F1D249A8CDB0007F8CB /* LoginViewController.swift in Sources */,
@@ -3413,8 +3445,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iOSBlanky;
+				TEST_TARGET_NAME = App;
 			};
 			name = Debug;
 		};
@@ -3427,8 +3460,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.curiosityio.iOSBlankyUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iOSBlanky;
+				TEST_TARGET_NAME = App;
 			};
 			name = Release;
 		};

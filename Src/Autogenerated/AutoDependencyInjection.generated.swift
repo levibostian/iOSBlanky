@@ -19,6 +19,7 @@ enum Dependency: CaseIterable {
     case gitHubAPI
     case loginViewModel
     case notificationCenterManager
+    case reposRepository
     case reposViewModel
     case startupUtil
     case themeManager
@@ -40,7 +41,7 @@ enum Dependency: CaseIterable {
     case repositoryDao
     case stringReplaceUtil
     case jsonAdapter
-    case reposRepository
+    case reposTellerRepository
     case repositorySyncService
     case userDefaults
     case keyValueStorage
@@ -77,6 +78,7 @@ class DI {
         case .gitHubAPI: return _gitHubAPI as! T
         case .loginViewModel: return _loginViewModel as! T
         case .notificationCenterManager: return _notificationCenterManager as! T
+        case .reposRepository: return _reposRepository as! T
         case .reposViewModel: return _reposViewModel as! T
         case .startupUtil: return _startupUtil as! T
         case .themeManager: return _themeManager as! T
@@ -98,7 +100,7 @@ class DI {
         case .repositoryDao: return _repositoryDao as! T
         case .stringReplaceUtil: return _stringReplaceUtil as! T
         case .jsonAdapter: return _jsonAdapter as! T
-        case .reposRepository: return _reposRepository as! T
+        case .reposTellerRepository: return _reposTellerRepository as! T
         case .repositorySyncService: return _repositorySyncService as! T
         case .userDefaults: return _userDefaults as! T
         case .keyValueStorage: return _keyValueStorage as! T
@@ -182,6 +184,18 @@ class DI {
         AppNotificationCenterManager()
     }
 
+    // ReposRepository
+    private var _reposRepository: ReposRepository {
+        if let overridenDep = overrides[.reposRepository] {
+            return overridenDep as! ReposRepository
+        }
+        return reposRepository
+    }
+
+    var reposRepository: ReposRepository {
+        AppReposRepository(githubApi: _gitHubAPI, db: _database)
+    }
+
     // ReposViewModel
     private var _reposViewModel: ReposViewModel {
         if let overridenDep = overrides[.reposViewModel] {
@@ -191,7 +205,7 @@ class DI {
     }
 
     var reposViewModel: ReposViewModel {
-        AppReposViewModel(reposRepository: _reposRepository, keyValueStorage: _keyValueStorage)
+        AppReposViewModel(reposRepository: _reposTellerRepository, keyValueStorage: _keyValueStorage)
     }
 
     // StartupUtil
@@ -422,7 +436,7 @@ class DI {
     }
 
     var reposDataSource: ReposDataSource {
-        ReposDataSource(githubApi: _gitHubAPI, db: _database)
+        ReposDataSource(reposRepository: _reposRepository)
     }
 
     // RepositoryDao
@@ -461,12 +475,12 @@ class DI {
         SwiftJsonAdpter()
     }
 
-    // ReposRepository (custom. property getter provided via extension)
-    private var _reposRepository: ReposRepository {
-        if let overridenDep = overrides[.reposRepository] {
-            return overridenDep as! ReposRepository
+    // ReposTellerRepository (custom. property getter provided via extension)
+    private var _reposTellerRepository: ReposTellerRepository {
+        if let overridenDep = overrides[.reposTellerRepository] {
+            return overridenDep as! ReposTellerRepository
         }
-        return reposRepository
+        return reposTellerRepository
     }
 
     // RepositorySyncService
@@ -478,7 +492,7 @@ class DI {
     }
 
     var repositorySyncService: RepositorySyncService {
-        TellerRepositorySyncService(reposRepository: _reposRepository, keyValueStorage: _keyValueStorage, logger: _activityLogger)
+        TellerRepositorySyncService(reposRepository: _reposTellerRepository, keyValueStorage: _keyValueStorage, logger: _activityLogger)
     }
 
     // UserDefaults (custom. property getter provided via extension)

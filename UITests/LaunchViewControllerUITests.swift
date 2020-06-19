@@ -26,11 +26,9 @@ class LaunchViewControllerUITests: UITest {
     func test_getReposForUser() {
         let givenUsername = "levibostian"
         let reposResponse: [Repo] = [
-            RepoFake.repoForUser(username: givenUsername).fake
+            Repo.fake.repoForUser(username: givenUsername)
         ]
-        let launchState = LaunchAppState(networkQueue: [
-            LaunchAppState.NetworkQueueItem(code: 200, response: jsonAdapter.toJsonArray(reposResponse).string())
-        ], userState: nil)
+        let launchState = AppState.freshAppInstall().queueNetworkSuccess((code: 200, response: reposResponse))
 
         launchApp(launchState)
 
@@ -42,9 +40,7 @@ class LaunchViewControllerUITests: UITest {
     }
 
     func test_reposDontExistForUser() {
-        let launchState = LaunchAppState(networkQueue: [
-            LaunchAppState.NetworkQueueItem(code: 404, response: "")
-        ], userState: nil)
+        let launchState = AppState.freshAppInstall().queueNetworkSuccess((code: 404, response: ""))
 
         launchApp(launchState)
 

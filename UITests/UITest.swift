@@ -25,13 +25,10 @@ class UITest: XCTestCase {
         // If there is any view to wait for which indicates the launch is done.
     }
 
-    func launchApp(_ state: LaunchAppState? = nil) {
+    func launchApp(_ state: AppState = AppState.freshAppInstall()) {
         app.launchEnvironment["launch_state"] = nil
-        if let launchState = state {
-            let stateString = jsonAdapter.toJson(launchState).string()
-
-            app.launchEnvironment["launch_state"] = stateString
-        }
+        let stateString = try! jsonAdapter.toJson(state).string
+        app.launchEnvironment["launch_state"] = stateString
 
         app.launch()
 
