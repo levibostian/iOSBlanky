@@ -156,6 +156,17 @@ Once that is setup, I recommend reading through the `AppDelegate.swift` file as 
 * Now, you need to follow the steps [to configure a DynamicLinks URL](https://firebase.google.com/docs/dynamic-links/ios/receive#open-dynamic-links-in-your-app) with your app. 
 * Done! DynamicLinks can be tested by pasting the URL in Safari and loading the webpage. Your app can be launched from there and you can set breakpoints to debug. 
 
+- [ ] Now to setup running UI tests inside of Firebase Test Lab. 
+
+We are using [this fastlane plugin](https://github.com/fastlane/fastlane-plugin-firebase_test_lab) to run tests in test lab. 
+
+* You need to create a Service Account on Google Cloud to authenticate into your Google Cloud project. To do this, Firebase project > Settings > Service accounts > Click on "X service accounts from Google Cloud Platform. It opens up Google Cloud Platform webpage for you. Your Firebase project should be selected as the Google Cloud project when this webpage is opened. This is because when you have a Firebase project, a Google Cloud project gets created for you without you even knowing it. 
+* If you have not already created a service account *just for firebase test lab* then let's create one. Click "Create service account" > for the name enter "firebase test lab" > for roles/permissions select "Project - Editor" > Create. 
+* Once you created the service account you need to then create a key file for this account to authenticate with this service account. Do this by clicking "Add key" > JSON under the service account you just created. This file needs to be kept a secret. Store it in a safe place. But also make sure that it's available on your CI server. I recommend using `cici` for this. Then, set `GOOGLE_APPLICATION_CREDENTIALS` with the path to this file. 
+* ([Reference](https://github.com/fastlane/fastlane-plugin-firebase_test_lab#enable-relevant-google-apis)) Now you need to enable APIs in your Google Cloud account. [Go here](https://console.cloud.google.com/apis/library) and enable these APIs: `Cloud Testing API`, `Cloud Tool Results API`. 
+* You need to now tell Firebase what device you want to run tests against. Install `gcloud` CLI on your machine with `brew cask install google-cloud-sdk`. Then run `gcloud beta firebase test ios models list` to get a table list of all the devices you have available for you. 
+* Set `FIREBASE_PROJECT_ID` on your CI server and you're ready to go! `fastlane ui_test` is all setup for you in the Fastfile. 
+
 - [ ] There are more environment variables you need to set on the CI server. See what ones you have not yet filled in and fill them in. They should be self-explanatory. 
 
 # Tests

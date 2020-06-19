@@ -36,11 +36,11 @@ platform :ios do
       should_zip_build_products: true     # Must be true to set the correct format for Firebase Test Lab
     )
     firebase_test_lab_ios_xctest(
-      gcp_project: 'your-google-project', # Your Google Cloud project name
-      devices: [                          # Device(s) to run tests on
+      gcp_project: ENV["FIREBASE_PROJECT_ID"], 
+      devices: [                          
         {
-          ios_model_id: 'iphonex',        # Device model ID, see gcloud command above
-          ios_version_id: '11.2',         # iOS version ID, see gcloud command above
+          ios_model_id: ENV["UI_TESTS_DEVICE_ID"],
+          ios_version_id: ENV["UI_TESTS_IOS_VERSION"],
           locale: 'en_US',                # Optional: default to en_US if not set
           orientation: 'portrait'         # Optional: default to portrait if not set
         }
@@ -130,17 +130,7 @@ platform :ios do
       "version: #{app_version}, build number: #{app_build_number}"
     ].join("\n") + "\n"
 
-    result = github_api(
-      api_token: ENV["GITHUB_TOKEN"],
-      http_method: "POST",
-      path: "/repos/#{ENV["TRAVIS_REPO_SLUG"]}o/issues/#{ENV["TRAVIS_PULL_REQUEST"]}/comments"
-      body: { body: pull_request_comment },
-      error_handlers: {
-        '*' => proc do |result|
-          UI.error("ERROR! Code: #{result[:status]}, body: #{result[:body]}")
-        end
-      }
-    )
+    gh_pr_comment(pull_request_comment)
   end
 
   # When we deploy, we only send to TestFlight for public beta testing. 
@@ -177,6 +167,20 @@ platform :ios do
       skip_screenshots: true,
       force: true,
       submit_for_review: false
+    )
+  end 
+
+  def gh_pr_comment(comment) 
+    result = github_api(
+      api_token: ENV["GITHUB_TOKEN"],
+      http_method: "POST",
+      path: "/repos/#{ENV["TRAVIS_REPO_SLUG"]}o/issues/#{ENV["TRAVIS_PULL_REQUEST"]}/comments",
+      body: { body: comment },
+      error_handlers: {
+        '*' => proc do |result|
+          UI.error("ERROR! Code: #{result[:status]}, body: #{result[:body]}")
+        end
+      }
     )
   end 
 

@@ -16,6 +16,21 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
+### ios unit_test
+```
+fastlane ios unit_test
+```
+Run unit/integration tests
+### ios ui_test
+```
+fastlane ios ui_test
+```
+Run UI tests
+### ios take_screenshots
+```
+fastlane ios take_screenshots
+```
+Take screenshots for the store
 ### ios refresh_dsyms
 ```
 fastlane ios refresh_dsyms
@@ -26,18 +41,16 @@ Downloads dsym files from iTunes Connect (from processed builds by Apple) and up
 fastlane ios set_environment
 ```
 From a .env file, change the app's properties. It's easier to do in fastlane, so that's why we're doing it here.
+### ios qa_deploy
+```
+fastlane ios qa_deploy
+```
+Deploy a QA (testing) build for QA.
 ### ios deploy
 ```
 fastlane ios deploy
 ```
 
-### ios generate_icons
-```
-fastlane ios generate_icons
-```
-Build and upload beta app to TestFlight
-
-Build and upload production app to the App Store
 
 ----
 

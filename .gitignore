@@ -1,6 +1,7 @@
 secrets_cici.tar
 _secrets
 Src/GoogleService-Info.plist
+Src/FirebaseTestLab-ServiceAccount.json
 
 # Manually added
 GoogleService-*.plist

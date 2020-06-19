@@ -2,9 +2,12 @@ path: "_secrets"
 default: # default is testing (aka staging) environment
   secrets:
     - ".env"
-    - "Src/GoogleService-Info.plist"
+    - "Src/GoogleService-Info.plist"    
 
 sets:
   production:
     path: "_production"
+  common:
+    secrets:
+      - "Src/FirebaseTestLab-ServiceAccount.json"
 output: "secrets_cici"
