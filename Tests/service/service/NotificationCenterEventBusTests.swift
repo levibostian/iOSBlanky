@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import RxSwift
 import XCTest
 

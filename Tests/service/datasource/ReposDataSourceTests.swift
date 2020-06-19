@@ -13,6 +13,8 @@ class ReposDataSourceTests: UnitTest {
     let defaultRequirements = ReposDataSource.Requirements(githubUsername: "username")
 
     override func setUp() {
+        super.setUp()
+
         githubApiMock = GitHubAPIMock()
         database = Database(coreDataManager: CoreDataManager.initTesting())
 
@@ -32,7 +34,7 @@ class ReposDataSourceTests: UnitTest {
         XCTAssertTrue(emptyCache.isEmpty)
 
         let newCache = [
-            RepoFake.repoForUser(username: githubUsername).fake
+            Repo.fake.repoForUser(username: githubUsername)
         ]
 
         try! dataSource.saveCache(newCache, requirements: requirements)

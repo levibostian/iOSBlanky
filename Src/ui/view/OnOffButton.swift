@@ -8,12 +8,12 @@ class OnOffButton: UIButton {
     init(onImage: UIImage, offImage: UIImage) {
         self.onImage = onImage
         self.offImage = offImage
-        
+
         super.init(frame: .zero)
-        
-        on = false
+
+        self.on = false
     }
-    
+
     var on: Bool {
         set {
             let isOn = newValue
@@ -28,7 +28,7 @@ class OnOffButton: UIButton {
             image(for: .normal) == onImage
         }
     }
-    
+
     convenience init() {
         self.init(frame: CGRect.zero)
 
@@ -38,7 +38,7 @@ class OnOffButton: UIButton {
     override init(frame: CGRect) {
         self.onImage = UIImage()
         self.offImage = UIImage()
-        
+
         super.init(frame: frame)
 
         build()
@@ -47,11 +47,9 @@ class OnOffButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         self.onImage = UIImage()
         self.offImage = UIImage()
-        
+
         super.init(coder: aDecoder)
     }
 
-    private func build() {
-    }
-
+    private func build() {}
 }

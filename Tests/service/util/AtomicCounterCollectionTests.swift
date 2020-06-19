@@ -1,20 +1,14 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
-class AtomicCounterCollectionTests: XCTestCase {
+class AtomicCounterCollectionTests: UnitTest {
     private var atomicCounter: AtomicCounterCollection<String>!
 
     override func setUp() {
         super.setUp()
 
         atomicCounter = AtomicCounterCollection()
-    }
-
-    override func tearDown() {
-        TestUtil.tearDown()
-
-        super.tearDown()
     }
 
     func test_init_expectZero() {

@@ -1,12 +1,13 @@
 import Foundation
 
-enum FileDownloadedEventBusExtrasFake {
-    case success
+struct FileDownloadedEventBusExtrasFakes {
+    var success: FileDownloadedEventBusExtras {
+        FileDownloadedEventBusExtras(fileId: "1")
+    }
+}
 
-    var fake: FileDownloadedEventBusExtras {
-        switch self {
-        case .success:
-            return FileDownloadedEventBusExtras(fileId: "1")
-        }
+extension FileDownloadedEventBusExtras {
+    static var fake: FileDownloadedEventBusExtrasFakes {
+        FileDownloadedEventBusExtrasFakes()
     }
 }

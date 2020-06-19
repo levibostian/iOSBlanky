@@ -1,5 +1,4 @@
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
 class DiTests: XCTestCase {

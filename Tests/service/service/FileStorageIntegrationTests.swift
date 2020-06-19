@@ -1,53 +1,62 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
-class FileStorageIntegrationTests: XCTestCase {
+class FileStorageIntegrationTests: UnitTest {
     var fileStorage: FileStorage!
 
-    var directory: FileManager.SearchPathDirectory = .cachesDirectory
+    var directory: FileManager.SearchPathDirectory = FileManager.defaultSearchPath
 
     override func setUp() {
-        fileStorage = FileMangerFileStorage()
+        super.setUp()
+
+        fileStorage = FileMangerFileStorage(bundle: DI.shared.inject(.bundle))
     }
 
     override func tearDown() {
-        TestUtil.tearDown(fileManagerDirectory: directory)
+        deleteFiles(at: directory)
 
         super.tearDown()
-    }
-
-    func test_deleteAll_expectDeletesAllFilesInDirectory() {
-        let data = "foo"
-        let filename = "filename"
-
-        try! fileStorage.write(data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
-
-        FileManager.deleteAll(in: directory)
-
-        let readAfterDelete = fileStorage.readString(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
-
-        XCTAssertNil(readAfterDelete)
     }
 
     func test_readAndWriteString() {
         let data = "string to read and write"
         let filename = "filename"
 
-        try! fileStorage.write(data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(text: data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
         let resultRead = fileStorage.readString(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
         XCTAssertEqual(resultRead, data)
+    }
+
+    func test_readAndWriteString_givenEmptyString_expectNilResult() {
+        let data = ""
+        let filename = "filename"
+
+        try! fileStorage.write(text: data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        let resultRead = fileStorage.readString(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+
+        XCTAssertNil(resultRead)
     }
 
     func test_readAndWriteData() {
         let data = try! Data(contentsOf: FileFakes.txt.url)
         let filename = "filename"
 
-        try! fileStorage.write(data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(data: data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
         let resultRead = fileStorage.readData(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
         XCTAssertEqual(resultRead, data)
+    }
+
+    func test_readAndWriteData_givenEmptyData_expectNilResult() {
+        let data = "".data!
+        let filename = "filename"
+
+        try! fileStorage.write(data: data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        let resultRead = fileStorage.readData(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+
+        XCTAssertNil(resultRead)
     }
 
     func test_getFileUrl_expectContainsFilename() {
@@ -60,7 +69,7 @@ class FileStorageIntegrationTests: XCTestCase {
 
     func test_getFileUrl_fileDoesExist_expectNil() {
         let filename = "filename"
-        try! fileStorage.write("foo", fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(text: "foo", fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
         let result = fileStorage.getFileUrl(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
@@ -79,7 +88,7 @@ class FileStorageIntegrationTests: XCTestCase {
         let sourceFilename = "source"
         let data = "foo"
 
-        try! fileStorage.write(data, fileName: sourceFilename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(text: data, fileName: sourceFilename, inSearchPath: directory, appendedDirectory: nil)
         let sourceUrl = fileStorage.getFileUrl(fileName: sourceFilename, inSearchPath: directory, appendedDirectory: nil)
 
         let destinationUrl = fileStorage.getTempFileUrl()
@@ -96,7 +105,7 @@ class FileStorageIntegrationTests: XCTestCase {
         let destinationFilename = "destination"
         let data = "foo"
 
-        try! fileStorage.write(data, fileName: sourceFilename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(text: data, fileName: sourceFilename, inSearchPath: directory, appendedDirectory: nil)
         let sourceUrl = fileStorage.getFileUrl(fileName: sourceFilename, inSearchPath: directory, appendedDirectory: nil)
 
         let destinationUrl = fileStorage.getFileUrl(fileName: destinationFilename, inSearchPath: directory, appendedDirectory: nil)
@@ -112,7 +121,7 @@ class FileStorageIntegrationTests: XCTestCase {
         let data = "data"
         let filename = "filename"
 
-        try! fileStorage.write(data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(text: data, fileName: filename, inSearchPath: directory, appendedDirectory: nil)
         let fileUrl = fileStorage.getFileUrl(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
         XCTAssertTrue(fileUrl.doesFileExist)
@@ -124,7 +133,7 @@ class FileStorageIntegrationTests: XCTestCase {
 
     func test_doesFileExist_fileWrittenAtLocation_expectTrue() {
         let filename = "filename"
-        try! fileStorage.write("foo", fileName: filename, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(text: "foo", fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
         let location = fileStorage.getFileUrl(fileName: filename, inSearchPath: directory, appendedDirectory: nil)
 
@@ -135,5 +144,51 @@ class FileStorageIntegrationTests: XCTestCase {
         let location = fileStorage.getFileUrl(fileName: "no-file-here", inSearchPath: directory, appendedDirectory: nil)
 
         XCTAssertFalse(fileStorage.doesFileExist(at: location))
+    }
+
+    func test_deleteAll_expectDeletesAll() {
+        let filename1 = "filename1"
+        try! fileStorage.write(text: "foo", fileName: filename1, inSearchPath: directory, appendedDirectory: nil)
+        let fileUrl1 = fileStorage.getFileUrl(fileName: filename1, inSearchPath: directory, appendedDirectory: nil)
+
+        let filename2 = "filename2"
+        try! fileStorage.write(text: "bar", fileName: filename2, inSearchPath: directory, appendedDirectory: nil)
+        let fileUrl2 = fileStorage.getFileUrl(fileName: filename2, inSearchPath: directory, appendedDirectory: nil)
+
+        try! fileStorage.deleteAll(inSearchPath: directory)
+
+        XCTAssertFalse(fileUrl1.doesFileExist)
+        XCTAssertFalse(fileUrl2.doesFileExist)
+    }
+
+    func test_observeFile_givenFileDoesNotExist_assertObserveNoValue() {
+        let actual = try! fileStorage.observeFile(fileName: "does-not-exist-file-here.txt", inSearchPath: directory, appendedDirectory: nil)
+            .toBlocking()
+            .first()!
+
+        XCTAssertNil(actual.value)
+    }
+
+    func test_observeFile_givenFileExists_assertObserveFileContents() {
+        let givenFileContents = "file-content".data!
+        let givenFileName = "file-name.txt"
+
+        let observable = fileStorage.observeFile(fileName: givenFileName, inSearchPath: directory, appendedDirectory: nil)
+        try! fileStorage.write(data: givenFileContents, fileName: givenFileName, inSearchPath: directory, appendedDirectory: nil)
+
+        let actual = try! observable
+            .toBlocking()
+            .first()!
+
+        XCTAssertEqual(actual.value, givenFileContents)
+    }
+
+    func test_readAsset_givenAllFileAssets_expectEachToExistAndRead() {
+        for fileAsset in FileAsset.allCases {
+            let assetData = fileStorage.readAsset(asset: fileAsset)
+
+            XCTAssertNotNil(assetData)
+            XCTAssertFalse(assetData!.string!.isEmpty)
+        }
     }
 }

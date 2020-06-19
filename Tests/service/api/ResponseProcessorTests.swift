@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import Moya
 import RxBlocking
 import RxSwift
@@ -35,26 +35,68 @@ class ResponseProcessorTests: UnitTest {
         let requestError = actual.failure as? HttpRequestError
         XCTAssertNotNil(requestError)
 
-        XCTAssertEqual(requestError!.fault, .developer)
+        if case .developer = requestError!.fault {
+        } else {
+            XCTFail()
+        }
     }
 
     func test_processSuccess_given409_expectConflictTypeError() {
         let givenConflictError = ConflictResponseError(message: "Error", errorId: ConflictResponseError.ErrorIdType.phoneNumberTaken.raw)
-        let given = Response(statusCode: 409, data: jsonAdapter.toJson(givenConflictError))
+        let given = Response(statusCode: 409, data: try! jsonAdapter.toJson(givenConflictError))
 
         let actual = responseProcessor.process(given, extraResponseHandling: nilResponseExtraErrorHandling)
 
         let requestError = actual.failure as? HttpRequestError
         XCTAssertNotNil(requestError)
 
-        XCTAssertEqual(requestError!.fault, .user)
+        if case .user = requestError!.fault {
+        } else {
+            XCTFail()
+        }
         XCTAssertNotNil(requestError!.underlyingError)
         let actualConflictError = requestError!.underlyingError as? ConflictResponseError
         XCTAssertNotNil(actualConflictError)
     }
 
+    func test_processSuccess_given429_expectRateLimitingTypeError() {
+        let givenError = RateLimitingResponseError(error: RateLimitingResponseError.RateLimitingError(text: "wait and try again", nextValidRequestDate: Date()))
+        let given = Response(statusCode: 429, data: try! jsonAdapter.toJson(givenError))
+
+        let actual = responseProcessor.process(given, extraResponseHandling: nilResponseExtraErrorHandling)
+
+        let requestError = actual.failure as? HttpRequestError
+        XCTAssertNotNil(requestError)
+
+        if case .user = requestError!.fault {
+        } else {
+            XCTFail()
+        }
+        XCTAssertNotNil(requestError!.underlyingError)
+        let actualConflictError = requestError!.underlyingError as? RateLimitingResponseError
+        XCTAssertNotNil(actualConflictError)
+    }
+
+    func test_processSuccess_given422_expectFieldsError() {
+        let givenError = FieldsErrorResponse(message: "fields error message")
+        let given = Response(statusCode: 422, data: try! jsonAdapter.toJson(givenError))
+
+        let actual = responseProcessor.process(given, extraResponseHandling: nilResponseExtraErrorHandling)
+
+        let requestError = actual.failure as? HttpRequestError
+        XCTAssertNotNil(requestError)
+
+        if case .developer = requestError!.fault {
+        } else {
+            XCTFail()
+        }
+        XCTAssertNotNil(requestError!.underlyingError)
+        let actualConflictError = requestError!.underlyingError as? FieldsErrorResponse
+        XCTAssertNotNil(actualConflictError)
+    }
+
     func test_processSuccess_given400AndExtraErrorProcessing_expectReceiveExtraProcessingResult() {
-        let givenError = HttpRequestError(fault: .user, message: "message", underlyingError: nil)
+        let givenError = HttpRequestError.user(message: "message", underlyingError: nil)
         let given = Response(statusCode: 410, data: "".data!)
 
         let actual = responseProcessor.process(given, extraResponseHandling: { response -> HttpRequestError? in
@@ -64,7 +106,10 @@ class ResponseProcessorTests: UnitTest {
         let requestError = actual.failure as? HttpRequestError
         XCTAssertNotNil(requestError)
 
-        XCTAssertEqual(requestError!.fault, .user)
+        if case .user = requestError!.fault {
+        } else {
+            XCTFail()
+        }
         XCTAssertEqual(requestError!.message, givenError.message)
     }
 
@@ -78,7 +123,10 @@ class ResponseProcessorTests: UnitTest {
         let requestError = actual.failure as? HttpRequestError
         XCTAssertNotNil(requestError)
 
-        XCTAssertEqual(requestError!.fault, .developer)
+        if case .developer = requestError!.fault {
+        } else {
+            XCTFail()
+        }
         let unhandledError = requestError!.underlyingError as? UnhandledHttpResponseError
         XCTAssertNotNil(unhandledError)
     }
@@ -101,7 +149,10 @@ class ResponseProcessorTests: UnitTest {
 
         let actual = responseProcessor.process(given)
 
-        XCTAssertEqual(actual.fault, .network)
+        if case .network = actual.fault {
+        } else {
+            XCTFail()
+        }
     }
 
     func test_processError_givenNetworkTimeout_expectNetworkError() {
@@ -109,7 +160,10 @@ class ResponseProcessorTests: UnitTest {
 
         let actual = responseProcessor.process(given)
 
-        XCTAssertEqual(actual.fault, .network)
+        if case .network = actual.fault {
+        } else {
+            XCTFail()
+        }
     }
 
     func test_processError_givenOtherNetworkIssue_expectDeveloperError() {
@@ -117,7 +171,10 @@ class ResponseProcessorTests: UnitTest {
 
         let actual = responseProcessor.process(given)
 
-        XCTAssertEqual(actual.fault, .developer)
+        if case .developer = actual.fault {
+        } else {
+            XCTFail()
+        }
     }
 
     func test_processError_givenErrorNotNetworkRelated_expectDeveloperError() {
@@ -125,6 +182,9 @@ class ResponseProcessorTests: UnitTest {
 
         let actual = responseProcessor.process(given)
 
-        XCTAssertEqual(actual.fault, .developer)
+        if case .developer = actual.fault {
+        } else {
+            XCTFail()
+        }
     }
 }

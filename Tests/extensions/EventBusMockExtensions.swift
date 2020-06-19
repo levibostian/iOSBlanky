@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 
 extension EventBusMock {
     func postExtrasReceivedInvocationsOfType<Type: EventBusExtrasConverter>(for event: EventBusEvent) -> [Type] {

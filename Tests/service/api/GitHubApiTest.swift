@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import RxBlocking
 import RxSwift
 import XCTest
@@ -29,7 +29,7 @@ class GitHubApiTests: UnitTest {
 
     func test_getUserRepos_givenSuccessfulResponse_expectReceiveResponse() {
         pendingTasksMock.runCollectionTasksForReturnValue = Single.just(RunCollectionTasksResult.testing.result(from: []))
-        let givenResponse: [Repo] = [RepoFake.randomRepo.fake]
+        let givenResponse: [Repo] = [Repo.fake.random]
 
         moyaMocker.queueResponse(200, data: givenResponse)
 
@@ -50,7 +50,10 @@ class GitHubApiTests: UnitTest {
 
         let actualFailure = actualResult.failure as? HttpRequestError
         XCTAssertNotNil(actualFailure)
-        XCTAssertEqual(actualFailure?.fault, .user)
+        if case .user = actualFailure!.fault {
+        } else {
+            XCTFail()
+        }
     }
 
     func test_given401_expectEventBusPost() {
@@ -75,7 +78,10 @@ class GitHubApiTests: UnitTest {
 
         let actualFailure = actualResult.failure as? HttpRequestError
         XCTAssertNotNil(actualFailure)
-        XCTAssertEqual(actualFailure?.fault, .developer)
+        if case .developer = actualFailure!.fault {
+        } else {
+            XCTFail()
+        }
 
         XCTAssertEqual(loggerMock.errorOccurredCallsCount, 1)
     }

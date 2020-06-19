@@ -96,30 +96,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let launchArguments: LaunchAppState = try! jsonAdapter.fromJson(launchStateString.data!)
                         let keyValueStorage = DI.shared.keyValueStorage
 
-                        launchArguments.extras.networkQueue.forEach { queueItem in
-                            if queueItem.isErrorType {
-                                moyaMockProvider.queueNetworkError(queueItem.responseError!.error)
-                            } else {
-                                moyaMockProvider.queueResponse(queueItem.code!, data: queueItem.response!)
-                            }
-                        }
-
-                        launchArguments.extras.keyStorageStringValues.forEach { arg in
-                            let (key, value) = arg
-                            keyValueStorage.setString(value, forKey: key)
-                        }
-                        launchArguments.extras.keyStorageIntValues.forEach { arg in
-                            let (key, value) = arg
-                            keyValueStorage.setInt(value, forKey: key)
-                        }
-
-                        remoteConfigHelper.set(launchArguments.extras.remoteConfig)
-
-                        if let launchUserState = launchArguments.userState {
-                            let userManager = DI.shared.userManager
-
-                            userManager.userId = launchUserState.id
-                        }
+//                        launchArguments.extras.networkQueue.forEach { queueItem in
+//                            if queueItem.isErrorType {
+//                                moyaMockProvider.queueNetworkError(queueItem.responseError!.error)
+//                            } else {
+//                                moyaMockProvider.queueResponse(queueItem.code!, data: queueItem.response!)
+//                            }
+//                        }
+//
+//                        launchArguments.extras.keyStorageStringValues.forEach { arg in
+//                            let (key, value) = arg
+//                            keyValueStorage.setString(value, forKey: key)
+//                        }
+//                        launchArguments.extras.keyStorageIntValues.forEach { arg in
+//                            let (key, value) = arg
+//                            keyValueStorage.setInt(value, forKey: key)
+//                        }
+//
+//                        remoteConfigHelper.set(launchArguments.extras.remoteConfig)
+//
+//                        if let launchUserState = launchArguments.userState {
+//                            let userManager = DI.shared.userManager
+//
+//                            userManager.userId = launchUserState.id
+//                        }
 
                         DI.shared.override(.gitHubMoyaProvider, value: moyaMockProvider.moyaProvider, forType: GitHubMoyaProvider.self)
                         DI.shared.override(.remoteConfigProvider, value: remoteConfigHelper, forType: RemoteConfigProvider.self)

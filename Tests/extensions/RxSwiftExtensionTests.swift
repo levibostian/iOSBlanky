@@ -1,5 +1,4 @@
 import Foundation
-@testable import iOSBlanky
 import RxBlocking
 import RxSwift
 import XCTest

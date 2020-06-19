@@ -1,8 +1,8 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
-class EventBusRegisterCounterTests: XCTestCase {
+class EventBusRegisterCounterTests: UnitTest {
     private var eventBusRegisterCounter: EventBusRegisterCounter!
     private var eventBusMock: EventBusMock!
     private var listener: EventBusEventListenerMock!
@@ -15,12 +15,6 @@ class EventBusRegisterCounterTests: XCTestCase {
 
         eventBusRegisterCounter = EventBusRegisterCounter(eventBus: eventBusMock)
         eventBusRegisterCounter.listener = listener
-    }
-
-    override func tearDown() {
-        TestUtil.tearDown()
-
-        super.tearDown()
     }
 
     func test_register_expectEventBusRegisterForEvent() {

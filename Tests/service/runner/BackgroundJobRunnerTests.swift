@@ -1,8 +1,8 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
-class BackgroundJobRunnerTests: XCTestCase {
+class BackgroundJobRunnerTests: UnitTest {
     var backgroundJobRunner: BackgroundJobRunner!
 
     var loggerMock: ActivityLoggerMock!
@@ -10,17 +10,13 @@ class BackgroundJobRunnerTests: XCTestCase {
     var repositorySyncServiceMock: RepositorySyncServiceMock!
 
     override func setUp() {
+        super.setUp()
+
         loggerMock = ActivityLoggerMock()
         pendingTasksMock = PendingTasksMock()
         repositorySyncServiceMock = RepositorySyncServiceMock()
 
         backgroundJobRunner = AppBackgroundJobRunner(logger: loggerMock, pendingTasks: pendingTasksMock, repositorySyncService: repositorySyncServiceMock)
-    }
-
-    override func tearDown() {
-        TestUtil.tearDown()
-
-        super.tearDown()
     }
 
     func test_runPeriodicBackgroundJobs_expectRunsAllExpectedJobs() {
@@ -42,5 +38,39 @@ class BackgroundJobRunnerTests: XCTestCase {
         }
 
         waitForExpectations()
+    }
+
+    // MARK: - handleDataNotification
+
+    func test_handleDataNotification_givenNoActionFromNotification_expectDoNotSync() {
+        let givenDataNotification = DataNotification(topicName: nil)
+
+        let expectCallCompletionHandler = expectation(description: "Expect call completion handler")
+        backgroundJobRunner.handleDataNotification(givenDataNotification) { result in
+            XCTAssertEqual(result, .noData)
+
+            expectCallCompletionHandler.fulfill()
+        }
+
+        waitForExpectations()
+
+        XCTAssertFalse(repositorySyncServiceMock.mockCalled)
+    }
+
+    func test_handleDataNotification_givenNotificationWithUpdateProgramsAction_expectForceSyncPrograms() {
+        let givenDataNotification = DataNotification(topicName: FcmTopicKeys.filesToDownload.value)
+
+        repositorySyncServiceMock.syncAllOnCompleteClosure = { onComplete in
+            onComplete([.successful])
+        }
+
+        let expectCallCompletionHandler = expectation(description: "Expect call completion handler")
+        backgroundJobRunner.handleDataNotification(givenDataNotification) { result in
+            expectCallCompletionHandler.fulfill()
+        }
+
+        waitForExpectations()
+
+        XCTAssertEqual(repositorySyncServiceMock.syncAllOnCompleteCallsCount, 1)
     }
 }

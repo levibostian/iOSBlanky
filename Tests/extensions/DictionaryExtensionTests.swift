@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
 class DictionaryExtensionTests: XCTestCase {
@@ -20,5 +20,20 @@ class DictionaryExtensionTests: XCTestCase {
         let actual = given.toStringDictionary()
 
         XCTAssertTrue(actual.isEmpty)
+    }
+
+    // MARK: - mapKeys
+
+    func test_mapKeys_givenDictionary_expectToTransformToNewDictionary() {
+        let given: [String: String] = ["1": "1", "20": "20"]
+
+        let actual: [Int: String] = given.mapKeys { (key) -> Int in
+            Int(key)!
+        }
+
+        XCTAssertEqual(actual, [
+            1: "1",
+            20: "20"
+        ])
     }
 }

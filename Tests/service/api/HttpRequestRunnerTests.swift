@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import Moya
 import RxBlocking
 import RxSwift
@@ -47,7 +47,7 @@ class HttpRequestRunnerTests: UnitTest {
     func test_request_givenRequestSuccess_expectParseResponse() {
         let givenRepos: [Repo] = []
 
-        moyaMocker.queueResponse(200, data: jsonAdapter.toJsonArray(givenRepos))
+        moyaMocker.queueResponse(200, data: try! jsonAdapter.toJson(givenRepos))
 
         let actualResult = try! requestRunner.request(.getUserRepos(username: ""), preRunPendingTask: nil, extraResponseHandling: nilResponseExtraErrorHandling)
             .toBlocking()
@@ -63,7 +63,7 @@ class HttpRequestRunnerTests: UnitTest {
     func test_request_givenNoRunPendingTaskCollections_expectNotToRunPendingTasks() {
         let givenRepos: [Repo] = []
 
-        moyaMocker.queueResponse(200, data: jsonAdapter.toJsonArray(givenRepos))
+        moyaMocker.queueResponse(200, data: try! jsonAdapter.toJson(givenRepos))
 
         _ = try! requestRunner.request(.getUserRepos(username: ""), preRunPendingTask: nil, extraResponseHandling: nilResponseExtraErrorHandling)
             .toBlocking()
@@ -77,7 +77,7 @@ class HttpRequestRunnerTests: UnitTest {
             TaskRunResult.failure(error: URLError(.notConnectedToInternet))
         ]))
 
-        let actualResult = try! requestRunner.request(.getUserRepos(username: ""), preRunPendingTask: .getUserRepos, extraResponseHandling: nilResponseExtraErrorHandling)
+        let actualResult = try! requestRunner.request(.getUserRepos(username: ""), preRunPendingTask: .foo, extraResponseHandling: nilResponseExtraErrorHandling)
             .toBlocking()
             .single()
 
@@ -85,7 +85,10 @@ class HttpRequestRunnerTests: UnitTest {
 
         let requestError = actualResult.failure as? HttpRequestError
         XCTAssertNotNil(requestError)
-        XCTAssertEqual(requestError?.fault, .user)
+        if case .user = requestError!.fault {
+        } else {
+            XCTFail()
+        }
 
         XCTAssertEqual(moyaMocker.queue.count, 0)
     }
@@ -97,9 +100,9 @@ class HttpRequestRunnerTests: UnitTest {
 
         let givenRepos: [Repo] = []
 
-        moyaMocker.queueResponse(200, data: jsonAdapter.toJsonArray(givenRepos))
+        moyaMocker.queueResponse(200, data: try! jsonAdapter.toJson(givenRepos))
 
-        let actualResult = try! requestRunner.request(.getUserRepos(username: ""), preRunPendingTask: .getUserRepos, extraResponseHandling: nilResponseExtraErrorHandling)
+        let actualResult = try! requestRunner.request(.getUserRepos(username: ""), preRunPendingTask: .foo, extraResponseHandling: nilResponseExtraErrorHandling)
             .toBlocking()
             .single()
 

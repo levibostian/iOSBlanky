@@ -187,6 +187,9 @@
 		F76EF43B23A1BC59005F933C /* Empty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EF43823A1BC59005F933C /* Empty.framework */; };
 		F76EF43D23A1BC59005F933C /* PleaseHold.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EF43923A1BC59005F933C /* PleaseHold.framework */; };
 		F76EF43F23A1BC59005F933C /* Swapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76EF43A23A1BC59005F933C /* Swapper.framework */; };
+		F772AD1E249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772AD1D249AC47500F6ED2D /* DynamicLinkFake.swift */; };
+		F772AD1F249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772AD1D249AC47500F6ED2D /* DynamicLinkFake.swift */; };
+		F772AD20249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F772AD1D249AC47500F6ED2D /* DynamicLinkFake.swift */; };
 		F785CB6B22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */; };
 		F785CB6C22E8D03800AA53B0 /* PendingTasksFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */; };
 		F785CB6E22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */; };
@@ -382,7 +385,6 @@
 		F7B9A02523A5596C004A4011 /* AtomicCounterCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FF123A5596C004A4011 /* AtomicCounterCollectionTests.swift */; };
 		F7B9A02623A5596C004A4011 /* EventBusRegisterCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FF223A5596C004A4011 /* EventBusRegisterCounterTests.swift */; };
 		F7B9A02723A5596C004A4011 /* BackgroundJobRunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FF423A5596C004A4011 /* BackgroundJobRunnerTests.swift */; };
-		F7B9A02B23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B99FFC23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift */; };
 		F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00023A5596C004A4011 /* EventBusExtrasConverterTests.swift */; };
 		F7B9A02D23A5596C004A4011 /* NotificationCenterEventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00123A5596C004A4011 /* NotificationCenterEventBusTests.swift */; };
 		F7B9A02E23A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00223A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift */; };
@@ -393,7 +395,6 @@
 		F7B9A03323A5596C004A4011 /* TestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00823A5596C004A4011 /* TestUtil.swift */; };
 		F7B9A03423A5596C004A4011 /* ThemeFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A00A23A5596C004A4011 /* ThemeFake.swift */; };
 		F7B9A04623A5597E004A4011 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A04023A5597D004A4011 /* StringExtensionTests.swift */; };
-		F7B9A04723A5597E004A4011 /* TestDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A04123A5597D004A4011 /* TestDateExtensions.swift */; };
 		F7B9A04823A5597E004A4011 /* DictionaryExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A04223A5597D004A4011 /* DictionaryExtensionTests.swift */; };
 		F7B9A04923A5597E004A4011 /* UIBackgroundFetchResultExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A04323A5597D004A4011 /* UIBackgroundFetchResultExtensionsTests.swift */; };
 		F7B9A04A23A5597E004A4011 /* EventBusMockExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B9A04423A5597D004A4011 /* EventBusMockExtensions.swift */; };
@@ -571,6 +572,40 @@
 		F7C21F3F249A99790007F8CB /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F3D249A99790007F8CB /* UserRepository.swift */; };
 		F7C21F40249A99790007F8CB /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F3D249A99790007F8CB /* UserRepository.swift */; };
 		F7C21F41249A99790007F8CB /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F3D249A99790007F8CB /* UserRepository.swift */; };
+		F7C21F43249AA0920007F8CB /* ColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F42249AA0920007F8CB /* ColorsTests.swift */; };
+		F7C21F45249AA0CC0007F8CB /* ArrayExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F44249AA0CC0007F8CB /* ArrayExtensionTests.swift */; };
+		F7C21F47249AA1400007F8CB /* SetExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F46249AA1400007F8CB /* SetExtensionTests.swift */; };
+		F7C21F49249AA1760007F8CB /* URLExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F48249AA1760007F8CB /* URLExtensionTests.swift */; };
+		F7C21F4C249AAB3C0007F8CB /* JsonAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F4B249AAB3C0007F8CB /* JsonAdapterTest.swift */; };
+		F7C21F4E249AAB710007F8CB /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F4D249AAB710007F8CB /* PendingTaskForTests.swift */; };
+		F7C21F51249AB0300007F8CB /* UserManagerIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F50249AB0300007F8CB /* UserManagerIntegrationTests.swift */; };
+		F7C21F56249AB3800007F8CB /* DynamicLinksProcessorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F55249AB3800007F8CB /* DynamicLinksProcessorTest.swift */; };
+		F7C21F58249AB5180007F8CB /* KeyValueStorageIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F57249AB5180007F8CB /* KeyValueStorageIntegrationTests.swift */; };
+		F7C21F5A249AB5400007F8CB /* RemoteConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F59249AB5400007F8CB /* RemoteConfigTests.swift */; };
+		F7C21F5C249AB58E0007F8CB /* StringReplaceUtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F5B249AB58E0007F8CB /* StringReplaceUtilTest.swift */; };
+		F7C21F5E249AB5D40007F8CB /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F5D249AB5D40007F8CB /* LoginViewControllerTests.swift */; };
+		F7C21F61249AB5F70007F8CB /* ButtonsBagTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F60249AB5F70007F8CB /* ButtonsBagTest.swift */; };
+		F7C21F63249AB6050007F8CB /* DiffableUITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F62249AB6050007F8CB /* DiffableUITableViewTests.swift */; };
+		F7C21F66249AB62C0007F8CB /* CTALinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F65249AB62C0007F8CB /* CTALinkTests.swift */; };
+		F7C21F6A249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F69249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift */; };
+		F7C21F6B249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F69249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift */; };
+		F7C21F6C249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F69249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift */; };
+		F7C21F6D249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F69249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift */; };
+		F7C21F6F249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F6E249AB8680007F8CB /* ExampleTableViewCell.swift */; };
+		F7C21F70249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F6E249AB8680007F8CB /* ExampleTableViewCell.swift */; };
+		F7C21F71249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F6E249AB8680007F8CB /* ExampleTableViewCell.swift */; };
+		F7C21F72249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F6E249AB8680007F8CB /* ExampleTableViewCell.swift */; };
+		F7C21F75249AB9260007F8CB /* ExampleTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F74249AB9260007F8CB /* ExampleTableViewCellTests.swift */; };
+		F7C21F76249AB9A70007F8CB /* FavoriteRepoPendingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F52249AB0830007F8CB /* FavoriteRepoPendingTask.swift */; };
+		F7C21F77249AB9A80007F8CB /* FavoriteRepoPendingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F52249AB0830007F8CB /* FavoriteRepoPendingTask.swift */; };
+		F7C21F78249AB9A80007F8CB /* FavoriteRepoPendingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F52249AB0830007F8CB /* FavoriteRepoPendingTask.swift */; };
+		F7C21F79249AB9A90007F8CB /* FavoriteRepoPendingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F52249AB0830007F8CB /* FavoriteRepoPendingTask.swift */; };
+		F7C21F7B249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F7A249ABEBE0007F8CB /* LoggedInUserVoFake.swift */; };
+		F7C21F7C249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F7A249ABEBE0007F8CB /* LoggedInUserVoFake.swift */; };
+		F7C21F7D249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F7A249ABEBE0007F8CB /* LoggedInUserVoFake.swift */; };
+		F7C21F7F249ABF760007F8CB /* URLFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F7E249ABF760007F8CB /* URLFakes.swift */; };
+		F7C21F80249ABF760007F8CB /* URLFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F7E249ABF760007F8CB /* URLFakes.swift */; };
+		F7C21F81249ABF760007F8CB /* URLFakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C21F7E249ABF760007F8CB /* URLFakes.swift */; };
 		F7CC939822F0BB0100C7FF16 /* ThreadUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC939722F0BB0100C7FF16 /* ThreadUtil.swift */; };
 		F7CC939922F0BB0100C7FF16 /* ThreadUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC939722F0BB0100C7FF16 /* ThreadUtil.swift */; };
 		F7CC939B22F0C2C700C7FF16 /* AppStartupUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CC939A22F0C2C700C7FF16 /* AppStartupUtil.swift */; };
@@ -603,9 +638,6 @@
 		F7D9197123A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7D9197223A6D5B200BF3CF7 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */; };
 		F7DF7B2022D686AF00DBEF33 /* JsonAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */; };
-		F7E654C923B19DE500C9728D /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */; };
-		F7E654CA23B19DE600C9728D /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */; };
-		F7E654CB23B19DE600C9728D /* PendingTaskForTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */; };
 		F7EEDB241E953FEE0084D97E /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EEDB211E953FEE0084D97E /* RxSwift.framework */; };
 		F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AC22DF6DC10053833A /* ActivityLogger.swift */; };
 		F7EFF5AF22DF6E350053833A /* ErrorReportingActivityLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EFF5AE22DF6E350053833A /* ErrorReportingActivityLogger.swift */; };
@@ -767,6 +799,7 @@
 		F76EF43823A1BC59005F933C /* Empty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Empty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76EF43923A1BC59005F933C /* PleaseHold.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PleaseHold.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F76EF43A23A1BC59005F933C /* Swapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Swapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F772AD1D249AC47500F6ED2D /* DynamicLinkFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinkFake.swift; sourceTree = "<group>"; };
 		F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTasksFactory.swift; sourceTree = "<group>"; };
 		F785CB6D22E8D26400AA53B0 /* RepositorySyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySyncService.swift; sourceTree = "<group>"; };
 		F785CC7522D692C500389076 /* Teller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Teller.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -833,7 +866,6 @@
 		F7B99FF123A5596C004A4011 /* AtomicCounterCollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomicCounterCollectionTests.swift; sourceTree = "<group>"; };
 		F7B99FF223A5596C004A4011 /* EventBusRegisterCounterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusRegisterCounterTests.swift; sourceTree = "<group>"; };
 		F7B99FF423A5596C004A4011 /* BackgroundJobRunnerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundJobRunnerTests.swift; sourceTree = "<group>"; };
-		F7B99FFC23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsActivityLoggerTests.swift; sourceTree = "<group>"; };
 		F7B9A00023A5596C004A4011 /* EventBusExtrasConverterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusExtrasConverterTests.swift; sourceTree = "<group>"; };
 		F7B9A00123A5596C004A4011 /* NotificationCenterEventBusTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterEventBusTests.swift; sourceTree = "<group>"; };
 		F7B9A00223A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterEventBusIntegrationTests.swift; sourceTree = "<group>"; };
@@ -844,7 +876,6 @@
 		F7B9A00823A5596C004A4011 /* TestUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtil.swift; sourceTree = "<group>"; };
 		F7B9A00A23A5596C004A4011 /* ThemeFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeFake.swift; sourceTree = "<group>"; };
 		F7B9A04023A5597D004A4011 /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
-		F7B9A04123A5597D004A4011 /* TestDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDateExtensions.swift; sourceTree = "<group>"; };
 		F7B9A04223A5597D004A4011 /* DictionaryExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensionTests.swift; sourceTree = "<group>"; };
 		F7B9A04323A5597D004A4011 /* UIBackgroundFetchResultExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBackgroundFetchResultExtensionsTests.swift; sourceTree = "<group>"; };
 		F7B9A04423A5597D004A4011 /* EventBusMockExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventBusMockExtensions.swift; sourceTree = "<group>"; };
@@ -901,6 +932,27 @@
 		F7C21F33249A98EC0007F8CB /* TokenExchangeResponseVo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenExchangeResponseVo.swift; sourceTree = "<group>"; };
 		F7C21F38249A99060007F8CB /* LoggedInUserVo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUserVo.swift; sourceTree = "<group>"; };
 		F7C21F3D249A99790007F8CB /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		F7C21F42249AA0920007F8CB /* ColorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTests.swift; sourceTree = "<group>"; };
+		F7C21F44249AA0CC0007F8CB /* ArrayExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensionTests.swift; sourceTree = "<group>"; };
+		F7C21F46249AA1400007F8CB /* SetExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetExtensionTests.swift; sourceTree = "<group>"; };
+		F7C21F48249AA1760007F8CB /* URLExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLExtensionTests.swift; sourceTree = "<group>"; };
+		F7C21F4B249AAB3C0007F8CB /* JsonAdapterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapterTest.swift; sourceTree = "<group>"; };
+		F7C21F4D249AAB710007F8CB /* PendingTaskForTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTaskForTests.swift; sourceTree = "<group>"; };
+		F7C21F50249AB0300007F8CB /* UserManagerIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerIntegrationTests.swift; sourceTree = "<group>"; };
+		F7C21F52249AB0830007F8CB /* FavoriteRepoPendingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepoPendingTask.swift; sourceTree = "<group>"; };
+		F7C21F55249AB3800007F8CB /* DynamicLinksProcessorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLinksProcessorTest.swift; sourceTree = "<group>"; };
+		F7C21F57249AB5180007F8CB /* KeyValueStorageIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueStorageIntegrationTests.swift; sourceTree = "<group>"; };
+		F7C21F59249AB5400007F8CB /* RemoteConfigTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigTests.swift; sourceTree = "<group>"; };
+		F7C21F5B249AB58E0007F8CB /* StringReplaceUtilTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringReplaceUtilTest.swift; sourceTree = "<group>"; };
+		F7C21F5D249AB5D40007F8CB /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		F7C21F60249AB5F70007F8CB /* ButtonsBagTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsBagTest.swift; sourceTree = "<group>"; };
+		F7C21F62249AB6050007F8CB /* DiffableUITableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableUITableViewTests.swift; sourceTree = "<group>"; };
+		F7C21F65249AB62C0007F8CB /* CTALinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTALinkTests.swift; sourceTree = "<group>"; };
+		F7C21F69249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextHeaderTableViewHeaderView.swift; sourceTree = "<group>"; };
+		F7C21F6E249AB8680007F8CB /* ExampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTableViewCell.swift; sourceTree = "<group>"; };
+		F7C21F74249AB9260007F8CB /* ExampleTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTableViewCellTests.swift; sourceTree = "<group>"; };
+		F7C21F7A249ABEBE0007F8CB /* LoggedInUserVoFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInUserVoFake.swift; sourceTree = "<group>"; };
+		F7C21F7E249ABF760007F8CB /* URLFakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLFakes.swift; sourceTree = "<group>"; };
 		F7CC939722F0BB0100C7FF16 /* ThreadUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadUtil.swift; sourceTree = "<group>"; };
 		F7CC939A22F0C2C700C7FF16 /* AppStartupUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupUtil.swift; sourceTree = "<group>"; };
 		F7D3B8D01E149B5F00F2C3CB /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -919,7 +971,6 @@
 		F7D9196B23A6CF5D00BF3CF7 /* LaunchAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAppState.swift; sourceTree = "<group>"; };
 		F7D9196F23A6D5B200BF3CF7 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		F7DF7B1F22D686AF00DBEF33 /* JsonAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonAdapter.swift; sourceTree = "<group>"; };
-		F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingTaskForTests.swift; sourceTree = "<group>"; };
 		F7EEDB1F1E953FEE0084D97E /* Mac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mac.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/Mac/Mac.framework"; sourceTree = "<group>"; };
 		F7EEDB201E953FEE0084D97E /* RxRealm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRealm.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxRealm/RxRealm.framework"; sourceTree = "<group>"; };
 		F7EEDB211E953FEE0084D97E /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/iOSBlanky-cvftboosaxfuyjckfsursmokkkdd/Build/Products/Debug-iphonesimulator/RxSwift/RxSwift.framework"; sourceTree = "<group>"; };
@@ -1095,6 +1146,7 @@
 		F70B16EA23A5400D006D5A60 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F7C21F67249AB8240007F8CB /* tableviewcell */,
 				F7C21F0A249A8BFC0007F8CB /* coordinator */,
 				F7C21EE1249A88870007F8CB /* view */,
 				F7C21ED6249A86710007F8CB /* type */,
@@ -1239,18 +1291,18 @@
 		F75DCD961CD8F10D00B8941F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F7B9A03F23A5597D004A4011 /* extensions */,
 				F7B9A00523A5596C004A4011 /* Assets */,
+				F7602FE122E2250600FDB5F3 /* di */,
 				F7B99FD923A5596B004A4011 /* ErrorForTesting.swift */,
+				F7B9A03F23A5597D004A4011 /* extensions */,
 				F7B9A00923A5596C004A4011 /* fakeData */,
+				F75DCD991CD8F10D00B8941F /* Info.plist */,
 				F7B99FE523A5596C004A4011 /* service */,
 				F7B9A00823A5596C004A4011 /* TestUtil.swift */,
 				F7B99FDA23A5596C004A4011 /* ui */,
+				F7B9A07123A57F17004A4011 /* UnitTest.swift */,
 				F7B99FE423A5596C004A4011 /* ViewControllerTestUtil.swift */,
 				F7B99FE323A5596C004A4011 /* ViewControllerUnitTest.swift */,
-				F7602FE122E2250600FDB5F3 /* di */,
-				F75DCD991CD8F10D00B8941F /* Info.plist */,
-				F7B9A07123A57F17004A4011 /* UnitTest.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1338,6 +1390,7 @@
 				F785CB6A22E8D03800AA53B0 /* PendingTasksFactory.swift */,
 				F714EB8223A4373E00E7AFB5 /* PendingTasks.swift */,
 				F7C21EB2249A7A900007F8CB /* Collections.swift */,
+				F7C21F52249AB0830007F8CB /* FavoriteRepoPendingTask.swift */,
 			);
 			path = "pending tasks";
 			sourceTree = "<group>";
@@ -1433,6 +1486,9 @@
 		F7B99FDA23A5596C004A4011 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				F7C21F73249AB9120007F8CB /* tableviewcell */,
+				F7C21F64249AB61C0007F8CB /* type */,
+				F7C21F5F249AB5E90007F8CB /* view */,
 				F7B99FDB23A5596C004A4011 /* util */,
 				F7B99FE023A5596C004A4011 /* viewcontroller */,
 			);
@@ -1450,6 +1506,7 @@
 		F7B99FE023A5596C004A4011 /* viewcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				F7C21F5D249AB5D40007F8CB /* LoginViewControllerTests.swift */,
 			);
 			path = viewcontroller;
 			sourceTree = "<group>";
@@ -1457,6 +1514,9 @@
 		F7B99FE523A5596C004A4011 /* service */ = {
 			isa = PBXGroup;
 			children = (
+				F7C21F54249AB3760007F8CB /* processor */,
+				F7C21F4F249AB0260007F8CB /* manager */,
+				F7C21F4A249AAB320007F8CB /* adapter */,
 				F7AC968423A58A1A0037CCA2 /* datasource */,
 				F7B99FE623A5596C004A4011 /* vo */,
 				F7B99FE923A5596C004A4011 /* repository */,
@@ -1465,7 +1525,6 @@
 				F7B99FF523A5596C004A4011 /* pending tasks */,
 				F7B99FF723A5596C004A4011 /* type */,
 				F7B99FF923A5596C004A4011 /* api */,
-				F7B99FFB23A5596C004A4011 /* log */,
 				F7B99FFD23A5596C004A4011 /* service */,
 			);
 			path = service;
@@ -1492,6 +1551,7 @@
 				F7B99FF023A5596C004A4011 /* AtomicCounterTests.swift */,
 				F7B99FF123A5596C004A4011 /* AtomicCounterCollectionTests.swift */,
 				F7B99FF223A5596C004A4011 /* EventBusRegisterCounterTests.swift */,
+				F7C21F5B249AB58E0007F8CB /* StringReplaceUtilTest.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -1507,7 +1567,6 @@
 		F7B99FF523A5596C004A4011 /* pending tasks */ = {
 			isa = PBXGroup;
 			children = (
-				F7E654C823B19DE500C9728D /* PendingTaskForTests.swift */,
 			);
 			path = "pending tasks";
 			sourceTree = "<group>";
@@ -1525,16 +1584,9 @@
 				F7B9A07923A5810E004A4011 /* GitHubApiTest.swift */,
 				F74D1CA423B15720001768BD /* HttpRequestRunnerTests.swift */,
 				F74D1CAA23B15A54001768BD /* ResponseProcessorTests.swift */,
+				F7C21F4D249AAB710007F8CB /* PendingTaskForTests.swift */,
 			);
 			path = api;
-			sourceTree = "<group>";
-		};
-		F7B99FFB23A5596C004A4011 /* log */ = {
-			isa = PBXGroup;
-			children = (
-				F7B99FFC23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift */,
-			);
-			path = log;
 			sourceTree = "<group>";
 		};
 		F7B99FFD23A5596C004A4011 /* service */ = {
@@ -1545,6 +1597,8 @@
 				F7B9A00223A5596C004A4011 /* NotificationCenterEventBusIntegrationTests.swift */,
 				F7B9A00323A5596C004A4011 /* RepositorySyncServiceTests.swift */,
 				F7B9A00423A5596C004A4011 /* FileStorageIntegrationTests.swift */,
+				F7C21F57249AB5180007F8CB /* KeyValueStorageIntegrationTests.swift */,
+				F7C21F59249AB5400007F8CB /* RemoteConfigTests.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -1570,6 +1624,7 @@
 			children = (
 				F7B9A00623A5596C004A4011 /* StringsTests.swift */,
 				F7B9A00723A5596C004A4011 /* ImagesTests.swift */,
+				F7C21F42249AA0920007F8CB /* ColorsTests.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1582,6 +1637,9 @@
 				F7B9A05923A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift */,
 				F7B9A05C23A56CE6004A4011 /* FileFakes.swift */,
 				F7B9A07B23A581C7004A4011 /* RepoFakes.swift */,
+				F7C21F7A249ABEBE0007F8CB /* LoggedInUserVoFake.swift */,
+				F7C21F7E249ABF760007F8CB /* URLFakes.swift */,
+				F772AD1D249AC47500F6ED2D /* DynamicLinkFake.swift */,
 			);
 			path = fakeData;
 			sourceTree = "<group>";
@@ -1589,15 +1647,17 @@
 		F7B9A03F23A5597D004A4011 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F7B9A04023A5597D004A4011 /* StringExtensionTests.swift */,
-				F7B9A04123A5597D004A4011 /* TestDateExtensions.swift */,
+				F7C21F44249AA0CC0007F8CB /* ArrayExtensionTests.swift */,
 				F7B9A04223A5597D004A4011 /* DictionaryExtensionTests.swift */,
-				F7B9A04323A5597D004A4011 /* UIBackgroundFetchResultExtensionsTests.swift */,
 				F7B9A04423A5597D004A4011 /* EventBusMockExtensions.swift */,
-				F7B9A04523A5597D004A4011 /* XCTestCaseExtension.swift */,
-				F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */,
 				F74D1CA623B158DB001768BD /* ResultExtensions.swift */,
+				F74A9E3023AADA1200F56F7C /* RxSwiftExtensionTests.swift */,
+				F7C21F46249AA1400007F8CB /* SetExtensionTests.swift */,
+				F7B9A04023A5597D004A4011 /* StringExtensionTests.swift */,
+				F7B9A04323A5597D004A4011 /* UIBackgroundFetchResultExtensionsTests.swift */,
+				F7C21F48249AA1760007F8CB /* URLExtensionTests.swift */,
 				F7F17B3123B172ED00D68E71 /* WendyExtensionsTests.swift */,
+				F7B9A04523A5597D004A4011 /* XCTestCaseExtension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -1695,6 +1755,72 @@
 				F7C21F33249A98EC0007F8CB /* TokenExchangeResponseVo.swift */,
 			);
 			path = responses;
+			sourceTree = "<group>";
+		};
+		F7C21F4A249AAB320007F8CB /* adapter */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F4B249AAB3C0007F8CB /* JsonAdapterTest.swift */,
+			);
+			path = adapter;
+			sourceTree = "<group>";
+		};
+		F7C21F4F249AB0260007F8CB /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F50249AB0300007F8CB /* UserManagerIntegrationTests.swift */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		F7C21F54249AB3760007F8CB /* processor */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F55249AB3800007F8CB /* DynamicLinksProcessorTest.swift */,
+			);
+			path = processor;
+			sourceTree = "<group>";
+		};
+		F7C21F5F249AB5E90007F8CB /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F60249AB5F70007F8CB /* ButtonsBagTest.swift */,
+				F7C21F62249AB6050007F8CB /* DiffableUITableViewTests.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F7C21F64249AB61C0007F8CB /* type */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F65249AB62C0007F8CB /* CTALinkTests.swift */,
+			);
+			path = type;
+			sourceTree = "<group>";
+		};
+		F7C21F67249AB8240007F8CB /* tableviewcell */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F68249AB8370007F8CB /* header */,
+				F7C21F6E249AB8680007F8CB /* ExampleTableViewCell.swift */,
+			);
+			path = tableviewcell;
+			sourceTree = "<group>";
+		};
+		F7C21F68249AB8370007F8CB /* header */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F69249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
+		F7C21F73249AB9120007F8CB /* tableviewcell */ = {
+			isa = PBXGroup;
+			children = (
+				F7C21F74249AB9260007F8CB /* ExampleTableViewCellTests.swift */,
+			);
+			path = tableviewcell;
 			sourceTree = "<group>";
 		};
 		F7CC939622F0BAF800C7FF16 /* util */ = {
@@ -2420,6 +2546,7 @@
 				F7C21F1A249A8CDB0007F8CB /* LoginViewController.swift in Sources */,
 				F7B99FBA23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
 				F7B99FCC23A554AB004A4011 /* UIBarButtonItemExtensions.swift in Sources */,
+				F7C21F6A249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */,
 				F7B99FC323A554AB004A4011 /* CollectionExtensions.swift in Sources */,
 				F7C0FF2522E50888009E1203 /* UserEnteredBadDataError.swift in Sources */,
 				F714EB8723A4380100E7AFB5 /* Aliases.swift in Sources */,
@@ -2457,6 +2584,7 @@
 				F7D3B8D11E149B5F00F2C3CB /* Constants.swift in Sources */,
 				F7C21F2E249A98830007F8CB /* LoginViewModel.swift in Sources */,
 				F76ACF4E22F7848B00B1A41D /* Swizzler.swift in Sources */,
+				F7C21F76249AB9A70007F8CB /* FavoriteRepoPendingTask.swift in Sources */,
 				F76835DA1F9ED3C200219B30 /* ReposViewModel.swift in Sources */,
 				F7C21EA4249A79210007F8CB /* FieldsErrorResponse.swift in Sources */,
 				F7C21EA9249A79360007F8CB /* RateLimitingResponseError.swift in Sources */,
@@ -2543,6 +2671,7 @@
 				F7EFF5AD22DF6DC10053833A /* ActivityLogger.swift in Sources */,
 				F7C0FF1922E505F4009E1203 /* ConflictResponseError.swift in Sources */,
 				F7C21ED2249A81A70007F8CB /* StringReplaceUtil.swift in Sources */,
+				F7C21F6F249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */,
 				F7D9197023A6D5B200BF3CF7 /* DataExtensions.swift in Sources */,
 				F7C21F1F249A94190007F8CB /* ReposCoordinator.swift in Sources */,
 				F76835B91F9ED0BB00219B30 /* UserManager.swift in Sources */,
@@ -2554,11 +2683,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7C0FF1A22E505F4009E1203 /* ConflictResponseError.swift in Sources */,
+				F7C21F5A249AB5400007F8CB /* RemoteConfigTests.swift in Sources */,
 				F70B16E223A53F73006D5A60 /* AutoLenses.generated.swift in Sources */,
 				F7B9A04623A5597E004A4011 /* StringExtensionTests.swift in Sources */,
 				F7602FD722E224DB00FDB5F3 /* ErrorReportingActivityLogger.swift in Sources */,
 				F70B16E823A53F73006D5A60 /* AutoMockable.generated.swift in Sources */,
+				F7C21F66249AB62C0007F8CB /* CTALinkTests.swift in Sources */,
 				F785CB6F22E8D26400AA53B0 /* RepositorySyncService.swift in Sources */,
+				F7C21F7F249ABF760007F8CB /* URLFakes.swift in Sources */,
 				F7C0FF3222E660CC009E1203 /* MoyaAppendHeadersPlugin.swift in Sources */,
 				F7D9196923A6CF1700BF3CF7 /* MoyaProviderMocker.swift in Sources */,
 				F7C0FF2922E50D43009E1203 /* DebugActivityLogger.swift in Sources */,
@@ -2566,7 +2698,6 @@
 				F7C21EDE249A88540007F8CB /* AppRootViewController.swift in Sources */,
 				F7C21ED3249A81A70007F8CB /* StringReplaceUtil.swift in Sources */,
 				F7FC42E72499788900CF4B89 /* Fonts.swift in Sources */,
-				F7E654C923B19DE500C9728D /* PendingTaskForTests.swift in Sources */,
 				F7B9A02523A5596C004A4011 /* AtomicCounterCollectionTests.swift in Sources */,
 				F7C21EC9249A80DE0007F8CB /* OrderedDictionary.swift in Sources */,
 				F7D9195D23A6C5C200BF3CF7 /* DataDestroyer.swift in Sources */,
@@ -2579,6 +2710,7 @@
 				F7B99FAC23A554AB004A4011 /* DateExtensions.swift in Sources */,
 				F7B99FCA23A554AB004A4011 /* TimeIntervalExtensions.swift in Sources */,
 				F70B16FF23A5400D006D5A60 /* LaunchViewController.swift in Sources */,
+				F772AD1E249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */,
 				F7B9A05A23A56C5C004A4011 /* FileDownloadedEventBusExtrasFake.swift in Sources */,
 				F7B99F9A23A554AB004A4011 /* DispatchQueueExtensions.swift in Sources */,
 				F7CC939922F0BB0100C7FF16 /* ThreadUtil.swift in Sources */,
@@ -2590,21 +2722,26 @@
 				F7FC430B24997AC400CF4B89 /* UITableViewHeaderFooterViewExtensions.swift in Sources */,
 				F7C21EC4249A80BF0007F8CB /* Optional.swift in Sources */,
 				F7B9A03123A5596C004A4011 /* StringsTests.swift in Sources */,
+				F7C21F49249AA1760007F8CB /* URLExtensionTests.swift in Sources */,
 				F7B9A05723A56B58004A4011 /* AtomicCounter.swift in Sources */,
 				F712CDA122E3B86600272FF5 /* RepositoryDao.swift in Sources */,
+				F7C21F4C249AAB3C0007F8CB /* JsonAdapterTest.swift in Sources */,
 				F7B99FB823A554AB004A4011 /* StringExtensions.swift in Sources */,
 				F75944CB23A1B43A009258D9 /* FileName.swift in Sources */,
 				F7B99FA923A554AB004A4011 /* UIStackViewExtensions.swift in Sources */,
+				F7C21F70249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */,
 				F7B99FD723A556B7004A4011 /* FileDownloadedEventBusExtras.swift in Sources */,
 				F7B99FC123A554AB004A4011 /* RxSwiftExtensions.swift in Sources */,
 				F714EB6623A4352900E7AFB5 /* EventBusRegisterCounter.swift in Sources */,
 				F714EB6A23A4354F00E7AFB5 /* AtomicCounterCollection.swift in Sources */,
 				F7C21EAA249A79360007F8CB /* RateLimitingResponseError.swift in Sources */,
+				F7C21F77249AB9A80007F8CB /* FavoriteRepoPendingTask.swift in Sources */,
 				F7B99F9723A554AB004A4011 /* UIControlExtensions.swift in Sources */,
 				F7FC42FC24997A1300CF4B89 /* SetExtensions.swift in Sources */,
 				F7B99FB523A554AB004A4011 /* UIBackgroundFetchResultExtensions.swift in Sources */,
 				F7602FD922E224DB00FDB5F3 /* ConsoleLogger.swift in Sources */,
 				F7C21EBA249A7AF50007F8CB /* DynamicLinksProcessor.swift in Sources */,
+				F7C21F5C249AB58E0007F8CB /* StringReplaceUtilTest.swift in Sources */,
 				F70B16F623A5400D006D5A60 /* BaseNavigationController.swift in Sources */,
 				F7B99FBE23A554AB004A4011 /* IndexPathExtensions.swift in Sources */,
 				F70B16F323A5400D006D5A60 /* Theme.swift in Sources */,
@@ -2612,7 +2749,9 @@
 				F7D9196D23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
 				F7C21ECE249A816F0007F8CB /* AtomicBool.swift in Sources */,
 				F7B9A02C23A5596C004A4011 /* EventBusExtrasConverterTests.swift in Sources */,
+				F7C21F75249AB9260007F8CB /* ExampleTableViewCellTests.swift in Sources */,
 				F7C21F3A249A99060007F8CB /* LoggedInUserVo.swift in Sources */,
+				F7C21F63249AB6050007F8CB /* DiffableUITableViewTests.swift in Sources */,
 				F7C0FF2022E50847009E1203 /* UnauthorizedError.swift in Sources */,
 				F73668A023B16B9D0090E858 /* WendyExtensions.swift in Sources */,
 				F7B9A04B23A5597E004A4011 /* XCTestCaseExtension.swift in Sources */,
@@ -2636,8 +2775,10 @@
 				F7B99FA323A554AB004A4011 /* UIViewExtensions.swift in Sources */,
 				F7C21EBF249A80120007F8CB /* KeyValueStorageKeys.swift in Sources */,
 				F7B9A02F23A5596C004A4011 /* RepositorySyncServiceTests.swift in Sources */,
+				F7C21F6B249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */,
 				F7B99FA623A554AB004A4011 /* DictionaryExtensions.swift in Sources */,
-				F7B9A02B23A5596C004A4011 /* FirebaseAnalyticsActivityLoggerTests.swift in Sources */,
+				F7C21F5E249AB5D40007F8CB /* LoginViewControllerTests.swift in Sources */,
+				F7C21F43249AA0920007F8CB /* ColorsTests.swift in Sources */,
 				F7C0FF2322E5086C009E1203 /* UnhandledHttpResponseError.swift in Sources */,
 				F7C0FF3322E660D1009E1203 /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F714EB6223A3070E00E7AFB5 /* GitHubUsername.swift in Sources */,
@@ -2647,6 +2788,7 @@
 				F70B16F923A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
 				F7F17B3223B172ED00D68E71 /* WendyExtensionsTests.swift in Sources */,
 				F7B99FA023A554AB004A4011 /* FileManagerExtensions.swift in Sources */,
+				F7C21F45249AA0CC0007F8CB /* ArrayExtensionTests.swift in Sources */,
 				F72043F522E4F30800DE7EA9 /* Repo.swift in Sources */,
 				F7C21EE9249A88AA0007F8CB /* DiffableTableView.swift in Sources */,
 				F7B9A07A23A5810E004A4011 /* GitHubApiTest.swift in Sources */,
@@ -2662,26 +2804,30 @@
 				F714EB7223A435D500E7AFB5 /* SourceryProtocols.swift in Sources */,
 				F7B9A03323A5596C004A4011 /* TestUtil.swift in Sources */,
 				F7B9A03423A5596C004A4011 /* ThemeFake.swift in Sources */,
+				F7C21F51249AB0300007F8CB /* UserManagerIntegrationTests.swift in Sources */,
 				F75968F922E225500076253B /* DiTests.swift in Sources */,
 				F74D1CA523B15720001768BD /* HttpRequestRunnerTests.swift in Sources */,
-				F7B9A04723A5597E004A4011 /* TestDateExtensions.swift in Sources */,
 				F7C21F02249A8B010007F8CB /* OnOffButton.swift in Sources */,
 				F7B9A02323A5596C004A4011 /* AtomicTests.swift in Sources */,
 				F7C21F3F249A99790007F8CB /* UserRepository.swift in Sources */,
 				F7C21EA5249A79210007F8CB /* FieldsErrorResponse.swift in Sources */,
+				F7C21F58249AB5180007F8CB /* KeyValueStorageIntegrationTests.swift in Sources */,
 				F7602FDA22E224DB00FDB5F3 /* DevelopmentActivityLogger.swift in Sources */,
 				F7C21EEE249A88C20007F8CB /* PickerView.swift in Sources */,
 				F7B9A04823A5597E004A4011 /* DictionaryExtensionTests.swift in Sources */,
 				F7B99FBB23A554AB004A4011 /* UITableViewExtensions.swift in Sources */,
 				F7B9A06B23A5792C004A4011 /* Bundle.swift in Sources */,
+				F7C21F56249AB3800007F8CB /* DynamicLinksProcessorTest.swift in Sources */,
 				F7C21EF8249A89400007F8CB /* TellerLastUpdatedLabel.swift in Sources */,
 				F7B9A02723A5596C004A4011 /* BackgroundJobRunnerTests.swift in Sources */,
+				F7C21F61249AB5F70007F8CB /* ButtonsBagTest.swift in Sources */,
 				F7C21F2A249A97E90007F8CB /* EmptyViewPresents.swift in Sources */,
 				F7B9A05323A55D7A004A4011 /* FcmTopicKeys.swift in Sources */,
 				F7B9A05D23A56CE6004A4011 /* FileFakes.swift in Sources */,
 				F7C21EAF249A794A0007F8CB /* ServerDownError.swift in Sources */,
 				F7C21F0D249A8C0C0007F8CB /* AppCoordinator.swift in Sources */,
 				F7B99FD323A55695004A4011 /* EventBusExtrasConverter.swift in Sources */,
+				F7C21F47249AA1400007F8CB /* SetExtensionTests.swift in Sources */,
 				F712CDA422E3BCBC00272FF5 /* Database.swift in Sources */,
 				F7C0FF1422E50296009E1203 /* ResponseProcessor.swift in Sources */,
 				F7C0FF3022E51689009E1203 /* EventBus.swift in Sources */,
@@ -2720,10 +2866,12 @@
 				F7B9A01523A5596C004A4011 /* ErrorForTesting.swift in Sources */,
 				F7B9A04A23A5597E004A4011 /* EventBusMockExtensions.swift in Sources */,
 				F7C21EFD249A89F20007F8CB /* Menu.swift in Sources */,
+				F7C21F4E249AAB710007F8CB /* PendingTaskForTests.swift in Sources */,
 				F7A228D523B10A77009E31A2 /* HttpRequestRunner.swift in Sources */,
 				F712CDA722E3BD7B00272FF5 /* GitHubAPI.swift in Sources */,
 				F7B9A07C23A581C7004A4011 /* RepoFakes.swift in Sources */,
 				F7C0FF3522E66122009E1203 /* UserManager.swift in Sources */,
+				F7C21F7B249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */,
 				F7602FD622E224DB00FDB5F3 /* ActivityLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2750,7 +2898,6 @@
 				F76765CD22F78AD800ED2A11 /* Constants.swift in Sources */,
 				F7B99F9523A554AB004A4011 /* UserDefaultsExtensions.swift in Sources */,
 				F70B16F423A5400D006D5A60 /* Theme.swift in Sources */,
-				F7E654CA23B19DE600C9728D /* PendingTaskForTests.swift in Sources */,
 				F7C21EF4249A88D60007F8CB /* RemoteImageView.swift in Sources */,
 				F7FC431124997B0500CF4B89 /* UIWindowExtensions.swift in Sources */,
 				F7D9196E23A6CF5D00BF3CF7 /* LaunchAppState.swift in Sources */,
@@ -2802,6 +2949,7 @@
 				F714EB7823A4363000E7AFB5 /* BackgroundJobRunner.swift in Sources */,
 				F7B99FA423A554AB004A4011 /* UIViewExtensions.swift in Sources */,
 				F7C21EBB249A7AF50007F8CB /* DynamicLinksProcessor.swift in Sources */,
+				F772AD1F249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */,
 				F767659A22F78AB400ED2A11 /* EventBus.swift in Sources */,
 				F76765A522F78ABA00ED2A11 /* UnhandledHttpResponseError.swift in Sources */,
 				F7D9197223A6D5B200BF3CF7 /* DataExtensions.swift in Sources */,
@@ -2819,7 +2967,9 @@
 				F7B99FC823A554AB004A4011 /* UIImageExtensions.swift in Sources */,
 				F70B170023A5400D006D5A60 /* LaunchViewController.swift in Sources */,
 				F76765A722F78AC000ED2A11 /* RepoModel.swift in Sources */,
+				F7C21F78249AB9A80007F8CB /* FavoriteRepoPendingTask.swift in Sources */,
 				F70B16FA23A5400D006D5A60 /* BasePopoverViewController.swift in Sources */,
+				F7C21F71249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */,
 				F7C21F08249A8BC50007F8CB /* AccessibilityIdentifiers.swift in Sources */,
 				F7C21F36249A98EC0007F8CB /* TokenExchangeResponseVo.swift in Sources */,
 				F7B99F9823A554AB004A4011 /* UIControlExtensions.swift in Sources */,
@@ -2856,13 +3006,16 @@
 				F76765B122F78AC000ED2A11 /* DebugActivityLogger.swift in Sources */,
 				F7B99F9B23A554AB004A4011 /* DispatchQueueExtensions.swift in Sources */,
 				F70B16F723A5400D006D5A60 /* BaseNavigationController.swift in Sources */,
+				F7C21F7C249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */,
 				F7FC42E82499788900CF4B89 /* Fonts.swift in Sources */,
 				F7B99FCB23A554AB004A4011 /* TimeIntervalExtensions.swift in Sources */,
 				F7C21F21249A94190007F8CB /* ReposCoordinator.swift in Sources */,
 				F7C21EE5249A88970007F8CB /* ButtonsBag.swift in Sources */,
+				F7C21F6C249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */,
 				F7C21ECA249A80DE0007F8CB /* OrderedDictionary.swift in Sources */,
 				F76765AE22F78AC000ED2A11 /* ConsoleLogger.swift in Sources */,
 				F76765B022F78AC000ED2A11 /* FirebaseAnalyticsActivityLogger.swift in Sources */,
+				F7C21F80249ABF760007F8CB /* URLFakes.swift in Sources */,
 				F76765AB22F78AC000ED2A11 /* ActivityLogger.swift in Sources */,
 				F7B9A07023A57CD1004A4011 /* Images.swift in Sources */,
 				F76765BF22F78AD800ED2A11 /* HttpLoggerMoyaPlugin.swift in Sources */,
@@ -2891,6 +3044,7 @@
 				F7C21EA7249A79210007F8CB /* FieldsErrorResponse.swift in Sources */,
 				F7A8555C23A6F07B009362B0 /* ConflictResponseError.swift in Sources */,
 				F7A8554823A6F062009362B0 /* EventBusRegisterCounter.swift in Sources */,
+				F7C21F81249ABF760007F8CB /* URLFakes.swift in Sources */,
 				F7A8555823A6F073009362B0 /* FileStorage.swift in Sources */,
 				F7A8557023A6F08F009362B0 /* FileName.swift in Sources */,
 				F7A8554923A6F062009362B0 /* AtomicCounterCollection.swift in Sources */,
@@ -2902,6 +3056,7 @@
 				F7A8556D23A6F08C009362B0 /* DebugActivityLogger.swift in Sources */,
 				F74D1CA923B158DB001768BD /* ResultExtensions.swift in Sources */,
 				F7A8554723A6F062009362B0 /* ThreadUtil.swift in Sources */,
+				F772AD20249AC47500F6ED2D /* DynamicLinkFake.swift in Sources */,
 				F7A8558823A6F0A8009362B0 /* UIBackgroundFetchResultExtensions.swift in Sources */,
 				F7A8556723A6F08C009362B0 /* ActivityLogger.swift in Sources */,
 				F7A8554F23A6F06B009362B0 /* UserManager.swift in Sources */,
@@ -2934,6 +3089,7 @@
 				F7C21F41249A99790007F8CB /* UserRepository.swift in Sources */,
 				F7C21EB6249A7A900007F8CB /* Collections.swift in Sources */,
 				F7A8557D23A6F0A3009362B0 /* DataDestroyer.swift in Sources */,
+				F7C21F6D249AB8470007F8CB /* TextHeaderTableViewHeaderView.swift in Sources */,
 				F7A8553A23A6F015009362B0 /* UITest.swift in Sources */,
 				F7FC430824997A8A00CF4B89 /* UINavigationControllerExtensions.swift in Sources */,
 				F7A8553E23A6F039009362B0 /* AutoMockable.generated.swift in Sources */,
@@ -2956,6 +3112,8 @@
 				F7254EB623A7BD270027F12E /* HttpLoggerMoyaPlugin.swift in Sources */,
 				F7A8556323A6F084009362B0 /* Dao.swift in Sources */,
 				F7A8559323A6F0B4009362B0 /* AppDelegate.swift in Sources */,
+				F7C21F79249AB9A90007F8CB /* FavoriteRepoPendingTask.swift in Sources */,
+				F7C21F7D249ABEBE0007F8CB /* LoggedInUserVoFake.swift in Sources */,
 				F7C21F1D249A8CDB0007F8CB /* LoginViewController.swift in Sources */,
 				F7A8555223A6F073009362B0 /* EventBus.swift in Sources */,
 				F7A8556423A6F084009362B0 /* CoreDataManager.swift in Sources */,
@@ -3010,7 +3168,6 @@
 				F7A8557E23A6F0A8009362B0 /* CollectionExtensions.swift in Sources */,
 				F7A8558423A6F0A8009362B0 /* MoyaExtensions.swift in Sources */,
 				F7A8557423A6F08F009362B0 /* OnComplete.swift in Sources */,
-				F7E654CB23B19DE600C9728D /* PendingTaskForTests.swift in Sources */,
 				F7C21EAC249A79360007F8CB /* RateLimitingResponseError.swift in Sources */,
 				F7A8556123A6F084009362B0 /* RepoModel.swift in Sources */,
 				F7A8554123A6F043009362B0 /* BaseNavigationController.swift in Sources */,
@@ -3019,6 +3176,7 @@
 				F7A8559223A6F0A8009362B0 /* DataExtensions.swift in Sources */,
 				F7C21EC6249A80BF0007F8CB /* Optional.swift in Sources */,
 				F7254EC723A7BDDB0027F12E /* FileFakes.swift in Sources */,
+				F7C21F72249AB8680007F8CB /* ExampleTableViewCell.swift in Sources */,
 				F7A8555523A6F073009362B0 /* KeyValueStorage.swift in Sources */,
 				F7254EC923A7BE4F0027F12E /* TestUtil.swift in Sources */,
 				F7A8554223A6F047009362B0 /* BasePopoverViewController.swift in Sources */,

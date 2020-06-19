@@ -1,20 +1,14 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
-class AtomicTests: XCTestCase {
+class AtomicTests: UnitTest {
     private var atomic: Atomic<String>!
 
     override func setUp() {
         super.setUp()
 
         atomic = Atomic()
-    }
-
-    override func tearDown() {
-        TestUtil.tearDown()
-
-        super.tearDown()
     }
 
     func test_init_expectNil() {

@@ -1,15 +1,17 @@
 import Foundation
 
-enum RepoFake {
-    case repoForUser(username: GitHubUsername)
-    case randomRepo
+struct RepoFakes {
+    var random: Repo {
+        Repo(fullName: "\("".random(length: 4)) \("".random(length: 8))", repoDescription: "".random(length: 18))
+    }
 
-    var fake: Repo {
-        switch self {
-        case .repoForUser(let username):
-            return Repo(fullName: username, repoDescription: "".randomName(length: 18))
-        case .randomRepo:
-            return Repo(fullName: "\("".randomName(length: 4)) \("".randomName(length: 8))", repoDescription: "".randomName(length: 18))
-        }
+    func repoForUser(username: GitHubUsername) -> Repo {
+        Repo(fullName: username, repoDescription: "".random(length: 18))
+    }
+}
+
+extension Repo {
+    static var fake: RepoFakes {
+        RepoFakes()
     }
 }

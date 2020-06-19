@@ -1,18 +1,8 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
-class NotificationUtilTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-    }
-
-    override class func tearDown() {
-        TestUtil.tearDown()
-
-        super.tearDown()
-    }
-
+class NotificationUtilTests: UnitTest {
     func test_parseDataNotification_givenEmptyUserInfo_expectNil() {
         let actual = NotificationUtil.parseDataNotification(from: [:])
 

@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
 class StringExtensionTests: XCTestCase {
@@ -53,5 +53,40 @@ class StringExtensionTests: XCTestCase {
         given.capitalizeFirstLetter()
 
         XCTAssertEqual(expected, given)
+    }
+
+    func test_percentUrlEncode_givenhttpslink_expectEncodeCorrectly() {
+        let given = "https://foo.com?file=name of file.jpg"
+        let expected = "https://foo.com?file=name%20of%20file.jpg"
+
+        let actual = given.percentUrlEncode()!
+
+        XCTAssertEqual(actual, expected)
+    }
+
+    // MARK: isValidEmail
+
+    func test_isValidEmail_givenEmptyString_expectFalse() {
+        let given = ""
+
+        let actual = given.isValidEmail()
+
+        XCTAssertFalse(actual)
+    }
+
+    func test_isValidEmail_givenInvalidEmailAddress_expectFalse() {
+        let given = "@you.com"
+
+        let actual = given.isValidEmail()
+
+        XCTAssertFalse(actual)
+    }
+
+    func test_isValidEmail_givenValidEmailAddress_expectFalse() {
+        let given = "you@you.com"
+
+        let actual = given.isValidEmail()
+
+        XCTAssertTrue(actual)
     }
 }

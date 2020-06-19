@@ -1,5 +1,5 @@
+@testable import App
 import Foundation
-@testable import iOSBlanky
 import XCTest
 
 class NotificationCenterEventBusIntegrationTests: XCTestCase {
@@ -10,6 +10,8 @@ class NotificationCenterEventBusIntegrationTests: XCTestCase {
     let defaultEvent = EventBusEvent.logout
 
     override func setUp() {
+        super.setUp()
+
         listener = EventBusEventListenerMock()
         loggerMock = ActivityLoggerMock()
 

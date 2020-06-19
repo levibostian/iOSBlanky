@@ -6,6 +6,10 @@ extension XCTestCase {
         waitForExpectations(timeout: TestUtil.defaultWaitTimeout, handler: nil)
     }
 
+    func waitForExpectations(for expectations: [XCTestExpectation], enforceOrder: Bool = false, file: StaticString = #file, line: UInt = #line) {
+        wait(for: expectations, timeout: TestUtil.defaultWaitTimeout, enforceOrder: enforceOrder)
+    }
+
     func XCTAssertBackgroundThread(file: StaticString = #file, line: UInt = #line) {
         if Thread.isMainThread {
             XCTFail("You're on the main thread. That's not what you wanted.")
@@ -20,5 +24,12 @@ extension XCTestCase {
 
     var bundle: Bundle {
         Bundle(for: TestUtil.self)
+    }
+}
+
+extension UIButton {
+    func assertActionSet(forTarget target: Any) {
+        let numberOfActions = actions(forTarget: target, forControlEvent: .touchUpInside)?.count ?? 0
+        XCTAssertGreaterThan(numberOfActions, 0)
     }
 }
