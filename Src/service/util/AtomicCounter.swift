@@ -1,29 +1,39 @@
 import Foundation
 
+/**
+ Increment or decrement number in an atomic way.
+
+ Note: Requests to decrement below 0 are ignored.
+ */
 class AtomicCounter {
     private let atomic = Atomic<Int>()
 
     init() {
-        atomic.set(0)
+        atomic.value = 0
     }
 
     var value: Int {
-        atomic.get!
+        atomic.value!
     }
 
     func increment() -> Int {
-        atomic.set { (currentValue) -> Int? in
-            currentValue! + 1
-        }!
+        let oldValue = atomic.value!
+        let newValue = oldValue + 1
+        atomic.value = newValue
+
+        return newValue
     }
 
     func decrement() -> Int {
-        atomic.set { (currentValue) -> Int? in
-            if currentValue! == 0 {
-                fatalError("You're trying to decrement a value that's already 0. Probably means you have a bug.")
-            }
+        let oldValue = atomic.value!
+        guard oldValue > 0 else {
+            return oldValue // ignore request to decrement below 0
+        }
 
-            return currentValue! - 1
-        }!
+        let newValue = oldValue - 1
+
+        atomic.value = newValue
+
+        return newValue
     }
 }

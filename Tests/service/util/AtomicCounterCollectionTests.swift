@@ -73,7 +73,7 @@ class AtomicCounterCollectionTests: UnitTest {
         let key = "key"
 
         _ = atomicCounter.increment(for: key)
-        let actual = atomicCounter.decrement(for: key)
+        let actual = try! atomicCounter.decrement(for: key)
 
         XCTAssertEqual(expected, actual)
     }
@@ -87,7 +87,7 @@ class AtomicCounterCollectionTests: UnitTest {
         }
 
         (0..<expected).forEach { _ in
-            _ = atomicCounter.decrement(for: key)
+            _ = try! atomicCounter.decrement(for: key)
         }
 
         let actual = atomicCounter.value(for: key)
@@ -103,16 +103,25 @@ class AtomicCounterCollectionTests: UnitTest {
             _ = atomicCounter.increment(for: key)
             _ = atomicCounter.increment(for: key)
 
-            _ = atomicCounter.decrement(for: key)
+            _ = try! atomicCounter.decrement(for: key)
         }
 
-        _ = atomicCounter.decrement(for: key)
+        _ = try! atomicCounter.decrement(for: key)
         _ = atomicCounter.increment(for: key)
-        _ = atomicCounter.decrement(for: key)
+        _ = try! atomicCounter.decrement(for: key)
 
         let actual = atomicCounter.value(for: key)
 
         XCTAssertEqual(actual, 1)
+    }
+
+    func test_decrement_givenDecrementBelowZero_expectThrow() {
+        let key = "key"
+
+        _ = atomicCounter.increment(for: key)
+        _ = try! atomicCounter.decrement(for: key)
+
+        XCTAssertThrowsError(try atomicCounter.decrement(for: key))
     }
 
     func test_clear_givenInit_expectNoEffect() {

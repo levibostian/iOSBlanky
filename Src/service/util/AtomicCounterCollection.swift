@@ -1,5 +1,19 @@
 import Foundation
 
+enum AtomicCounterCollectionError: LocalizedError {
+    case cannotDecrementBelowZero
+
+    var errorDescription: String? {
+        localizedDescription
+    }
+
+    var localizedDescription: String {
+        switch self {
+        case .cannotDecrementBelowZero: return "Cannot decrement below zero"
+        }
+    }
+}
+
 class AtomicCounterCollection<DataType: Hashable> {
     fileprivate let atomic = Atomic<[DataType: Int]>()
 
@@ -8,11 +22,11 @@ class AtomicCounterCollection<DataType: Hashable> {
     }
 
     func clear() {
-        atomic.set([:])
+        atomic.value = [:]
     }
 
     func value(for data: DataType) -> Int {
-        if let currentValue = atomic.get![data] {
+        if let currentValue = atomic.value![data] {
             return currentValue
         }
 
@@ -20,34 +34,26 @@ class AtomicCounterCollection<DataType: Hashable> {
     }
 
     func increment(for data: DataType) -> Int {
-        atomic.set { (currentCollection) -> [DataType: Int]? in
-            let currentIncrementValue = currentCollection![data]
-            var newValue = currentCollection!
+        var collection = atomic.value!
 
-            var newIncrementValue = 1
-            if let currentIncrementValue = currentIncrementValue {
-                newIncrementValue = currentIncrementValue + 1
-            }
+        let newItemValue = (collection[data] ?? 0) + 1
+        collection[data] = newItemValue
+        atomic.value = collection
 
-            newValue[data] = newIncrementValue
-
-            return newValue
-        }![data]!
+        return newItemValue
     }
 
-    func decrement(for data: DataType) -> Int {
-        atomic.set { (currentCollection) -> [DataType: Int]? in
-            let currentIncrementValue = currentCollection![data]
-            var newValue = currentCollection!
+    func decrement(for data: DataType) throws -> Int {
+        var collection = atomic.value!
 
-            var newIncrementValue = 1
-            if let currentIncrementValue = currentIncrementValue {
-                newIncrementValue = currentIncrementValue - 1
-            }
+        let newItemValue = (collection[data] ?? 0) - 1
+        guard newItemValue >= 0 else {
+            throw AtomicCounterCollectionError.cannotDecrementBelowZero
+        }
 
-            newValue[data] = newIncrementValue
+        collection[data] = newItemValue
+        atomic.value = collection
 
-            return newValue
-        }![data]!
+        return newItemValue
     }
 }

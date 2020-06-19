@@ -3,16 +3,16 @@ import Foundation
 class AtomicBool: ExpressibleByBooleanLiteral {
     fileprivate let atomic: Atomic<Bool> = {
         let atomic: Atomic<Bool> = Atomic()
-        atomic.set(false)
+        atomic.value = false
         return atomic
     }()
 
     var value: Bool {
         get {
-            atomic.get!
+            atomic.value!
         }
         set {
-            atomic.set(newValue)
+            atomic.value = newValue
         }
     }
 
@@ -23,6 +23,6 @@ class AtomicBool: ExpressibleByBooleanLiteral {
     }
 
     required init(booleanLiteral value: Bool) {
-        atomic.set(value)
+        atomic.value = value
     }
 }

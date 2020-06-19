@@ -12,7 +12,7 @@ class AtomicTests: UnitTest {
     }
 
     func test_init_expectNil() {
-        let actual = atomic.get
+        let actual = atomic.value
 
         XCTAssertNil(actual)
     }
@@ -20,9 +20,9 @@ class AtomicTests: UnitTest {
     func test_givenCallSetWithNewValue_expectGetCallReceivesNewValue() {
         let expect = "new value"
 
-        atomic.set(expect)
+        atomic.value = expect
 
-        let actual = atomic.get
+        let actual = atomic.value
 
         XCTAssertEqual(expect, actual)
     }
@@ -31,35 +31,11 @@ class AtomicTests: UnitTest {
         let expect = "new value"
 
         DispatchQueue.global(qos: .background).sync {
-            atomic.set(expect)
+            atomic.value = expect
         }
 
-        let actual = atomic.get
+        let actual = atomic.value
 
         XCTAssertEqual(expect, actual)
-    }
-
-    func test_givenSetNewValueFromHandler_expectReceiveNewlySetValue() {
-        let expect = "new value"
-
-        let actual = atomic.set { (oldValue) -> String? in
-            expect
-        }
-
-        XCTAssertEqual(expect, actual)
-    }
-
-    func test_setWithHandler_expectToGetOldValueInLambda() {
-        let expectOldValue = "oldValue"
-
-        atomic.set(expectOldValue)
-
-        let actual = atomic.set { (actualOldValue) -> String? in
-            XCTAssertEqual(expectOldValue, actualOldValue)
-
-            return nil
-        }
-
-        XCTAssertNil(actual)
     }
 }

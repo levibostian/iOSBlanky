@@ -44,7 +44,7 @@ class EventBusRegisterCounter {
 
     func unregister(event: EventBusEvent) {
         if let listener = assertListener {
-            if counter.decrement(for: event) == 0 {
+            if try! counter.decrement(for: event) == 0 {
                 eventBus.unregister(listener, event: event)
             }
         }

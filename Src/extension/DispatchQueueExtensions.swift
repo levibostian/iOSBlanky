@@ -9,4 +9,8 @@ extension DispatchQueue {
             async(execute: run)
         }
     }
+
+    static func newUniqueQueue(label: String, qos: DispatchQoS = .userInitiated) -> DispatchQueue {
+        DispatchQueue(label: "\(label) \(UUID())", qos: qos)
+    }
 }
