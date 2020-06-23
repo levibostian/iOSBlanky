@@ -39,5 +39,12 @@ extension {{ type.name }} {
        {{type.name}}({% for argument in type.storedVariables %}{{argument.name}}: {% if variable.name == argument.name %}{{variable.name}}{% else %}{{type.name|lowercase}}.{{argument.name}}{% endif %}{{ ', ' if not forloop.last }}{% endfor %})
     }
   ){% endfor %}
+
+  // Convenient set functions to edit a property of the immutable object
+{% for variable in type.storedVariables %}
+  func {{ variable.name }}Set(_ {{variable.name}}: {{variable.typeName}}) -> {{type.name}} {
+    {{type.name}}({% for argument in type.storedVariables %}{{argument.name}}: {% if variable.name == argument.name %}{{variable.name}}{% else %}self.{{argument.name}}{% endif %}{{ ', ' if not forloop.last }}{% endfor %})
+  }
+{% endfor %}  
 }
 {% endfor %}

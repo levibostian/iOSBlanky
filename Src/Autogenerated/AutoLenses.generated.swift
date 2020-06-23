@@ -49,4 +49,25 @@ extension AppState {
                                                       set: { mainMenuCta, appstate in
                                                           AppState(repos: appstate.repos, previousReposSearchUsername: appstate.previousReposSearchUsername, loggedInUser: appstate.loggedInUser, networkQueue: appstate.networkQueue, mainMenuCta: mainMenuCta)
         })
+
+    // Convenient set functions to edit a property of the immutable object
+    func reposSet(_ repos: [Repo]?) -> AppState {
+        AppState(repos: repos, previousReposSearchUsername: previousReposSearchUsername, loggedInUser: loggedInUser, networkQueue: networkQueue, mainMenuCta: mainMenuCta)
+    }
+
+    func previousReposSearchUsernameSet(_ previousReposSearchUsername: String?) -> AppState {
+        AppState(repos: repos, previousReposSearchUsername: previousReposSearchUsername, loggedInUser: loggedInUser, networkQueue: networkQueue, mainMenuCta: mainMenuCta)
+    }
+
+    func loggedInUserSet(_ loggedInUser: LoggedInUserVo?) -> AppState {
+        AppState(repos: repos, previousReposSearchUsername: previousReposSearchUsername, loggedInUser: loggedInUser, networkQueue: networkQueue, mainMenuCta: mainMenuCta)
+    }
+
+    func networkQueueSet(_ networkQueue: [NetworkQueueItem]?) -> AppState {
+        AppState(repos: repos, previousReposSearchUsername: previousReposSearchUsername, loggedInUser: loggedInUser, networkQueue: networkQueue, mainMenuCta: mainMenuCta)
+    }
+
+    func mainMenuCtaSet(_ mainMenuCta: CTA?) -> AppState {
+        AppState(repos: repos, previousReposSearchUsername: previousReposSearchUsername, loggedInUser: loggedInUser, networkQueue: networkQueue, mainMenuCta: mainMenuCta)
+    }
 }
