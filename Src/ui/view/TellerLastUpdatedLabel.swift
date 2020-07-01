@@ -10,7 +10,7 @@ class TellerLastUpdatedLabel: UILabel {
     private var lastUpdated: Date?
 
     func setDataState<T: Any>(_ dataState: CacheState<T>) {
-        if case .cache(let cache, let cacheAge) = dataState.state {
+        if case .cache(_, let cacheAge) = dataState.state {
             self.lastUpdated = cacheAge
 
             isHidden = false

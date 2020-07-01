@@ -54,6 +54,11 @@ extension DI {
     }
 }
 
+import Boquila
+
+typealias RemoteConfigAdapter = Boquila.RemoteConfigAdapter
+typealias RemoteConfigAdapterPlugin = Boquila.RemoteConfigAdapterPlugin
+
 // sourcery: InjectRegister = "UserDefaults"
 // sourcery: InjectCustom
 extension UserDefaults {}

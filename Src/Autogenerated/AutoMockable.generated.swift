@@ -1170,46 +1170,6 @@ class PendingTasksMock: PendingTasks {
     }
 }
 
-class RemoteConfigProviderMock: RemoteConfigProvider {
-    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
-
-    var reposCta: CTA?
-
-    // MARK: - fetch
-
-    var fetchOnCompleteCallsCount = 0
-    var fetchOnCompleteCalled: Bool {
-        fetchOnCompleteCallsCount > 0
-    }
-
-    var fetchOnCompleteReceivedOnComplete: ((Result<Void, Error>) -> Void)?
-    var fetchOnCompleteReceivedInvocations: [((Result<Void, Error>) -> Void)?] = []
-    var fetchOnCompleteClosure: ((((Result<Void, Error>) -> Void)?) -> Void)?
-
-    func fetch(onComplete: ((Result<Void, Error>) -> Void)?) {
-        mockCalled = true
-        fetchOnCompleteCallsCount += 1
-        fetchOnCompleteReceivedOnComplete = onComplete
-        fetchOnCompleteReceivedInvocations.append(onComplete)
-        fetchOnCompleteClosure?(onComplete)
-    }
-
-    // MARK: - activate
-
-    var activateCallsCount = 0
-    var activateCalled: Bool {
-        activateCallsCount > 0
-    }
-
-    var activateClosure: (() -> Void)?
-
-    func activate() {
-        mockCalled = true
-        activateCallsCount += 1
-        activateClosure?()
-    }
-}
-
 class ReposRepositoryMock: ReposRepository {
     var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
 

@@ -35,8 +35,8 @@ class HttpLoggerMoyaPlugin: PluginType {
             }
         case .failure(let error):
             var logError = true
-            if case .underlying(let underlyingError) = error {
-                if let underlyingError = underlyingError.0 as? AFError {
+            if case .underlying(let underlyingError, _) = error {
+                if let underlyingError = underlyingError as? AFError {
                     switch underlyingError {
                     case .explicitlyCancelled: // request was cancelled. No big deal. https://github.com/Alamofire/Alamofire/blob/262fc46a273c4e01483aee933a8230b4b253ef49/Source/Request.swift#L377
                         logError = false

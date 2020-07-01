@@ -26,12 +26,12 @@ enum Dependency: CaseIterable {
     case threadUtil
     case userManager
     case userRepository
-    case coreDataManager
     case bundle
+    case coreDataManager
+    case remoteConfigAdapter
     case dataDestroyer
     case database
     case fileStorage
-    case remoteConfigProvider
     case gitHubRequestRunner
     case secureStorage
     case gitHubMoyaProvider
@@ -85,12 +85,12 @@ class DI {
         case .threadUtil: return _threadUtil as! T
         case .userManager: return _userManager as! T
         case .userRepository: return _userRepository as! T
-        case .coreDataManager: return _coreDataManager as! T
         case .bundle: return _bundle as! T
+        case .coreDataManager: return _coreDataManager as! T
+        case .remoteConfigAdapter: return _remoteConfigAdapter as! T
         case .dataDestroyer: return _dataDestroyer as! T
         case .database: return _database as! T
         case .fileStorage: return _fileStorage as! T
-        case .remoteConfigProvider: return _remoteConfigProvider as! T
         case .gitHubRequestRunner: return _gitHubRequestRunner as! T
         case .secureStorage: return _secureStorage as! T
         case .gitHubMoyaProvider: return _gitHubMoyaProvider as! T
@@ -268,6 +268,14 @@ class DI {
         AppUserRepository(githubApi: _gitHubAPI, jsonAdapter: _jsonAdapter)
     }
 
+    // Bundle (custom. property getter provided via extension)
+    private var _bundle: Bundle {
+        if let overridenDep = overrides[.bundle] {
+            return overridenDep as! Bundle
+        }
+        return bundle
+    }
+
     // CoreDataManager (singleton)
     private var _coreDataManager: CoreDataManager {
         if let overridenDep = overrides[.coreDataManager] {
@@ -293,12 +301,12 @@ class DI {
         CoreDataManager()
     }
 
-    // Bundle (custom. property getter provided via extension)
-    private var _bundle: Bundle {
-        if let overridenDep = overrides[.bundle] {
-            return overridenDep as! Bundle
+    // RemoteConfigAdapter (custom. property getter provided via extension)
+    private var _remoteConfigAdapter: RemoteConfigAdapter {
+        if let overridenDep = overrides[.remoteConfigAdapter] {
+            return overridenDep as! RemoteConfigAdapter
         }
-        return bundle
+        return remoteConfigAdapter
     }
 
     // DataDestroyer
@@ -348,31 +356,6 @@ class DI {
 
     private func _get_fileStorage() -> FileStorage {
         FileMangerFileStorage(bundle: _bundle)
-    }
-
-    // RemoteConfigProvider (singleton)
-    private var _remoteConfigProvider: RemoteConfigProvider {
-        if let overridenDep = overrides[.remoteConfigProvider] {
-            return overridenDep as! RemoteConfigProvider
-        }
-        return remoteConfigProvider
-    }
-
-    private let _remoteConfigProvider_queue = DispatchQueue(label: "DI_get_remoteConfigProvider_queue")
-    private var _remoteConfigProvider_shared: RemoteConfigProvider?
-    var remoteConfigProvider: RemoteConfigProvider {
-        _remoteConfigProvider_queue.sync {
-            if let overridenDep = self.overrides[.remoteConfigProvider] {
-                return overridenDep as! RemoteConfigProvider
-            }
-            let res = _remoteConfigProvider_shared ?? _get_remoteConfigProvider()
-            _remoteConfigProvider_shared = res
-            return res
-        }
-    }
-
-    private func _get_remoteConfigProvider() -> RemoteConfigProvider {
-        FirebaseRemoteConfig(logger: _activityLogger, environment: _environment, jsonAdapter: _jsonAdapter, stringReplaceUtil: _stringReplaceUtil, keyValueStorage: _keyValueStorage, fileStorage: _fileStorage)
     }
 
     // GitHubRequestRunner (custom. property getter provided via extension)

@@ -1,3 +1,4 @@
+import Boquila
 import Firebase
 import IQKeyboardManagerSwift
 import RxSwift
@@ -9,7 +10,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
 
-    fileprivate var remoteConfig: RemoteConfigProvider!
     fileprivate var userManager: UserManager!
     fileprivate var eventBusRegister: EventBusRegisterCounter!
     fileprivate var logger: ActivityLogger!
@@ -89,9 +89,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // Since we are doing data operations, perform them all on background.
                     DispatchQueue.global(qos: .background).async {
                         let moyaMockProvider = MoyaProviderMocker<GitHubService>()
-                        let remoteConfigHelper = UIHelperRemoteConfig()
+                        let remoteConfigMock = MockRemoteConfigAdapter(plugins: RemoteConfigUtil.plugins)
                         DI.shared.override(.gitHubMoyaProvider, value: moyaMockProvider.moyaProvider, forType: GitHubMoyaProvider.self)
-                        DI.shared.override(.remoteConfigProvider, value: remoteConfigHelper, forType: RemoteConfigProvider.self)
+                        DI.shared.override(.remoteConfigAdapter, value: remoteConfigMock, forType: RemoteConfigAdapter.self)
 
                         let launchStateString: String = ProcessInfo.processInfo.environment["launch_state"]!
                         let jsonAdapter: JsonAdapter = DI.shared.inject(.jsonAdapter)
@@ -114,10 +114,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func afterStartupTasks() {
         // Activate previously fetched remote config, then kick off new refresh. Important to run in this order!
-        let remoteConfig: RemoteConfigProvider = DI.shared.inject(.remoteConfigProvider)
+        let remoteConfig: RemoteConfigAdapter = DI.shared.inject(.remoteConfigAdapter)
 
         remoteConfig.activate()
-        remoteConfig.fetch(onComplete: nil)
+        remoteConfig.refresh { [weak self] result in
+            if case .failure(let error) = result {
+                self?.logger.errorOccurred(error)
+            }
+        }
 
         appCoordinator = AppCoordinator(window: window!)
         appCoordinator?.start()

@@ -1,5 +1,14 @@
 PODS:
   - Alamofire (5.2.1)
+  - Boquila (1.0.0-alpha.3):
+    - Boquila/Core (= 1.0.0-alpha.3)
+  - Boquila/Core (1.0.0-alpha.3)
+  - Boquila/Firebase (1.0.0-alpha.3):
+    - Boquila/Core
+    - Firebase/Analytics
+    - Firebase/RemoteConfig
+  - Boquila/Testing (1.0.0-alpha.3):
+    - Boquila/Core
   - Dwifft (0.9)
   - Empty (0.1.0)
   - Firebase/Analytics (6.27.0):
@@ -166,6 +175,9 @@ PODS:
   - Wendy (0.5.0)
 
 DEPENDENCIES:
+  - Boquila (= 1.0.0-alpha.3)
+  - Boquila/Firebase (= 1.0.0-alpha.3)
+  - Boquila/Testing (= 1.0.0-alpha.3)
   - Dwifft (~> 0.9)
   - Empty (~> 0.1)
   - Firebase/Analytics
@@ -195,6 +207,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Boquila
     - Dwifft
     - Empty
     - Firebase
@@ -240,6 +253,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Boquila: d9cd359d3354316bdae47aa2e1928a75bf4996df
   Dwifft: 42912068ed2a8146077d1a1404df18625bd086e1
   Empty: cfb51c56de3ac8222df8d7bdc341b235395e42c2
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
@@ -283,6 +297,6 @@ SPEC CHECKSUMS:
   Teller: d5815aa65b068b34d8859d241263f90c16257ce8
   Wendy: fa67585a87c997c46314911e28b1838ab2b53aa1
 
-PODFILE CHECKSUM: babba75fb1304bdc3d7104574c77cb49ff3019dc
+PODFILE CHECKSUM: 7e50ee5bd457ef9a68186b51c1cf7acd4d7dfd4e
 
 COCOAPODS: 1.9.3

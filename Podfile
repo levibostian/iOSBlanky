@@ -25,6 +25,10 @@ def commonDepencencies
     pod 'Firebase/Performance'
     pod 'Firebase/Crashlytics'
 
+    pod 'Boquila', '1.0.0-alpha.3'
+    pod 'Boquila/Firebase', '1.0.0-alpha.3'
+    pod 'Boquila/Testing', '1.0.0-alpha.3'
+
     pod 'Dwifft', '~> 0.9'
     pod 'SwiftCoordinator'
     pod 'Kingfisher', '~> 5'
