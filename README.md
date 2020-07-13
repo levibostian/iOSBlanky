@@ -95,7 +95,7 @@ Beyond getting your project to build, there are many more steps to get your proj
 
 Below, you will find a todo list of tasks to complete. This list is meant to be followed in order from top to bottom as some tasks depend on other tasks. 
 
-- [ ] Create an Apple Developer account if you have not already. Pay the annual membership fee so you get access to App Store Connect. This process takes a while to do so get this process started right away!
+- [ ] Create an Apple Developer account if you have not already. Pay the annual membership fee so you get access to App Store Connect. This process takes a while to do so get this process started right away! You can't do much else until the account is created so go do that now. 
 
 - [ ] Enable Travis-CI for your GitHub repository. The `.travis.yml` file is already made and fully configured for you. You should just need to [enable Travis](https://docs.travis-ci.com/user/tutorial/) and you're good to go! 
 
@@ -105,29 +105,30 @@ There are many environment variables within the `.travis.yml` file that you will
 
 Read up on this tool so you can use it in this project. 
 
-- [ ] Create a new [Firebase](https://firebase.google.com/) project for your app. Once you create a project, you will be asked to add an app to the project. Go ahead and add your first iOS app into Firebase. Once you do this, Firebase will give you a `GoogleService-Info.plist` file. This file belongs in the `_secrets` directory for `cici` to organize for you. 
-
 - [ ] ...wait until you have your Apple Developer account created fully and you have access to App Store Connect...
 
 - [ ] Make sure you are an admin in the new Apple Developer account. You must be an admin to create apps and setup the account going forward. 
 
-Fastlane needs to login to your Apple developer account. But, Apple requires that all accounts must use 2FA when they hold the `Account Holder` permission. To greatly simplify the process of using fastlane on a CI server, create a brand new Apple account just for CI tasks for this team.
+Fastlane needs to login to your Apple developer account. But, Apple requires that all accounts must use 2FA when they hold the `Account Holder` permission. To greatly simplify the process of using fastlane on a CI server, create a brand new Apple account just for CI tasks for this team. Give the account the "App Manager" role in permissions. They need to be able to push to the app store, edit metadata, edit certs/profiles, and some more so developer permission or marketing is not enough. 
 
 Make sure this new Apple account *doesn't* have 2-factor authentication enabled and doesn't have the `Account Holder` role. Invite it to your Apple account and then fill in `FASTLANE_USER` and `FASTLANE_PASSWORD` environment variables on the CI server. 
 
-- [ ] Run `fastlane create_app_online -c “Company Name”` on your local dev machine. [fastlane create_app_online](https://docs.fastlane.tools/actions/produce/) is used to create apps in your Apple Developer account. The CLI will ask you some questions to create the app. 
+- [ ] Run `fastlane create_app_online` on your local dev machine. [fastlane create_app_online](https://docs.fastlane.tools/actions/produce/) is used to create apps in your Apple Developer account. The CLI will ask you some questions to create the app. 
 
 Do this twice. Once for your production app, another one titled "YourAppName Testing" to be a testing version of the same app. Having 2 separate apps allows your team members to have multiple apps installed on their devices. 
 
-*Note:* If this command does not work for you, you can always create the accounts manually by logging into your Apple Developer account online. 
+*Note:* If asked for a SKU, just give the bundle identifier for the app. 
 
-- [ ] In your Firebase project, go into the project settings > for each app, add the app store app ID to each app that has an entry in the App Store. 
+*Note:* If there is an error saying that that the name of your app is already taken, you have two options. 1. Use the legal form from Apple to try and get that name. Only works if you have a trademark. Or, choose a different name. I use the strategy of adding on a word to the end that describes your app. Example: If you are creating a mental health app called Your Circle and the app name Your Circle is already taken, use "Your Circle support" as the app name. 
+
+*Note:* If this command does not work for you, you can always create the accounts manually by logging into your Apple Developer account online. 
 
 - [ ] Next is to create certificates and provisioning profiles. There are a few steps to get this done.
 
   * Create a new GitHub repo (make it private) thats job is to store this information. Leave the repository blank. Set `MATCH_GIT_REPO` environment variable for the CI server. 
   * In order to create a development certificate, you must have at least 1 iOS device added to your Apple Developer account. Run `fastlane register_device` to add one. 
   * In a directory that is *not* the root directory of your project, run these commands (if you run these commands in the root directory of your project, fastlane will pick up `fastlane/Matchfile` which is meant for read-only CI access so we need to ignore that file):
+  * Close XCode. I found that if XCode is open when you're done running the commands below, it will give you errors saying that the certificate is not found or is not installed on your computer. But if you close XCode and re-open it, the certificate issue will be gone. 
 
   ```
   fastlane match development
@@ -149,6 +150,10 @@ Do this twice. Once for your production app, another one titled "YourAppName Tes
 - [ ] If you're going to be using push notifications in your app, see [this doc](https://firebase.google.com/docs/cloud-messaging/ios/certs#create_the_authentication_key) on how to create a new APN key. *Note: Create a APN key, not a certificate. Keys can be used by multiple environments, debug/release config, and don't expire.* Once you have that key created, you will need to see [this doc](https://firebase.google.com/docs/cloud-messaging/ios/client#upload_your_apns_authentication_key) on how to upload this new APN key to Firebase. 
 
 Once that is setup, I recommend reading through the `AppDelegate.swift` file as it contains listeners for many FCM tasks you may want to handle. 
+
+- [ ] Create a new [Firebase](https://firebase.google.com/) project for your app. Once you create a project, you will be asked to add an app to the project. Go ahead and add your first iOS app into Firebase. Once you do this, Firebase will give you a `GoogleService-Info.plist` file. This file belongs in the `_secrets` directory for `cici` to organize for you. 
+
+- [ ] In your Firebase project, go into the project settings > for each app, add the app store app ID to each app that has an entry in the App Store. 
 
 - [ ] If you want to use [Firebase DynamicLinks](https://firebase.google.com/docs/dynamic-links/ios) in your app, most of the code to handle DynamicLinks is already setup. However, you will need to do some steps in order to confirm everything is setup. 
 
