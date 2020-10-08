@@ -1,32 +1,24 @@
-osx_image: xcode11.5
+osx_image: xcode12.2
 language: swift
 
-# https://github.com/aevea/commitsar/issues/230
-git:
-  depth: false
+cache:
+  bundler: true
+  cocoapods: true
+  npm: true
 
-cache: cocoapods
 podfile: Podfile
+
 before_install:
-  - gem install cocoapods
-  - gem install fastlane # needed for testing, building, deploying, cron. All so we install it now. 
-  - gem install cici 
-  - travis_retry bundle install # we have a script or two that's written in ruby we need during building    
-  - travis_retry pod install   
-  - nvm install lts/* # Nodejs lang. used for conventional commits and semantic-release stuff
-  - curl -sL https://firebase.tools | bash # firebase CLI for dev app testing
+  - gem install cici
   
 before_script:
   - cici decrypt --set common
   - ./set_environment.sh 
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash) # upload test coverage 
-
 env:
   global:
     - UI_TESTS_DEVICE_ID="iphone11" # Device model ID. `gcloud beta firebase test ios models list`
-    - UI_TESTS_IOS_VERSION="13.3"   # iOS version ID. `gcloud beta firebase test ios models list`
+    - UI_TESTS_IOS_VERSION="13.6"   # iOS version ID. `gcloud beta firebase test ios models list`
     # Below are secret environment variables you need to set. 
     # Note: You need to escape all of the special characters. Add a `\` character before each. 
     # 
@@ -36,7 +28,7 @@ env:
     # FASTLANE_PASSWORD= password to the Apple ID account used to login for fastlane.
     # GITHUB_TOKEN= personal access token where github username has push access to the repo to make comments and releases. 
     # FIREBASE_DISTRIBUTION_APP_ID= firebase app id for app you want to use for firebase app distribution. 
-    # FIREBASE_TOKEN="123" - token to login to Firebase account that is added to Firebase project. https://firebase.google.com/docs/cli#cli-ci-systems
+    # FIREBASE_TOKEN="123" - token to login to Firebase account that is added to Firebase project. Get token with `bundle exec fastlane run firebase_app_distribution_login` https://firebase.google.com/docs/app-distribution/ios/distribute-fastlane#step_2_authenticate_with_firebase
     # APPLE_DEVELOPER_ACCOUNT_TEAM_ID="12345" - team that the app belongs to. Get from Apple Developer Center for account FASTLANE_USER logged in as. 
     # APPLE_DEVELOPER_ACCOUNT_TEAM_NAME="Team name" - team that the app belongs to. Get from Apple Developer Center for account FASTLANE_USER logged in as. 
     # APP_STORE_CONNECT_TEAM_NAME="Team name" - team name found in App Store Connect. https://stackoverflow.com/a/46415415/1486374
@@ -46,27 +38,26 @@ env:
     # GOOGLE_APPLICATION_CREDENTIALS - path to the service account key file to authenticate with firebase service account. Readme talks about this. 
 
 jobs:
-  fast_finish: true
   include:    
   - stage: tests
     script:
-      - npm i @commitlint/travis-cli && npx commitlint-travis
-      - fastlane unit_test
-      - fastlane ui_test
+      - set -e
+      - npm i @commitlint/travis-cli @commitlint/config-conventional && npx commitlint-travis
+      - bundle exec fastlane unit_test && bash <(curl -s https://codecov.io/bash) 
+      - bundle exec fastlane ui_test
   - stage: pr
     script:
-      - ./set_environment.sh 
-      - fastlane qa_deploy
+      - set -e
+      - ./set_environment.sh && bundle exec fastlane qa_deploy
   - stage: deploy
     script: 
-      # Use nvm to install and use the Node LTS version (nvm is installed on all Travis images)
-      - ./set_environment.sh production       
-      - npm i @semantic-release/git @semantic-release/github @semantic-release/changelog @semantic-release/exec 
-      - npx semantic-release
+      - set -e 
+      - npm i @semantic-release/git @semantic-release/github @semantic-release/changelog @semantic-release/exec && npx semantic-release
   - stage: cron
     script:
-      - ./set_environment.sh production 
-      - fastlane refresh_dsyms
+      - set -e
+      - ./set_environment.sh testing && bundle exec fastlane refresh_dsyms
+      - ./set_environment.sh production && bundle exec fastlane refresh_dsyms
 
 stages:
   - name: tests
@@ -74,6 +65,6 @@ stages:
   - name: pr
     if: type IN (pull_request) 
   - name: deploy
-    if: type IN (push) AND branch IN (master, beta, alpha)
+    if: type IN (push) AND branch IN (master, beta)
   - name: cron
     if: type IN (cron)
