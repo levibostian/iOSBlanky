@@ -58,26 +58,26 @@ main() {
         repo_root=$(git rev-parse --show-toplevel)
         hook_type=$calling_file
         script="$repo_root/hooks/$hook_type.sh"
-        if [[ -f "$script" ]]; 
+        if [[ -f "$script" ]];
         then
             echo "Running git hook, $hook_type"
-            
+
             hook_exit_code=0
             scriptname=$(basename $script)
-            
-            eval $script 
+
+            eval $script
             script_exit_code=$?
             if [[ $script_exit_code != 0 ]]
             then
                 hook_exit_code=$script_exit_code
             fi
-            
+
             if [[ $hook_exit_code != 0 ]]
             then
               echo "FAILED Script: $scriptname. exit code $hook_exit_code"
               exit $hook_exit_code
             fi
-        else 
+        else
             echo "No git hook to run for $hook_type"
         fi
     fi

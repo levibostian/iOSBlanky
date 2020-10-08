@@ -1,14 +1,12 @@
+ios_version = '11.0'
+
 project "App.xcodeproj"
-platform :ios, '11.0'
+platform :ios, ios_version
 use_frameworks!
 inhibit_all_warnings!
 
 def testingDependencies 
     # Include CLIs in testing as we don't need to bundle with app target 
-    pod 'SwiftFormat/CLI'
-    pod 'SwiftLint'
-    pod 'Sourcery'
-
     pod 'RxBlocking', '~> 5.0'
     pod 'RxTest', '~> 5.0'     
 end 
@@ -61,3 +59,11 @@ target "Screenshots" do
     testingDependencies()
 end
 
+# https://stackoverflow.com/a/58367269/1486374
+post_install do |pi|
+    pi.pods_project.targets.each do |t|
+      t.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = ios_version
+      end
+    end
+end

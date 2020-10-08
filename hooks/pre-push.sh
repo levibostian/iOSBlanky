@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./Pods/SwiftLint/swiftlint --strict
+swiftlint --strict

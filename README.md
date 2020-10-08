@@ -1,5 +1,5 @@
-![Swift 5.2.x](https://img.shields.io/badge/Swift-5.2.x-orange.svg)
-![XCode 11.5](https://img.shields.io/badge/XCode-11.5-grey.svg)
+![Swift 5.3.x](https://img.shields.io/badge/Swift-5.3.x-orange.svg)
+![XCode 12](https://img.shields.io/badge/XCode-12-grey.svg)
 
 # iOSBlanky
 
@@ -8,199 +8,140 @@ Boilerplate project for iOS apps. The template that [I use for the apps that I b
 Nodejs developer? I have [a boilerplate project for you!](https://github.com/levibostian/expressjsblanky)
 Android developer? I have [a boilerplate project for you!](https://github.com/levibostian/androidblanky)
 
-# What are the goals of iOSBlanky?
+# Overview of project
 
-iOSBlanky has been modified over years of building iOS. Through experience, you are guaranteed to find many annoyances and bugs. After each encounter, some engineering work is done to help remove that annoyance and prevent that bug from happening again.
+### What are the goals of iOSBlanky?
+
+iOSBlanky has been modified over years of building Android apps. Through experience, I try to improve the way that I build iOS apps as I encounter common bugs and annoyances. After each encounter, some engineering work is done to help remove that annoyance and prevent that bug from happening again.
 
 iOSBlanky comes equipped with the following goals:
 
-- Get up and running building an app as fast as possible. Pre-configure this project so you don't have to. Install set of dependencies and configure them assuming they will be used. 
-  - Make some assumptions about what this app will probably use such as push notifications, dynamic links, Core Data, etc. If you don't need something, just delete that code. 
-- Latest version of Swift and XCode. 
-- Support for older versions of iOS so people can enjoy using their older hardware, for longer. 
+- Get up and running building an app as fast as possible. This project is very opinionated. Development tools and iOS libraries have already been installed and setup for you. This allows you to get up and running, fast. If you don't need a feature added to the boilerplate, just delete that code.   
+- Latest version of Swift and XCode. Support for older versions of iOS so people can enjoy using their older hardware, for longer.
 - Full configuration of the application through environment variables as defined [in the 12factor app](https://12factor.net/config).
 - Unit, integration, and UI testing.
-- Easily create mocks and work with sample data in tests.
-- Use a CI server to run lint, tests on each commit of the code.
-- Deployment of the app with CI server.
-- Offline-first functionality through [Teller](https://github.com/levibostian/teller-ios/) and [Wendy](https://github.com/levibostian/wendy-ios/)
+- Leverage a CI server to run tests, build the app, and deploy it. 
 
-# What is included in iOSBlanky?
+### Services 
 
-Go ahead and explore the source code! No need to include _all_ of the details here, but here is a gist of the major components of this project:
+When I build apps, I like to use some external development services/tools to improve my developer experience and user experience. Here is a list of these services:
 
-- Project uses Swift as the programming language and XCode as the editor.
-- Firebase setup for push notifications and some other services such as dynamic links, analytics, crash reporting. 
-- XCTest framework used for unit, integration and UI tests. On the CI server, tests are executed with Fastlane scan.
-- Core Data used as the database to store user data. 
-- Travis CI setup as the CI server to build, test, and deploy app. 
+* [Travis CI](https://travis-ci.com/) - CI server provider. 
+* [Firebase](https://firebase.google.com/) - Provides a few pieces of functionality to the app. 
+  * [Crash reporting](https://firebase.google.com/products/crashlytics) - When the app crashes at runtime, we get notified so we can fix the issue. We get notified when crashes happen automatically.
+  * [Performance monitoring](https://firebase.google.com/products/performance) - Finds places in your code where the app is slow. When the network is slow or when you are slowing down the UI thread of the app. 
+  * [Test lab](https://firebase.google.com/products/test-lab) - Run UI or integration tests on a real device in the cloud. Running tests on an actual device is much easier and faster then alternatives such as running them on an emulator instance running on the CI server. The CI server communicates with Test Lab for you. 
+  * [App distribution](https://firebase.google.com/products/app-distribution) - Allows people on your team to install builds of the app on their devices. This is used for QA testing of the app before we send it out to beta users. App distribution is not good for running public beta tests. It's great for using in your internal team. 
+  * [Remote config](https://firebase.google.com/products/remote-config) - Allows us to make changes to the behavior of our app without needing to deploy a new version to the app store. We mostly use this service to change the text shown in the app. You can even run A/B tests on remote config values which allows you to A/B test colors, text, or features of your app. 
+  * [Push notifications](https://firebase.google.com/products/cloud-messaging) - Send push notifications to the app users. You can manually send push notifications for marketing purposes using the Firebase website. We also may send automated push notifications from the API. We can send push notifications to specific devices, all devices for a user, or to groups of users at once. 
+  * [Analytics](https://firebase.google.com/products/analytics) - Analytics to track user activity within our app. Allows us to see how the users are using our app so we can make changes in the future based off of user usage. 
+  * [Dynamic links](https://firebase.google.com/products/dynamic-links) - When the user of our app opens a URL for our website, we can have our app open instead of having the URL open in the browser on the device. This is how we perform login to an account in our app. You enter your email address into the app, the API sends you a unique URL, you open the URL on your device and we automatically log you into the app when the app opens from the URL. 
+
+### Tools 
+
+Below is a list of development tools that are used in this project. These are tools beyond the typical iOS development tools that are common amongst iOS developers such as XCode. Check out the `Podfile` file to see what iOS specific tools and libraries are installed in the app. 
+
+* [cici](https://github.com/levibostian/cici/) - Used to securely store secret files within the source code repository. If you have files in your project that contain secret passwords or API keys, use cici to store those files in your code base. Do not commit these secret files into your source code repository! cici is a great way to store your upload keystore files, share secrets with your development team, white label your app, prepare for your app environments (staging, QA, beta, production builds of your app). 
+* [fastlane](https://fastlane.tools/ - Tool used by the CI server to run tests and deploy the app, easily. 
+* [semantic-release](https://github.com/semantic-release/semantic-release) - Tool used by the CI server to automatically deploy the app. All you need to do is follow a specific workflow in GitHub and the app will automatically deploy for you! See the [section in this doc on workflow](#workflow) to learn how to do this.
+
+### Documentation
+
+Besides this document, there are many more documents provided in this project to help you better understand how this project works, the decisions made in this project, and how you can use this project. Begin reading the detailed documentation [here](docs/README.md).
 
 # Getting started
 
-Developer tools you need:
-* XCode 
-* [CocoaPods](https://cocoapods.org/)
-* [Fastlane](https://fastlane.tools/) for the initial setup. But, you shouldn't need it much beyond setup as it's meant to be used on the CI server as much as possible and not on your dev machine. 
+Follow the instructions below to get the code compiling on your machine so you can begin development!
 
-- First, clone this repo:
+**But wait!...** If you are here looking to *build a brand new app*, follow the instructions in [this document](docs/SETUP.md) to do some initial setup of the project. If someone else on your development team has already setup the project for you, you can skip reading that document and proceed with the instructions below. 
+
+After you clone the GitHub repository on your computer, follow these instructions:
+
+* First, you need to install some development tools on your machine. 
+
+1. [bundler](https://bundler.io/) - Run `gem install bundler` to install it on your computer. (`gem` is a tool that is installed on your machine after you install the Ruby programming language. macOS machines already have Ruby installed by default). You know you have bundler installed when you run `bundle -v` on your computer and get an output like this: `Bundler version X.X.X`
+2. [pre-commit](https://pre-commit.com/) used for git hooks. Run `brew install pre-commit` on macOS to install. See [this doc](https://pre-commit.com/#install) to install on any other OS. You know you have it installed when you run `pre-commit --version` on your computer and get an output like this: `pre-commit X.X.X`
+3. [swiftlint](https://github.com/realm/SwiftLint) used for linting Swift code. Run `brew install swiftlint` on macOS to install ([other install methods](https://github.com/realm/SwiftLint#installation)). You know you have it installed when you run `swiftlint version` on your computer and get an output like this: `X.X.X`
+4. [cici](https://github.com/levibostian/cici/#getting-started) used to store secret files in your source code. Run `gem install cici` to install on your computer. 
+5. [SwiftFormat](https://github.com/nicklockwood/SwiftFormat) used to format the Swift code. Run `brew install swiftformat` to install ([other install methods](https://github.com/nicklockwood/SwiftFormat#command-line-tool)). You know you have it installed when you run `swiftformat --version` on your computer and get an output like this: `X.X.X`
+6. [Sourcery](https://github.com/krzysztofzablocki/Sourcery) generate boilerplate Swift code for your project. Run `brew install sourcery` to install ([other install methods](https://github.com/krzysztofzablocki/Sourcery#installation)). You know you have it installed when you run `sourcery --version` on your computer and get an output like this: `X.X.X`
+7. [Cocoapods](https://cocoapods.org/) - Run `gem install cocoapods` to install it on your computer. Cocoapods installs iOS libraries for us to use in our app. 
+
+* Next, run these commands on your machine. 
 
 ```
-git clone https://github.com/levibostian/iOSBlanky.git NameOfYourNewApp
-cd NameOfYourNewApp
-rm -rf .git/
-git init
-git config user.email "you@example.com"
-git config user.name "First Last"
-git add .; git commit -m "Initial commit. Created project from levibostian/iOSBlanky boilerplate.";
-pod install
-bundle install
-cp .env.example .env
-
-# git hooks
-./hooks/autohook.sh install
+bundle install               # Install development tools 
+pod install                  # Install dependencies 
+./hooks/autohook.sh install  # Install git hooks
+cici decrypt                 # When running this command, it will ask you for a KEY and IV value. Your team members should have shared these passwords with you. Enter those at that time. 
 ```
 
-* Open `App.xcworkspace` in XCode.
-* Open project settings and change the team the app belongs to. Quit XCode. 
-* Edit `.env` with the new target name you just set as well as all of the other values such as bundle identifier and app name. 
-* Run command: `./set_environment.rb`. This will rename the app, set bundle identifier, and a few other things. 
-* Delete the LICENSE file if you're writing closed source: `rm LICENSE`
-* Time to try and run your app! Compile it and see if it builds. 
+* Open XCode. Select `Open a project or file`. Then, select `App.xcworkspace` from the root directory of this project on your computer. 
 
-Done! Well, with getting your app project renamed and built. Now comes configuration of all the various tools. 
+* You're all set! Compile the app within XCode. You can also execute unit, integration, and UI tests within XCode. [This document](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/05-running_tests.html) tells you how to run tests within XCode. 
 
-Continue reading this doc to learn about next steps to do to take full advantage of this project. 
+# Workflow 
 
-Enjoy!
+This project is setup to follow a strict development workflow. This workflow when followed will automatically (1) run all of your tests to make sure they are all passing, (2) build and deploy your app for easy QA testing, (3) build and deploy your app for the app store. All of this is done for you! All you need to do is write code! 
 
-# Environments 
+There are some rules that you must follow for the workflow to work:
+1. Never make a commit to the branches: `master`, `beta`, or `alpha`. These branches can only be updated by making a GitHub pull request into these branches. If you make a mistake and make a commit on one of these branches, [follow these instructions](https://stackoverflow.com/a/1628584/1486374) to move your commits to another branch. 
+2. When you make a commit, **the commit message that you write must be written in a special way**. Read [this document](https://gist.github.com/levibostian/71afa00ddc69688afebb215faab48fd7) which explains what I mean by that. 
 
-This project assumes that you have 2 environments for your app. Production and Testing. 
+With those rules out of the way, let's go over the workflow for you to follow when you write code. 
 
-Production:
-* Used for the public when they download the app from the App Store. 
-* Used for public beta testing through TestFlight. 
+Let's say that you want to make a change to the code. Any change, it does not matter (add feature, fix bug). Follow these steps:
+1. Make a new git branch. Name this branch something that is not `master`, `beta`, or `alpha` as those names are reserved for special purposes. 
+2. Make your code changes. Make commits on this branch. 
+3. When you are done with all of your changes you want to make, [create a GitHub pull request](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request). When you create your pull request, merge your branch into one of these branches:
 
-Testing:
-* Used during QA testing. QA testing at this time is only for the development team. 
-* Used for internal team during internal testing. This is meant for internal team to have the app on their devices to test out new features that are coming out. They can test out things that are very fresh. 
+* `master` - Choose this option when your change is "production ready" and ready to go to the public. If you making a small change to your app, this is a good choice to choose. You will probably choose this option most of the time. 
+* `beta` - Your change is not yet ready for production. Let's say that you and your team are preparing for a big change to your mobile app that will take 2 to 3 weeks to finish. This big change might require 10 separate pull requests to finish. This branch should be used for that purpose. Merge all 10 of the separate pull requests into the `beta` branch. When all 10 of your team's pull requests are merged in and the big change to your app is done, make a new pull request from the `beta` branch into the `master` branch to make the public release. This branch is used less often then `master`, but can still come in handy every so often. 
+* `alpha` - This branch is not used very often. It's mostly used for very early progress to an app. Maybe you and your team are making drastic changes to your mobile app but it's still early on in the project, use this branch. This branch is like the `beta` branch, but meant for code that is more conceptual, unstable, or could dramatically change. 
 
-How you change to each of these environments is using the `./set_environment.sh` script. Read the top of the script to know how to use it. This script is used on the CI server for you but you may need to use if on your local computer to switch to the testing environment. 
+When you make a pull request, the CI server will automatically build your app and deploy the app to [Firebase App Distribution](https://firebase.google.com/docs/app-distribution). App Distribution allows you and your team members to easily install the app build on real devices to test it out. This makes QA testing (Quality assurance (QA) is a way of preventing mistakes and defects in manufactured products and avoiding problems when delivering products or services to customers) on your team super easy. Your team members do not need to download your changes to their development machine and compile the app to test it out. The CI server will make a comment giving you information about the deployed app to App Distribution. All you need to do is open the App Distribution app on your test device, install the build you want, then run the app. 
 
-Sure, you may also have a development environment. But that is unique to everyone. So, I recommend that you set the environment to the testing environment, then just edit the `.env` to edit things like the API endpoint to a development server. Try to keep as much as possible to the original testing environment. 
+4. After you make your pull request, do not merge it until [the status checks](https://docs.github.com/en/github/administering-a-repository/about-required-status-checks) have passed. 
 
-# Next steps
+If you are on a software team that performs code reviews, you may need to also wait until someone from your team reads over your code and [submits a code review](https://docs.github.com/en/enterprise/2.13/user/articles/approving-a-pull-request-with-required-reviews). 
 
-Beyond getting your project to build, there are many more steps to get your project working with all of the various projects and get it deployed for others to use. 
+After you QA test the app, all status checks pass, and your code review has been completed, merge the pull request! 
 
-Below, you will find a todo list of tasks to complete. This list is meant to be followed in order from top to bottom as some tasks depend on other tasks. 
+5. After the code is merged you are all done for now. The CI server is going to automatically deploy your app for you! 
 
-- [ ] Create an Apple Developer account if you have not already. Pay the annual membership fee so you get access to App Store Connect. This process takes a while to do so get this process started right away! You can't do much else until the account is created so go do that now. 
+> Note: The CI server can always fail when it's trying to deploy your app. You know the deployment was successful if you see a comment on your pull request [similar to this one](https://github.com/levibostian/Swapper-iOS/pull/20#issuecomment-676499660). It may take a while for this comment to show up. Check the CI server logs if the task fails so you can fix it. 
 
-- [ ] Enable Travis-CI for your GitHub repository. The `.travis.yml` file is already made and fully configured for you. You should just need to [enable Travis](https://docs.travis-ci.com/user/tutorial/) and you're good to go! 
+6. The CI server will *only build your app and send it to the app store for you*. It will *not* automatically make it available to the public. That is a manual step that you need to do. Use [App Store Connect](https://appstoreconnect.apple.com/login) to publish the app to TestFlight or the App Store. The CI server only sends *builds* to Apple for processing. 
 
-There are many environment variables within the `.travis.yml` file that you will need to set to get things like deployment working. In the steps below when we say to *set an environment variable on the CI server*, [this is what we mean](https://docs.travis-ci.com/user/environment-variables/). 
+There are ways to make the CI server automatically deploy your app for you instead of requiring you to login. However, it has been decided to make it manual because...
+* Future proof - If Apple makes a change in the future that breaks your CI server build and deploy process, you need to make a deployment manually anyway. 
+* Reminder to update metadata - Manually deploying your app gives you the opportunity to inspect the metadata and screenshots of your app store page before you deploy it. This gives you the chance to make changes before it's live. 
+* Flexibility - When a build of the app is sent to the app store, you get to choose who to deploy it to and when. Run a TestFlight internal test, TestFlight public beta test, or launch to production with a couple clicks of a button for every build that we send to Apple for processing. 
 
-- [ ] This project uses the tool [cici](https://github.com/levibostian/cici/) to store secret files in the source code of this project. The `.cici.yml` file is already setup for you to have a testing (aka staging) environment and a production environment. 
+It's recommended that you follow this deployment process:
+* The CI server builds and sends your app to Apple for processing after you merge a pull request. 
+* Login to App Store Connect and make a release of the app to TestFlight public beta. Run this beta test for however long you feel is necessary. Watch app analytics and crash reporting to make a judgement if the build of the app is stable. 
+  * If you determine the app is not stable, follow the workflow above to fix the issues and make a new public beta release. 
+  * If the app is determined stable, log into App Store Connect and make a new public release of the build you pushed to TestFlight.
 
-Read up on this tool so you can use it in this project. 
+This deployment process is handy because it only requires 1 single build of your app. You are then able to test and deploy that 1 build however you please through the process. If you find that a build has a bug some other fix needs to happen, then that version of your software is simply flawed and you need to make a new version. 
 
-- [ ] ...wait until you have your Apple Developer account created fully and you have access to App Store Connect...
+### Generate screenshots
 
-- [ ] Make sure you are an admin in the new Apple Developer account. You must be an admin to create apps and setup the account going forward. 
+Need to take screenshots of the app for the app store? Screenshots are generated automatically for you through UI tests. To create screenshots, do the following steps:
 
-Fastlane needs to login to your Apple developer account. But, Apple requires that all accounts must use 2FA when they hold the `Account Holder` permission. To greatly simplify the process of using fastlane on a CI server, create a brand new Apple account just for CI tasks for this team. Give the account the "App Manager" role in permissions. They need to be able to push to the app store, edit metadata, edit certs/profiles, and some more so developer permission or marketing is not enough. 
+* All UI tests inside of the "Screenshots" target in XCode are meant for screenshots. 
+* Run `bundle exec fastlane take_screenshots` on your local development machine. 
 
-Make sure this new Apple account *doesn't* have 2-factor authentication enabled and doesn't have the `Account Holder` role. Invite it to your Apple account and then fill in `FASTLANE_USER` and `FASTLANE_PASSWORD` environment variables on the CI server. 
-
-- [ ] Run `fastlane create_app_online` on your local dev machine. [fastlane create_app_online](https://docs.fastlane.tools/actions/produce/) is used to create apps in your Apple Developer account. The CLI will ask you some questions to create the app. 
-
-Do this twice. Once for your production app, another one titled "YourAppName Testing" to be a testing version of the same app. Having 2 separate apps allows your team members to have multiple apps installed on their devices. 
-
-*Note:* If asked for a SKU, just give the bundle identifier for the app. 
-
-*Note:* If there is an error saying that that the name of your app is already taken, you have two options. 1. Use the legal form from Apple to try and get that name. Only works if you have a trademark. Or, choose a different name. I use the strategy of adding on a word to the end that describes your app. Example: If you are creating a mental health app called Your Circle and the app name Your Circle is already taken, use "Your Circle support" as the app name. 
-
-*Note:* If this command does not work for you, you can always create the accounts manually by logging into your Apple Developer account online. 
-
-- [ ] Next is to create certificates and provisioning profiles. There are a few steps to get this done.
-
-  * Create a new GitHub repo (make it private) thats job is to store this information. Leave the repository blank. Set `MATCH_GIT_REPO` environment variable for the CI server. 
-  * In order to create a development certificate, you must have at least 1 iOS device added to your Apple Developer account. Run `fastlane register_device` to add one. 
-  * In a directory that is *not* the root directory of your project, run these commands (if you run these commands in the root directory of your project, fastlane will pick up `fastlane/Matchfile` which is meant for read-only CI access so we need to ignore that file):
-  * Close XCode. I found that if XCode is open when you're done running the commands below, it will give you errors saying that the certificate is not found or is not installed on your computer. But if you close XCode and re-open it, the certificate issue will be gone. 
-
-  ```
-  fastlane match development
-  fastlane match appstore # if you're building an enterprise account app, use `enterprise` instead of `appstore`
-  ```
-
-  You will be asked for a password to encrypt the data. The command `openssl rand 60 | openssl base64 -A` works well to generate one. You need to set `MATCH_PASSWORD` environment variable with this password you created. 
-
-  You will need to run these commands twice because you need to generate for the production app and for the testing app. 
-
-  Note: If your certificate or profile ever becomes expired or you encounter an error when running this command such as having too many certs created, you can run `fastlane match nuke XXX` where XXX is `developerment`, `appstore`, etc. which will delete all certs and profiles for development. Then, you can run match again to re-generate a new set.
-
-  * Now, you can open XCode > Open your project settings > Signing > and manually select the provisioning profile for each configuration (development and release). 
-
-  * After done, everything on the CI server is ready to get the correct certificates and profiles. Everyone else on your team can run `fastlane match development` in the root directory of the project and they will be able to download the certificates/profiles you created in a read-only way. This is because the `fastlane/Matchfile` is configured to be read-only be default. 
-
-  *Note: Match creates provisioning profiles in the form `match AppStore com.example.app`, `match Development com.example.app`, and `match InHouse com.example.app` (enterprise apps). Assuming this naming is correct, the CI server is currently setup to automatically build and sign your app for you for the App Store. [See this guide on setting provisioning profiles for `build_app` action](https://docs.fastlane.tools/codesigning/xcode-project/#xcode-9-and-up). If you're deploying an Enterprise app, edit the `fastlane/Fastfile` from `match AppStore` to `match InHouse` where you see that text. If this setup does not work, you may need to use `sigh` to download your provisioning profile from your git repo to a file on the CI server and then use `update_project_provisioning` action to set the profile based on the sigh downloaded profile file. However, let's try to not use this as it's more complex.*
-
-- [ ] If you're going to be using push notifications in your app, see [this doc](https://firebase.google.com/docs/cloud-messaging/ios/certs#create_the_authentication_key) on how to create a new APN key. *Note: Create a APN key, not a certificate. Keys can be used by multiple environments, debug/release config, and don't expire.* Once you have that key created, you will need to see [this doc](https://firebase.google.com/docs/cloud-messaging/ios/client#upload_your_apns_authentication_key) on how to upload this new APN key to Firebase. 
-
-Once that is setup, I recommend reading through the `AppDelegate.swift` file as it contains listeners for many FCM tasks you may want to handle. 
-
-- [ ] Create a new [Firebase](https://firebase.google.com/) project for your app. Once you create a project, you will be asked to add an app to the project. Go ahead and add your first iOS app into Firebase. Once you do this, Firebase will give you a `GoogleService-Info.plist` file. This file belongs in the `_secrets` directory for `cici` to organize for you. 
-
-- [ ] In your Firebase project, go into the project settings > for each app, add the app store app ID to each app that has an entry in the App Store. 
-
-- [ ] If you want to use [Firebase DynamicLinks](https://firebase.google.com/docs/dynamic-links/ios) in your app, most of the code to handle DynamicLinks is already setup. However, you will need to do some steps in order to confirm everything is setup. 
-
-* [Follow the directions](https://firebase.google.com/docs/dynamic-links/ios/receive#set-up-firebase-and-the-dynamic-links-sdk) on setting up DynamicLinks in your app. *Note: you can skip many of the steps such as adding the CocoaPods frameworks, but keep reading as it's the later steps that you need to do*
-* Now, you need to follow the steps [to configure a DynamicLinks URL](https://firebase.google.com/docs/dynamic-links/ios/receive#open-dynamic-links-in-your-app) with your app. 
-* Done! DynamicLinks can be tested by pasting the URL in Safari and loading the webpage. Your app can be launched from there and you can set breakpoints to debug. 
-
-- [ ] Now to setup running UI tests inside of Firebase Test Lab. 
-
-We are using [this fastlane plugin](https://github.com/fastlane/fastlane-plugin-firebase_test_lab) to run tests in test lab. 
-
-* You need to create a Service Account on Google Cloud to authenticate into your Google Cloud project. To do this, Firebase project > Settings > Service accounts > Click on "X service accounts from Google Cloud Platform. It opens up Google Cloud Platform webpage for you. Your Firebase project should be selected as the Google Cloud project when this webpage is opened. This is because when you have a Firebase project, a Google Cloud project gets created for you without you even knowing it. 
-* If you have not already created a service account *just for firebase test lab* then let's create one. Click "Create service account" > for the name enter "firebase test lab" > for roles/permissions select "Project - Editor" > Create. 
-* Once you created the service account you need to then create a key file for this account to authenticate with this service account. Do this by clicking "Add key" > JSON under the service account you just created. This file needs to be kept a secret. Store it in a safe place. But also make sure that it's available on your CI server. I recommend using `cici` for this. Then, set `GOOGLE_APPLICATION_CREDENTIALS` with the path to this file. 
-* ([Reference](https://github.com/fastlane/fastlane-plugin-firebase_test_lab#enable-relevant-google-apis)) Now you need to enable APIs in your Google Cloud account. [Go here](https://console.cloud.google.com/apis/library) and enable these APIs: `Cloud Testing API`, `Cloud Tool Results API`. 
-* You need to now tell Firebase what device you want to run tests against. Install `gcloud` CLI on your machine with `brew cask install google-cloud-sdk`. Then run `gcloud beta firebase test ios models list` to get a table list of all the devices you have available for you. 
-* Set `FIREBASE_PROJECT_ID` on your CI server and you're ready to go! `fastlane ui_test` is all setup for you in the Fastfile. 
-
-- [ ] There are more environment variables you need to set on the CI server. See what ones you have not yet filled in and fill them in. They should be self-explanatory. 
-
-# Tests
-
-This project is setup to create and run unit, integration, and UI tests against your code base super easily. For information on how to _write_ tests, check out the tests written in the XCode project already.
-
-It's recommended to run tests inside of XCode using the UI. This project is also setup to run tests via Travis CI for you. 
-
-# Deploy
-
-_Warning: Before you try and deploy your application, make sure you have followed the instructions on how to get your CI server up and running._
-
-Deployment is setup for you on the CI server as long as you follow all of the instructions above in the getting started guide. 
-
-However, let's get into the deployment workflow. This project uses the tool [semantic-release](https://github.com/semantic-release/semantic-release) along with [fastlane](https://fastlane.tools/) on your CI server to deploy your app for you. 
-
-All you need to do is make sure all of your git commit messages are written as [conventional commits](https://www.conventionalcommits.org/), make a pull request on GitHub with all of the changes you want, after the CI server shows all of your tests are passing and you have tested the app yourself to make sure it all works, merge the pull request and then semantic-release will take care of building your app and pushing it to TestFlight and the App Store for you! Note: the app will be built and pushed to TestFlight and the App Store but will *not* be submitted. You must manually go into App Store Connect and deploy the app you want. 
-
-The CI server is setup like this:
-* The power of deployments comes from pull requests on GitHub. If you make a pull request into the branch named `beta`, a new build of your app will be released with the version `X.X.X-beta.Y` where Y will be incremented. If you merge into `master` (recommended), a new build will be released to `X.X.X` semantic versioning. 
-* On every pull request into GitHub, the app will be built against the testing environment and will be submitted to [Firebase app distribution]() so you, the developer, can quickly test out the app or send a demo. Make sure the app is fully working as intended. 
-* When the PR is merged, the app will be built and pushed to TestFlight as well as the App Store. However, the app will *not* be submitted. It will only be pushed to Apple to process. You must manually go into the App Store Connect and deploy an app build to TestFlight or to the App Store if you want an update. This is on purpose so that (1) anyone on your team can edit the App Store details, (2) sometimes App Store Connect gets an update and fastlane breaks. Sometimes it's just easier to use the web interface. 
+At this time, screenshots are meant to be created on your development machine and manually upload screenshots to App Store Connect. 
 
 ## Author
 
-- Levi Bostian - [Freelance Android & iOS app development for startups](https://curiosityio.com/)
+* Levi Bostian - [GitHub](https://github.com/levibostian), [Website/blog](http://levibostian.com)
+
+![Levi Bostian image](https://gravatar.com/avatar/22355580305146b21508c74ff6b44bc5?s=250)
 
 ## Contribute
 
-iOSBlanky is not open for contributions at this time. This project showcases _my_ preferred way to build an iOS app. If you wish to make edits, by all means, fork the repo and make your edits in your own copy of the repo.
+iOSBlanky is not open for contributions at this time. This project showcases *my* preferred way to build an Android app. If you wish to make edits, by all means, fork the repo and make your edits in your own copy of the repo.
 
-I do make some exceptions for contributions. If you are wondering if your contribution is welcome, [create an issue](https://github.com/levibostian/iosblanky/issues/new) describing what you would wish to do.
