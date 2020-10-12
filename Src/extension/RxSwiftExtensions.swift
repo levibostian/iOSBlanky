@@ -1,12 +1,18 @@
 import Foundation
 import RxSwift
 
-class RxSchedulers {
-    static var ui: MainScheduler {
+protocol RxSchedulers {
+    var ui: SchedulerType { get }
+    var background: SchedulerType { get }
+}
+
+// sourcery: InjectRegister = "RxSchedulers"
+class RxSwiftSchedulers: RxSchedulers {
+    var ui: SchedulerType {
         MainScheduler.instance
     }
 
-    static var background: ConcurrentDispatchQueueScheduler {
+    var background: SchedulerType {
         ConcurrentDispatchQueueScheduler(qos: .background)
     }
 }

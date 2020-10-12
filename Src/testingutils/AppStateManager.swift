@@ -11,7 +11,7 @@ class AppStateManager {
     func set(appState: AppState) {
         if let username = appState.previousReposSearchUsername {
             if let repos = appState.repos {
-                try! reposRepository.replaceRepos(repos, forUsername: username)
+                try! reposRepository.replaceRepos(repos, forUsername: username).sync()
             }
         }
 

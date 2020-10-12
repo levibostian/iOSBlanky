@@ -12,6 +12,10 @@ struct Theme {
     let navigationBarTextColor: UIColor
     let navigationBarItemColor: UIColor // color of bar items
     let navigationBarColor: UIColor
+
+    let uiPageControlSelectedPageTintColor: UIColor
+    let uiPageControlNotSelectedPageTintColor: UIColor
+
     let statusBarStyle: UIStatusBarStyle
     let emptyViewStyle: EmptyViewConfigPreset
     let pleaseHoldViewStyle: PleaseHoldViewConfigPreset
@@ -35,12 +39,14 @@ class AppThemeManager: ThemeManager {
         self.keyValueStorage = keyValueStorage
 
         self.defaultTheme = Theme(name: "default",
-                                  textColor: Colors.textColor.color,
+                                  textColor: Colors.primaryTextColor.color,
                                   buttonColor: Colors.buttonColor.color,
                                   viewControllerBackgroundColor: Colors.backgroundColor.color,
                                   navigationBarTextColor: UIColor.white,
                                   navigationBarItemColor: Colors.navigationBarTintColor.color,
                                   navigationBarColor: Colors.navigationBarColor.color,
+                                  uiPageControlSelectedPageTintColor: Colors.uiPageControlSelectedPageTintColor.color,
+                                  uiPageControlNotSelectedPageTintColor: Colors.uiPageControlNotSelectedPageTintColor.color,
                                   statusBarStyle: .default,
                                   emptyViewStyle: DarkModeEnabledEmptyViewConfig(),
                                   pleaseHoldViewStyle: DarkModeEnabledPleaseHoldViewConfigPreset())
@@ -51,19 +57,19 @@ class AppThemeManager: ThemeManager {
     }
 
     var currentTheme: Theme {
-        set {
-            guard themes.contains(where: { $0.name == newValue.name }) else {
-                fatalError("Cannot save current theme: \(newValue) when themes: \(String(describing: themes))")
-            }
-
-            keyValueStorage.setString(newValue.name, forKey: .currentTheme)
-        }
         get {
             guard let themeName = keyValueStorage.string(forKey: .currentTheme) else {
                 return defaultTheme
             }
 
             return themes.first(where: { $0.name == themeName })!
+        }
+        set {
+            guard themes.contains(where: { $0.name == newValue.name }) else {
+                fatalError("Cannot save current theme: \(newValue) when themes: \(String(describing: themes))")
+            }
+
+            keyValueStorage.setString(newValue.name, forKey: .currentTheme)
         }
     }
 
@@ -73,6 +79,9 @@ class AppThemeManager: ThemeManager {
         UILabel.appearance().textColor = theme.textColor
         UIButton.appearance().setTitleColor(theme.buttonColor, for: .normal)
         UILabel.appearance(whenContainedInInstancesOf: [UIButton.self]).textColor = theme.buttonColor
+
+        UIPageControl.appearance().pageIndicatorTintColor = theme.uiPageControlNotSelectedPageTintColor
+        UIPageControl.appearance().currentPageIndicatorTintColor = theme.uiPageControlSelectedPageTintColor
 
         EmptyViewConfig.shared = theme.emptyViewStyle.config
         PleaseHoldViewConfig.shared = theme.pleaseHoldViewStyle.config

@@ -11,7 +11,7 @@ class HttpLoggerMoyaPlugin: PluginType {
         self.logger = logger
     }
 
-    func willSend(_ request: RequestType, target: TargetType) {
+    func willSend(_ request: RequestType, target _: TargetType) {
         var reqBody: String?
         if let body = request.request!.httpBody {
             reqBody = String(decoding: body, as: UTF8.self)
@@ -19,7 +19,7 @@ class HttpLoggerMoyaPlugin: PluginType {
         logger.httpRequestEvent(method: request.request!.httpMethod!, url: request.request!.url!.absoluteString, reqBody: reqBody)
     }
 
-    func didReceive(_ result: Result<Response, MoyaError>, target: TargetType) {
+    func didReceive(_ result: Result<Response, MoyaError>, target _: TargetType) {
         switch result {
         case .success(let response):
             let method = response.request!.httpMethod!

@@ -1,3 +1,4 @@
+@testable import App
 import Wendy
 import XCTest
 

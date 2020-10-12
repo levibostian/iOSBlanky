@@ -89,4 +89,49 @@ class StringExtensionTests: XCTestCase {
 
         XCTAssertTrue(actual)
     }
+
+    // MARK: fromStringRepeated
+
+    func test_fromStringRepeated_givenRepeatTimes0_expectEmptyString() {
+        XCTAssertEqual(String.fromStringRepeated(string: ".", repeatTimes: 0), "")
+    }
+
+    func test_fromStringRepeated_givenSingleCharacter_expectString() {
+        XCTAssertEqual(String.fromStringRepeated(string: ".", repeatTimes: 5), ".....")
+    }
+
+    func test_fromStringRepeated_givenMultipleCharacters_expectString() {
+        XCTAssertEqual(String.fromStringRepeated(string: "ABC", repeatTimes: 3), "ABCABCABC")
+    }
+
+    func test_fromStringRepeated_givenRepeatTimes1_expectString() {
+        XCTAssertEqual(String.fromStringRepeated(string: ".", repeatTimes: 1), ".")
+    }
+
+    func test_fromStringRepeated_givenRepeatTimesX_expectString() {
+        XCTAssertEqual(String.fromStringRepeated(string: ".", repeatTimes: 10), "..........")
+    }
+
+    // MARK: ellipsis
+
+    func test_ellipsis_givenStringBelowMaxLength_expectNoEllipsis() {
+        let actual = "test".ellipsis(maxLengthOfString: 10)
+
+        XCTAssertEqual(actual, "test")
+    }
+
+    func test_ellipsis_givenStringEqualMaxLength_expectNoEllipsis() {
+        let actual = "test".ellipsis(maxLengthOfString: 4)
+
+        XCTAssertEqual(actual, "test")
+    }
+
+    func test_ellipsis_givenStringOverMaxLength_expectEllipsis_expectMaxLengthString() {
+        let given = "1234567890"
+        let maxLength = given.count - 1
+        let actual = given.ellipsis(maxLengthOfString: maxLength)
+
+        XCTAssertEqual(actual, "123456...")
+        XCTAssertEqual(actual.count, maxLength)
+    }
 }

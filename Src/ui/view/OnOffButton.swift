@@ -15,6 +15,9 @@ class OnOffButton: UIButton {
     }
 
     var on: Bool {
+        get {
+            image(for: .normal) == onImage
+        }
         set {
             let isOn = newValue
 
@@ -23,9 +26,6 @@ class OnOffButton: UIButton {
             } else {
                 setImage(offImage, for: .normal)
             }
-        }
-        get {
-            image(for: .normal) == onImage
         }
     }
 

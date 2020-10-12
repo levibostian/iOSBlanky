@@ -65,7 +65,7 @@ class BackgroundJobRunnerTests: UnitTest {
         }
 
         let expectCallCompletionHandler = expectation(description: "Expect call completion handler")
-        backgroundJobRunner.handleDataNotification(givenDataNotification) { result in
+        backgroundJobRunner.handleDataNotification(givenDataNotification) { _ in
             expectCallCompletionHandler.fulfill()
         }
 

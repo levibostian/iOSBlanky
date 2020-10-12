@@ -6,7 +6,7 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         Analytics.setUserID(id)
     }
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from _: String) {
         var extras: [String: Any]? = extras?.mapKeys { key -> String in
             key.firebaseName
         }
@@ -27,23 +27,23 @@ class FirebaseAnalyticsActivityLogger: ActivityLogger {
         Analytics.setUserProperty(value, forName: key.firebaseName)
     }
 
-    func breadcrumb(_ event: String, extras: [String: Any]?, from file: String) {
+    func breadcrumb(_: String, extras _: [String: Any]?, from _: String) {
         // No need to log this to analytics.
     }
 
-    func httpRequestEvent(method: String, url: String, reqBody: String?) {
+    func httpRequestEvent(method _: String, url _: String, reqBody _: String?) {
         // No need to log this to analytics.
     }
 
-    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
+    func httpSuccessEvent(method _: String, url _: String, code _: Int, reqHeaders _: String?, resHeaders _: String?, resBody _: String?) {
         // No need to log this to analytics.
     }
 
-    func httpFailEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
+    func httpFailEvent(method _: String, url _: String, code _: Int, reqHeaders _: String?, resHeaders _: String?, resBody _: String?) {
         // No need to log this to analytics.
     }
 
-    func errorOccurred(_ error: Error) {}
+    func errorOccurred(_: Error) {}
 }
 
 extension UserPropertyKey {

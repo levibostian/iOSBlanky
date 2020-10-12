@@ -24,7 +24,7 @@ class GitHubApiTests: UnitTest {
         moyaMocker = MoyaProviderMocker()
         pendingTasksMock = PendingTasksMock()
 
-        api = AppGitHubApi(requestRunner: GitHubRequestRunner(responseProcessor: DI.shared.moyaResponseProcessor, provider: moyaMocker.moyaProvider, pendingTasks: pendingTasksMock), jsonAdapter: DI.shared.jsonAdapter, activityLogger: loggerMock, eventBus: eventBusMock)
+        api = AppGitHubApi(requestRunner: GitHubRequestRunner(responseProcessor: DI.shared.moyaResponseProcessor, provider: moyaMocker.moyaProvider, pendingTasks: pendingTasksMock), jsonAdapter: DI.shared.jsonAdapter, activityLogger: loggerMock, eventBus: eventBusMock, schedulers: schedulers)
     }
 
     func test_getUserRepos_givenSuccessfulResponse_expectReceiveResponse() {

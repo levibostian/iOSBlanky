@@ -10,12 +10,38 @@ extension UIView {
         frame.origin.y
     }
 
+    // Note: Button touch listeners will not work when you make the view invisible.
+    var isInvisible: Bool {
+        get {
+            alpha <= 0.0
+        }
+        set {
+            let makeInvisible = newValue
+
+            alpha = makeInvisible ? 0.0 : 1.0
+        }
+    }
+
     var isShown: Bool {
+        get {
+            !isHidden && superview != nil
+        }
         set {
             isHidden = !newValue
         }
+    }
+
+    // If you want to adding some padding to the inside of a view. Sometimes this is easier then trying to do it in AutoLayout
+    // Thanks: https://useyourloaf.com/blog/adding-padding-to-a-stack-view/
+    var internalPadding: EdgeMeasurements {
         get {
-            !isHidden && superview != nil
+            directionalLayoutMargins.edgeMeasurements
+        }
+        set {
+            directionalLayoutMargins = newValue.directionalEdgeInsets
+
+            // Stackviews need this field so that is arranges subviews by the padding instead of edges.
+            (self as? UIStackView)?.isLayoutMarginsRelativeArrangement = true
         }
     }
 
@@ -42,19 +68,36 @@ extension UIView {
     }
 
     func findByAccessibilityIdentifier(identifier: AccessibilityIdentifier) -> UIView? {
-        func findByID(view: UIView, _ id: String) -> UIView? {
-            if view.accessibilityIdentifier == id {
-                return view
-            }
-            for subview in view.subviews {
-                if let foundView = findByID(view: subview, id) {
-                    return foundView
-                }
-            }
-            return nil
+        let matchingViews = findViewsByAccessibilityIdentifier(identifier: identifier)
+
+        if matchingViews.count > 1 {
+            fatalError("\(matchingViews.count) Views found with ID: \(identifier), expected 1. Fix the issue or use another function to get all Views.")
         }
 
-        return findByID(view: self, identifier)
+        return matchingViews[safe: 0]
+    }
+
+    func findViewsByAccessibilityIdentifier(identifier: AccessibilityIdentifier) -> [UIView] {
+        var matchingViews: [UIView] = []
+
+        func findByID(view: UIView, _ id: String) {
+            if view.accessibilityIdentifier == id {
+                matchingViews.append(view)
+            }
+            for subview in view.subviews {
+                findByID(view: subview, id)
+            }
+        }
+
+        findByID(view: self, identifier)
+
+        return matchingViews
+    }
+
+    func addSubviews(_ viewsToAdd: [UIView]) {
+        viewsToAdd.forEach { view in
+            self.addSubview(view)
+        }
     }
 
     func addSubview(_ view: UIView, constraints: [NSLayoutConstraint]) {
@@ -81,6 +124,14 @@ extension UIView {
         layer.cornerRadius = radius
         layer.maskedCorners = transformedCorners
     }
+
+    // Views usually do not have touch listeners on them. This is a way to make any view respond to being touched.
+    func addTarget(_ target: Any?, action: Selector) {
+        isUserInteractionEnabled = true
+
+        let gesture = UITapGestureRecognizer(target: target, action: action)
+        addGestureRecognizer(gesture)
+    }
 }
 
 enum Corner {
@@ -88,4 +139,46 @@ enum Corner {
     case topRight
     case bottomLeft
     case bottomRight
+}
+
+struct EdgeMeasurements {
+    let left: CGFloat
+    let top: CGFloat
+    let right: CGFloat
+    let bottom: CGFloat
+
+    var directionalEdgeInsets: NSDirectionalEdgeInsets {
+        NSDirectionalEdgeInsets(top: top, leading: left, bottom: bottom, trailing: right)
+    }
+
+    var edgeInsets: UIEdgeInsets {
+        UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+    }
+
+    init(all: CGFloat) {
+        self.left = all
+        self.top = all
+        self.right = all
+        self.bottom = all
+    }
+
+    init(left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
+        self.left = left
+        self.top = top
+        self.right = right
+        self.bottom = bottom
+    }
+
+    init(x: CGFloat, y: CGFloat) {
+        self.left = x
+        self.top = y
+        self.right = x
+        self.bottom = y
+    }
+}
+
+extension NSDirectionalEdgeInsets {
+    var edgeMeasurements: EdgeMeasurements {
+        EdgeMeasurements(left: leading, top: top, right: trailing, bottom: bottom)
+    }
 }

@@ -55,14 +55,14 @@ class ReposDataSource: RepositoryDataSource {
     }
 
     func saveCache(_ fetchedData: [Repo], requirements: ReposDataSourceRequirements) throws {
-        try reposRepository.replaceRepos(fetchedData, forUsername: requirements.githubUsername)
+        try reposRepository.replaceRepos(fetchedData, forUsername: requirements.githubUsername).sync()
     }
 
     func observeCache(requirements: ReposDataSourceRequirements) -> Observable<[Repo]> {
         reposRepository.observeRepos(forUsername: requirements.githubUsername)
     }
 
-    func isCacheEmpty(_ cache: [Repo], requirements: ReposDataSourceRequirements) -> Bool {
+    func isCacheEmpty(_ cache: [Repo], requirements _: ReposDataSourceRequirements) -> Bool {
         cache.isEmpty
     }
 }

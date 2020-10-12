@@ -1,3 +1,4 @@
+@testable import App
 import RxSwift
 import Teller
 import XCTest

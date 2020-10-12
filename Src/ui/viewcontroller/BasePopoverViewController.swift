@@ -19,7 +19,7 @@ class BasePopoverViewController: UIViewController {
         CGSize(width: 200, height: 200)
     }
 
-    func dismiss(_ sender: AnyObject) {
+    func dismiss(_: AnyObject) {
         dismiss(animated: true, completion: nil)
     }
 }

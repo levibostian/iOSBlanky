@@ -133,7 +133,7 @@ class LaunchViewController: UIViewController {
         super.updateViewConstraints()
     }
 
-    @objc func howManyReposButtonPressed(_ sender: UIButton) {
+    @objc func howManyReposButtonPressed(_: UIButton) {
         doneEditing()
 
         reposViewModel.gitHubUsername = usernameTextField.text!

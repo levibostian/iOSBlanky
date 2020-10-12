@@ -16,3 +16,5 @@
 "retry" = "Retry";
 "cancel" = "Cancel";
 "accept" = "Accept";
+"errorMessage_ReadingDataFromDevice" = "Sorry! There was a problem reading information from the device. The team has been notified.";
+"errorMessage_SavingDataToDevice" = "Sorry! There was a problem saving information to your device. The team has been notified.";

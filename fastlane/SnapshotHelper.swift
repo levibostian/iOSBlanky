@@ -279,7 +279,7 @@ private extension XCUIElementQuery {
 
 private extension CGFloat {
     func isBetween(_ numberA: CGFloat, and numberB: CGFloat) -> Bool {
-        numberA...numberB ~= self
+        numberA ... numberB ~= self
     }
 }
 

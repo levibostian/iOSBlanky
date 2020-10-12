@@ -21,15 +21,17 @@ class AppGitHubApi: GitHubAPI {
     fileprivate let requestRunner: GitHubRequestRunner
     fileprivate let activityLogger: ActivityLogger
     fileprivate let eventBus: EventBus
+    fileprivate let schedulers: RxSchedulers
 
-    init(requestRunner: GitHubRequestRunner, jsonAdapter: JsonAdapter, activityLogger: ActivityLogger, eventBus: EventBus) {
+    init(requestRunner: GitHubRequestRunner, jsonAdapter: JsonAdapter, activityLogger: ActivityLogger, eventBus: EventBus, schedulers: RxSchedulers) {
         self.requestRunner = requestRunner
         self.jsonAdapter = jsonAdapter
         self.activityLogger = activityLogger
         self.eventBus = eventBus
+        self.schedulers = schedulers
     }
 
-    func exchangeToken(token: String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>> {
+    func exchangeToken(token _: String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>> {
         // github api doesn't have this endpoint so we are not going to implement it. This function only exists as an example for logging in.
         Single.never()
     }
@@ -44,7 +46,7 @@ class AppGitHubApi: GitHubAPI {
                         return HttpRequestError.user(message: Strings.userHasNoGithubRepos.localized, underlyingError: nil)
                     }
                     return nil
-        })
+                })
     }
 }
 
@@ -78,6 +80,6 @@ extension AppGitHubApi {
                 case .failure(let requestError):
                     return Result.failure(requestError)
                 }
-            }.subscribeOn(RxSchedulers.background) // network calls should always be called on background thread.
+            }.subscribeOn(schedulers.background) // network calls should always be called on background thread.
     }
 }

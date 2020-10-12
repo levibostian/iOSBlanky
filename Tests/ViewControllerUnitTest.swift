@@ -1,3 +1,4 @@
+@testable import App
 import Foundation
 import UIKit
 import XCTest
@@ -40,29 +41,29 @@ class ViewControllerUnitTest: UnitTest {
 
 extension ViewControllerUnitTest {
     func XCTestViewVisibility(shown: [AccessibilityIdentifier], hidden: [AccessibilityIdentifier], file: StaticString = #file, line: UInt = #line) {
-        assertAllAccessibilityIdentifiers([shown, hidden])
+        assertAllAccessibilityIdentifiers([shown, hidden], file: file, line: line)
 
         shown.forEach { identifier in
             guard let shownView = viewControllerToTest.view.findByAccessibilityIdentifier(identifier: identifier) else {
                 fatalError("View with identifier, \(identifier), not found in VC view.")
             }
-            XCTAssertTrue(shownView.isShown)
+            XCTAssertTrue(shownView.isShown, file: file, line: line)
         }
 
         hidden.forEach { identifier in
             // we check if view is either hidden, or is removed as a subview which means it is hidden.
             if let hiddenView = viewControllerToTest.view.findByAccessibilityIdentifier(identifier: identifier) {
-                XCTAssertTrue(hiddenView.isHidden)
+                XCTAssertTrue(hiddenView.isHidden, file: file, line: line)
             }
         }
     }
 
     func XCTestViewShown(_ view: UIView, file: StaticString = #file, line: UInt = #line) {
-        XCTAssertTrue(view.isShown)
+        XCTAssertTrue(view.isShown, file: file, line: line)
     }
 
     // Asserts that we are checking *all* identifiers for the ViewController. No more, no less.
-    private func assertAllAccessibilityIdentifiers(_ identifiers: [[AccessibilityIdentifier]]) {
+    private func assertAllAccessibilityIdentifiers(_ identifiers: [[AccessibilityIdentifier]], file: StaticString, line: UInt) {
         var allIdentifiers = allAccessibilityIdentifiers
         var seenIdentifiers: [AccessibilityIdentifier] = []
 
@@ -81,7 +82,13 @@ extension ViewControllerUnitTest {
         }
 
         if !allIdentifiers.isEmpty {
-            fatalError("Identifiers, \(allIdentifiers), are missing from the test check.")
+            XCTFail("Identifiers, \(allIdentifiers), are missing from the test check.", file: file, line: line)
+        }
+    }
+
+    func XCTestButtonTargetSet(_ button: UIButton, file: StaticString = #file, line: UInt = #line) {
+        if button.allTargets.isEmpty {
+            XCTFail("No targets set on button", file: file, line: line)
         }
     }
 }

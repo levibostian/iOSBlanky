@@ -46,7 +46,7 @@ class RepositorySyncServiceTests: UnitTest {
         let expect = [RefreshResult.skipped(reason: .dataNotTooOld)]
 
         keyValueStorage.setString("username", forKey: .lastUsernameSearch)
-        reposRepositoryMock.refreshClosure = { force in
+        reposRepositoryMock.refreshClosure = { _ in
             Single.just(expect[0])
         }
 
@@ -60,13 +60,13 @@ class RepositorySyncServiceTests: UnitTest {
     }
 
     func test_syncAll_expectSetRequirementsOnRepository() {
-        reposRepositoryMock.refreshClosure = { force in
+        reposRepositoryMock.refreshClosure = { _ in
             Single.just(.successful)
         }
         keyValueStorage.setString("username", forKey: .lastUsernameSearch)
 
         let expectToComplete = expectation(description: "Expect sync to complete")
-        repositorySyncService.syncAll { actual in
+        repositorySyncService.syncAll { _ in
             XCTAssertNotNil(self.reposRepositoryMock.requirements)
 
             expectToComplete.fulfill()
@@ -78,12 +78,12 @@ class RepositorySyncServiceTests: UnitTest {
     // MARK: - syncRepos
 
     func test_refreshRepos_expectCallCompletionHandler() {
-        reposRepositoryMock.refreshClosure = { force in
+        reposRepositoryMock.refreshClosure = { _ in
             Single.just(.successful)
         }
 
         let expectToComplete = expectation(description: "Expect sync to complete")
-        repositorySyncService.refreshRepos(onComplete: { actual in
+        repositorySyncService.refreshRepos(onComplete: { _ in
             expectToComplete.fulfill()
         })
 
@@ -91,13 +91,13 @@ class RepositorySyncServiceTests: UnitTest {
     }
 
     func test_refreshRepos_expectSetRequirementsOnRepository() {
-        reposRepositoryMock.refreshClosure = { force in
+        reposRepositoryMock.refreshClosure = { _ in
             Single.just(.successful)
         }
         keyValueStorage.setString("username", forKey: .lastUsernameSearch)
 
         let expectToComplete = expectation(description: "Expect sync to complete")
-        repositorySyncService.refreshRepos(onComplete: { actual in
+        repositorySyncService.refreshRepos(onComplete: { _ in
             XCTAssertNotNil(self.reposRepositoryMock.requirements)
 
             expectToComplete.fulfill()

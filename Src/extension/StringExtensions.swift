@@ -15,6 +15,31 @@ extension String {
         return regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "$1_$2")
     }
 
+    func ellipsis(maxLengthOfString: Int, numberDots: Int = 3) -> String {
+        if maxLengthOfString <= numberDots {
+            fatalError("Max length must be > the number of dots so *some* string is returned")
+        }
+
+        guard count > maxLengthOfString else {
+            return self
+        }
+
+        let lengthOfString = maxLengthOfString - numberDots
+        let numberOfCharactersToCutOffEnd = count - lengthOfString
+
+        return "\(dropLast(numberOfCharactersToCutOffEnd))\(String.fromStringRepeated(string: ".", repeatTimes: numberDots))"
+    }
+
+    static func fromStringRepeated(string: String, repeatTimes: Int) -> String {
+        var newString: String = ""
+
+        for _ in 0 ..< repeatTimes {
+            newString += string
+        }
+
+        return newString
+    }
+
     // http://emailregex.com/
     func isValidEmail() -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -39,9 +64,13 @@ extension String {
         "abcdefghijklmnopqrstuvwxyz"
     }
 
+    static var random: String {
+        "".random()
+    }
+
     // Credits: https://stackoverflow.com/a/26845710/1486374
-    func random(length: Int) -> String {
-        String((0..<length).map { _ in abcLetters.randomElement()! }).capitalizingFirstLetter()
+    func random(length: Int = 10) -> String {
+        String((0 ..< length).map { _ in abcLetters.randomElement()! }).capitalizingFirstLetter()
     }
 
     var data: Data? {

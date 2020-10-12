@@ -54,7 +54,7 @@ class MoyaResponseProcessor {
         let processedResponse = ProcessedResponse(statusCode: response.statusCode, data: response.data, request: response.request, response: response.response)
 
         switch response.statusCode {
-        case 500...600:
+        case 500 ... 600:
             return Result.failure(HttpRequestError.developer(message: Strings.error500ResponseCode.localized, underlyingError: ServerDownError(statusCode: response.statusCode)))
         case 429: // Rate limiting
             let error: RateLimitingResponseError = try! jsonAdapter.fromJson(response.data)
@@ -68,7 +68,7 @@ class MoyaResponseProcessor {
             let conflictError: ConflictResponseError = try! jsonAdapter.fromJson(response.data)
 
             return Result.failure(HttpRequestError.user(message: Strings.error500ResponseCode.localized, underlyingError: conflictError))
-        case 400..<500:
+        case 400 ..< 500:
             if let handledError = extraResponseHandling(processedResponse) {
                 return Result.failure(handledError)
             } else {

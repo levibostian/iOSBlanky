@@ -29,7 +29,7 @@ class AtomicCounterTests: UnitTest {
     func test_increment_givenCalledManyTimes_expectTotal() {
         let expected = 5
 
-        (0..<expected).forEach { _ in
+        (0 ..< expected).forEach { _ in
             _ = atomicCounter.increment()
         }
 
@@ -66,11 +66,11 @@ class AtomicCounterTests: UnitTest {
     func test_decrement_givenCalledManyTimes_expectTotal() {
         let expected = 5
 
-        (0..<expected).forEach { _ in
+        (0 ..< expected).forEach { _ in
             _ = atomicCounter.increment()
         }
 
-        (0..<expected).forEach { _ in
+        (0 ..< expected).forEach { _ in
             _ = atomicCounter.decrement()
         }
 

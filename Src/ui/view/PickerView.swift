@@ -115,7 +115,7 @@ class PickerView: UIView {
     @objc func acceptButtonPressed() {
         var rowIndexes: [Int] = []
 
-        for componentIndex in 0..<picker.numberOfComponents {
+        for componentIndex in 0 ..< picker.numberOfComponents {
             rowIndexes.append(picker.selectedRow(inComponent: componentIndex))
         }
 

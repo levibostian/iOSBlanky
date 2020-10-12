@@ -19,6 +19,8 @@ enum Strings: String, CaseIterable {
     case retry
     case cancel
     case accept
+    case errorMessage_SavingDataToDevice
+    case errorMessage_ReadingDataFromDevice
 }
 
 extension Strings {

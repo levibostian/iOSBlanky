@@ -10,14 +10,14 @@ protocol LoginViewModel: AutoMockable {
 class AppLoginViewModel: LoginViewModel {
     private let userManager: UserManager
     private let userRepository: UserRepository
-    private let bundle: Bundle
     private let logger: ActivityLogger
+    private let schedulers: RxSchedulers
 
-    init(userManager: UserManager, dataDestroyer: DataDestroyer, userRepository: UserRepository, bundle: Bundle, logger: ActivityLogger) {
+    init(userManager: UserManager, dataDestroyer _: DataDestroyer, userRepository: UserRepository, logger: ActivityLogger, schedulers: RxSchedulers) {
         self.userManager = userManager
         self.userRepository = userRepository
-        self.bundle = bundle
         self.logger = logger
+        self.schedulers = schedulers
     }
 
     func loginUser(token: String) -> Single<Result<TokenExchangeResponseVo, HttpRequestError>> {
@@ -32,6 +32,6 @@ class AppLoginViewModel: LoginViewModel {
                     ])
                     self.logger.setUserId(id: String(successfulResponse.user.id))
                 }
-            }).subscribeOn(RxSchedulers.background).observeOn(RxSchedulers.ui)
+            }).subscribeOn(schedulers.background).observeOn(schedulers.ui)
     }
 }

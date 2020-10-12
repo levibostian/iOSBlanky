@@ -1,0 +1,3 @@
+{
+    "note": "This file only exists for integration tests with FileStorage. You can delete this file if `FileAsset` enum does not have an entry `foo`"
+}

@@ -58,6 +58,7 @@ import Boquila
 
 typealias RemoteConfigAdapter = Boquila.RemoteConfigAdapter
 typealias RemoteConfigAdapterPlugin = Boquila.RemoteConfigAdapterPlugin
+typealias JsonRemoteConfigAdapterPlugin = Boquila.JsonRemoteConfigAdapterPlugin
 
 // sourcery: InjectRegister = "UserDefaults"
 // sourcery: InjectCustom
@@ -68,3 +69,9 @@ extension DI {
         UserDefaults.standard
     }
 }
+
+import CoreData
+
+typealias CDFetchRequest<Model: NSManagedObject> = NSFetchRequest<Model>
+typealias CDContext = NSManagedObjectContext
+typealias CDModel = NSManagedObject

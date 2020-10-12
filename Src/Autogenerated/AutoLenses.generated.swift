@@ -1,6 +1,3 @@
-// swiftlint:disable variable_name
-// swiftlint:disable trailing_newline
-
 import Foundation
 
 infix operator *~: MultiplicationPrecedence
@@ -32,23 +29,23 @@ extension AppState {
     static let reposLens = Lens<AppState, [Repo]?>(get: { $0.repos },
                                                    set: { repos, appstate in
                                                        AppState(repos: repos, previousReposSearchUsername: appstate.previousReposSearchUsername, loggedInUser: appstate.loggedInUser, networkQueue: appstate.networkQueue, mainMenuCta: appstate.mainMenuCta)
-        })
+                                                   })
     static let previousReposSearchUsernameLens = Lens<AppState, String?>(get: { $0.previousReposSearchUsername },
                                                                          set: { previousReposSearchUsername, appstate in
                                                                              AppState(repos: appstate.repos, previousReposSearchUsername: previousReposSearchUsername, loggedInUser: appstate.loggedInUser, networkQueue: appstate.networkQueue, mainMenuCta: appstate.mainMenuCta)
-        })
+                                                                         })
     static let loggedInUserLens = Lens<AppState, LoggedInUserVo?>(get: { $0.loggedInUser },
                                                                   set: { loggedInUser, appstate in
                                                                       AppState(repos: appstate.repos, previousReposSearchUsername: appstate.previousReposSearchUsername, loggedInUser: loggedInUser, networkQueue: appstate.networkQueue, mainMenuCta: appstate.mainMenuCta)
-        })
+                                                                  })
     static let networkQueueLens = Lens<AppState, [NetworkQueueItem]?>(get: { $0.networkQueue },
                                                                       set: { networkQueue, appstate in
                                                                           AppState(repos: appstate.repos, previousReposSearchUsername: appstate.previousReposSearchUsername, loggedInUser: appstate.loggedInUser, networkQueue: networkQueue, mainMenuCta: appstate.mainMenuCta)
-        })
+                                                                      })
     static let mainMenuCtaLens = Lens<AppState, CTA?>(get: { $0.mainMenuCta },
                                                       set: { mainMenuCta, appstate in
                                                           AppState(repos: appstate.repos, previousReposSearchUsername: appstate.previousReposSearchUsername, loggedInUser: appstate.loggedInUser, networkQueue: appstate.networkQueue, mainMenuCta: mainMenuCta)
-        })
+                                                      })
 
     // Convenient set functions to edit a property of the immutable object
     func reposSet(_ repos: [Repo]?) -> AppState {

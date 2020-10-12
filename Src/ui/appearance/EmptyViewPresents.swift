@@ -4,13 +4,13 @@ import Foundation
 public struct DarkModeEnabledEmptyViewConfig: EmptyViewConfigPreset {
     public var titleLabel: UILabel {
         let label = EmptyViewConfig.defaultTitleLabel
-        label.textColor = Colors.textColor.color
+        label.textColor = Colors.primaryTextColor.color
         return label
     }
 
     public var messageLabel: UILabel {
         let label = EmptyViewConfig.defaultMessageLabel
-        label.textColor = Colors.textColor.color
+        label.textColor = Colors.primaryTextColor.color
         return label
     }
 

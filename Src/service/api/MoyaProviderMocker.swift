@@ -62,7 +62,7 @@ class MoyaProviderMocker<Service: TargetType> {
             return response
         }
 
-        let stubClosure: (Service) -> StubBehavior = { target -> StubBehavior in
+        let stubClosure: (Service) -> StubBehavior = { _ -> StubBehavior in
             var delayInSeconds: TimeInterval = 0
             if self.queue.peek() == nil {
                 delayInSeconds = 10.0

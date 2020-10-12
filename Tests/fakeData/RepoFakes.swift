@@ -1,3 +1,4 @@
+@testable import App
 import Foundation
 
 struct RepoFakes {

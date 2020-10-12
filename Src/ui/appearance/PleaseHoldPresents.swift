@@ -4,13 +4,13 @@ import PleaseHold
 public struct DarkModeEnabledPleaseHoldViewConfigPreset: PleaseHoldViewConfigPreset {
     public var titleLabel: UILabel {
         let label = PleaseHoldViewConfig.defaultTitleLabel
-        label.textColor = Colors.textColor.color
+        label.textColor = Colors.primaryTextColor.color
         return label
     }
 
     public var messageLabel: UILabel {
         let label = PleaseHoldViewConfig.defaultMessageLabel
-        label.textColor = Colors.textColor.color
+        label.textColor = Colors.primaryTextColor.color
         return label
     }
 

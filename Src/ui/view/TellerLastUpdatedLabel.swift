@@ -55,7 +55,7 @@ class TellerLastUpdatedLabel: UILabel {
     private func build() {
         isHidden = true // hide by default
 
-        textColor = Colors.textColor.color
+        textColor = Colors.primaryTextColor.color
         font = UIFont.systemFont(ofSize: 11, weight: .thin)
     }
 }

@@ -3,22 +3,25 @@ import Foundation
 // sourcery: InjectRegister = "DataDestroyer"
 class DataDestroyer {
     private let keyValueStorage: KeyValueStorage
-    private let database: Database
+    private let coreDataManager: CoreDataManager
     private let pendingTasks: PendingTasks
 
-    init(keyValueStorage: KeyValueStorage, database: Database, pendingTasks: PendingTasks) {
+    init(keyValueStorage: KeyValueStorage, coreDataManager: CoreDataManager, pendingTasks: PendingTasks) {
         self.keyValueStorage = keyValueStorage
-        self.database = database
+        self.coreDataManager = coreDataManager
         self.pendingTasks = pendingTasks
     }
 
-    func destroyAll(onComplete: @escaping OnComplete) {
-        keyValueStorage.deleteAll()
-        pendingTasks.deleteAll()
-        database.deleteAll(onComplete: {
-            DispatchQueue.main.async {
-                onComplete()
+    func destroyAll(onComplete: @escaping OnCompleteOptionalError) {
+        DispatchQueue.global(qos: .background).async {
+            self.keyValueStorage.deleteAll()
+            self.pendingTasks.deleteAll()
+
+            self.coreDataManager.reset { error in
+                DispatchQueue.main.async {
+                    onComplete(error)
+                }
             }
-        })
+        }
     }
 }

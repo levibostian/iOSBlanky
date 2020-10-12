@@ -1,10 +1,6 @@
 import UIKit
 
 class ExampleTableViewCell: UITableViewCell {
-    static let reuseIdentifier = "ExampleTableViewCellId"
-
-    private var didSetupConstraints = false
-
     let cornerRadius = CGFloat(30.0)
     let spaceBetweenCells = 18
 
@@ -23,9 +19,7 @@ class ExampleTableViewCell: UITableViewCell {
 
     let titleLabel: UILabel = {
         let view = UILabel()
-        view.textColor = Colors.textColor.color
-        view.font = UIFont.boldSystemFont(ofSize: 18)
-        view.numberOfLines = 0
+        view.setStyle(.h3)
         return view
     }()
 
@@ -49,7 +43,24 @@ class ExampleTableViewCell: UITableViewCell {
 
         contentView.addSubview(rootStackView)
 
-        contentView.setNeedsUpdateConstraints()
+        let minCellHeight = spaceBetweenCells + 110 // Must add cell padding for actual height.
+
+        rootStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.greaterThanOrEqualTo(minCellHeight)
+        }
+        titleLabel.snp.makeConstraints { make in
+            make.height.equalToSuperview()
+        }
+        titleLabel.resistShrinking(for: .vertical)
+        titleLabel.resistShrinking(for: .horizontal)
+        productImage.snp.makeConstraints { make in
+            make.leading.equalTo(contentView.snp.leading)
+            make.height.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.5)
+        }
+        productImage.resistShrinking(for: .vertical)
+        productImage.resistGrowing(for: .horizontal)
 
         setupViews()
     }
@@ -59,32 +70,6 @@ class ExampleTableViewCell: UITableViewCell {
     }
 
     private func setupViews() {}
-
-    override func updateConstraints() {
-        if !didSetupConstraints {
-            let minCellHeight = spaceBetweenCells + 110 // Must add cell padding for actual height.
-
-            rootStackView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-                make.height.greaterThanOrEqualTo(minCellHeight)
-            }
-            titleLabel.snp.makeConstraints { make in
-                make.height.equalToSuperview()
-            }
-            titleLabel.resistShrinking(for: .vertical)
-            titleLabel.resistShrinking(for: .horizontal)
-            productImage.snp.makeConstraints { make in
-                make.leading.equalTo(contentView.snp.leading)
-                make.height.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(0.5)
-            }
-            productImage.resistShrinking(for: .vertical)
-            productImage.resistGrowing(for: .horizontal)
-
-            didSetupConstraints = true
-        }
-        super.updateConstraints()
-    }
 
     private func populate(_ listItem: String) {
         setupViews()

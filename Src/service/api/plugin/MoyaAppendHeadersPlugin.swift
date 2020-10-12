@@ -7,7 +7,7 @@ struct MoyaAppendHeadersPlugin: PluginType {
         self.userManager = userManager
     }
 
-    func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
+    func prepare(_ request: URLRequest, target _: TargetType) -> URLRequest {
         var request = request
         if let urlString = request.url?.absoluteString, urlString.hasPrefix(Constants.apiEndpoint) {
             if let authToken = userManager.authToken {
@@ -20,5 +20,5 @@ struct MoyaAppendHeadersPlugin: PluginType {
         return request
     }
 
-    func didReceive(_ result: Result<Moya.Response, Moya.MoyaError>, target: TargetType) {}
+    func didReceive(_: Result<Moya.Response, Moya.MoyaError>, target _: TargetType) {}
 }

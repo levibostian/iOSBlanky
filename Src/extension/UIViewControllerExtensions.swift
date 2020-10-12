@@ -8,6 +8,17 @@ extension UIViewController {
         UIApplication.shared.delegate as? AppDelegate
     }
 
+    func browse(to url: URL) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
+    // To present the VC over the current one, still showing the old one.
+    // Call this before presenting the ViewController.
+    // Thanks, https://gist.github.com/barbietunnie/e5547f35180436ac102cac52a15f8ca3
+    func presentOverExisting() {
+        modalPresentationStyle = .overCurrentContext
+    }
+
     func addChildViewController(_ childViewController: UIViewController, addView: ((UIView) -> Void)?) {
         childViewController.willMove(toParent: self)
 
@@ -57,6 +68,31 @@ extension UIViewController {
         }
 
         return foundButton
+    }
+
+    var isSystemDarkModeEnabled: Bool {
+        if #available(iOS 12, *) {
+            return traitCollection.userInterfaceStyle == .dark
+        } else {
+            return false
+        }
+    }
+
+    /**
+     This function is to test out if Crashlytics is working for your app.
+
+     How to get this to work:
+     1. Call this function in your ViewController's viewDidLoad() function. Choose a ViewController that launches when your app launches for convenience.
+     2. Run the app in XCode to your test device. You may need to enable CloudFlare 1.1.1.1 VPN proxy via the 1.1.1.1 app on your iPhone in case your proxy or network blocks Firebase or Crashlytics.
+     3. When your app launches from XCode, immediately press the stop button in XCode to stop the debugging session in XCode with the app. If the crash happens while XCode is debugging, Crashlytics will not be called.
+     4. Launch your app from the device. Wait for the app to close because it has crashed.
+     5. Launch the app again which will make Crashlytics SDK send the report to Crashlytics.
+     6. Wait about 5 minutes or so and you will then see a crash in your crashlytics dashboard.
+     */
+    func TESTCRASHLYTICS() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            fatalError("Testing crashltyics working")
+        }
     }
 }
 

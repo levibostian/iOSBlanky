@@ -35,7 +35,7 @@ class FavoriteRepoPendingTask: PendingTask {
         userManager.isLoggedIn
     }
 
-    func runTask(complete: @escaping (Error?) -> Void) {
+    func runTask(complete _: @escaping (Error?) -> Void) {
         let data: TaskData = try! jsonAdapter.fromJson(dataId!.data!)
 
         logger.breadcrumb("Favoriting/unfavoriting repo pending task running", extras: [

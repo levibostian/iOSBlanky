@@ -5,13 +5,7 @@ platform :ios, ios_version
 use_frameworks!
 inhibit_all_warnings!
 
-def testingDependencies 
-    # Include CLIs in testing as we don't need to bundle with app target 
-    pod 'RxBlocking', '~> 5.0'
-    pod 'RxTest', '~> 5.0'     
-end 
-
-def commonDepencencies    
+def app_pods 
     pod 'Moya', '~> 14.0.0'
     pod 'RxCocoa', '~> 5'
     pod "RxCoreData", "~> 1.0.0"
@@ -23,9 +17,9 @@ def commonDepencencies
     pod 'Firebase/Performance'
     pod 'Firebase/Crashlytics'
 
-    pod 'Boquila', '1.0.0-alpha.3'
-    pod 'Boquila/Firebase', '1.0.0-alpha.3'
-    pod 'Boquila/Testing', '1.0.0-alpha.3'
+    pod 'Boquila', '1.0.0-alpha.4'
+    pod 'Boquila/Firebase', '1.0.0-alpha.4'
+    pod 'Boquila/Testing', '1.0.0-alpha.4'
 
     pod 'Dwifft', '~> 0.9'
     pod 'SwiftCoordinator'
@@ -33,7 +27,7 @@ def commonDepencencies
     pod 'KeychainAccess', '~> 4'
     pod 'Empty', '~> 0.1'
     pod 'PleaseHold', '~> 0.2'
-    pod 'Swapper', '~> 0.1'
+    pod 'Swapper', '~> 1'
     pod 'IQKeyboardManagerSwift', '~> 6'
     pod 'Wendy', '~> 0.5.0'
     pod 'SnapKit', '~> 5.0.0'
@@ -41,22 +35,29 @@ def commonDepencencies
 end 
 
 target "App" do
-    commonDepencencies()
+    app_pods()
+
+    target "AppTests" do
+        inherit! :search_paths
+
+        pod 'RxBlocking', '~> 5.0'
+        pod 'RxTest', '~> 5.0'
+    end
 end
 
-target "AppTests" do
-    commonDepencencies()
-    testingDependencies()
-end
-
+# UI tests are separate apps. They need to be a root level app just like our app. 
 target "AppUITests" do
-    commonDepencencies()
-    testingDependencies()
+    app_pods()
+    
+    pod 'RxBlocking', '~> 5.0'
+    pod 'RxTest', '~> 5.0'
 end
 
 target "Screenshots" do
-    commonDepencencies()
-    testingDependencies()
+    app_pods()
+    
+    pod 'RxBlocking', '~> 5.0'
+    pod 'RxTest', '~> 5.0'
 end
 
 # https://stackoverflow.com/a/58367269/1486374

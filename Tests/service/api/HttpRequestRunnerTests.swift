@@ -10,7 +10,7 @@ class HttpRequestRunnerTests: UnitTest {
     private var moyaMocker: MoyaProviderMocker<GitHubService>!
 
     private var requestRunner: HttpRequestRunner<GitHubService>!
-    private var nilResponseExtraErrorHandling: (ProcessedResponse) -> HttpRequestError? = { response in
+    private var nilResponseExtraErrorHandling: (ProcessedResponse) -> HttpRequestError? = { _ in
         nil
     }
 

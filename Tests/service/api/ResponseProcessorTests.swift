@@ -9,7 +9,7 @@ class ResponseProcessorTests: UnitTest {
     private var moyaMocker: MoyaProviderMocker<GitHubService>!
 
     private var responseProcessor: MoyaResponseProcessor!
-    private var nilResponseExtraErrorHandling: (ProcessedResponse) -> HttpRequestError? = { response in
+    private var nilResponseExtraErrorHandling: (ProcessedResponse) -> HttpRequestError? = { _ in
         nil
     }
 
@@ -99,7 +99,7 @@ class ResponseProcessorTests: UnitTest {
         let givenError = HttpRequestError.user(message: "message", underlyingError: nil)
         let given = Response(statusCode: 410, data: "".data!)
 
-        let actual = responseProcessor.process(given, extraResponseHandling: { response -> HttpRequestError? in
+        let actual = responseProcessor.process(given, extraResponseHandling: { _ -> HttpRequestError? in
             givenError
         })
 
@@ -116,7 +116,7 @@ class ResponseProcessorTests: UnitTest {
     func test_processSuccess_given400_expectReceiveUnhandledDeveloperError() {
         let given = Response(statusCode: 410, data: "".data!)
 
-        let actual = responseProcessor.process(given, extraResponseHandling: { response -> HttpRequestError? in
+        let actual = responseProcessor.process(given, extraResponseHandling: { _ -> HttpRequestError? in
             nil
         })
 

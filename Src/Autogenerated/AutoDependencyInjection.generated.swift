@@ -1,7 +1,3 @@
-// swiftlint:disable line_length
-// swiftlint:disable variable_name
-// swiftlint:disable force_cast
-
 // File generated from Sourcery-DI project: https://github.com/levibostian/Sourcery-DI
 // Template version 0.1.1
 
@@ -15,6 +11,7 @@ import AppKit
 enum Dependency: CaseIterable {
     case activityLogger
     case backgroundJobRunner
+    case coreDataManager
     case environment
     case gitHubAPI
     case loginViewModel
@@ -26,11 +23,11 @@ enum Dependency: CaseIterable {
     case threadUtil
     case userManager
     case userRepository
-    case bundle
-    case coreDataManager
+    case viewDataProvider
+    case jsonRemoteConfigAdapterPlugin
     case remoteConfigAdapter
+    case bundle
     case dataDestroyer
-    case database
     case fileStorage
     case gitHubRequestRunner
     case secureStorage
@@ -39,6 +36,7 @@ enum Dependency: CaseIterable {
     case eventBus
     case reposDataSource
     case repositoryDao
+    case rxSchedulers
     case stringReplaceUtil
     case jsonAdapter
     case reposTellerRepository
@@ -56,7 +54,7 @@ class DI {
     /**
      Designed to be used only for testing purposes to override dependencies.
      */
-    func override<Value: Any>(_ dep: Dependency, value: Value, forType type: Value.Type) {
+    func override<Value: Any>(_ dep: Dependency, value: Value, forType _: Value.Type) {
         overrides[dep] = value
     }
 
@@ -74,6 +72,7 @@ class DI {
         switch dep {
         case .activityLogger: return _activityLogger as! T
         case .backgroundJobRunner: return _backgroundJobRunner as! T
+        case .coreDataManager: return _coreDataManager as! T
         case .environment: return _environment as! T
         case .gitHubAPI: return _gitHubAPI as! T
         case .loginViewModel: return _loginViewModel as! T
@@ -85,11 +84,11 @@ class DI {
         case .threadUtil: return _threadUtil as! T
         case .userManager: return _userManager as! T
         case .userRepository: return _userRepository as! T
-        case .bundle: return _bundle as! T
-        case .coreDataManager: return _coreDataManager as! T
+        case .viewDataProvider: return _viewDataProvider as! T
+        case .jsonRemoteConfigAdapterPlugin: return _jsonRemoteConfigAdapterPlugin as! T
         case .remoteConfigAdapter: return _remoteConfigAdapter as! T
+        case .bundle: return _bundle as! T
         case .dataDestroyer: return _dataDestroyer as! T
-        case .database: return _database as! T
         case .fileStorage: return _fileStorage as! T
         case .gitHubRequestRunner: return _gitHubRequestRunner as! T
         case .secureStorage: return _secureStorage as! T
@@ -98,6 +97,7 @@ class DI {
         case .eventBus: return _eventBus as! T
         case .reposDataSource: return _reposDataSource as! T
         case .repositoryDao: return _repositoryDao as! T
+        case .rxSchedulers: return _rxSchedulers as! T
         case .stringReplaceUtil: return _stringReplaceUtil as! T
         case .jsonAdapter: return _jsonAdapter as! T
         case .reposTellerRepository: return _reposTellerRepository as! T
@@ -136,6 +136,31 @@ class DI {
         AppBackgroundJobRunner(logger: _activityLogger, pendingTasks: _pendingTasks, repositorySyncService: _repositorySyncService)
     }
 
+    // CoreDataManager (singleton)
+    private var _coreDataManager: CoreDataManager {
+        if let overridenDep = overrides[.coreDataManager] {
+            return overridenDep as! CoreDataManager
+        }
+        return coreDataManager
+    }
+
+    private let _coreDataManager_queue = DispatchQueue(label: "DI_get_coreDataManager_queue")
+    private var _coreDataManager_shared: CoreDataManager?
+    var coreDataManager: CoreDataManager {
+        _coreDataManager_queue.sync {
+            if let overridenDep = self.overrides[.coreDataManager] {
+                return overridenDep as! CoreDataManager
+            }
+            let res = _coreDataManager_shared ?? _get_coreDataManager()
+            _coreDataManager_shared = res
+            return res
+        }
+    }
+
+    private func _get_coreDataManager() -> CoreDataManager {
+        AppCoreDataManager()
+    }
+
     // Environment
     private var _environment: Environment {
         if let overridenDep = overrides[.environment] {
@@ -157,7 +182,7 @@ class DI {
     }
 
     var gitHubAPI: GitHubAPI {
-        AppGitHubApi(requestRunner: _gitHubRequestRunner, jsonAdapter: _jsonAdapter, activityLogger: _activityLogger, eventBus: _eventBus)
+        AppGitHubApi(requestRunner: _gitHubRequestRunner, jsonAdapter: _jsonAdapter, activityLogger: _activityLogger, eventBus: _eventBus, schedulers: _rxSchedulers)
     }
 
     // LoginViewModel
@@ -169,7 +194,7 @@ class DI {
     }
 
     var loginViewModel: LoginViewModel {
-        AppLoginViewModel(userManager: _userManager, dataDestroyer: _dataDestroyer, userRepository: _userRepository, bundle: _bundle, logger: _activityLogger)
+        AppLoginViewModel(userManager: _userManager, dataDestroyer: _dataDestroyer, userRepository: _userRepository, logger: _activityLogger, schedulers: _rxSchedulers)
     }
 
     // NotificationCenterManager
@@ -193,7 +218,7 @@ class DI {
     }
 
     var reposRepository: ReposRepository {
-        AppReposRepository(githubApi: _gitHubAPI, db: _database)
+        AppReposRepository(githubApi: _gitHubAPI, reposDao: _repositoryDao, schedulers: _rxSchedulers)
     }
 
     // ReposViewModel
@@ -268,37 +293,24 @@ class DI {
         AppUserRepository(githubApi: _gitHubAPI, jsonAdapter: _jsonAdapter)
     }
 
-    // Bundle (custom. property getter provided via extension)
-    private var _bundle: Bundle {
-        if let overridenDep = overrides[.bundle] {
-            return overridenDep as! Bundle
+    // ViewDataProvider
+    private var _viewDataProvider: ViewDataProvider {
+        if let overridenDep = overrides[.viewDataProvider] {
+            return overridenDep as! ViewDataProvider
         }
-        return bundle
+        return viewDataProvider
     }
 
-    // CoreDataManager (singleton)
-    private var _coreDataManager: CoreDataManager {
-        if let overridenDep = overrides[.coreDataManager] {
-            return overridenDep as! CoreDataManager
-        }
-        return coreDataManager
+    var viewDataProvider: ViewDataProvider {
+        AppViewDataProvider(remoteConfigAdapter: _remoteConfigAdapter)
     }
 
-    private let _coreDataManager_queue = DispatchQueue(label: "DI_get_coreDataManager_queue")
-    private var _coreDataManager_shared: CoreDataManager?
-    var coreDataManager: CoreDataManager {
-        _coreDataManager_queue.sync {
-            if let overridenDep = self.overrides[.coreDataManager] {
-                return overridenDep as! CoreDataManager
-            }
-            let res = _coreDataManager_shared ?? _get_coreDataManager()
-            _coreDataManager_shared = res
-            return res
+    // JsonRemoteConfigAdapterPlugin (custom. property getter provided via extension)
+    private var _jsonRemoteConfigAdapterPlugin: JsonRemoteConfigAdapterPlugin {
+        if let overridenDep = overrides[.jsonRemoteConfigAdapterPlugin] {
+            return overridenDep as! JsonRemoteConfigAdapterPlugin
         }
-    }
-
-    private func _get_coreDataManager() -> CoreDataManager {
-        CoreDataManager()
+        return jsonRemoteConfigAdapterPlugin
     }
 
     // RemoteConfigAdapter (custom. property getter provided via extension)
@@ -307,6 +319,14 @@ class DI {
             return overridenDep as! RemoteConfigAdapter
         }
         return remoteConfigAdapter
+    }
+
+    // Bundle (custom. property getter provided via extension)
+    private var _bundle: Bundle {
+        if let overridenDep = overrides[.bundle] {
+            return overridenDep as! Bundle
+        }
+        return bundle
     }
 
     // DataDestroyer
@@ -318,19 +338,7 @@ class DI {
     }
 
     var dataDestroyer: DataDestroyer {
-        DataDestroyer(keyValueStorage: _keyValueStorage, database: _database, pendingTasks: _pendingTasks)
-    }
-
-    // Database
-    private var _database: Database {
-        if let overridenDep = overrides[.database] {
-            return overridenDep as! Database
-        }
-        return database
-    }
-
-    var database: Database {
-        Database(coreDataManager: _coreDataManager)
+        DataDestroyer(keyValueStorage: _keyValueStorage, coreDataManager: _coreDataManager, pendingTasks: _pendingTasks)
     }
 
     // FileStorage (singleton)
@@ -431,7 +439,19 @@ class DI {
     }
 
     var repositoryDao: RepositoryDao {
-        RepositoryDao(coreDataManager: _coreDataManager)
+        RepositoryDao(coreDataManager: _coreDataManager, logger: _activityLogger, threadUtil: _threadUtil)
+    }
+
+    // RxSchedulers
+    private var _rxSchedulers: RxSchedulers {
+        if let overridenDep = overrides[.rxSchedulers] {
+            return overridenDep as! RxSchedulers
+        }
+        return rxSchedulers
+    }
+
+    var rxSchedulers: RxSchedulers {
+        RxSwiftSchedulers()
     }
 
     // StringReplaceUtil

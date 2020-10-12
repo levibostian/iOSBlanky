@@ -1,12 +1,12 @@
+@testable import App
 import Foundation
 import RxSwift
 import XCTest
 
-class ReposRepositoryTests: UnitTest {
+class ReposRepositoryTests: RepositoryTest {
     var repository: ReposRepository!
 
     var githubApiMock: GitHubAPIMock!
-    var database: Database!
 
     var disposeBag: DisposeBag!
 
@@ -14,11 +14,10 @@ class ReposRepositoryTests: UnitTest {
         super.setUp()
 
         githubApiMock = GitHubAPIMock()
-        database = Database(coreDataManager: CoreDataManager.initTesting())
 
         disposeBag = DisposeBag()
 
-        repository = AppReposRepository(githubApi: githubApiMock, db: database)
+        repository = AppReposRepository(githubApi: githubApiMock, reposDao: DI.shared.inject(.repositoryDao), schedulers: schedulers)
     }
 
     func test_saveReposForUser_observeReposForUser_expectObserveWhatGotSaved() {
@@ -34,7 +33,7 @@ class ReposRepositoryTests: UnitTest {
             Repo.fake.repoForUser(username: githubUsername)
         ]
 
-        try! repository.replaceRepos(newRepos, forUsername: githubUsername)
+        try! repository.replaceRepos(newRepos, forUsername: githubUsername).sync()
 
         let expectNewCache = expectation(description: "Expect new cache")
         repository.observeRepos(forUsername: githubUsername)

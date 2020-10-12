@@ -1,7 +1,3 @@
-// swiftlint:disable line_length
-// swiftlint:disable variable_name
-// swiftlint:disable large_tuple
-
 import Foundation
 import RxSwift
 #if os(iOS) || os(tvOS) || os(watchOS)
@@ -163,6 +159,102 @@ class ActivityLoggerMock: ActivityLogger {
         errorOccurredReceivedError = error
         errorOccurredReceivedInvocations.append(error)
         errorOccurredClosure?(error)
+    }
+}
+
+class CoreDataManagerMock: CoreDataManager {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    var underlyingUiContext: CDContext!
+    var uiContextCalled = false
+    var uiContextGetCalled = false
+    var uiContextSetCalled = false
+    var uiContext: CDContext {
+        get {
+            mockCalled = true
+            uiContextCalled = true
+            uiContextGetCalled = true
+            return underlyingUiContext
+        }
+        set(value) {
+            mockCalled = true
+            uiContextCalled = true
+            uiContextSetCalled = true
+            underlyingUiContext = value
+        }
+    }
+
+    // MARK: - newBackgroundContext
+
+    var newBackgroundContextCallsCount = 0
+    var newBackgroundContextCalled: Bool {
+        newBackgroundContextCallsCount > 0
+    }
+
+    var newBackgroundContextReturnValue: CDContext!
+    var newBackgroundContextClosure: (() -> CDContext)?
+
+    func newBackgroundContext() -> CDContext {
+        mockCalled = true
+        newBackgroundContextCallsCount += 1
+        return newBackgroundContextClosure.map { $0() } ?? newBackgroundContextReturnValue
+    }
+
+    // MARK: - asyncWrite
+
+    var asyncWriteCallsCount = 0
+    var asyncWriteCalled: Bool {
+        asyncWriteCallsCount > 0
+    }
+
+    var asyncWriteReceivedBlock: ((CDContext) -> Void)?
+    var asyncWriteReceivedInvocations: [(CDContext) -> Void] = []
+    var asyncWriteClosure: ((@escaping (CDContext) -> Void) -> Void)?
+
+    func asyncWrite(_ block: @escaping (CDContext) -> Void) {
+        mockCalled = true
+        asyncWriteCallsCount += 1
+        asyncWriteReceivedBlock = block
+        asyncWriteReceivedInvocations.append(block)
+        asyncWriteClosure?(block)
+    }
+
+    // MARK: - loadStore
+
+    var loadStoreCompletionHandlerCallsCount = 0
+    var loadStoreCompletionHandlerCalled: Bool {
+        loadStoreCompletionHandlerCallsCount > 0
+    }
+
+    var loadStoreCompletionHandlerReceivedCompletionHandler: ((Error?) -> Void)?
+    var loadStoreCompletionHandlerReceivedInvocations: [(Error?) -> Void] = []
+    var loadStoreCompletionHandlerClosure: ((@escaping (Error?) -> Void) -> Void)?
+
+    func loadStore(completionHandler: @escaping (Error?) -> Void) {
+        mockCalled = true
+        loadStoreCompletionHandlerCallsCount += 1
+        loadStoreCompletionHandlerReceivedCompletionHandler = completionHandler
+        loadStoreCompletionHandlerReceivedInvocations.append(completionHandler)
+        loadStoreCompletionHandlerClosure?(completionHandler)
+    }
+
+    // MARK: - reset
+
+    var resetCompletionHandlerCallsCount = 0
+    var resetCompletionHandlerCalled: Bool {
+        resetCompletionHandlerCallsCount > 0
+    }
+
+    var resetCompletionHandlerReceivedCompletionHandler: ((Error?) -> Void)?
+    var resetCompletionHandlerReceivedInvocations: [(Error?) -> Void] = []
+    var resetCompletionHandlerClosure: ((@escaping (Error?) -> Void) -> Void)?
+
+    func reset(completionHandler: @escaping (Error?) -> Void) {
+        mockCalled = true
+        resetCompletionHandlerCallsCount += 1
+        resetCompletionHandlerReceivedCompletionHandler = completionHandler
+        resetCompletionHandlerReceivedInvocations.append(completionHandler)
+        resetCompletionHandlerClosure?(completionHandler)
     }
 }
 
@@ -1215,7 +1307,6 @@ class ReposRepositoryMock: ReposRepository {
 
     // MARK: - replaceRepos
 
-    var replaceReposForUsernameThrowableError: Error?
     var replaceReposForUsernameCallsCount = 0
     var replaceReposForUsernameCalled: Bool {
         replaceReposForUsernameCallsCount > 0
@@ -1223,17 +1314,15 @@ class ReposRepositoryMock: ReposRepository {
 
     var replaceReposForUsernameReceivedArguments: (repos: [Repo], forUsername: String)?
     var replaceReposForUsernameReceivedInvocations: [(repos: [Repo], forUsername: String)] = []
-    var replaceReposForUsernameClosure: (([Repo], String) throws -> Void)?
+    var replaceReposForUsernameReturnValue: DaoWrite!
+    var replaceReposForUsernameClosure: (([Repo], String) -> DaoWrite)?
 
-    func replaceRepos(_ repos: [Repo], forUsername: String) throws {
-        if let error = replaceReposForUsernameThrowableError {
-            throw error
-        }
+    func replaceRepos(_ repos: [Repo], forUsername: String) -> DaoWrite {
         mockCalled = true
         replaceReposForUsernameCallsCount += 1
         replaceReposForUsernameReceivedArguments = (repos: repos, forUsername: forUsername)
         replaceReposForUsernameReceivedInvocations.append((repos: repos, forUsername: forUsername))
-        try replaceReposForUsernameClosure?(repos, forUsername)
+        return replaceReposForUsernameClosure.map { $0(repos, forUsername) } ?? replaceReposForUsernameReturnValue
     }
 }
 
@@ -1378,5 +1467,28 @@ class UserRepositoryMock: UserRepository {
         exchangeTokenReceivedToken = token
         exchangeTokenReceivedInvocations.append(token)
         return exchangeTokenClosure.map { $0(token) } ?? exchangeTokenReturnValue
+    }
+}
+
+class ViewDataProviderMock: ViewDataProvider {
+    var mockCalled: Bool = false // if *any* interactions done on mock. Sets/gets or methods called.
+
+    var underlyingLoginViewController: LoginViewController.ViewData!
+    var loginViewControllerCalled = false
+    var loginViewControllerGetCalled = false
+    var loginViewControllerSetCalled = false
+    var loginViewController: LoginViewController.ViewData {
+        get {
+            mockCalled = true
+            loginViewControllerCalled = true
+            loginViewControllerGetCalled = true
+            return underlyingLoginViewController
+        }
+        set(value) {
+            mockCalled = true
+            loginViewControllerCalled = true
+            loginViewControllerSetCalled = true
+            underlyingLoginViewController = value
+        }
     }
 }

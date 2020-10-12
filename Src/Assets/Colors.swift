@@ -4,11 +4,13 @@ import UIKit
 enum Colors: String, CaseIterable {
     case backgroundColor
     case tableViewCellBackgroundColor
-    case textColor
+    case primaryTextColor
     case buttonColor
     case navigationBarColor
     case navigationBarTintColor
     case pickerViewBackground
+    case uiPageControlSelectedPageTintColor
+    case uiPageControlNotSelectedPageTintColor
 }
 
 extension Colors {

@@ -5,17 +5,16 @@ import UIKit
 /**
  Exists to contain UIWindow to display the root VC.
  */
-final class AppCoordinator: PresentationCoordinator {
+final class AppCoordinator: RootCoordinator {
     var childCoordinators: [Coordinator] = []
     var rootViewController = AppRootViewController()
 
-    private let window: UIWindow
+    let window: UIWindow
 
     init(window: UIWindow) {
         self.window = window
 
-        window.rootViewController = rootViewController
-        window.makeKeyAndVisible()
+        showViewController(rootViewController)
     }
 
     func start() {

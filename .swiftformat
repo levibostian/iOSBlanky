@@ -6,7 +6,6 @@
 --ifdef no-indent 
 --octalgrouping none 
 --patternlet inline 
---ranges no-space 
 --self init-only 
 --semicolons never 
 --stripunusedargs closure-only 

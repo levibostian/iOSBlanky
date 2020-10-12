@@ -12,7 +12,7 @@ extension DebugActivityLogger {
         identifyUser(id: id)
     }
 
-    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average: Double?, from file: String) {
+    func appEventOccurred(_ event: ActivityEvent, extras: [ActivityEventParamKey: Any]?, average _: Double?, from file: String) {
         logAppEvent("\(event.rawValue) (from \(file))", extras: extras?.mapKeys { $0.rawValue })
     }
 
@@ -24,7 +24,7 @@ extension DebugActivityLogger {
         logDebug("Http request-- method: \(method), url: \(url), req body: \(reqBody ?? "(none)")", extras: nil)
     }
 
-    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders: String?, resHeaders: String?, resBody: String?) {
+    func httpSuccessEvent(method: String, url: String, code: Int, reqHeaders _: String?, resHeaders _: String?, resBody: String?) {
         logDebug("Http response success-- method: \(method), url: \(url), code: \(code), res body: \(resBody ?? "(none)")", extras: nil)
     }
 

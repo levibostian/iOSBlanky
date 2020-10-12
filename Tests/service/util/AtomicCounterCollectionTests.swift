@@ -42,7 +42,7 @@ class AtomicCounterCollectionTests: UnitTest {
         let expected = 5
         let key = "key"
 
-        (0..<expected).forEach { _ in
+        (0 ..< expected).forEach { _ in
             _ = atomicCounter.increment(for: key)
         }
 
@@ -82,11 +82,11 @@ class AtomicCounterCollectionTests: UnitTest {
         let expected = 5
         let key = "key"
 
-        (0..<expected).forEach { _ in
+        (0 ..< expected).forEach { _ in
             _ = atomicCounter.increment(for: key)
         }
 
-        (0..<expected).forEach { _ in
+        (0 ..< expected).forEach { _ in
             _ = try! atomicCounter.decrement(for: key)
         }
 

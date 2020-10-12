@@ -13,8 +13,8 @@ class ReposCoordinator: NavigationCoordinator {
         self.reposViewController = LaunchViewController()
 
         let navigationController = UINavigationController(rootViewController: reposViewController)
-        self.navigator = Navigator(navigationController: navigationController)
-        self.rootViewController = navigationController
+        navigator = Navigator(navigationController: navigationController)
+        rootViewController = navigationController
     }
 
     func start() {

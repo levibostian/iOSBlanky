@@ -15,6 +15,11 @@ class LoginViewController: UIViewController {
 
     var arg: Arg?
 
+    struct ViewData: Codable {
+        let loadingTitle: String
+        let loadingMessage: String?
+    }
+
     fileprivate var token: String? {
         guard case .token(let token) = self.arg else {
             return nil
@@ -30,22 +35,26 @@ class LoginViewController: UIViewController {
         case errorView
     }
 
-    let swapperView: SwapperView = {
-        let view = SwapperView()
+    let swapperView: SwapperView<SwapViews> = {
+        let view = SwapperView<SwapViews>()
         return view
     }()
 
-    let pleaseHoldView: PleaseHoldView = {
+    lazy var pleaseHoldView: PleaseHoldView = {
         let view = PleaseHoldView()
-        view.title = Strings.loggingIntoAppTitle.localized
-        view.message = Strings.loggingIntoAppMessage.localized
+        view.title = viewData.loadingTitle
+        view.message = viewData.loadingMessage
         view.accessibilityIdentifier = AccessibilityId.loadingView.rawValue
         return view
     }()
 
-    enum SwapViews: String {
+    enum SwapViews: String, CustomStringConvertible {
         case loadingView
         case errorView
+
+        var description: String {
+            rawValue
+        }
     }
 
     let emptyView: EmptyView = {
@@ -58,8 +67,13 @@ class LoginViewController: UIViewController {
         case retry
     }
 
+    fileprivate let viewDataProvider: ViewDataProvider = DI.shared.inject(.viewDataProvider)
     fileprivate let loginViewModel: LoginViewModel = DI.shared.inject(.loginViewModel)
     private let logger: ActivityLogger = DI.shared.inject(.activityLogger)
+
+    lazy var viewData: ViewData = {
+        self.viewDataProvider.loginViewController
+    }()
 
     fileprivate let disposeBag = DisposeBag()
     fileprivate var loginUserDisposable: Disposable?
@@ -72,9 +86,9 @@ class LoginViewController: UIViewController {
         }
 
         swapperView.setSwappingViews([
-            (SwapViews.loadingView.rawValue, pleaseHoldView),
-            (SwapViews.errorView.rawValue, emptyView)
-        ])
+            (.loadingView, pleaseHoldView),
+            (.errorView, emptyView)
+        ], swapTo: .loadingView)
 
         view.addSubview(swapperView)
 
@@ -82,7 +96,7 @@ class LoginViewController: UIViewController {
 
         setupViews()
 
-        try! swapperView.swapTo(SwapViews.loadingView.rawValue, onComplete: nil)
+        try! swapperView.swapTo(.loadingView, onComplete: nil)
 
         populateView()
     }
@@ -109,8 +123,8 @@ class LoginViewController: UIViewController {
 
         loginUserDisposable = loginViewModel.loginUser(token: token!)
             .do(onSubscribe: {
-                try! self.swapperView.swapTo(SwapViews.loadingView.rawValue, onComplete: nil)
-                })
+                try! self.swapperView.swapTo(.loadingView, onComplete: nil)
+            })
             .subscribe(onSuccess: { [weak self] result in
                 guard let self = self else { return }
 
@@ -119,9 +133,9 @@ class LoginViewController: UIViewController {
                     self.delegate?.userLoggedInSuccessfully()
                 case .failure(let error):
                     self.emptyView.message = error.localizedDescription
-                    try! self.swapperView.swapTo(SwapViews.errorView.rawValue, onComplete: nil)
+                    try! self.swapperView.swapTo(.errorView, onComplete: nil)
                 }
-                })
+            })
 
         disposeBag.insert(loginUserDisposable!)
     }
