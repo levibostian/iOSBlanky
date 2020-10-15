@@ -7,7 +7,8 @@ default: # default is testing (aka staging) environment
 sets:
   production:
     path: "_production"
-  common:
+  ci:
+    path: "_ci"
     secrets:
       - "Src/FirebaseTestLab-ServiceAccount.json"
 output: "secrets_cici"

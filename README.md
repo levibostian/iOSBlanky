@@ -74,6 +74,7 @@ bundle install               # Install development tools
 pod install                  # Install dependencies 
 ./hooks/autohook.sh install  # Install git hooks
 cici decrypt                 # When running this command, it will ask you for a KEY and IV value. Your team members should have shared these passwords with you. Enter those at that time. 
+bundle exec fastlane match development # Provide your Apple Developer account username and password if it asks. When asked for a passphrase, enter the "fastlane match" passphrase that your team provides to you. 
 ```
 
 * Open XCode. Select `Open a project or file`. Then, select `App.xcworkspace` from the root directory of this project on your computer. 

@@ -12,13 +12,14 @@ before_install:
   - gem install cici
   
 before_script:
-  - cici decrypt --set common
+  - cici decrypt --set ci
   - ./set_environment.sh 
 
 env:
   global:
     - UI_TESTS_DEVICE_ID="iphone11" # Device model ID. `gcloud beta firebase test ios models list`
     - UI_TESTS_IOS_VERSION="13.6"   # iOS version ID. `gcloud beta firebase test ios models list`
+    - GOOGLE_APPLICATION_CREDENTIALS="Src/FirebaseTestLab-ServiceAccount.json" # path to the service account key file to authenticate with firebase service account. Readme talks about this. 
     # Below are secret environment variables you need to set. 
     # Note: You need to escape all of the special characters. Add a `\` character before each. 
     # 
@@ -35,7 +36,6 @@ env:
     # APP_STORE_CONNECT_TEAM_ID="12345" - team id found in App Store Connect. https://stackoverflow.com/a/46415415/1486374
     # CODECOV_TOKEN - codecov.io token for repository. Used for test coverage. Make sure code coverage is enabled in XCode https://github.com/codecov/example-swift#produce-coverage-reports
     # FIREBASE_PROJECT_ID - Found in Firebase project > Settings > General. 
-    # GOOGLE_APPLICATION_CREDENTIALS - path to the service account key file to authenticate with firebase service account. Readme talks about this. 
 
 jobs:
   include:    
